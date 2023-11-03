@@ -17,4 +17,4 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::view('/', 'dashboard.index')->name('dashboard.index');
+Route::view('/', 'administradores.dashboard.index')->name('dashboard.index');
