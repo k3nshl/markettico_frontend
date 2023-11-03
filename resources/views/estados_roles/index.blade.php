@@ -279,7 +279,7 @@
                             <div class="border p-3 rounded">
                                 <div class="card-title d-flex align-items-center justify-content-between">
                                     <div class="d-flex align-items-center">
-                                        <div><i class="bx bxs-user me-1 font-22 text-info"></i></div>
+                                        <div><i class="lni lni-clipboard me-1 font-22 text-info"></i></div>
                                         <h5 class="mb-0 text-info" title="Agregar Usuario">Lista de Estados</h5>
                                     </div>
                                     <div class="d-flex align-items-center">
@@ -337,9 +337,9 @@
                                     <table id="tablaEstados" class="table table-bordered">
                                         <thead class="theadEstados">
                                             <tr>
-                                                <th class="bg_datatable">ID</th>
-                                                <th class="bg_datatable">Nombre</th>
-                                                <th class="bg_datatable">Acciones</th>
+                                                <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">ID</th>
+                                                <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Nombre</th>
+                                                <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
