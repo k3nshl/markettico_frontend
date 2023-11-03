@@ -151,13 +151,14 @@
                                                     <td>
 
                                                         <button class="btn btn-primary btn-sm">
-                                                            <i class="lni lni-eye" style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
+                                                            <i class="lni lni-eye"
+                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
                                                         </button>
-                                                        
+
                                                         <!-- Botón de editar con modal -->
                                                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                            data-bs-target="#editarUsuarioModal" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                            title="Editar Usuario Administrativo">
+                                                            data-bs-target="#editarUsuarioModal" data-bs-toggle="tooltip"
+                                                            data-bs-placement="top" title="Editar Usuario Administrativo">
                                                             <div class="text-center">
                                                                 <i class="lni lni-pencil-alt"
                                                                     style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
@@ -256,24 +257,47 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                        <button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Eliminar Usuario Administrativo">
+                                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                            data-bs-target="#eliminarUsuarioModal">
                                                             <i class="lni lni-trash"
                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                         </button>
+                                                        <div class="modal fade" id="eliminarUsuarioModal" tabindex="-1"
+                                                            aria-labelledby="eliminarUsuarioModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="eliminarUsuarioModalLabel">Confirmar
+                                                                            eliminación</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        ¿Estás seguro de que deseas eliminar este usuario
+                                                                        administrativo?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Cancelar</button>
+                                                                        <button type="button" class="btn btn-danger"
+                                                                            data-bs-dismiss="modal" data-bs-toggle="modal"
+                                                                            data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
-
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>
