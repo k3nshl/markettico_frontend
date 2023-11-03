@@ -1,4 +1,5 @@
-@extends('plantilla')
+@extends('administradores.dashboard.index')
+
 
 @section('contenido')
     <section class="content">
