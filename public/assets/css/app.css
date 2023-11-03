@@ -16,6 +16,11 @@ body {
 	font-family: Roboto, sans-serif
 }
 
+:root{
+	--bg_datatable: #05C7F2;
+	--texto_datatable: #f2f2f2;
+}
+
 a {
 	text-decoration: none
 }
@@ -2411,4 +2416,9 @@ input.search-control-2::placeholder {
 	.chat-top-header-menu {
 		display: none
 	}
+}
+
+.bg_datatable{
+	background-color: var(--bg_datatable);
+	color: var(--texto_datatable);
 }
