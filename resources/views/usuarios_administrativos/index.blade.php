@@ -151,10 +151,83 @@
                                                     <td>01-01-2020</td>
                                                     <td>
 
-                                                        <button class="btn btn-primary btn-sm">
+                                                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#showUserModal" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Visualizar Estado">
+                                                        <div class="text-center">
                                                             <i class="lni lni-eye"
-                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                        </button>
+                                                            style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
+                                                        </div>
+                                                    </button>
+
+                                                    <!-- Modal de visaualizacion -->
+                                                    <div class="modal fade" id="showUserModal" tabindex="-1"
+                                                            aria-labelledby="showUserModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-scrollable">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="showUserModalLabel">
+                                                                            Visualizar Usuario Administrativo</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal" aria-label="Close"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            title="Cerrar"></button>
+                                                                    </div>
+
+                                                                    <div class="modal-body">
+                                                                        <form>
+                                                                            <div class="mb-3">
+                                                                                <label for="showNombreUsuario"
+                                                                                    class="form-label">Nombre de
+                                                                                    Usuario</label>
+                                                                                
+                                                                            </div>
+
+                                                                            <div class="mb-3">
+                                                                                <label for="showCorreoEmpresarial"
+                                                                                    class="form-label">Correo
+                                                                                    Empresarial</label>
+                                                                            </div>
+
+                                                                            <div class="mb-3">
+                                                                                <label for="showNumeroTelefonico"
+                                                                                    class="form-label">Número
+                                                                                    Telefónico</label>
+                                                                            </div>
+
+                                                                            <div class="mb-3">
+                                                                                <label for="showRolUsuario"
+                                                                                    class="form-label">Rol del
+                                                                                    Usuario</label>
+                                                                            </div>
+
+                                                                            <div class="mb-3">
+                                                                                <label for="showEstadoUsuario"
+                                                                                    class="form-label">Estado
+                                                                                    del
+                                                                                    Usuario</label>
+                                                                            </div>
+
+                                                                        </form>
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Cerrar</button>
+                                                                        <button type="button"
+                                                                            class="btn btn-info text-white"
+                                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                            <i class="bx bx-save"
+                                                                                style="color: #F2F2F2;"></i>
+                                                                            Guardar
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
                                                         <!-- Botón de editar con modal -->
                                                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
