@@ -12,7 +12,7 @@ class ControllerRoles extends Controller
      */
     public function index()
     {
-        return view('administradores.estados_roles.index');
+        return view('estados_roles.index');
     }
 
     /**

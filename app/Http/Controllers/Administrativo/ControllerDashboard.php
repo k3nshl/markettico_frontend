@@ -12,7 +12,7 @@ class ControllerDashboard extends Controller
      */
     public function index()
     {
-        return view('administrativo.dashboard');
+        return view('dashboard.index');
     }
 
     /**
