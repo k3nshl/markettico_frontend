@@ -4,8 +4,6 @@
 
 @section('contenido')
 
-<--! Aqui va Roles -->
-
 
 <section class="content">
     <div class="row">
