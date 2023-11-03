@@ -149,6 +149,11 @@
                                                     <td>Activo</td>
                                                     <td>01-01-2020</td>
                                                     <td>
+
+                                                        <button class="btn btn-primary btn-sm">
+                                                            <i class="lni lni-eye" style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
+                                                        </button>
+                                                        
                                                         <!-- Botón de editar con modal -->
                                                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                                             data-bs-target="#editarUsuarioModal" data-bs-toggle="tooltip" data-bs-placement="top"
