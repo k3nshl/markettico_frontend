@@ -1,5 +1,7 @@
 @extends('plantilla')
 
+@section('gestion_nombre', 'Estados/Roles')
+
 @section('contenido')
 
 <div class="row">

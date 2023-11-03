@@ -1,5 +1,6 @@
 @extends('plantilla')
 
+@section('gestion_nombre', 'Usuarios Administrativos')
 
 @section('contenido')
     <section class="content">
