@@ -12,7 +12,7 @@ class ControllerUsuariosAdministrativos extends Controller
      */
     public function index()
     {
-        return view('admin.usuarios_administrativos.index');
+        return view('administradores.usuarios_administrativos.index');
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Administrativo\ControllerAdmin;
+use App\Http\Controllers\Administrativo\ControllerDashboard;
 use App\Http\Controllers\Administrativo\ControllerEstados;
 use App\Http\Controllers\Administrativo\ControllerRoles;
 use App\Http\Controllers\Administrativo\ControllerUsuariosAdministrativos;

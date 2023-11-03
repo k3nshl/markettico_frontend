@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerAdmin extends Controller
+class ControllerDashboard extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('administrativo.dashboard.index');
+        return view('administrativo.dashboard');
     }
 
     /**
