@@ -52,7 +52,7 @@
                                                             <div class="px-5 py-2">
                 
                                                                 <div class=" mb-2">
-                                                                    <label for="">Nombre del Estado</label>
+                                                                    <label>Nombre del Estado</label>
                 
                                                                     <input type="text" class="form-control"
                                                                         name="nombre" value="" required>
