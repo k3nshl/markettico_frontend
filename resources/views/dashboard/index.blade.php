@@ -60,9 +60,9 @@
                         <div class="menu-title">Superadmin</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('administradores.usuarios_administrativos.index') }}"><i class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
+                        <li> <a href="{{ route('usuarios_administrativos.index') }}"><i class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
                         </li>
-                        <li> <a href="{{ route('administradores.estados_roles.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Estados/Roles</a>
+                        <li> <a href="{{ route('estados_roles.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Estados/Roles</a>
                         </li>
                 </li>
             </ul>
