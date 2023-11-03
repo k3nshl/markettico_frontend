@@ -33,7 +33,7 @@
     <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
 
 
-    <title>MarketTico</title>
+    <title>MarketTico Admin</title>
 </head>
 
 <body>
