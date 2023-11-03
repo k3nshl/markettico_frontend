@@ -1,4 +1,4 @@
-@extends('dashboard.index')
+@extends('plantilla')
 
 @section('contenido')
 
