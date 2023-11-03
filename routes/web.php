@@ -23,9 +23,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'administradores.dashboard.index')->name('dashboard.index');
 
-Route::resource('administradores.admin', ControllerAdmin::class)->names('administradores.admin');
-Route::resource('administradores.usuarios_administrativos', ControllerUsuariosAdministrativos::class)->names('administradores.usuarios_administrativos');
-Route::resource('administradores.estados_roles', ControllerRoles::class)->names('administradores.roles');
-Route::resource('administradores.estados_roles', ControllerEstados::class)->names('administradores.estados');
+Route::resource('administradores.dashboard', ControllerDashboard::class);
+Route::resource('administradores.usuarios_administrativos', ControllerUsuariosAdministrativos::class);
+Route::resource('administradores.estados_roles', ControllerRoles::class);
+Route::resource('administradores.estados_roles', ControllerEstados::class);
 
 //Route::get('administradores.usuarios_administrativos.index', [ControllerUsuariosAdministrativos::class, 'index']);
