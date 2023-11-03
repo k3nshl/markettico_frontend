@@ -58,7 +58,7 @@
             <ul class="metismenu" id="menu">
                 <li>
                     <a href="javascript:;" class="has-arrow">
-                        <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                        <div class="parent-icon"><i class='fadeIn animated bx bx-bot'></i>
                         </div>
                         <div class="menu-title">Superadmin</div>
                     </a>
