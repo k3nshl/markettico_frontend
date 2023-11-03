@@ -71,7 +71,7 @@
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><i class="bx bx-category"></i>
                     </div>
-                    <div class="menu-title">Application</div>
+                    <div class="menu-title">Seccion 2</div>
                 </a>
             </li>
 
@@ -79,7 +79,7 @@
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><i class="bx bx-category"></i>
                     </div>
-                    <div class="menu-title">Application</div>
+                    <div class="menu-title">Seccion 3</div>
                 </a>
             </li>
 
