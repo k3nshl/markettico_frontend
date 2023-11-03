@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Administrativo\ControllerAdmin;
+use App\Http\Controllers\Administrativo\ControllerEstados;
+use App\Http\Controllers\Administrativo\ControllerRoles;
 use App\Http\Controllers\Administrativo\ControllerUsuariosAdministrativos;
 use Illuminate\Support\Facades\Route;
 
@@ -22,7 +25,7 @@ Route::view('/', 'administradores.dashboard.index')->name('dashboard.index');
 
 Route::resource('administradores.admin', ControllerAdmin::class)->names('administradores.admin');
 Route::resource('administradores.usuarios_administrativos', ControllerUsuariosAdministrativos::class)->names('administradores.usuarios_administrativos');
-Route::resource('administradores.roles', ControllerRoles::class)->names('administradores.roles');
-Route::resource('administradores.estados', ControllerEstados::class)->names('administradores.estados');
+Route::resource('administradores.estados_roles', ControllerRoles::class)->names('administradores.roles');
+Route::resource('administradores.estados_roles', ControllerEstados::class)->names('administradores.estados');
 
 //Route::get('administradores.usuarios_administrativos.index', [ControllerUsuariosAdministrativos::class, 'index']);
