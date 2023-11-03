@@ -4,271 +4,230 @@
 
 @section('contenido')
 
-<div class="row">
+<--! Aqui va Roles -->
 
 
-    <div class="col-xxl-12 col-xl-12">
-       
-        
+<section class="content">
+    <div class="row">
+        <div class="col-xl-12 mx-auto">
+            <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
+                <div class="card-body text-center">
 
-            
-                <div class="row">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col">
+                            <div class="border p-3 rounded">
+                                <div class="card-title d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <div><i class="lni lni-clipboard me-1 font-22 text-info"></i></div>
+                                        <h5 class="mb-0 text-dark" title="Agregar Usuario">Lista de Roles</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="me-2">
+                                            <h5 class="m-0">Registrar</h5>
+                                        </div>
+                                        <div class="me-2">
+                                            <button type="button" class="btn btn-info text-white"
+                                                data-bs-toggle="modal" data-bs-target="#modalAgregarRol"
+                                                style="background-color: #04D9B2; border-color: #04D9D9;"
+                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="Agregar Nuevo Rol">+</button>
+                                        </div>
 
-                  
-
-                    <hr class="mb-4">
-
-                    <div class="col-xxl-12 col-xl-12">
-
-                        
-                        <div class="card border-top border-0 border-4 border-info">
-							<div class="card-body">
-								<div class="border p-4 rounded">
-
-
-
-                                    <div class="col-xxl-12 col-xl-12">
-
-                                        <div class="float-end">
-                
-                                            <h5 class="card-title card-antecendentes">Registrar
-                                                <button class="btn btn-sm btnEstandar" style="background-color: #04D9D9;  
-                                                color: #F2F2F2;" data-bs-toggle="modal" data-bs-target="#registrar"
-                                                >
-                                                    <i class="bi bi-plus"></i>
-                                                </button>
-                                               
-                                                
-                                            </h5>
-                
-                                            <div class="modal fade" id="registrar">
-                                                <div class="modal-dialog modal-dialog-centered modal-None">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">
-                                                                Registrar Estado</h5>
-                                                            <button class="btn btn-outline-danger"
-                                                                data-bs-dismiss="modal">X</button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="px-5 py-2">
-                
-                                                                <div class=" mb-2">
-                                                                    <label>Nombre del Estado</label>
-                
+                                        <div class="modal fade" id="modalAgregarRol" tabindex="-1"
+                                            aria-labelledby="modalAgregarRolLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="modalAgregarEstadoRol">
+                                                            Agregar Nuevo Rol</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form>
+                                                            <div class="row mb-3">
+                                                                <label for="nombre"
+                                                                    class="col-sm-4 col-form-label">Nombre del Rol:</label>
+                                                                <div class="col-sm-8">
                                                                     <input type="text" class="form-control"
-                                                                        name="nombre" value="" required>
-                
+                                                                        id="nombre" name="nombre"
+                                                                        placeholder="Ingrese el nombre del Rol">
                                                                 </div>
-                
                                                             </div>
-                                                        </div>
-                
-                                                        <div class="modal-footer">
-                                                            <button  type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Cancelar</button>
-                
-                                                            <button  style="background-color: #04D9D9;  
-                                                            color: #F2F2F2;" class="btn">Registrar</button>
-                
-                                                        </div>
+                                                            
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Cerrar</button>
+                                                        <button type="button" class="btn btn-info text-white"
+                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                            <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                                                            Guardar
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
-                
-                
                                         </div>
-                
                                     </div>
-
-
-									<div class="card-title d-flex align-items-center">
-										<div><i class="bx bxs-user me-1 font-22 text-info"></i>
-										</div>
-										<h5 class="mb-0 text-info">Registar Estados</h5>
-                                    
-									</div>
-									<hr>
-									
-                                    <table id="example" class="table table-striped table-bordered table-hover" style="border-top: 2px solid #05C7F2;">
-                         
-
-
-                                        <thead class="bg-dark text-white">
+                                </div>
+                                <hr />
+                                <div class="table-responsive">
+                                    <table id="tablaRoles" class="table table-bordered">
+                                        <thead class="theadRoles">
                                             <tr>
-                                                <th class="text-center" style="background-color: #05C7F2;">Id</th>
-                                                <th class="text-center" style="background-color: #05C7F2;">Nombre</th>
-                                                <th class="text-center" style="background-color: #05C7F2; width: 300px;">Acciones</th>
+                                                <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">ID</th>
+                                                <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Nombre</th>
+                                                <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
                                             </tr>
                                         </thead>
-            
                                         <tbody>
-            
                                             <tr>
-                                                <td class="text-center">1</td>
-            
-                                                <td class="text-center">Activo</td>
-            
-                                                <td class="text-center">
-            
-                                                    <a class="btn btn-sm btn-primary" href="" data-bs-toggle="modal"
-                                                        data-bs-target="#ver" style="width: 40px; height: 40px;">
-                                                        <i class="bi bi-eye"></i>
-                                                    </a>
-            
-                                                    <div class="modal fade" id="ver">
-                                                        <div class="modal-dialog modal-dialog-centered modal-None">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title">
-                                                                        Ver Estado</h5>
-                                                                    <button class="btn btn-outline-danger"
-                                                                        data-bs-dismiss="modal">X</button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="px-5 py-2">
-            
-                                                                        <div class=" mb-2">
-                                                                            
-                                                                            <h3>Informacion del Estado</h3>
-            
-                                                                        </div>
-            
-                                                                    </div>
-                                                                </div>
-            
-                                                                <div class="modal-footer">
-            
-                                                                    <button class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Cerrar</button>
-            
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <td>1</td>
+                                                <td>Superadmin</td>
+                                                <td>
                                                     
-                                                    <a class="btn btn-sm btn-warning" href="" data-bs-toggle="modal"
-                                                        data-bs-target="#editar" style="width: 40px; height: 40px;">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </a>
-            
-                                                    <div class="modal fade" id="editar">
-                                                        <div class="modal-dialog modal-dialog-centered modal-None">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title">
-                                                                        Editar Estado</h5>
-                                                                    <button class="btn btn-outline-danger"
-                                                                        data-bs-dismiss="modal">X</button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="px-5 py-2" style="text-align: left">
-            
-                                                                        <div class="mb-2">
-                                                                            <label>Nombre del Estado</label>
-            
-                                                                            <input type="text"
-                                                                                class="form-control" name="nombre"
-                                                                                value="" required>
-            
-                                                                        </div>
-            
-                                                                    </div>
-                                                                </div>
-            
-                                                                <div class="modal-footer">
-            
-                                                                    <button class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Cancelar</button>
-            
-                                                                    <button type="button"
-                                                                        class="btn btn-warning">Actualizar</button>
-            
-                                                                </div>
-                                                            </div>
+                                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#showRolModal" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Visualizar Rol">
+                                                        <div class="text-center">
+                                                            <i class="lni lni-eye"
+                                                            style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
                                                         </div>
-                                                    </div>
-            
-                                                    <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                                        data-bs-target="#eliminar" style="width: 40px; height: 40px;">
-                                                        <i class="bi bi-trash"></i>
                                                     </button>
-            
-            
-                                                    <div class="modal fade" id="eliminar">
-                                                        <div class="modal-dialog modal-dialog-centered modal-None">
+
+                                                    <!-- Modal de visaualizacion -->
+                                                    <div class="modal fade" id="showRolModal" tabindex="-1"
+                                                        aria-labelledby="showRolModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title colorTitulos">
-                                                                       Eliminar Estado</h5>
-                                                                    <button class="btn btn-outline-danger"
-                                                                        data-bs-dismiss="modal">X</button>
+                                                                    <h5 class="modal-title"
+                                                                        id="showRolModalLabel">Visualizar Rol</h5>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <div class="px-5 py-2">
-            
-                                                                        <div class="text-center mb-2">
-            
-                                                                            <h5><b>¿Deseas eliminar este estado?</b></h5>
-                                                                            <p><b>Nota:</b> Todos los datos relacionados serán
-                                                                                eliminados</p>
-            
-                                                                        </div>
-            
-                                                                    </div>
+                                                                    <p>Nombre del rol</p>
                                                                 </div>
-            
                                                                 <div class="modal-footer">
-            
-                                                                    <button class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Cancelar</button>
-            
-                                                                    <form action="" method="POST">
-                                                                        @method('delete')
-                                                                        @csrf
-                                                                        <button type="button"
-                                                                            class="btn btn-danger">Eliminar</button>
-                                                                    </form>
-            
-            
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Regresar</button>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-            
+
+                                                    <!-- Botón de editar con modal -->
+                                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#editarRolModal" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Editar Rol">
+                                                        <div class="text-center">
+                                                            <i class="lni lni-pencil-alt"
+                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                        </div>
+                                                    </button>
+
+
+                                                    <!-- Modal de edición -->
+                                                    <div class="modal fade" id="editarRolModal" tabindex="-1"
+                                                        aria-labelledby="editarRolModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title"
+                                                                        id="editarUsuarioModalLabel">
+                                                                        Editar Rol</h5>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal" aria-label="Close"
+                                                                        data-bs-toggle="tooltip"
+                                                                        data-bs-placement="top"
+                                                                        title="Cerrar"></button>
+                                                                </div>
+
+                                                                <div class="modal-body">
+                                                                    <form>
+                                                                        <div class="mb-3">
+                                                                            <label for="editarNombreEstado"
+                                                                                class="form-label">Nombre del Rol</label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="editarNombreRol">
+                                                                        </div>
+
+                                                                    </form>
+                                                                </div>
+
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Cerrar</button>
+                                                                    <button type="button"
+                                                                        class="btn btn-info text-white"
+                                                                        style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                        <i class="bx bx-save"
+                                                                            style="color: #F2F2F2;"></i>
+                                                                        Guardar
+                                                                    </button>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#eliminarRolModal">
+                                                        <i class="lni lni-trash"
+                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                    </button>
+
+                                                    <!-- Modal de edición -->
+                                                    <div class="modal fade" id="eliminarRolModal" tabindex="-1"
+                                                        aria-labelledby="eliminarRolModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title"
+                                                                        id="eliminarRolModalLabel">Confirmar
+                                                                        eliminación</h5>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    ¿Estás seguro de que deseas eliminar este rol?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Cancelar</button>
+                                                                    <button type="button" class="btn btn-danger"
+                                                                        data-bs-dismiss="modal" data-bs-toggle="modal"
+                                                                        data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
-            
-            
                                             </tr>
-            
                                         </tbody>
-            
                                     </table>
-								
-									
-								
-									
-									
-								</div>
-							</div>
-						</div>
-                        
-
-                        
-                        
-                        
-                       
-
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
-
-      
-
+            </div>
+        </div>
     </div>
+</section>
 
 
-</div>
+
+    
+
+
+  
 
 <section class="content">
     <div class="row">
