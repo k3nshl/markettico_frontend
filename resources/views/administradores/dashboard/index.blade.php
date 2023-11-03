@@ -60,7 +60,7 @@
                         <div class="menu-title">Superadmin</div>
                     </a>
                     <ul>
-                        <li> <a href=""><i class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
+                        <li> <a href="/administradores.usuarios_administrativos.index"><i class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
                         </li>
                         <li> <a href=""><i class="bx bx-right-arrow-alt"></i>Gestionar Estados</a>
                         </li>
