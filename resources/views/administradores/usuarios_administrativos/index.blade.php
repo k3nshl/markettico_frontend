@@ -127,7 +127,7 @@
                                     <hr />
                                     <div class="table-responsive">
                                         <table id="tablaUsuariosAdmin" class="table table-bordered">
-                                            <thead>
+                                            <thead class="theadUsuariosAdministradores">
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Nombre de Usuario</th>
