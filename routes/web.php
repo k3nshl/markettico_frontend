@@ -21,11 +21,9 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::view('/', 'administradores.usuarios_administrativos')->name('dashboard.index');
+Route::view('/', 'usuarios_administrativos')->name('dashboard.index');
 
-Route::resource('administradores.dashboard', ControllerDashboard::class)->names('dashboard');
-Route::resource('administradores.usuarios_administrativos', ControllerUsuariosAdministrativos::class)->names('usuarios_administrativos');
-Route::resource('administradores.estados_roles', ControllerRoles::class)->names('roles');
-Route::resource('administradores.estados_roles', ControllerEstados::class)->names('estados');
-
-//Route::get('administradores.usuarios_administrativos.index', [ControllerUsuariosAdministrativos::class, 'index']);
+Route::resource('dashboard', ControllerDashboard::class);
+Route::resource('usuarios_administrativos', ControllerUsuariosAdministrativos::class);
+Route::resource('estados_roles', ControllerRoles::class);
+Route::resource('estados_roles', ControllerEstados::class);
