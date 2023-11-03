@@ -1,4 +1,4 @@
-@extends('administradores.dashboard.index')
+@extends('dashboard.index')
 
 @section('contenido')
 
