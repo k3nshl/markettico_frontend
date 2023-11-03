@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Administrativo\ControllerUsuariosAdministrativos;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,5 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 Route::view('/', 'administradores.dashboard.index')->name('dashboard.index');
+
+Route::get('administradores.usuarios_administrativos.index', [ControllerUsuariosAdministrativos::class, 'index']);

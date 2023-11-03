@@ -6,9 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--plugins-->
-    <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
-
+    <!-- Estilos de Bootstrap 5 -->
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
+    <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
     <!--favicon-->
     <link rel="icon" href="assets/images/logo-markettico-icono.png" type="image/png" />
@@ -28,12 +29,8 @@
     <link rel="stylesheet" href="assets/css/semi-dark.css" />
     <link rel="stylesheet" href="assets/css/header-colors.css" />
 
-
-    <!-- Estilos de Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-
+    <!--plugins-->
+    <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
 
 
     <title>MarketTico</title>
@@ -63,7 +60,7 @@
                         <div class="menu-title">Superadmin</div>
                     </a>
                     <ul>
-                        <li> <a href=""><i class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
+                        <li> <a href="/administradores.usuarios_administrativos.index"><i class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
                         </li>
                         <li> <a href=""><i class="bx bx-right-arrow-alt"></i>Gestionar Estados</a>
                         </li>
@@ -543,14 +540,40 @@
     <script src="assets/plugins/sparkline-charts/jquery.sparkline.min.js"></script>
     <script src="assets/plugins/jquery-knob/excanvas.js"></script>
     <script src="assets/plugins/jquery-knob/jquery.knob.js"></script>
+
+    <script src="assets/js/index.js"></script>
+    <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(function() {
             $(".knob").knob();
         });
     </script>
+
+<script>
+    $(document).ready(function() {
+        $('#tablaUsuariosAdmin').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var table = $('#').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'print']
+        });
+    });
+</script>
+
     <script src="assets/js/index.js"></script>
     <!--app JS-->
     <script src="assets/js/app.js"></script>
+
+    <script>
+        $(function () {
+            $('[data-bs-toggle="popover"]').popover();
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        })
+    </script>
 
 </body>
 
