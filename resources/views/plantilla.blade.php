@@ -101,7 +101,7 @@
                     </div>
                     <div class="search-bar flex-grow-1">
                         <div class="position-relative search-bar-box">
-                            <input type="text" class="form-control search-control" placeholder="Type to search...">
+                            <input type="text" class="form-control search-control" placeholder="Ingrese para buscar">
                             <span class="position-absolute top-50 search-show translate-middle-y"><i
                                     class='bx bx-search'></i></span>
                             <span class="position-absolute top-50 search-close translate-middle-y"><i
@@ -124,8 +124,8 @@
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <a href="javascript:;">
                                         <div class="msg-header">
-                                            <p class="msg-header-title">Notifications</p>
-                                            <p class="msg-header-clear ms-auto">Marks all as read</p>
+                                            <p class="msg-header-title">Notificaciones</p>
+                                            <p class="msg-header-clear ms-auto">Marcar como leidas</p>
                                         </div>
                                     </a>
                                     <div class="header-notifications-list">
@@ -513,7 +513,7 @@
                 class='bx bxs-up-arrow-alt'></i></a>
         <!--End Back To Top Button-->
         <footer class="page-footer">
-            <p class="mb-0">Copyright © 2023. All right reserved.</p>
+            <p class="mb-0">Copyright © 2023. Todos los derechos reservados Markettico.</p>
         </footer>
     </div>
     <!--end wrapper-->
