@@ -143,7 +143,6 @@
                                                     <td>1</td>
                                                     <td>EjemploUsuario</td>
                                                     <td>ejemplo@empresa.com</td>
-                                                    <td>1234567890</td>
                                                     <td>Administrador</td>
                                                     <td>Activo</td>
                                                     <td>
