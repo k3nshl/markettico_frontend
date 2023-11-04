@@ -133,10 +133,8 @@
                                                     <th>ID</th>
                                                     <th>Nombre de Usuario</th>
                                                     <th>Correo Empresarial</th>
-                                                    <th>Número Telefónico</th>
                                                     <th>Rol del Usuario</th>
                                                     <th>Estado del Usuario</th>
-                                                    <th>Fecha de Creación</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
@@ -148,7 +146,6 @@
                                                     <td>1234567890</td>
                                                     <td>Administrador</td>
                                                     <td>Activo</td>
-                                                    <td>01-01-2020</td>
                                                     <td>
 
                                                         <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
