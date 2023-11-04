@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-xl-12 mx-auto">
             <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
-                <div class="card-body text-center">
+                <div class="card-body">
 
                     <div class="row justify-content-center align-items-center">
                         <div class="col">
@@ -79,7 +79,7 @@
                                                 <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="text-center">
                                             <tr>
                                                 <td>1</td>
                                                 <td>Superadmin</td>
@@ -301,7 +301,7 @@
                                                 <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="text-center">
                                             <tr>
                                                 <td>1</td>
                                                 <td>Activo</td>
