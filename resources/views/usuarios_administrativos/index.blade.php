@@ -207,7 +207,8 @@
                                                                             </div>
                                                                             <div class="mb-3">
                                                                                 <label for="showEstadoUsuario"
-                                                                                    class="form-label">fecha de registro:</label>
+                                                                                    class="form-label">Fecha de registro:
+                                                                                </label>
                                                                             </div>
 
                                                                         </form>
