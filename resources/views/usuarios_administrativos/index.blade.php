@@ -177,33 +177,37 @@
                                                                             <div class="mb-3">
                                                                                 <label for="showNombreUsuario"
                                                                                     class="form-label">Nombre de
-                                                                                    Usuario</label>
+                                                                                    Usuario:</label>
                                                                                 
                                                                             </div>
 
                                                                             <div class="mb-3">
                                                                                 <label for="showCorreoEmpresarial"
                                                                                     class="form-label">Correo
-                                                                                    Empresarial</label>
+                                                                                    Empresarial:</label>
                                                                             </div>
 
                                                                             <div class="mb-3">
                                                                                 <label for="showNumeroTelefonico"
                                                                                     class="form-label">Número
-                                                                                    Telefónico</label>
+                                                                                    Telefónico:</label>
                                                                             </div>
 
                                                                             <div class="mb-3">
                                                                                 <label for="showRolUsuario"
                                                                                     class="form-label">Rol del
-                                                                                    Usuario</label>
+                                                                                    Usuario:</label>
                                                                             </div>
 
                                                                             <div class="mb-3">
                                                                                 <label for="showEstadoUsuario"
                                                                                     class="form-label">Estado
                                                                                     del
-                                                                                    Usuario</label>
+                                                                                    Usuario:</label>
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="showEstadoUsuario"
+                                                                                    class="form-label">fecha de registro:</label>
                                                                             </div>
 
                                                                         </form>
