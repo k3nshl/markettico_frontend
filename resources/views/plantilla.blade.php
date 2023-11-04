@@ -53,7 +53,7 @@
             </div>
             <!--navigation-->
             <ul class="metismenu" id="menu">
-                <li class="menu-label"><i class="lni lni-network"></i>Administrativo</li>
+                <li class="menu-label lni lni-network">Administrativo</li>
                 <li>
                     <a href="javascript:;" class="has-arrow">
                         <div class="parent-icon"><i class='lni lni-crown'></i>
