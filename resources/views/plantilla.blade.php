@@ -275,7 +275,7 @@
         <div class="overlay toggle-icon"></div>
         <!--end overlay-->
         <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i
-                class='bx bxs-up-arrow-alt'></i></a>
+                class='bx bxs-up-arrow-alt' style="background-color: 04D9D9; color: #f2f2f2"></i></a>
         <!--End Back To Top Button-->
         <footer class="page-footer">
             <p class="mb-0">Copyright © 2023. Todos los derechos reservados Markettico.</p>
