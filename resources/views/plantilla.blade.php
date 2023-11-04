@@ -92,6 +92,8 @@
                 <ul>
                     <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Paginas</a>
                     </li>
+                    <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Planes</a>
+                    </li>
                 </ul>
             </li>
 
