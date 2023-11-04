@@ -547,12 +547,24 @@
             $(".knob").knob();
         });
     </script>
-
+<!--Inicio datatables-->
 <script>
     $(document).ready(function() {
         $('#tablaUsuariosAdmin').DataTable();
     });
 </script>
+<script>
+    $(document).ready(function() {
+        $('#tablaRoles').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#tablaEstados').DataTable();
+    });
+</script>
+<!--Fin datatables-->
+
 <script>
     $(document).ready(function() {
         var table = $('#').DataTable({
