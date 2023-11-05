@@ -15,8 +15,7 @@
                                     <div class="card-title d-flex align-items-center justify-content-between">
                                         <div class="d-flex align-items-center">
                                             <div><i class="fadeIn animated bx bx-notepad me-1 font-22 text-info"></i></div>
-                                            <h5 class="mb-0 text-dark" title="Agregar Usuario">Lista de Usuarios
-                                                Administrativos</h5>
+                                            <h5 class="mb-0 text-dark" title="Agregar Usuario">Lista de planes disponibles</h5>
                                         </div>
                                         <div class="d-flex align-items-center">
                                             <div class="me-2">
