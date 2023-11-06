@@ -21,7 +21,7 @@ class ControllerGestionarPaginas extends Controller
      */
     public function create()
     {
-        //
+        return view('moderador.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class ControllerGestionarPaginas extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('moderador.edit', ['id' => $id]);
     }
 
     /**
