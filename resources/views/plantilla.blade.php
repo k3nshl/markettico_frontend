@@ -45,7 +45,7 @@
         <div class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
                 <div>
-                    <img src="assets/images/logo-markettico-icono.png" class="logo-icon" alt="logo icon">
+                    <img src="../assets/images/logo-markettico-icono.png" class="logo-icon" alt="logo icon">
                 </div>
                 <div>
                     <h4 class="logo-text">MarketTico</h4>
@@ -296,7 +296,7 @@
     <!-- Bootstrap JS -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!--plugins-->
-    <script src="assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery.min.js"></script>
     <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
     <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
     <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
@@ -308,7 +308,7 @@
     <script src="assets/plugins/jquery-knob/excanvas.js"></script>
     <script src="assets/plugins/jquery-knob/jquery.knob.js"></script>
 
-    <script src="assets/js/index.js"></script>
+    <script src="../assets/js/index.js"></script>
     <script src="../assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
     <script src="../assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
     <script>
