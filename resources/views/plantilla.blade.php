@@ -180,7 +180,7 @@
                                         <a class="dropdown-item" href="javascript:;">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-online">
-                                                    <img src="assets/images/avatars/avatar-1.png" class="msg-avatar"
+                                                    <img src="../assets/images/avatars/avatar-1.png" class="msg-avatar"
                                                         alt="user avatar">
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -295,7 +295,7 @@
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!--plugins-->
     <script src="../assets/js/jquery.min.js"></script>
-    <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+    <script src="../assets/plugins/simplebar/js/simplebar.min.js"></script>
     <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
     <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
     <script src="assets/plugins/chartjs/js/Chart.min.js"></script>
