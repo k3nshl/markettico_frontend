@@ -8,28 +8,27 @@
 
     <!-- Estilos de Bootstrap 5 -->
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
-    <link rel="stylesheet" href="{{ asset('plugins/datatable/css/dataTables.bootstrap5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('../plugins/datatable/css/dataTables.bootstrap5.min.css') }}">
     
 
     <!--favicon-->
-    <link rel="stylesheet" href="{{ asset('images/logo-markettico-icono.png') }}">
+    <link rel="stylesheet" href="{{ asset('../images/logo-markettico-icono.png') }}">
     <!--plugins-->
-    <link rel="stylesheet" href="{{ asset('plugins/simplebar/css/simplebar.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}">
-    <link href="../assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('plugins/metismenu/css/metisMenu.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('../plugins/simplebar/css/simplebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('../plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('../plugins/metismenu/css/metisMenu.min.css') }}">
     <!-- loader-->
-    <link rel="stylesheet" href="{{ asset('css/pace.min.css') }}">
-    <script src="{{ asset('js/pace.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('../css/pace.min.css') }}">
+    <script src="{{ asset('../js/pace.min.js') }}"></script>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('../css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('../css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('../css/icons.css') }}">
      <!--Estilos propios-->
     <link rel="stylesheet" type="text/css" href="{{ asset('../css/style.css') }}">
  
     <!--plugins-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/vectormap/jquery-jvectormap-2.0.2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('../plugins/vectormap/jquery-jvectormap-2.0.2.css') }}">
 
 
     <title>MarketTico Admin</title>
