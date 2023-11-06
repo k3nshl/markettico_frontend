@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('../assets/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('../assets/css/icons.css') }}">
      <!--Estilos propios-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('../assets/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('../css/style.css') }}">
  
     <!--plugins-->
     <link rel="stylesheet" type="text/css" href="{{ asset('../assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}">
