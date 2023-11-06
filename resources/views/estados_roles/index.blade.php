@@ -10,7 +10,7 @@
     <div class="card-body">
         <ul class="nav nav-pills mb-3" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" data-bs-toggle="pill" href="pills-home" role="tab" aria-selected="true">
+                <a class="nav-link active" data-bs-toggle="pill" href="#success-pills-profile" role="tab" aria-selected="true">
                     <div class="d-flex align-items-center">
                         <div class="tab-icon"><i class="bx bx-home font-18 me-1"></i>
                         </div>
@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" data-bs-toggle="pill" href="#success-pills-profile" role="tab" aria-selected="false">
+                <a class="nav-link" data-bs-toggle="pill" href="#pills-home" role="tab" aria-selected="false">
                     <div class="d-flex align-items-center">
                         <div class="tab-icon"><i class="bx bx-user-pin font-18 me-1"></i>
                         </div>
