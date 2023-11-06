@@ -8,9 +8,9 @@
 
 <div class="card">
     <div class="card-body">
-        <ul class="nav nav-pills mb-3 navtab_estados" role="tablist">
+        <ul class="nav nav-pills mb-3" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" data-bs-toggle="pill" href="#success-pills-home" role="tab" aria-selected="true">
+                <a class="nav-link active" data-bs-toggle="pill" href="pills-home" role="tab" aria-selected="true">
                     <div class="d-flex align-items-center">
                         <div class="tab-icon"><i class="bx bx-home font-18 me-1"></i>
                         </div>
@@ -30,6 +30,7 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade" id="pills-home" role="tabpanel">
+                
                 <section class="content">
                     <div class="row">
                         <div class="col-xl-12 mx-auto">
@@ -244,8 +245,10 @@
                         </div>
                     </div>
                 </section>
+
             </div>
             <div class="tab-pane fade" id="success-pills-profile" role="tabpanel">
+               
                 <section class="content">
                     <div class="row">
                         <div class="col-xl-12 mx-auto">
@@ -460,6 +463,7 @@
                         </div>
                     </div>
                 </section>
+
             </div>
         </div>
     </div>
