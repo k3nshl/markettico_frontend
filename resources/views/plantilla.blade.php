@@ -90,7 +90,7 @@
                     <div class="menu-title">Moderador</div>
                 </a>
                 <ul>
-                    <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Paginas</a>
+                    <li> <a href="{{ route('moderador.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Paginas</a>
                     </li>
                     <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Planes</a>
                     </li>
@@ -331,6 +331,26 @@
     });
 </script>
 <!--Fin datatables-->
+
+
+<!-- Inicio datatable moderador -->
+
+<script>
+    $(document).ready(function() {
+        $('#tablaArticulo').DataTable();
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#tablaColeccion').DataTable();
+    });
+</script>
+
+
+
+<!-- Fin de datatable moderador -->
 
 <script>
     $(document).ready(function() {
