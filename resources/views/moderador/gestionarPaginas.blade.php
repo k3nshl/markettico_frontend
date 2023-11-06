@@ -12,13 +12,9 @@
                     <div class="row">
 
                         <div class="col-md-4">
-                            <div class="d-flex align-items-center">
-                                <div><i class="bx bx-notepad me-2 font-22 text-info"></i>
-                                </div>
-                                <h5 class="mb-0 text-dark">Agregar Colección
-                                </h5>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="text-dark"><i class="bx bx-notepad me-2 font-22"></i>Agregar Colección</h5>
                             </div>
-
                             <hr>
                             <form>
                                 <div class="mb-3">

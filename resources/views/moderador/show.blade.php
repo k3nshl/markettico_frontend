@@ -20,7 +20,7 @@
                                         <div class="d-flex align-items-center">
                                             <div><i class="bx bx-library me-1 font-22 text-info"></i>
                                             </div>
-                                            <h5 class="mb-0 text-dark">Colección <span>X</span>
+                                            <h5 class="mb-0 text-dark" title="Agregar Usuario">Colección <span>X</span>
                                             </h5>
                                         </div>
                                         <div class="d-flex align-items-center">
