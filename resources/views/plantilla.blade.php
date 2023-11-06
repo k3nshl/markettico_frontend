@@ -24,8 +24,9 @@
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/app.css" rel="stylesheet">
     <link href="../assets/css/icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('../css/style.css') }}">
     <!-- Theme Style CSS 
-    <link rel="stylesheet" type="text/css" href="{{ asset('../css/style.css') }}">-->
+    -->
    
     
 
