@@ -12,7 +12,7 @@
    
 
     <!--favicon-->
-    <link rel="icon" href="assets/images/logo-markettico-icono.png" type="image/png" />
+    <link rel="icon" href="../assets/images/logo-markettico-icono.png" type="image/png" />
     <!--plugins-->
     <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
     <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
@@ -22,7 +22,7 @@
     <script src="assets/js/pace.min.js"></script>
     <!-- Bootstrap CSS -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/app.css" rel="stylesheet">
+    <link href="../assets/css/app.css" rel="stylesheet">
     <link href="../assets/css/icons.css" rel="stylesheet">
     <!-- Theme Style CSS 
     <link rel="stylesheet" type="text/css" href="{{ asset('../css/style.css') }}">-->
