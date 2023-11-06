@@ -2,4 +2,16 @@
     background-color: #05C7F2;
     color: #F2F2F2!important;
   }
-  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    align-self: flex-start;
+    margin-bottom: 5px; 
+}
+
+.form-group input {
+    height: 100px; 
+}
