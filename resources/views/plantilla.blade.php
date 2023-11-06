@@ -23,7 +23,7 @@
     <!-- Bootstrap CSS -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/app.css" rel="stylesheet">
-    <link href="assets/css/icons.css" rel="stylesheet">
+    <link href="../assets/css/icons.css" rel="stylesheet">
     <!-- Theme Style CSS 
     <link rel="stylesheet" type="text/css" href="{{ asset('../css/style.css') }}">-->
     <link rel="stylesheet" href="assets/css/dark-theme.css" />
