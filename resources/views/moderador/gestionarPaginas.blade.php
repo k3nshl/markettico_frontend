@@ -17,8 +17,6 @@
                             <h5 class="mb-0 text-dark" title="Agregar Usuario">Agregar Colección</h5>
                         </div>
 
-        
-
                             <hr>
                             <form>
                                 <div class="mb-3">
@@ -46,10 +44,13 @@
 
 
                         <div class="col-md-8">
-                            <div class="d-flex justify-content-between align-items-end mb-3">
-                                <h5 class="text-dark"><i class="bx bx-notepad me-2 font-22"></i>Lista de Colecciones</h5>
-
+                            <div class="d-flex align-items-center">
+                                <div><i class="bx bx-notepad me-1 font-22 text-info"></i>
+                                </div>
+                                <h5 class="mb-0 text-dark" title="Agregar Usuario">Lista de Colecciones</h5>
                             </div>
+                         
+                  
                             <hr>
                             <div class="table-responsive">
                                 <table id="tablaColeccion" class="table table-bordered">
