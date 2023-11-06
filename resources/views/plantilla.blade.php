@@ -9,7 +9,7 @@
     <!-- Estilos de Bootstrap 5 -->
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
     <link href="../assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
-   
+    
 
     <!--favicon-->
     <link rel="icon" href="../assets/images/logo-markettico-icono.png" type="image/png" />
