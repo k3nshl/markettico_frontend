@@ -8,27 +8,27 @@
 
     <!-- Estilos de Bootstrap 5 -->
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
-    <link rel="stylesheet" href="{{ asset('../plugins/datatable/css/dataTables.bootstrap5.min.css') }}">
+    <link rel="stylesheet" href="{{ assets('../plugins/datatable/css/dataTables.bootstrap5.min.css') }}">
     
 
     <!--favicon-->
-    <link rel="stylesheet" href="{{ asset('../images/logo-markettico-icono.png') }}">
+    <link rel="stylesheet" href="{{ assets('../images/logo-markettico-icono.png') }}">
     <!--plugins-->
-    <link rel="stylesheet" href="{{ asset('../plugins/simplebar/css/simplebar.css') }}">
-    <link rel="stylesheet" href="{{ asset('../plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}">
-    <link rel="stylesheet" href="{{ asset('../plugins/metismenu/css/metisMenu.min.css') }}">
+    <link rel="stylesheet" href="{{ assets('../plugins/simplebar/css/simplebar.css') }}">
+    <link rel="stylesheet" href="{{ assets('../plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ assets('../plugins/metismenu/css/metisMenu.min.css') }}">
     <!-- loader-->
     <link rel="stylesheet" href="{{ asset('../css/pace.min.css') }}">
-    <script src="{{ asset('../js/pace.min.js') }}"></script>
+    <script src="{{ assets('../js/pace.min.js') }}"></script>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('../css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('../css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('../css/icons.css') }}">
+    <link rel="stylesheet" href="{{ assets('../css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ assets('../css/app.css') }}">
+    <link rel="stylesheet" href="{{ assets('../css/icons.css') }}">
      <!--Estilos propios-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('../css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ assets('../css/style.css') }}">
  
     <!--plugins-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('../plugins/vectormap/jquery-jvectormap-2.0.2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ assets('../plugins/vectormap/jquery-jvectormap-2.0.2.css') }}">
 
 
     <title>MarketTico Admin</title>
@@ -290,23 +290,23 @@
 
     <!--end switcher-->
     <!-- Bootstrap JS -->
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ assets('js/bootstrap.bundle.min.js') }}"></script>
     <!--plugins-->
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('plugins/simplebar/js/simplebar.min.js') }}"></script>
-    <script src="{{ asset('plugins/metismenu/js/metisMenu.min.js') }}"></script>
-    <script src="{{ asset('plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
-    <script src="{{ asset('plugins/chartjs/js/Chart.min.js') }}"></script>
-    <script src="{{ asset('plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>>
-    <script src="{{ asset('plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-    <script src="{{ asset('plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
-    <script src="{{ asset('plugins/sparkline-charts/jquery.sparkline.min.js') }}"></script>
-    <script src="{{ asset('plugins/jquery-knob/excanvas.js') }}"></script>
-    <script src="{{ asset('plugins/jquery-knob/jquery.knob.js') }}"></script>
+    <script src="{{ assets('js/jquery.min.js') }}"></script>
+    <script src="{{ assets('plugins/simplebar/js/simplebar.min.js') }}"></script>
+    <script src="{{ assets('plugins/metismenu/js/metisMenu.min.js') }}"></script>
+    <script src="{{ assets('plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+    <script src="{{ assets('plugins/chartjs/js/Chart.min.js') }}"></script>
+    <script src="{{ assets('plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>>
+    <script src="{{ assets('plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <script src="{{ assets('plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
+    <script src="{{ assets('plugins/sparkline-charts/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ assets('plugins/jquery-knob/excanvas.js') }}"></script>
+    <script src="{{ assets('plugins/jquery-knob/jquery.knob.js') }}"></script>
 
-    <script src="{{ asset('js/index.js') }}"></script>
-    <script src="{{ asset('plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ assets('js/index.js') }}"></script>
+    <script src="{{ assets('plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ assets('plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
     <script>
         $(function() {
             $(".knob").knob();
@@ -359,9 +359,9 @@
     });
 </script>
 
-    <script src="{{ asset('js/index.js') }}"></script>
+    <script src="{{ assets('js/index.js') }}"></script>
     <!--app JS-->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ assets('js/app.js') }}"></script>
 
    
 
