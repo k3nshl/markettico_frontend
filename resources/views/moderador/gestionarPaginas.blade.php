@@ -14,7 +14,7 @@
                         
                         <div class="col-md-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h5 class="text-info"><i class="bx bx-notepad me-2 font-22"></i>Agregar Colección</h5>
+                                <h5 class="text-dark"><i class="bx bx-notepad me-2 font-22"></i>Agregar Colección</h5>
                             </div>
 
                             <hr>
@@ -45,7 +45,7 @@
 
                         <div class="col-md-8">
                             <div class="d-flex justify-content-between align-items-end mb-3">
-                                <h5 class="text-dark"><i class="bx bx-notepad me-2 font-22"></i>Lista de Colecciones</h5>
+                                <h5 class="text-dark"><i class="bx bx-notepad me-2 font-22 text-info"></i>Lista de Colecciones</h5>
 
                             </div>
                             <hr>
