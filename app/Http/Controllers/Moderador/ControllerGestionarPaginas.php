@@ -37,7 +37,8 @@ class ControllerGestionarPaginas extends Controller
      */
     public function show($id)
     {
-        //
+
+        // return view('moderador.show', ['id' => $id]);
     }
 
     /**
