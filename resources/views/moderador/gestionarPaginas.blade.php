@@ -11,11 +11,13 @@
                 <div class="card-body">
                     <div class="row">
 
-                        <div class="d-flex align-items-center">
-                            <div><i class="bx bx-notepad me-1 font-22 text-info"></i>
+
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center">
+                                <div><i class="bx bx-notepad me-1 font-22 text-info"></i>
+                                </div>
+                                <h5 class="mb-0 text-dark" title="Agregar Usuario">Agregar Colección</h5>
                             </div>
-                            <h5 class="mb-0 text-dark" title="Agregar Usuario">Agregar Colección</h5>
-                        </div>
 
                             <hr>
                             <form>
@@ -49,8 +51,8 @@
                                 </div>
                                 <h5 class="mb-0 text-dark" title="Agregar Usuario">Lista de Colecciones</h5>
                             </div>
-                         
-                  
+
+
                             <hr>
                             <div class="table-responsive">
                                 <table id="tablaColeccion" class="table table-bordered">
@@ -70,15 +72,15 @@
                                             <td>
                                                 <div class="text-center">
 
-                                                    <a href="{{ route('moderador.show', $id) }}" class="btn btn-primary btn-sm"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Visualizar Artículo">
-                                                                <div class="text-center">
-                                                                    <i class="lni lni-eye"
-                                                                        style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                </div>
-                                                            </a>
-                                                    
+                                                    <a href="{{ route('moderador.show', $id) }}"
+                                                        class="btn btn-primary btn-sm" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Visualizar Artículo">
+                                                        <div class="text-center">
+                                                            <i class="lni lni-eye"
+                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
+                                                        </div>
+                                                    </a>
+
 
                                                     <!-- Botón de editar con modal -->
                                                     <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
@@ -186,6 +188,8 @@
                                 </table>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
