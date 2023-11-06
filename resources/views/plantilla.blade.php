@@ -26,13 +26,11 @@
     <link href="../assets/css/icons.css" rel="stylesheet">
     <!-- Theme Style CSS 
     <link rel="stylesheet" type="text/css" href="{{ asset('../css/style.css') }}">-->
-    <link rel="stylesheet" href="assets/css/dark-theme.css" />
-    <link rel="stylesheet" href="assets/css/semi-dark.css" />
-    <link rel="stylesheet" href="assets/css/header-colors.css" />
+   
     
 
     <!--plugins-->
-    <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link href="../assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
 
 
     <title>MarketTico Admin</title>
@@ -205,7 +203,7 @@
                     <div class="user-box dropdown">
                         <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret"
                             href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
+                            <img src="../assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
                             <div class="user-info ps-3">
                                 <p class="user-name mb-0">Delia Smith</p>
                                 <p class="designattion mb-0">Project Manager</p>
