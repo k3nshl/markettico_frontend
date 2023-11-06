@@ -17,8 +17,6 @@
                                 <h5 class="text-info"><i class="bx bx-notepad me-2 font-22"></i>Agregar Colección</h5>
                             </div>
 
-
-
                             <hr>
                             <form>
                                 <div class="mb-3">
