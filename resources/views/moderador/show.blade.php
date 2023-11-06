@@ -20,7 +20,7 @@
                                         <div class="d-flex align-items-center">
                                             <div><i class="bx bx-library me-1 font-22 text-info"></i>
                                             </div>
-                                            <h5 class="mb-0 text-info" title="Agregar Usuario">Colección <span>X</span>
+                                            <h5 class="mb-0 text-dark" title="Agregar Usuario">Colección <span>X</span>
                                             </h5>
                                         </div>
                                         <div class="d-flex align-items-center">
@@ -39,7 +39,7 @@
                                     <hr />
 
                                     <div class="text-center">
-                                        <h6 class="mb-0 text-info">Lista de artículos de Colección <span>X</span></h6>
+                                        <h6 class="mb-0 text-dark">Lista de artículos de Colección <span>X</span></h6>
                                     </div>
                                     <br>
                                     <div class="table-responsive">
