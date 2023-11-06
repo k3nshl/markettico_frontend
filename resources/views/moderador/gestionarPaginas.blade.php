@@ -65,7 +65,7 @@
                                             <td>
                                                 <div class="text-center">
 
-                                                    <a href="{{ route('moderador.show', ['moderador' => $id]) }}">
+                                                    <a href="{{ route('moderador.show', $id) }}">
                                                         <i class="bx bx-right-arrow-alt"></i> Ver Moderador
                                                     </a>
 

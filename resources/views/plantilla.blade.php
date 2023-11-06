@@ -9,7 +9,7 @@
     <!-- Estilos de Bootstrap 5 -->
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
     <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+   
 
     <!--favicon-->
     <link rel="icon" href="assets/images/logo-markettico-icono.png" type="image/png" />
@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="assets/css/dark-theme.css" />
     <link rel="stylesheet" href="assets/css/semi-dark.css" />
     <link rel="stylesheet" href="assets/css/header-colors.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
     <!--plugins-->
     <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
