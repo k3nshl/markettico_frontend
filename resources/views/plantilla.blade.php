@@ -366,12 +366,22 @@
     <!--app JS-->
     <script src="../assets/js/app.js"></script>
 
+   
+
     <script>
         $(function () {
             $('[data-bs-toggle="popover"]').popover();
             $('[data-bs-toggle="tooltip"]').tooltip();
         })
     </script>
+
+<script src="https://cdn.tiny.cloud/1/ridcfj86k1i5y88uy1n1vznbruw2zv4icacguzwpjgeoum26/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    tinymce.init({
+      selector: '#mytextarea'
+    });
+</script>
 
 </body>
 
