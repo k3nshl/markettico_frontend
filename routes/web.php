@@ -31,5 +31,6 @@ Route::resource('estados_roles', ControllerRoles::class);
 Route::resource('estados_roles', ControllerEstados::class);
 
 Route::resource('moderador', ControllerGestionarPaginas::class);
+
 Route::resource('planes', ControllerGestionarPagos::class);
 
