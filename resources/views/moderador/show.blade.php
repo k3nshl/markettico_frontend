@@ -28,7 +28,7 @@
                                                 <h5 class="m-0"></h5>
                                             </div>
                                             <div class="me-2">
-                                                <a href="" class="btn btn-info text-white"
+                                                <a href="{{ route('moderador.create') }}" class="btn btn-info text-white"
                                                     style="background-color: #04D9B2; border-color: #04D9D9;"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="Agregar artículo">Agregar artículo</a>
@@ -69,7 +69,7 @@
 
 
                                                             <!-- Botón de editar -->
-                                                            <a href="" class="btn btn-warning btn-sm"
+                                                            <a href="{{ route('moderador.edit', $id) }}" class="btn btn-warning btn-sm"
                                                                 data-bs-toggle="tooltip" data-bs-placement="top"
                                                                 title="Editar Artículo">
                                                                 <div class="text-center">

@@ -15,3 +15,8 @@
 .form-group input {
     height: 100px; 
 }
+
+.navtab_estados{
+    background-color: #05C7F2;
+    color: #F2F2F2!important;
+}

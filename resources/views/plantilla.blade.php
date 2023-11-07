@@ -8,30 +8,27 @@
 
     <!-- Estilos de Bootstrap 5 -->
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
-    <link href="../assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
-   
-
-    <!--favicon-->
-    <link rel="icon" href="../assets/images/logo-markettico-icono.png" type="image/png" />
-    <!--plugins-->
-    <link href="../assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-    <link href="../assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-    <link href="../assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-    <!-- loader-->
-    <link href="../assets/css/pace.min.css" rel="stylesheet" />
-    <script src="../assets/js/pace.min.js"></script>
-    <!-- Bootstrap CSS -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/app.css" rel="stylesheet">
-    <link href="../assets/css/icons.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('../css/style.css') }}">
-    <!-- Theme Style CSS 
-    -->
-   
+    <link rel="stylesheet" href="{{ asset('../assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}">
     
 
+    <!--favicon-->
+    <link rel="stylesheet" href="{{ asset('../assets/images/logo-markettico-icono.png') }}">
     <!--plugins-->
-    <link href="../assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('../assets/plugins/simplebar/css/simplebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('../assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('../assets/plugins/metismenu/css/metisMenu.min.css') }}">
+    <!-- loader-->
+    <link rel="stylesheet" href="{{ asset('../assets/css/pace.min.css') }}">
+    <script src="{{ asset('../assets/js/pace.min.js') }}"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ asset('../assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('../assets/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('../assets/css/icons.css') }}">
+     <!--Estilos propios-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('../css/style.css') }}">
+ 
+    <!--plugins-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('../assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}">
 
 
     <title>MarketTico Admin</title>
@@ -94,6 +91,8 @@
                     <li> <a href="{{ route('moderador.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Paginas</a>
                     </li>
                     <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Planes</a>
+                    </li>
+                    <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Categorias</a>
                     </li>
                 </ul>
             </li>
@@ -293,23 +292,23 @@
 
     <!--end switcher-->
     <!-- Bootstrap JS -->
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <!--plugins-->
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/plugins/simplebar/js/simplebar.min.js"></script>
-    <script src="../assets/plugins/metismenu/js/metisMenu.min.js"></script>
-    <script src="../assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-    <script src="../assets/plugins/chartjs/js/Chart.min.js"></script>
-    <script src="../assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="../assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="../assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-    <script src="../assets/plugins/sparkline-charts/jquery.sparkline.min.js"></script>
-    <script src="../assets/plugins/jquery-knob/excanvas.js"></script>
-    <script src="../assets/plugins/jquery-knob/jquery.knob.js"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+    <script src="{{ asset('assets/plugins/chartjs/js/Chart.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>>
+    <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/sparkline-charts/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery-knob/excanvas.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery-knob/jquery.knob.js') }}"></script>
 
-    <script src="../assets/js/index.js"></script>
-    <script src="../assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-    <script src="../assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+    <script src="{{ asset('assets/js/index.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
     <script>
         $(function() {
             $(".knob").knob();
@@ -362,9 +361,11 @@
     });
 </script>
 
-    <script src="../assets/js/index.js"></script>
+    <script src="{{ asset('assets/js/index.js') }}"></script>
     <!--app JS-->
-    <script src="../assets/js/app.js"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+
+   
 
     <script>
         $(function () {
@@ -372,6 +373,14 @@
             $('[data-bs-toggle="tooltip"]').tooltip();
         })
     </script>
+
+<script src="https://cdn.tiny.cloud/1/ridcfj86k1i5y88uy1n1vznbruw2zv4icacguzwpjgeoum26/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    tinymce.init({
+      selector: '#mytextarea'
+    });
+</script>
 
 </body>
 
