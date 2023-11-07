@@ -33,7 +33,7 @@
                                             </div>
                                             <hr />
                                             <div class="table-responsive">
-                                                <table id="tablaUsuariosAdmin" class="table table-bordered">
+                                                <table id="tablaPlanes" class="table table-bordered">
                                                     <thead class="theadUsuariosAdministradores">
                                                         <tr>
                                                             <th>ID</th>
@@ -89,7 +89,7 @@
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
                                                                                     id="showUserModalLabel">
-                                                                                    Visualizar el Plan</h5>
+                                                                                    Visualizar el plan</h5>
                                                                                 <button type="button" class="btn-close"
                                                                                     data-bs-dismiss="modal"
                                                                                     aria-label="Close"
@@ -101,13 +101,13 @@
                                                                             <div class="modal-body">
                                                                                 <form>
                                                                                     <div class="mb-3">
-                                                                                        <label for="showNombreUsuario"
+                                                                                        <label for="nombre"
                                                                                             class="form-label">Nombre
-                                                                                            del Plan:</label>
+                                                                                            del plan:</label>
                                                                                     </div>
 
                                                                                     <div class="mb-3">
-                                                                                        <label for="showCorreoEmpresarial"
+                                                                                        <label for="precio"
                                                                                             class="form-label">Precio:</label>
                                                                                     </div>
                                                                                 </form>
@@ -119,21 +119,20 @@
                                                                                     data-bs-dismiss="modal">Regresar</button>
 
                                                                             </div>
-
                                                                         </div>
                                                                     </div>
                                                                 </div>
 
                                                                 <!-- Modal de edición -->
-                                                                <div class="modal fade" id="editarUsuarioModal"
-                                                                    tabindex="-1" aria-labelledby="editarUsuarioModalLabel"
+                                                                <div class="modal fade" id="editarPlanModal"
+                                                                    tabindex="-1" aria-labelledby="editarPlanModalLabel"
                                                                     aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
-                                                                                    id="editarUsuarioModalLabel">
-                                                                                    Editar Plan</h5>
+                                                                                    id="editarPlanModalLabel">
+                                                                                    Editar plan</h5>
                                                                                 <button type="button" class="btn-close"
                                                                                     data-bs-dismiss="modal"
                                                                                     aria-label="Close"></button>
@@ -143,7 +142,7 @@
                                                                                 <form>
                                                                                     <div class="mb-3">
                                                                                         <label for="editNombre"
-                                                                                            class="form-label">Nombre:</label>
+                                                                                            class="form-label">Nombre del plan:</label>
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             id="nombre">
@@ -154,7 +153,7 @@
                                                                                             class="form-label">Precio:</label>
                                                                                         <input type="text"
                                                                                             class="form-control"
-                                                                                            id="precio">
+                                                                                            id="costo">
                                                                                     </div>
 
                                                                                 </form>
@@ -178,15 +177,15 @@
                                                                 </div>
 
                                                                 {{-- Modal Eliminar --}}
-                                                                <div class="modal fade" id="eliminarUsuarioModal"
+                                                                <div class="modal fade" id="eliminarPlanModal"
                                                                     tabindex="-1"
-                                                                    aria-labelledby="eliminarUsuarioModalLabel"
+                                                                    aria-labelledby="eliminarPlanModalLabel"
                                                                     aria-hidden="true">
                                                                     <div class="modal-dialog">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
-                                                                                    id="eliminarUsuarioModalLabel">
+                                                                                    id="eliminarPlanModalLabel">
                                                                                     Confirmar
                                                                                     eliminación</h5>
                                                                                 <button type="button" class="btn-close"
