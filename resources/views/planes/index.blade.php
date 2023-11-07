@@ -117,7 +117,6 @@
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Regresar</button>
-
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -230,16 +229,16 @@
                                             <hr />
                                             <form>
                                                 <div class="row mb-3">
-                                                    <label for="nombre_completo" class="col-sm-4 col-form-label">Nombre del Plan:</label>
+                                                    <label for="nombre" class="col-sm-4 col-form-label">Nombre del Plan:</label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="nombre_completo"
+                                                        <input type="text" class="form-control" id="nombre"
                                                             placeholder="Nombre del Plan">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <label for="precio" class="col-sm-4 col-form-label">Precio:</label>
+                                                    <label for="costo" class="col-sm-4 col-form-label">Precio:</label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="precio"
+                                                        <input type="text" class="form-control" id="costo"
                                                             placeholder="Precio">
                                                     </div>
                                                 </div>
