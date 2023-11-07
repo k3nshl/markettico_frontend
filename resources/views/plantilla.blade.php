@@ -352,6 +352,18 @@
 
 <!-- Fin de datatable moderador -->
 
+
+
+<!-- Inicio datatable planes -->
+
+<script>
+    $(document).ready(function() {
+        $('#tablaPlanes').DataTable();
+    });
+</script>
+
+<!-- Fin de datatable planes -->
+
 <script>
     $(document).ready(function() {
         var table = $('#').DataTable({
