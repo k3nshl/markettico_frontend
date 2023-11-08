@@ -250,6 +250,7 @@
                                                     </div>
                                                 </div>
                                                 
+                                                
 
                                                 <div class="row mb-3">
                                                     <label for="costo" class="col-sm-4 col-form-label">Costo:</label>
