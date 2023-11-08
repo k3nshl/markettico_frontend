@@ -121,7 +121,7 @@
                                                                         Acciones</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody class="text-center">
+                                                            <tbody>
                                                                 <tr>
                                                                     <td>1</td>
                                                                     <td>Superadmin</td>
@@ -388,7 +388,7 @@
                                                                         Acciones</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody class="text-center">
+                                                            <tbody>
                                                                 <tr>
                                                                     <td>1</td>
                                                                     <td>Activo</td>
