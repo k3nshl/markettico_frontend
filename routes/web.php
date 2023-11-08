@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\Administrativo\ControllerDashboard;
 use App\Http\Controllers\Administrativo\ControllerEstados;
-use App\Http\Controllers\Administrativo\ControllerGestionarPagos;
 use App\Http\Controllers\Administrativo\ControllerRoles;
 use App\Http\Controllers\Administrativo\ControllerUsuariosAdministrativos;
+use App\Http\Controllers\ControllerGestionarPlanes;
 use App\Http\Controllers\Moderador\ControllerGestionarPaginas;
 use Illuminate\Support\Facades\Route;
 
@@ -32,5 +32,5 @@ Route::resource('estados_roles', ControllerEstados::class);
 
 Route::resource('moderador', ControllerGestionarPaginas::class);
 
-Route::resource('planes', ControllerGestionarPagos::class);
+Route::resource('planes', ControllerGestionarPlanes::class);
 
