@@ -428,8 +428,8 @@
                                                                                 <i class="lni lni-trash"
                                                                                     style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                                             </button>
-
                                                                         </div>
+                                                                        
                                                                         <!-- Modal de visaualizacion -->
                                                                         <div class="modal fade" id="showEstadoModal"
                                                                             tabindex="-1"
