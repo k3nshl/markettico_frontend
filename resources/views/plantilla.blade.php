@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Estilos de Bootstrap 5 -->
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('../assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}">
     
 
@@ -90,7 +90,7 @@
                 <ul>
                     <li> <a href="{{ route('moderador.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Paginas</a>
                     </li>
-                    <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Planes</a>
+                    <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Planes</a>
                     </li>
                     <li> <a href="{{ route('categorias.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Categorias</a>
                     </li>
@@ -351,6 +351,18 @@
 
 
 <!-- Fin de datatable moderador -->
+
+
+
+<!-- Inicio datatable planes -->
+
+<script>
+    $(document).ready(function() {
+        $('#tablaPlanes').DataTable();
+    });
+</script>
+
+<!-- Fin de datatable planes -->
 
 <script>
     $(document).ready(function() {

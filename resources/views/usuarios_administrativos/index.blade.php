@@ -130,12 +130,24 @@
                                         <table id="tablaUsuariosAdmin" class="table table-bordered">
                                             <thead class="theadUsuariosAdministradores">
                                                 <tr>
-                                                    <th>ID</th>
-                                                    <th>Nombre de Usuario</th>
-                                                    <th>Correo Empresarial</th>
-                                                    <th>Rol del Usuario</th>
-                                                    <th>Estado del Usuario</th>
-                                                    <th>Acciones</th>
+
+                                                    <th class="bg_datatable"
+                                                        style="background-color: #05C7F2; color: #F2F2F2">ID</th>
+                                                    <th class="bg_datatable"
+                                                        style="background-color: #05C7F2; color: #F2F2F2">Nombre de Usuario
+                                                    </th>
+                                                    <th class="bg_datatable"
+                                                        style="background-color: #05C7F2; color: #F2F2F2">Correo
+                                                        Empresarial</th>
+                                                    <th class="bg_datatable"
+                                                        style="background-color: #05C7F2; color: #F2F2F2">Rol del Usuario
+                                                    </th>
+                                                    <th class="bg_datatable"
+                                                        style="background-color: #05C7F2; color: #F2F2F2">Estado del
+                                                        Usuario</th>
+                                                    <th class="bg_datatable"
+                                                        style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
+
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -147,23 +159,45 @@
                                                     <td>Activo</td>
                                                     <td>
 
-                                                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#showUserModal" data-bs-toggle="tooltip"
-                                                        data-bs-placement="top" title="Visualizar Estado">
                                                         <div class="text-center">
-                                                            <i class="lni lni-eye"
-                                                            style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                        </div>
-                                                    </button>
 
-                                                    <!-- Modal de visaualizacion -->
-                                                    <div class="modal fade" id="showUserModal" tabindex="-1"
+                                                            {{-- Botón de visualizar --}}
+                                                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                                                data-bs-target="#showUserModal" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" title="Visualizar Estado">
+                                                                <div class="text-center">
+                                                                    <i class="lni lni-eye"
+                                                                        style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
+                                                                </div>
+                                                            </button>
+
+                                                            <!-- Botón de editar con modal -->
+                                                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                                                data-bs-target="#editarUsuarioModal"
+                                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                title="Editar Usuario Administrativo">
+                                                                <div class="text-center">
+                                                                    <i class="lni lni-pencil-alt"
+                                                                        style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                </div>
+                                                            </button>
+
+                                                            {{-- Botón de eliminar --}}
+                                                            <button class="btn btn-danger btn-sm"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#eliminarUsuarioModal">
+                                                            <i class="lni lni-trash"
+                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                        </button>
+
+                                                        </div>
+                                                        <!-- Modal de visaualizacion -->
+                                                        <div class="modal fade" id="showUserModal" tabindex="-1"
                                                             aria-labelledby="showUserModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-scrollable">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title"
-                                                                            id="showUserModalLabel">
+                                                                        <h5 class="modal-title" id="showUserModalLabel">
                                                                             Visualizar Usuario Administrativo</h5>
                                                                         <button type="button" class="btn-close"
                                                                             data-bs-dismiss="modal" aria-label="Close"
@@ -178,7 +212,7 @@
                                                                                 <label for="showNombreUsuario"
                                                                                     class="form-label">Nombre de
                                                                                     Usuario:</label>
-                                                                                
+
                                                                             </div>
 
                                                                             <div class="mb-3">
@@ -207,7 +241,8 @@
                                                                             </div>
                                                                             <div class="mb-3">
                                                                                 <label for="showEstadoUsuario"
-                                                                                    class="form-label">Fecha de registro:
+                                                                                    class="form-label">Fecha de
+                                                                                    registro:
                                                                                 </label>
                                                                             </div>
 
@@ -217,22 +252,12 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Regresar</button>
-                                                                        
+
                                                                     </div>
 
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                        <!-- Botón de editar con modal -->
-                                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                            data-bs-target="#editarUsuarioModal" data-bs-toggle="tooltip"
-                                                            data-bs-placement="top" title="Editar Usuario Administrativo">
-                                                            <div class="text-center">
-                                                                <i class="lni lni-pencil-alt"
-                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                            </div>
-                                                        </button>
 
 
                                                         <!-- Modal de edición -->
@@ -326,11 +351,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                                            data-bs-target="#eliminarUsuarioModal">
-                                                            <i class="lni lni-trash"
-                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                        </button>
+
+                                                        {{-- Modal de eliminar --}}
                                                         <div class="modal fade" id="eliminarUsuarioModal" tabindex="-1"
                                                             aria-labelledby="eliminarUsuarioModalLabel"
                                                             aria-hidden="true">
@@ -345,7 +367,8 @@
                                                                             aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        ¿Estás seguro de que deseas eliminar este usuario
+                                                                        ¿Estás seguro de que deseas eliminar este
+                                                                        usuario
                                                                         administrativo?
                                                                     </div>
                                                                     <div class="modal-footer">

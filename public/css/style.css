@@ -20,3 +20,15 @@
     background-color: #05C7F2;
     color: #F2F2F2!important;
 }
+
+/* Estilo para el botón activo */
+.nav-pills .nav-item .nav-link.active {
+    background-color: #05C7F2;
+    color: #F2F2F2;
+}
+
+/* Estilo para los botones inactivos */
+.nav-pills .nav-item .nav-link:not(.active) {
+    background-color: transparent; /* Color de fondo predeterminado */
+    color: #000; /* Color de texto para botones inactivos */
+}

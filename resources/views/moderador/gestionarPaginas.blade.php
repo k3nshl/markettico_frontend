@@ -11,10 +11,11 @@
                 <div class="card-body">
                     <div class="row">
 
-                        
+
                         <div class="col-md-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h5 class="text-dark"><i class="bx bx-notepad me-2 font-22  text-info"></i>Agregar Colección</h5>
+                                <h5 class="text-dark"><i class="bx bx-notepad me-2 font-22  text-info"></i>Agregar Colección
+                                </h5>
                             </div>
 
                             <hr>
@@ -45,7 +46,8 @@
 
                         <div class="col-md-8">
                             <div class="d-flex justify-content-between align-items-end mb-3">
-                                <h5 class="text-dark"><i class="bx bx-notepad me-2 font-22 text-info"></i>Lista de Colecciones</h5>
+                                <h5 class="text-dark"><i class="bx bx-notepad me-2 font-22 text-info"></i>Lista de
+                                    Colecciones</h5>
 
                             </div>
                             <hr>
@@ -53,10 +55,15 @@
                                 <table id="tablaColeccion" class="table table-bordered">
                                     <thead class="theadUsuariosAdministradores">
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Nombre de Colección</th>
-                                            <th>Descripción</th>
-                                            <th>Acciones</th>
+
+                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">ID
+                                            </th>
+                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">
+                                                Nombre de Colección</th>
+                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">
+                                                Descripción</th>
+                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">
+                                                Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -67,15 +74,14 @@
                                             <td>
                                                 <div class="text-center">
 
-                                                    <a href="{{ route('moderador.show', $id) }}" class="btn btn-primary btn-sm"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Visualizar Artículo">
-                                                                <div class="text-center">
-                                                                    <i class="lni lni-eye"
-                                                                        style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                </div>
-                                                            </a>
-                                                    
+                                                    <a href="{{ route('moderador.show', $id) }}"
+                                                        class="btn btn-primary btn-sm" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Visualizar Artículo">
+                                                        <div class="text-center">
+                                                            <i class="lni lni-eye"
+                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
+                                                        </div>
+                                                    </a>
 
                                                     <!-- Botón de editar con modal -->
                                                     <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
@@ -86,6 +92,14 @@
                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                         </div>
                                                     </button>
+
+                                                    {{-- Botón eliminar --}}
+                                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#eliminarPaginaModal">
+                                                        <i class="lni lni-trash"
+                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                    </button>
+                                                </div>
 
                                                     <!-- Modal de edición -->
                                                     <div class="modal fade" id="editarColeccionModal" tabindex="-1"
@@ -142,13 +156,6 @@
                                                         </div>
                                                     </div>
 
-                                                    {{-- Btn eliminar --}}
-                                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#eliminarPaginaModal">
-                                                        <i class="lni lni-trash"
-                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                    </button>
-
                                                     {{-- Modal eliminar --}}
                                                     <div class="modal fade" id="eliminarPaginaModal" tabindex="-1"
                                                         aria-labelledby="eliminarPaginaModalLabel" aria-hidden="true">
@@ -163,8 +170,7 @@
                                                                         aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    ¿Estás seguro de que deseas eliminar este usuario
-                                                                    administrativo?
+                                                                    ¿Estás seguro de que deseas eliminar esta colección?
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
@@ -176,7 +182,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
                                             </td>
                                         </tr>
                                     </tbody>

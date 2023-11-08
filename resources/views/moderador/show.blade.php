@@ -46,8 +46,9 @@
                                         <table id="tablaArticulo"A class="table table-bordered">
                                             <thead class="theadUsuariosAdministradores">
                                                 <tr>
-                                                    <th>Nombre de Colección</th>
-                                                    <th>Acciones</th>
+                                                    <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Nombre de Colección</th>
+                                                    <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
+                                
                                                 </tr>
                                             </thead>
                                             <tbody>

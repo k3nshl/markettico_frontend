@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Administrativo;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ControllerGestionarPlanes extends Controller
@@ -11,7 +12,7 @@ class ControllerGestionarPlanes extends Controller
      */
     public function index()
     {
-        //
+        return view('planes.index');
     }
 
     /**
