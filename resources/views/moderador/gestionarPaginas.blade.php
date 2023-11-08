@@ -53,10 +53,11 @@
                                 <table id="tablaColeccion" class="table table-bordered">
                                     <thead class="theadUsuariosAdministradores">
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Nombre de Colección</th>
-                                            <th>Descripción</th>
-                                            <th>Acciones</th>
+
+                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">ID</th>
+                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Nombre de Colección</th>
+                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Descripción</th>
+                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>

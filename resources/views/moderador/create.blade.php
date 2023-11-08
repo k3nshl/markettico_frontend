@@ -42,8 +42,7 @@
                                                     class="col-sm-4 col-form-label">Contenido:</label>
 
                                                 <form method="post">
-                                                    <textarea id="mytextarea" name="mytextarea"
-                                                    rows="3" >Hello, World!</textarea>
+                                                    <textarea id="mytextarea" name="mytextarea" rows="3">Hello, World!</textarea>
                                                 </form>
 
                                             </div>
