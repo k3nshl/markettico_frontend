@@ -51,7 +51,7 @@
                                                             <td>ejemplo@empresa.com</td>
                                                             <td>
                                                                 <div class="text-center">
-                                                                    
+
                                                                     {{-- Botón de Visualizar --}}
                                                                     <button class="btn btn-primary btn-sm"
                                                                         data-bs-toggle="modal"
@@ -125,8 +125,8 @@
                                                                 </div>
 
                                                                 <!-- Modal de edición -->
-                                                                <div class="modal fade" id="editarPlanModal"
-                                                                    tabindex="-1" aria-labelledby="editarPlanModalLabel"
+                                                                <div class="modal fade" id="editarPlanModal" tabindex="-1"
+                                                                    aria-labelledby="editarPlanModalLabel"
                                                                     aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         <div class="modal-content">
@@ -143,7 +143,8 @@
                                                                                 <form>
                                                                                     <div class="mb-3">
                                                                                         <label for="editNombre"
-                                                                                            class="form-label">Nombre del plan:</label>
+                                                                                            class="form-label">Nombre del
+                                                                                            plan:</label>
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             id="nombre">
@@ -231,7 +232,8 @@
                                             <hr />
                                             <form>
                                                 <div class="row mb-3">
-                                                    <label for="nombre" class="col-sm-4 col-form-label">Nombre del plan:</label>
+                                                    <label for="nombre" class="col-sm-4 col-form-label">Nombre del
+                                                        plan:</label>
                                                     <div class="col-sm-8">
                                                         <input type="text" class="form-control" id="nombre"
                                                             placeholder="Nombre del plan">
@@ -250,6 +252,8 @@
                                                     </div>
                                                 </div>
                                                 
+                                    
+
                                                 <div class="row mb-3">
                                                     <label for="costo" class="col-sm-4 col-form-label">Costo:</label>
                                                     <div class="col-sm-8">
@@ -259,34 +263,43 @@
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="cantidad_productos" class="col-sm-4 col-form-label">Límite máximo de venta de productos:</label>
+                                                    <label for="cantidad_productos" class="col-sm-4 col-form-label">Límite
+                                                        máximo de venta de productos:</label>
                                                     <div class="col-sm-8">
-                                                        <input type="number" class="form-control" id="cantidad_productos"
+                                                        <input type="number" class="form-control"
+                                                            id="cantidad_productos"
                                                             placeholder="Límite máximo de venta de productos">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label class="col-sm-4 col-form-label">¿Es una tienda multitienda?</label>
+                                                    <label class="col-sm-4 col-form-label">¿Es una tienda
+                                                        multitienda?</label>
                                                     <div class="col-sm-8">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="multitienda" id="multitienda-si" value="si">
-                                                            <label class="form-check-label" for="multitienda-si">Sí</label>
+                                                            <input class="form-check-input" type="radio"
+                                                                name="multitienda" id="multitienda-si" value="si">
+                                                            <label class="form-check-label"
+                                                                for="multitienda-si">Sí</label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="es_multitienda" id="multitienda-no" value="no">
-                                                            <label class="form-check-label" for="multitienda-no">No</label>
+                                                            <input class="form-check-input" type="radio"
+                                                                name="es_multitienda" id="multitienda-no" value="no">
+                                                            <label class="form-check-label"
+                                                                for="multitienda-no">No</label>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="row mb-3">
-                                                    <label for="duracion" class="col-sm-4 col-form-label">Duración del plan (en meses):</label>
+                                                    <label for="duracion" class="col-sm-4 col-form-label">Duración del
+                                                        plan (en meses):</label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="duracion" placeholder="Duración del plan">
+                                                        <input type="text" class="form-control" id="duracion"
+                                                            placeholder="Duración del plan">
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="row">
                                                     <label class="col-sm-3 col-form-label"></label>
                                                     <div class="col-sm-9 text-end">
