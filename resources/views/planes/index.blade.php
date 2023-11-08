@@ -141,23 +141,121 @@
 
                                                                             <div class="modal-body">
                                                                                 <form>
-                                                                                    <div class="mb-3">
-                                                                                        <label for="editNombre"
-                                                                                            class="form-label">Nombre del
+                                                                                    <div class="row mb-3">
+                                                                                        <label for="nombre"
+                                                                                            class="col-sm-4 col-form-label">Nombre
+                                                                                            del
                                                                                             plan:</label>
-                                                                                        <input type="text"
-                                                                                            class="form-control"
-                                                                                            id="nombre">
+                                                                                        <div class="col-sm-8">
+                                                                                            <input type="text"
+                                                                                                class="form-control"
+                                                                                                id="nombre"
+                                                                                                placeholder="Nombre del plan">
+                                                                                        </div>
                                                                                     </div>
 
-                                                                                    <div class="mb-3">
-                                                                                        <label for="editPrecio"
-                                                                                            class="form-label">Precio:</label>
-                                                                                        <input type="text"
-                                                                                            class="form-control"
-                                                                                            id="costo">
+                                                                                    <div class="row mb-3">
+                                                                                        <label for="nombre"
+                                                                                            class="col-sm-4 col-form-label">Tipo:</label>
+                                                                                        <div class="col-sm-8">
+                                                                                            <select class="form-select"
+                                                                                                id="nombre">
+                                                                                                <option value="opcion1">
+                                                                                                    Plan básico</option>
+                                                                                                <option value="opcion2">
+                                                                                                    Plan empresarial
+                                                                                                </option>
+                                                                                                <option value="opcion3">
+                                                                                                    Plan premium</option>
+                                                                                                <option value="opcion3">
+                                                                                                    Plan deluxe</option>
+                                                                                            </select>
+                                                                                        </div>
                                                                                     </div>
 
+
+
+                                                                                    <div class="row mb-3">
+                                                                                        <label for="costo"
+                                                                                            class="col-sm-4 col-form-label">Costo:</label>
+                                                                                        <div class="col-sm-8">
+                                                                                            <input type="number"
+                                                                                                class="form-control"
+                                                                                                id="costo"
+                                                                                                placeholder="Costo">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="row mb-3">
+                                                                                        <label for="cantidad_productos"
+                                                                                            class="col-sm-4 col-form-label">Límite
+                                                                                            máximo de venta de
+                                                                                            productos:</label>
+                                                                                        <div class="col-sm-8">
+                                                                                            <input type="number"
+                                                                                                class="form-control"
+                                                                                                id="cantidad_productos"
+                                                                                                placeholder="Límite máximo de venta de productos">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="row mb-3">
+                                                                                        <label
+                                                                                            class="col-sm-4 col-form-label">¿Es
+                                                                                            una tienda
+                                                                                            multitienda?</label>
+                                                                                        <div class="col-sm-8">
+                                                                                            <div class="form-check">
+                                                                                                <input
+                                                                                                    class="form-check-input"
+                                                                                                    type="radio"
+                                                                                                    name="multitienda"
+                                                                                                    id="multitienda-si"
+                                                                                                    value="si">
+                                                                                                <label
+                                                                                                    class="form-check-label"
+                                                                                                    for="multitienda-si">Sí</label>
+                                                                                            </div>
+                                                                                            <div class="form-check">
+                                                                                                <input
+                                                                                                    class="form-check-input"
+                                                                                                    type="radio"
+                                                                                                    name="es_multitienda"
+                                                                                                    id="multitienda-no"
+                                                                                                    value="no">
+                                                                                                <label
+                                                                                                    class="form-check-label"
+                                                                                                    for="multitienda-no">No</label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="row mb-3">
+                                                                                        <label for="duracion"
+                                                                                            class="col-sm-4 col-form-label">Duración
+                                                                                            del
+                                                                                            plan (en meses):</label>
+                                                                                        <div class="col-sm-8">
+                                                                                            <input type="text"
+                                                                                                class="form-control"
+                                                                                                id="duracion"
+                                                                                                placeholder="Duración del plan">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="row">
+                                                                                        <label
+                                                                                            class="col-sm-3 col-form-label"></label>
+                                                                                        <div class="col-sm-9 text-end">
+                                                                                            <button type="button"
+                                                                                                class="btn btn-info text-white"
+                                                                                                style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                                <i class="bx bx-save"
+                                                                                                    style="color: #F2F2F2;"></i>
+                                                                                                Guardar
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </form>
                                                                             </div>
 
@@ -251,8 +349,8 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                
-                                    
+
+
 
                                                 <div class="row mb-3">
                                                     <label for="costo" class="col-sm-4 col-form-label">Costo:</label>
