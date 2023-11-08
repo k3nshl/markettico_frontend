@@ -13,7 +13,7 @@
                             <li class="nav-item">
                                 <button class="nav-link active custom-bg-color" data-bs-toggle="tab"
                                     data-bs-target="#tab-info">
-                                    <i class="bx bx-info-circle"></i> Lista de planes
+                                    <i class="bx bx-notepad me-2"></i> Lista de planes
                                 </button>
                             </li>
                             <li class="nav-item">
