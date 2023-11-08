@@ -38,10 +38,10 @@
                                                 <table id="tablaPlanes" class="table table-bordered">
                                                     <thead class="theadUsuariosAdministradores">
                                                         <tr>
-                                                            <th>ID</th>
-                                                            <th>Nombre del plan</th>
-                                                            <th>Costo</th>
-                                                            <th>Acciones</th>
+                                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">ID</th>
+                                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Nombre del plan</th>
+                                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Costo</th>
+                                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
