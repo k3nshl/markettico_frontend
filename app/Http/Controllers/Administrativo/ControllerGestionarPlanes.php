@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerGestionarPagos extends Controller
+class ControllerGestionarPlanes extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,6 @@ class ControllerGestionarPagos extends Controller
     public function index()
     {
         return view('planes.index');
-   
     }
 
     /**
