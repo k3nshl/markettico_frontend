@@ -5,6 +5,7 @@ use App\Http\Controllers\Administrativo\ControllerEstados;
 use App\Http\Controllers\Administrativo\ControllerRoles;
 use App\Http\Controllers\Administrativo\ControllerUsuariosAdministrativos;
 use App\Http\Controllers\Moderador\ControllerGestionarPaginas;
+use App\Http\Controllers\Moderador\ControllerCategorias;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,4 +31,4 @@ Route::resource('estados_roles', ControllerRoles::class);
 Route::resource('estados_roles', ControllerEstados::class);
 
 Route::resource('moderador', ControllerGestionarPaginas::class);
-//Route::resource('categorias', ControllerGestionarCategorias::class);
+Route::resource('categorias', ControllerCategorias::class);
