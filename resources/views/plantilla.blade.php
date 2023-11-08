@@ -92,7 +92,7 @@
                     </li>
                     <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Planes</a>
                     </li>
-                    <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Categorias</a>
+                    <li> <a href="{{ route('categorias.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Categorias</a>
                     </li>
                 </ul>
             </li>
