@@ -55,7 +55,7 @@
                                                                     {{-- Botón de Visualizar --}}
                                                                     <button class="btn btn-primary btn-sm"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#showPlanModal"
+                                                                        data-bs-target="#showUserModal"
                                                                         data-bs-toggle="tooltip" data-bs-placement="top"
                                                                         title="Visualizar">
                                                                         <div class="text-center">
@@ -67,7 +67,7 @@
                                                                     <!-- Botón de editar con modal -->
                                                                     <button class="btn btn-warning btn-sm"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#editarPlanModal">
+                                                                        data-bs-target="#editarUsuarioModal">
                                                                         <div class="text-center">
                                                                             <i class="lni lni-pencil-alt"
                                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
@@ -77,20 +77,20 @@
                                                                     {{-- Botón de eliminar --}}
                                                                     <button class="btn btn-danger btn-sm"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#eliminarPlanModal">
+                                                                        data-bs-target="#eliminarUsuarioModal">
                                                                         <i class="lni lni-trash"
                                                                             style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                                     </button>
                                                                 </div>
 
                                                                 <!-- Modal de visualizacion -->
-                                                                <div class="modal fade" id="showPlanModal" tabindex="-1"
+                                                                <div class="modal fade" id="showUserModal" tabindex="-1"
                                                                     aria-labelledby="showUserModalLabel" aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
-                                                                                    id="showPlanModalLabel">
+                                                                                    id="showUserModalLabel">
                                                                                     Visualizar el plan</h5>
                                                                                 <button type="button" class="btn-close"
                                                                                     data-bs-dismiss="modal"
@@ -257,7 +257,12 @@
 
 =======
                                                 
+<<<<<<< HEAD
 >>>>>>> 360d1acaa239eb0d15602a2d57456a8730545c4d
+=======
+                                    
+
+>>>>>>> 81836f6455afbcfdec052bcd60e798c45915f5d7
                                                 <div class="row mb-3">
                                                     <label for="costo" class="col-sm-4 col-form-label">Costo:</label>
                                                     <div class="col-sm-8">
