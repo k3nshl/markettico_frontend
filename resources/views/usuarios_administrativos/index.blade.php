@@ -185,7 +185,7 @@
                                                             {{-- Botón de eliminar --}}
                                                             <button class="btn btn-danger btn-sm"
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#eliminarPlanModal">
+                                                            data-bs-target="#eliminarUsuarioModal">
                                                             <i class="lni lni-trash"
                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                         </button>
