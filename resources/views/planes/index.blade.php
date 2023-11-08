@@ -1,5 +1,7 @@
 @extends('plantilla')
 
+@section('gestion_nombre', 'Gestión de Planes')
+
 @section('contenido')
     <section class="content">
         <div class="row">
@@ -117,7 +119,6 @@
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Regresar</button>
-
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -230,14 +231,22 @@
                                             <hr />
                                             <form>
                                                 <div class="row mb-3">
+<<<<<<< HEAD
                                                     <label for="nombre" class="col-sm-4 col-form-label">Nombre del plan:</label>
                                                     <div class="col-sm-8">
                                                         <input type="text" class="form-control" id="nombre"
                                                             placeholder="Nombre del plan">
+=======
+                                                    <label for="nombre" class="col-sm-4 col-form-label">Nombre del Plan:</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" id="nombre"
+                                                            placeholder="Nombre del Plan">
+>>>>>>> b340fe2b6552a3edd53790592fbd967f4f3efd5f
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
+<<<<<<< HEAD
                                                     <label for="nombre" class="col-sm-4 col-form-label">Tipo:</label>
                                                     <div class="col-sm-8">
                                                         <select class="form-select" id="nombre">
@@ -246,6 +255,12 @@
                                                             <option value="opcion3">Plan premium</option>
                                                             <option value="opcion3">Plan deluxe</option>
                                                         </select>
+=======
+                                                    <label for="costo" class="col-sm-4 col-form-label">Precio:</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" id="costo"
+                                                            placeholder="Precio">
+>>>>>>> b340fe2b6552a3edd53790592fbd967f4f3efd5f
                                                     </div>
                                                 </div>
                                                 
