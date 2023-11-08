@@ -130,12 +130,14 @@
                                         <table id="tablaUsuariosAdmin" class="table table-bordered">
                                             <thead class="theadUsuariosAdministradores">
                                                 <tr>
-                                                    <th>ID</th>
-                                                    <th>Nombre de Usuario</th>
-                                                    <th>Correo Empresarial</th>
-                                                    <th>Rol del Usuario</th>
-                                                    <th>Estado del Usuario</th>
-                                                    <th>Acciones</th>
+
+                                                    <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">ID</th>
+                                                    <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Nombre de Usuario</th>
+                                                    <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Correo Empresarial</th>
+                                                    <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Rol del Usuario</th>
+                                                    <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Estado del Usuario</th>
+                                                    <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
+
                                                 </tr>
                                             </thead>
                                             <tbody>
