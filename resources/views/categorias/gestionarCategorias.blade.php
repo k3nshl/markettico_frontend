@@ -1,9 +1,11 @@
 @extends('plantilla')
 
-@section('gestion_subCategorias')
+@section('gestion_nombre', 'Gestión de Categorías ')
+
+@section('contenido')
 
 
-           
+                
                 <section class="content">
                     <div class="row">
                         <div class="col-xl-12 mx-auto">
@@ -16,7 +18,7 @@
                                                 <div class="card-title d-flex align-items-center justify-content-between">
                                                     <div class="d-flex align-items-center">
                                                         <div><i class="lni lni-clipboard me-1 font-22 text-info"></i></div>
-                                                        <h5 class="mb-0 text-dark" title="Agregar SubCategoría">Lista de Subcategorias</h5>
+                                                        <h5 class="mb-0 text-dark" title="Agregar Categoría">Lista de Categorias</h5>
                                                     </div>
                                                     <div class="d-flex align-items-center">
                                                         <div class="me-2">
@@ -24,19 +26,19 @@
                                                         </div>
                                                         <div class="me-2">
                                                             <button type="button" class="btn btn-info text-white"
-                                                                data-bs-toggle="modal" data-bs-target="#modalAgregarSubCategoria"
+                                                                data-bs-toggle="modal" data-bs-target="#modalAgregarCategoria"
                                                                 style="background-color: #04D9B2; border-color: #04D9D9;"
                                                                 data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Agregar Nueva Subcategoria">+</button>
+                                                                title="Agregar Nueva Categoría">+</button>
                                                         </div>
                 
-                                                        <div class="modal fade" id="modalAgregarSubCategoria" tabindex="-1"
-                                                            aria-labelledby="modalAgregarSubCategoriaLabel" aria-hidden="true">
+                                                        <div class="modal fade" id="modalAgregarCategoria" tabindex="-1"
+                                                            aria-labelledby="modalAgregarCategoriaLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="modalAgregarSubCategoria">
-                                                                            Agregar Nueva subcategoría</h5>
+                                                                        <h5 class="modal-title" id="modalAgregarCategoria">
+                                                                            Agregar Nueva categoría</h5>
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                             aria-label="Close"></button>
                                                                     </div>
@@ -44,13 +46,14 @@
                                                                         <form>
                                                                             <div class="row mb-3">
                                                                                 <label for="nombre"
-                                                                                    class="col-sm-4 col-form-label">Nombre de la subcategoría:</label>
+                                                                                    class="col-sm-4 col-form-label">Nombre de la categoría:</label>
                                                                                 <div class="col-sm-8">
                                                                                     <input type="text" class="form-control"
                                                                                         id="nombre" name="nombre"
                                                                                         placeholder="Ingrese el nombre">
                                                                                 </div>
                                                                             </div>
+
                                                                             <div class="row mb-3">
                                                                                 <label for="descripcion"
                                                                                     class="col-sm-4 col-form-label">Descripción de la categoría:</label>
@@ -83,7 +86,6 @@
                                                         <thead class="theadRoles">
                                                             <tr>
                                                                 <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">ID</th>
-                                                                <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">ID Categoría</th>
                                                                 <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Nombre</th>
                                                                 <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Descripción</th>
                                                                 <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
@@ -92,48 +94,22 @@
                                                         <tbody class="text-center">
                                                             <tr>
                                                                 <td>1</td>
-                                                                <td>1</td>
-                                                                <td>Superadmin</td>
+                                                                <td>Hogar</td>
                                                                 <td>Ahhhajjajbbcbxxuusisisisiis</td>
                                                                 <td>
-                                                                    
-                                                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                                        data-bs-target="#showCategoriasModal" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" title="Visualizar Categor">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-eye"
-                                                                            style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-                
-                                                                    <!-- Modal de visaualizacion -->
-                                                                    <div class="modal fade" id="showCategoriasModal" tabindex="-1"
-                                                                        aria-labelledby="showCategoriasModalLabel"
-                                                                        aria-hidden="true">
-                                                                        <div class="modal-dialog">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header">
-                                                                                    <h5 class="modal-title"
-                                                                                        id="showCategoriasModalLabel">Visualizar Subcategorias</h5>
-                                                                                    <button type="button" class="btn-close"
-                                                                                        data-bs-dismiss="modal"
-                                                                                        aria-label="Close"></button>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    <p>Nombre de la subcategoría</p>
-                                                                                </div>
-
-                                                                                <div class="modal-body">
-                                                                                    <p>Descripción de la subcategoría</p>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button" class="btn btn-secondary"
-                                                                                        data-bs-dismiss="modal">Regresar</button>
-                                                                                    
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                                   
+                                                                
+        
+                                                            
+           
+                                                             <a href="{{ route('categorias.show', $id) }}" class="btn btn-primary btn-sm"
+                                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                title="Visualizar Subcategoría">
+                                                                <div class="text-center">
+                                                                    <i class="lni lni-eye"
+                                                                        style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
+                                                                </div>
+                                                            </a>
                 
                                                                     <!-- Botón de editar con modal -->
                                                                     <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
@@ -166,7 +142,7 @@
                                                                                     <form>
                                                                                         <div class="mb-3">
                                                                                             <label for="editarNombreCategoria"
-                                                                                                class="form-label">Nombre de la subcategoría</label>
+                                                                                                class="form-label">Nombre de la categoría</label>
                                                                                             <input type="text" class="form-control"
                                                                                                 id="editarNombreCategoria">
                                                                                         </div>
@@ -196,28 +172,27 @@
                                                                         </div>
                                                                     </div>
                                                                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                                                        data-bs-target="#eliminarRolModal">
+                                                                        data-bs-target="#eliminarCategoriaModal">
                                                                         <i class="lni lni-trash"
                                                                             style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                                     </button>
                 
                                                                     <!-- Modal de eliminación -->
-                                                                    <div class="modal fade" id="eliminarRolModal" tabindex="-1"
+                                                                    <div class="modal fade" id="eliminarCategoriaModal" tabindex="-1"
                                                                         aria-labelledby="eliminarRolModalLabel"
                                                                         aria-hidden="true">
                                                                         <div class="modal-dialog">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
                                                                                     <h5 class="modal-title"
-                                                                                        id="eliminarRolModalLabel">Confirmar
+                                                                                        id="eliminarCategoriaModalLabel">Confirmar
                                                                                         eliminación</h5>
-                                                                                    <button type="button" class="btn-close"
                                                                                     <button type="button" class="btn-close"
                                                                                         data-bs-dismiss="modal"
                                                                                         aria-label="Close"></button>
                                                                                 </div>
                                                                                 <div class="modal-body">
-                                                                                    ¿Estás seguro de que deseas eliminar esta subcategoría?
+                                                                                    ¿Estás seguro de que deseas eliminar esta categoría?
                                                                                 </div>
                                                                                 <div class="modal-footer">
                                                                                     <button type="button" class="btn btn-secondary"
@@ -241,6 +216,7 @@
                             </div>
                         </div>
                     </div>
+
 
             </div>
         </div>

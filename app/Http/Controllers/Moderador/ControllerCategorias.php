@@ -12,7 +12,8 @@ class ControllerCategorias extends Controller
      */
     public function index()
     {
-        return view('moderador.gestionarCategorias');
+        $id=1;
+        return view('categorias.gestionarCategorias', compact('id'));
     }
 
 
@@ -37,8 +38,8 @@ class ControllerCategorias extends Controller
      */
     public function show($id)
     {
-
-        return view('moderador.gestionarSubCategorias', ['id' => $id]);
+       
+        return view('categorias.show', ['id' => $id]);
     }
 
     /**
