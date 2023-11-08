@@ -14,6 +14,7 @@
                                 <button class="nav-link active custom-bg-color" data-bs-toggle="tab"
                                     data-bs-target="#tab-info">
                                     <i class="bx bx-info-circle"></i> Lista de planes
+                                    
                                 </button>
                             </li>
                             <li class="nav-item">
@@ -29,10 +30,11 @@
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="border p-3 rounded">
-                                            <div class="card-title d-flex align-items-center">
-                                                <div><i class="bx bxs-user me-1 font-22 text-info"></i></div>
-                                                <h5 class="mb-0 text-info">Planes de Vendedores</h5>
+
+                                            <div class="d-flex justify-content-between align-items-end mb-3">
+                                                <h5 class="text-dark"><i class="bx bxs-user me-2 font-22 text-info"></i>Planes de Vendedores</h5>                
                                             </div>
+
                                             <hr />
                                             <div class="table-responsive">
                                                 <table id="tablaPlanes" class="table table-bordered">
@@ -314,10 +316,12 @@
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col-md-7 p-3">
                                         <div class="border p-4 rounded">
-                                            <div class="card-title d-flex align-items-center">
-                                                <div><i class="lni lni-user me-2 font-22 text-info"></i></div>
-                                                <h5 class="mb-0 text-info">Registrar el plan</h5>
+
+                                            <div class="d-flex justify-content-between align-items-end mb-3">
+                                                <h5 class="text-dark"><i class="bx bxs-user me-2 font-22 text-info"></i>Registrar el plan</h5>
+        
                                             </div>
+                                
                                             <hr />
                                             <form>
                                                 <div class="row mb-3">
