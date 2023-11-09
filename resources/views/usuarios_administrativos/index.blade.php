@@ -134,14 +134,14 @@
                                                     <th class="bg_datatable"
                                                         style="background-color: #05C7F2; color: #F2F2F2">ID</th>
                                                     <th class="bg_datatable"
-                                                        style="background-color: #05C7F2; color: #F2F2F2">Nombre de Usuario
+                                                        style="background-color: #05C7F2; color: #F2F2F2">Nombre
                                                     </th>
                                                     <th class="bg_datatable"
-                                                        style="background-color: #05C7F2; color: #F2F2F2">Rol del Usuario
+                                                        style="background-color: #05C7F2; color: #F2F2F2">Rol
                                                     </th>
                                                     <th class="bg_datatable"
-                                                        style="background-color: #05C7F2; color: #F2F2F2">Estado del
-                                                        Usuario</th>
+                                                        style="background-color: #05C7F2; color: #F2F2F2">Estado
+                                                    </th>
                                                     <th class="bg_datatable"
                                                         style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
 
