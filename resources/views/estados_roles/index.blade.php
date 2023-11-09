@@ -128,18 +128,7 @@
                                                                     <td>
 
                                                                         <div class="text-center">
-                                                                            {{-- Botón de visualizar --}}
-                                                                            <button class="btn btn-primary btn-sm"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#showRolModal"
-                                                                                data-bs-toggle="tooltip"
-                                                                                data-bs-placement="top"
-                                                                                title="Visualizar Rol">
-                                                                                <div class="text-center">
-                                                                                    <i class="lni lni-eye"
-                                                                                        style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                                </div>
-                                                                            </button>
+                                                                            
 
                                                                             <!-- Botón de editar con modal -->
                                                                             <button class="btn btn-warning btn-sm"
@@ -163,34 +152,7 @@
                                                                             </button>
                                                                         </div>
 
-                                                                        <!-- Modal de visualizacion -->
-                                                                        <div class="modal fade" id="showRolModal"
-                                                                            tabindex="-1"
-                                                                            aria-labelledby="showRolModalLabel"
-                                                                            aria-hidden="true">
-                                                                            <div class="modal-dialog">
-                                                                                <div class="modal-content">
-                                                                                    <div class="modal-header">
-                                                                                        <h5 class="modal-title"
-                                                                                            id="showRolModalLabel">
-                                                                                            Visualizar Rol</h5>
-                                                                                        <button type="button"
-                                                                                            class="btn-close"
-                                                                                            data-bs-dismiss="modal"
-                                                                                            aria-label="Close"></button>
-                                                                                    </div>
-                                                                                    <div class="modal-body">
-                                                                                        <p>Nombre del rol</p>
-                                                                                    </div>
-                                                                                    <div class="modal-footer">
-                                                                                        <button type="button"
-                                                                                            class="btn btn-secondary"
-                                                                                            data-bs-dismiss="modal">Regresar</button>
-
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                        
 
                                                                         <!-- Modal de edición -->
                                                                         <div class="modal fade" id="editarRolModal"
@@ -300,7 +262,7 @@
                         <div class="row">
                             <div class="col-xl-12 mx-auto">
                                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
-                                    <div class="card-body text-center">
+                                    <div class="card-body">
 
                                         <div class="row justify-content-center align-items-center">
                                             <div class="col">
@@ -395,18 +357,7 @@
                                                                     <td>
 
                                                                         <div class="text-center">
-                                                                            {{-- Botón visualizar --}}
-                                                                            <button class="btn btn-primary btn-sm"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#showEstadoModal"
-                                                                                data-bs-toggle="tooltip"
-                                                                                data-bs-placement="top"
-                                                                                title="Visualizar Estado">
-                                                                                <div class="text-center">
-                                                                                    <i class="lni lni-eye"
-                                                                                        style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                                </div>
-                                                                            </button>
+                                                                            
 
                                                                             <!-- Botón de editar con modal -->
                                                                             <button class="btn btn-warning btn-sm"
@@ -430,34 +381,7 @@
                                                                             </button>
                                                                         </div>
                                                                         
-                                                                        <!-- Modal de visaualizacion -->
-                                                                        <div class="modal fade" id="showEstadoModal"
-                                                                            tabindex="-1"
-                                                                            aria-labelledby="showEstadoModalLabel"
-                                                                            aria-hidden="true">
-                                                                            <div class="modal-dialog">
-                                                                                <div class="modal-content">
-                                                                                    <div class="modal-header">
-                                                                                        <h5 class="modal-title"
-                                                                                            id="showEstadoModalLabel">
-                                                                                            Visualizar Estado</h5>
-                                                                                        <button type="button"
-                                                                                            class="btn-close"
-                                                                                            data-bs-dismiss="modal"
-                                                                                            aria-label="Close"></button>
-                                                                                    </div>
-                                                                                    <div class="modal-body">
-                                                                                        <p>Nombre del estado</p>
-                                                                                    </div>
-                                                                                    <div class="modal-footer">
-                                                                                        <button type="button"
-                                                                                            class="btn btn-secondary"
-                                                                                            data-bs-dismiss="modal">Regresar</button>
-
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                        
 
 
                                                                         <!-- Modal de edición -->

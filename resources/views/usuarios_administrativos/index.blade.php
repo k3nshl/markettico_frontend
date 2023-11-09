@@ -127,24 +127,21 @@
                                     </div>
                                     <hr />
                                     <div class="table-responsive">
-                                        <table id="tablaUsuariosAdmin" class="table table-bordered">
+                                        <table id="tablaUsuariosAdmin" class="table table-bordered text-center">
                                             <thead class="theadUsuariosAdministradores">
                                                 <tr>
 
                                                     <th class="bg_datatable"
                                                         style="background-color: #05C7F2; color: #F2F2F2">ID</th>
                                                     <th class="bg_datatable"
-                                                        style="background-color: #05C7F2; color: #F2F2F2">Nombre de Usuario
+                                                        style="background-color: #05C7F2; color: #F2F2F2">Nombre
                                                     </th>
                                                     <th class="bg_datatable"
-                                                        style="background-color: #05C7F2; color: #F2F2F2">Correo
-                                                        Empresarial</th>
-                                                    <th class="bg_datatable"
-                                                        style="background-color: #05C7F2; color: #F2F2F2">Rol del Usuario
+                                                        style="background-color: #05C7F2; color: #F2F2F2">Rol
                                                     </th>
                                                     <th class="bg_datatable"
-                                                        style="background-color: #05C7F2; color: #F2F2F2">Estado del
-                                                        Usuario</th>
+                                                        style="background-color: #05C7F2; color: #F2F2F2">Estado
+                                                    </th>
                                                     <th class="bg_datatable"
                                                         style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
 
@@ -154,9 +151,8 @@
                                                 <tr>
                                                     <td>1</td>
                                                     <td>EjemploUsuario</td>
-                                                    <td>ejemplo@empresa.com</td>
-                                                    <td>Administrador</td>
-                                                    <td>Activo</td>
+                                                    <td><p class="badge bg-primary">Administrador</p></td>
+                                                    <td><p class="badge bg-success">Activo</p></td>
                                                     <td>
 
                                                         <div class="text-center">
@@ -210,8 +206,8 @@
                                                                         <form>
                                                                             <div class="mb-3">
                                                                                 <label for="showNombreUsuario"
-                                                                                    class="form-label">Nombre de
-                                                                                    Usuario:</label>
+                                                                                    class="form-label">Nombre:
+                                                                                    </label>
 
                                                                             </div>
 
@@ -229,15 +225,12 @@
 
                                                                             <div class="mb-3">
                                                                                 <label for="showRolUsuario"
-                                                                                    class="form-label">Rol del
-                                                                                    Usuario:</label>
+                                                                                    class="form-label">Rol:</label>
                                                                             </div>
 
                                                                             <div class="mb-3">
                                                                                 <label for="showEstadoUsuario"
-                                                                                    class="form-label">Estado
-                                                                                    del
-                                                                                    Usuario:</label>
+                                                                                    class="form-label">Estado:</label>
                                                                             </div>
                                                                             <div class="mb-3">
                                                                                 <label for="showEstadoUsuario"
