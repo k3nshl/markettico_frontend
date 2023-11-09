@@ -56,10 +56,10 @@
                                     <thead class="theadUsuariosAdministradores">
                                         <tr>
 
-                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">ID
-                                            </th>
                                             <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">
-                                                Nombre de Colección</th>
+                                                ID</th>
+                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">
+                                                Nombre</th>
                                             <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">
                                                 Descripción</th>
                                             <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">
@@ -69,8 +69,8 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>EjemploUsuario</td>
-                                            <td>ejemplo@empresa.com</td>
+                                            <td>Politicas</td>
+                                            <td>Descripcion aqui</td>
                                             <td>
                                                 <div class="text-center">
 
