@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Moderador;
+namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,7 +13,7 @@ class ControllerGestionarPaginas extends Controller
     public function index()
     {
         $id = 1; 
-        return view('moderador.gestionarPaginas', compact('id'));
+        return view('paginas_informacion.gestionarPaginas', compact('id'));
     }
 
     /**
@@ -21,7 +21,7 @@ class ControllerGestionarPaginas extends Controller
      */
     public function create()
     {
-        return view('moderador.create');
+        return view('paginas_informacion.create');
     }
 
     /**
@@ -38,7 +38,7 @@ class ControllerGestionarPaginas extends Controller
     public function show($id)
     {
 
-        return view('moderador.show', ['id' => $id]);
+        return view('paginas_informacion.show', ['id' => $id]);
     }
 
     /**
@@ -46,7 +46,7 @@ class ControllerGestionarPaginas extends Controller
      */
     public function edit(string $id)
     {
-        return view('moderador.edit', ['id' => $id]);
+        return view('paginas_informacion.edit', ['id' => $id]);
     }
 
     /**
