@@ -26,12 +26,12 @@
                                         placeholder="Nombre de Colección">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="icono" class="form-label">Icono:</label>
-                                    <input type="file" class="form-control" id="icono" name="icono">
-                                </div>
-                                <div class="mb-3">
                                     <label for="descripcion" class="form-label">Descripción:</label>
                                     <input type="text" class="form-control" id="descripcion" placeholder="Descripción">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="icono" class="form-label">Icono:</label>
+                                    <input type="file" class="form-control" id="icono" name="icono">
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
                                     <button type="button" class="btn btn-info"
