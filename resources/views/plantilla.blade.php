@@ -74,7 +74,7 @@
                 <ul>
                     <li> <a href="{{ route('usuarios_administrativos.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
                     </li>
-                    <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Vendedores</a>
+                    <li> <a href="{{ route('solicitudes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Vendedores</a>
                     </li>
                     <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Estadisticas</a>
                     </li>
