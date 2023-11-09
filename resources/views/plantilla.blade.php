@@ -96,6 +96,10 @@
                     </li>
                     <li> <a href="{{ route('categorias.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Categorias</a>
                     </li>
+                    <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Productos</a>
+                    </li>
+                    <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Contenido</a>
+                    </li>
                 </ul>
             </li>
 
