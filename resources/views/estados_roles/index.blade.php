@@ -256,7 +256,7 @@
                     </section>
 
                 </div>
-                <div class="tab-pane fade" id="success-pills-profile" role="tabpanel">
+                <div class="tab-pane" id="success-pills-profile" role="tabpanel">
 
                     <section class="content">
                         <div class="row">
