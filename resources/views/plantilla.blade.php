@@ -74,7 +74,7 @@
                 <ul>
                     <li> <a href="{{ route('usuarios_administrativos.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
                     </li>
-                    <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Vendedores</a>
+                    <li> <a href="{{ route('solicitud.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Vendedores</a>
                     </li>
                     <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Estadisticas</a>
                     </li>
@@ -328,6 +328,21 @@
 <script>
     $(document).ready(function() {
         $('#tablaEstados').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#tablaSolicitudEspera').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#tablaSolicitudAprobados').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#tablaSolicitudRechazados').DataTable();
     });
 </script>
 <!--Fin datatables-->
