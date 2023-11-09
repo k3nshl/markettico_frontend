@@ -6,9 +6,8 @@ use App\Http\Controllers\Administrativo\ControllerGestionarPlanes;
 use App\Http\Controllers\Administrativo\ControllerRoles;
 use App\Http\Controllers\Administrativo\ControllerSolicitudVendedor;
 use App\Http\Controllers\Administrativo\ControllerUsuariosAdministrativos;
-
-use App\Http\Controllers\Moderador\ControllerGestionarPaginas;
-use App\Http\Controllers\Moderador\ControllerCategorias;
+use App\Http\Controllers\Administrativo\ControllerGestionarPaginas;
+use App\Http\Controllers\Administrativo\ControllerCategorias;
 use Illuminate\Support\Facades\Route;
 
 /*
