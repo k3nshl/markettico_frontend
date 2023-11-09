@@ -262,7 +262,7 @@
                         <div class="row">
                             <div class="col-xl-12 mx-auto">
                                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
-                                    <div class="card-body text-center">
+                                    <div class="card-body">
 
                                         <div class="row justify-content-center align-items-center">
                                             <div class="col">
