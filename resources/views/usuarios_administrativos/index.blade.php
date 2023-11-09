@@ -127,7 +127,7 @@
                                     </div>
                                     <hr />
                                     <div class="table-responsive">
-                                        <table id="tablaUsuariosAdmin" class="table table-bordered">
+                                        <table id="tablaUsuariosAdmin" class="table table-bordered text-center">
                                             <thead class="theadUsuariosAdministradores">
                                                 <tr>
 
