@@ -7,7 +7,7 @@
 <section class="content">
     <div class="row">
         <div class="col-xl-10 mx-auto">
-            <div class="card border-top border-4 border-info" style="margin: 5%">
+            <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
                 <div class="card-body">
 
                     <ul class="nav nav-pills mb-3" role="tablist">
@@ -114,7 +114,7 @@
                                                                             <form>
                                                                                 <div class="row mb-3">
                                                                                     <label for="nombre"
-                                                                                        class="col-sm-4 col-form-label">Nombre
+                                                                                        class="col-sm-4 col-form-label">Nombre completo
                                                                                         :</label>
                                                                                 </div>
 
@@ -126,8 +126,12 @@
 
                                                                                 <div class="row mb-3">
                                                                                     <label for="costo"
-                                                                                        class="col-sm-4 col-form-label">Demas
-                                                                                        Datos:</label>
+                                                                                        class="col-sm-4 col-form-label">Correo electrónico:</label>
+                                                                                </div>
+
+                                                                                <div class="row mb-3">
+                                                                                    <label for="costo"
+                                                                                        class="col-sm-4 col-form-label">Número telefónico:</label>
                                                                                 </div>
 
                                                                             </form>
@@ -290,7 +294,7 @@
                                                                             <form>
                                                                                 <div class="row mb-3">
                                                                                     <label for="nombre"
-                                                                                        class="col-sm-4 col-form-label">Nombre
+                                                                                        class="col-sm-4 col-form-label">Nombre completo
                                                                                         :</label>
                                                                                 </div>
 
@@ -302,8 +306,12 @@
 
                                                                                 <div class="row mb-3">
                                                                                     <label for="costo"
-                                                                                        class="col-sm-4 col-form-label">Demas
-                                                                                        Datos:</label>
+                                                                                        class="col-sm-4 col-form-label">Correo electrónico:</label>
+                                                                                </div>
+
+                                                                                <div class="row mb-3">
+                                                                                    <label for="costo"
+                                                                                        class="col-sm-4 col-form-label">Número telefónico:</label>
                                                                                 </div>
 
                                                                             </form>
@@ -408,9 +416,9 @@
 
                                                                         <div class="modal-body">
                                                                             <form>
-                                                                                <div class="row mb-3">
+                                                                                 <div class="row mb-3">
                                                                                     <label for="nombre"
-                                                                                        class="col-sm-4 col-form-label">Nombre
+                                                                                        class="col-sm-4 col-form-label">Nombre completo
                                                                                         :</label>
                                                                                 </div>
 
@@ -422,8 +430,12 @@
 
                                                                                 <div class="row mb-3">
                                                                                     <label for="costo"
-                                                                                        class="col-sm-4 col-form-label">Demas
-                                                                                        Datos:</label>
+                                                                                        class="col-sm-4 col-form-label">Correo electrónico:</label>
+                                                                                </div>
+
+                                                                                <div class="row mb-3">
+                                                                                    <label for="costo"
+                                                                                        class="col-sm-4 col-form-label">Número telefónico:</label>
                                                                                 </div>
 
                                                                             </form>
