@@ -7,7 +7,8 @@
     <section class="content">
 
         <div class="container">
-            <div class="card border-4 border-info mt-5">
+            <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
+                
                 <div class="card-body">
                     <div class="row">
 
