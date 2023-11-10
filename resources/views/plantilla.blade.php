@@ -385,6 +385,53 @@
 
 <!-- Fin de datatable planes -->
 
+
+
+
+    <!-- Inicio de las tablas de historial -->
+    <script>
+        $(document).ready(function() {
+            $('#tablaHistorialRoles').DataTable();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#tablaHistorialGestionCuentas').DataTable();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#tablaHistorialAcciones').DataTable();
+        });
+    </script>
+    
+    <script>
+        $(document).ready(function() {
+            $('#tablaHistorialSuspenciones').DataTable();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#tablaHistorialInicioSesion').DataTable();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#tablaHistorialPaginas').DataTable();
+        });
+    </script>
+
+
+    <!-- Fin de las tablas de historial -->
+
+
+
+
+
 <script>
     $(document).ready(function() {
         var table = $('#').DataTable({
