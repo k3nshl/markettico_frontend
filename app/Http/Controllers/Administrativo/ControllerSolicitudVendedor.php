@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Moderador;
+namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerGestionarPaginas extends Controller
+class ControllerSolicitudVendedor extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $id = 1; 
-        return view('moderador.gestionarPaginas', compact('id'));
+        return view('solicitud_vendedor.index');
     }
 
     /**
@@ -21,7 +20,7 @@ class ControllerGestionarPaginas extends Controller
      */
     public function create()
     {
-        return view('moderador.create');
+        //
     }
 
     /**
@@ -35,10 +34,9 @@ class ControllerGestionarPaginas extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $id)
     {
-
-        return view('moderador.show', ['id' => $id]);
+        //
     }
 
     /**
@@ -46,7 +44,7 @@ class ControllerGestionarPaginas extends Controller
      */
     public function edit(string $id)
     {
-        return view('moderador.edit', ['id' => $id]);
+        //
     }
 
     /**

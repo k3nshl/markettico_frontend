@@ -63,6 +63,8 @@
                         </li>
                         <li> <a href="{{ route('estados_roles.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Estados/Roles</a>
                         </li>
+                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Visualizar Historiales</a>
+                        </li>
                     </ul>
                 </li>
             <li>
@@ -74,7 +76,7 @@
                 <ul>
                     <li> <a href="{{ route('usuarios_administrativos.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
                     </li>
-                    <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Vendedores</a>
+                    <li> <a href="{{ route('solicitud.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Vendedores</a>
                     </li>
                     <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Estadisticas</a>
                     </li>
@@ -93,6 +95,10 @@
                     <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Planes</a>
                     </li>
                     <li> <a href="{{ route('categorias.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Categorias</a>
+                    </li>
+                    <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Productos</a>
+                    </li>
+                    <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Contenido</a>
                     </li>
                 </ul>
             </li>
@@ -328,6 +334,21 @@
 <script>
     $(document).ready(function() {
         $('#tablaEstados').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#tablaSolicitudEspera').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#tablaSolicitudAprobados').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#tablaSolicitudRechazados').DataTable();
     });
 </script>
 <!--Fin datatables-->

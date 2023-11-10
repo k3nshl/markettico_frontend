@@ -7,7 +7,8 @@
     <section class="content">
 
         <div class="container">
-            <div class="card border-4 border-info mt-5">
+            <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
+                
                 <div class="card-body">
                     <div class="row">
 
@@ -26,12 +27,12 @@
                                         placeholder="Nombre de Colección">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="icono" class="form-label">Icono:</label>
-                                    <input type="file" class="form-control" id="icono" name="icono">
-                                </div>
-                                <div class="mb-3">
                                     <label for="descripcion" class="form-label">Descripción:</label>
                                     <input type="text" class="form-control" id="descripcion" placeholder="Descripción">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="icono" class="form-label">Icono:</label>
+                                    <input type="file" class="form-control" id="icono" name="icono">
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
                                     <button type="button" class="btn btn-info"
@@ -56,10 +57,10 @@
                                     <thead class="theadUsuariosAdministradores">
                                         <tr>
 
-                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">ID
-                                            </th>
                                             <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">
-                                                Nombre de Colección</th>
+                                                ID</th>
+                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">
+                                                Nombre</th>
                                             <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">
                                                 Descripción</th>
                                             <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">
@@ -69,8 +70,8 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>EjemploUsuario</td>
-                                            <td>ejemplo@empresa.com</td>
+                                            <td>Politicas</td>
+                                            <td>Descripcion aqui</td>
                                             <td>
                                                 <div class="text-center">
 
