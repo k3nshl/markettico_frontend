@@ -32,3 +32,12 @@
     background-color: transparent; /* Color de fondo predeterminado */
     color: #000; /* Color de texto para botones inactivos */
 }
+
+/*color de texto del login*/
+.login-text {
+	font-size: 22px;
+	margin-left: 10px;
+	margin-bottom: 0;
+	letter-spacing: 1px;
+	color: #F2F2F2
+}
