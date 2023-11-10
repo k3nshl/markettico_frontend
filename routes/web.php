@@ -8,6 +8,7 @@ use App\Http\Controllers\Administrativo\ControllerSolicitudVendedor;
 use App\Http\Controllers\Administrativo\ControllerUsuariosAdministrativos;
 use App\Http\Controllers\Administrativo\ControllerGestionarPaginas;
 use App\Http\Controllers\Administrativo\ControllerCategorias;
+use App\Http\Controllers\Administrativo\ControllerHistoriales;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,3 +36,4 @@ Route::resource('moderador', ControllerGestionarPaginas::class);
 Route::resource('categorias', ControllerCategorias::class);
 Route::resource('planes', ControllerGestionarPlanes::class);
 Route::resource('solicitud', ControllerSolicitudVendedor::class);
+Route::resource('historial', ControllerHistoriales::class);
