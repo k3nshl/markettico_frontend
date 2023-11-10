@@ -85,7 +85,6 @@
                                                         <thead class="theadRoles">
                                                             <tr>
                                                                 <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">ID</th>
-                                                                <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">ID Categoría</th>
                                                                 <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Nombre</th>
                                                                 <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Descripción</th>
                                                                 <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
@@ -93,7 +92,6 @@
                                                         </thead>
                                                         <tbody class="text-center">
                                                             <tr>
-                                                                <td>1</td>
                                                                 <td>1</td>
                                                                 <td>Cocina</td>
                                                                 <td>Ahhhajjajbbcbxxuusisisisiis</td>

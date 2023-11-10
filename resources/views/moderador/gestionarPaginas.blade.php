@@ -101,87 +101,85 @@
                                                     </button>
                                                 </div>
 
-                                                    <!-- Modal de edición -->
-                                                    <div class="modal fade" id="editarColeccionModal" tabindex="-1"
-                                                        aria-labelledby="editarColeccionModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-scrollable">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="editarColeccionModalLabel">
-                                                                        Editar Colección</h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal" aria-label="Close"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Cerrar"></button>
-                                                                </div>
+                                                <!-- Modal de edición -->
+                                                <div class="modal fade" id="editarColeccionModal" tabindex="-1"
+                                                    aria-labelledby="editarColeccionModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-scrollable">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="editarColeccionModalLabel">
+                                                                    Editar Colección</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"
+                                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                    title="Cerrar"></button>
+                                                            </div>
 
-                                                                <div class="modal-body">
-                                                                    <form>
-                                                                        <div class="mb-3">
-                                                                            <label for="editTitulo"
-                                                                                class="form-label">Nombre de
-                                                                                Colección</label>
-                                                                            <input type="text" class="form-control"
-                                                                                id="editTitulo">
-                                                                        </div>
+                                                            <div class="modal-body">
+                                                                <form>
+                                                                    <div class="mb-3">
+                                                                        <label for="editTitulo" class="form-label">Nombre de
+                                                                            Colección</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="editTitulo">
+                                                                    </div>
 
-                                                                        <div class="mb-3">
-                                                                            <label for="editDescripcion"
-                                                                                class="form-label">Descripción</label>
-                                                                            <input type="email" class="form-control"
-                                                                                id="editDescripcion">
-                                                                        </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="editDescripcion"
+                                                                            class="form-label">Descripción</label>
+                                                                        <input type="email" class="form-control"
+                                                                            id="editDescripcion">
+                                                                    </div>
 
-                                                                        <div class="mb-3">
-                                                                            <label for="editIcono"
-                                                                                class="form-label">Icono</label>
-                                                                            <input type="file" class="form-control"
-                                                                                id="editIcono" name="icono">
-                                                                        </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="editIcono"
+                                                                            class="form-label">Icono</label>
+                                                                        <input type="file" class="form-control"
+                                                                            id="editIcono" name="icono">
+                                                                    </div>
 
-                                                                    </form>
-                                                                </div>
+                                                                </form>
+                                                            </div>
 
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Cerrar</button>
-                                                                    <button type="button" class="btn btn-info text-white"
-                                                                        style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                        <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                                        Guardar
-                                                                    </button>
-                                                                </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Cerrar</button>
+                                                                <button type="button" class="btn btn-info text-white"
+                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                    <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                                                                    Guardar
+                                                                </button>
+                                                            </div>
 
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Modal eliminar --}}
+                                                <div class="modal fade" id="eliminarPaginaModal" tabindex="-1"
+                                                    aria-labelledby="eliminarPaginaModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="eliminarPaginaModalLabel">
+                                                                    Confirmar
+                                                                    eliminación</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                ¿Estás seguro de que deseas eliminar esta colección?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                                <button type="button" class="btn btn-danger"
+                                                                    data-bs-dismiss="modal" data-bs-toggle="modal"
+                                                                    data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
                                                             </div>
                                                         </div>
                                                     </div>
-
-                                                    {{-- Modal eliminar --}}
-                                                    <div class="modal fade" id="eliminarPaginaModal" tabindex="-1"
-                                                        aria-labelledby="eliminarPaginaModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="eliminarPaginaModalLabel">
-                                                                        Confirmar
-                                                                        eliminación</h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    ¿Estás seguro de que deseas eliminar esta colección?
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Cancelar</button>
-                                                                    <button type="button" class="btn btn-danger"
-                                                                        data-bs-dismiss="modal" data-bs-toggle="modal"
-                                                                        data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     </tbody>
