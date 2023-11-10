@@ -78,7 +78,7 @@
                     </li>
                     <li> <a href="{{ route('solicitud.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Vendedores</a>
                     </li>
-                    <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Estadisticas</a>
+                    <li> <a href="{{ route('estadisticas.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Estadisticas</a>
                     </li>
                 </ul>
             </li>
