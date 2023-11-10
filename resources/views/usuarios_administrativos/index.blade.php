@@ -508,7 +508,7 @@
                                                     <div><i
                                                             class="fadeIn animated bx bx-notepad me-1 font-22 text-info"></i>
                                                     </div>
-                                                    <h5 class="mb-0 text-dark" title="Agregar Usuario">Lista de usuarios
+                                                    <h5 class="mb-0 text-dark" title="">Lista de usuarios
                                                         bloqueados</h5>
                                                 </div>
                                             </div>
