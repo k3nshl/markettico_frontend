@@ -63,7 +63,7 @@
                         </li>
                         <li> <a href="{{ route('estados_roles.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Estados/Roles</a>
                         </li>
-                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Visualizar Historiales</a>
+                        <li> <a href="{{ route('historial.index') }}"><i class="bx bx-right-arrow-alt"></i>Visualizar Historiales</a>
                         </li>
                     </ul>
                 </li>
@@ -384,6 +384,53 @@
 </script>
 
 <!-- Fin de datatable planes -->
+
+
+
+
+    <!-- Inicio de las tablas de historial -->
+    <script>
+        $(document).ready(function() {
+            $('#tablaHistorialRoles').DataTable();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#tablaHistorialGestionCuentas').DataTable();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#tablaHistorialAcciones').DataTable();
+        });
+    </script>
+    
+    <script>
+        $(document).ready(function() {
+            $('#tablaHistorialSuspenciones').DataTable();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#tablaHistorialInicioSesion').DataTable();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#tablaHistorialPaginas').DataTable();
+        });
+    </script>
+
+
+    <!-- Fin de las tablas de historial -->
+
+
+
+
 
 <script>
     $(document).ready(function() {
