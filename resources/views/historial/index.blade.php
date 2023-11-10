@@ -122,7 +122,7 @@
                                                                                 style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
                                                                         </div>
                                                                     </button>
-
+                                                                </div>
 
                                                                 <!-- Modal de visaualizacion -->
                                                                 <div class="modal fade" id="showHistorialRolesModal"
@@ -181,7 +181,7 @@
                                                                 </div>
 
 
-                                                          
+
                                                             </td>
                                                         </tr>
 
@@ -253,7 +253,7 @@
                                                                         </div>
                                                                     </button>
 
-                                                                    
+
                                                                 </div>
 
                                                                 <!-- Modal de visaualizacion -->
@@ -307,7 +307,7 @@
                                                                 </div>
 
 
-                                                             
+
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -377,7 +377,7 @@
                                                                         </div>
                                                                     </button>
 
-                                                               
+
                                                                 </div>
 
                                                                 <!-- Modal de visaualizacion -->
@@ -429,7 +429,7 @@
                                                                 </div>
 
 
-                                                        
+
                                                             </td>
                                                         </tr>
 
@@ -503,7 +503,7 @@
                                                                         </div>
                                                                     </button>
 
-                                                                
+
                                                                 </div>
 
                                                                 <!-- Modal de visualizacion -->
@@ -557,7 +557,7 @@
                                                                 </div>
 
 
-                                                            
+
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -622,7 +622,7 @@
                                                                         </div>
                                                                     </button>
 
-                                                                
+
                                                                 </div>
 
                                                                 <!-- Modal de visualizacion -->
@@ -669,7 +669,7 @@
                                                                 </div>
 
 
-                                                         
+
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -735,7 +735,7 @@
                                                                         </div>
                                                                     </button>
 
-                                                                   
+
                                                                 </div>
 
                                                                 <!-- Modal de visualizacion -->
@@ -787,7 +787,7 @@
                                                                 </div>
 
 
-                                                           
+
                                                             </td>
                                                         </tr>
                                                     </tbody>
