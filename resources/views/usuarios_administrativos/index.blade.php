@@ -616,7 +616,7 @@
                                                                                     aria-label="Close"></button>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                                ¿Estás seguro de que deseas bloquear este
+                                                                                ¿Estás seguro de que deseas desbloquear este
                                                                                 usuario?
                                                                             </div>
                                                                             <div class="modal-footer">
@@ -633,7 +633,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                
+
                                                                 <!-- Modal de visaualizacion -->
                                                                 <div class="modal fade" id="showUserBloqueadoModal"
                                                                     tabindex="-1"
