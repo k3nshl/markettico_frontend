@@ -14,7 +14,7 @@ use App\Http\Controllers\Administrativo\ControllerModerarContenido;
 use App\Http\Controllers\Administrativo\ControllerPlantillasCorreos;
 use App\Http\Controllers\Administrativo\ControllerLogin;
 use App\Http\Controllers\Administrativo\ControllerEstadisticas;
-use App\Http\Controllers\ControllerPerfilUsuario;
+use App\Http\Controllers\Administrativo\ControllerPerfilUsuario;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -65,9 +65,4 @@ Route:: get('/plantilla_correo_registro', [ControllerPlantillasCorreos::class,'c
 Route:: get('/plantilla_correo_solicitud', [ControllerPlantillasCorreos::class,'correo_solicitud'])->name('correo_solicitud');
 
 
-
-
-// Ruta actualizada para la vista en la carpeta "perfil"
-Route::get('/perfil', [ControllerPerfilUsuario::class, 'show'])
-    ->name('perfil');
-
+Route::get('/perfil/{id}', [ControllerPerfilUsuario::class, 'show'])->name('perfil.show');

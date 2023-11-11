@@ -135,8 +135,8 @@
                         <li> <a href="{{ route('contenido.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Contenido</a>
 
-                        
-      
+
+
                     </ul>
                 </li>
 
@@ -255,11 +255,14 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href="{{ route('perfil') }}">
-                                    <i class="bx bx-user"></i><span>Perfil</span>
-                                </a>
-                                
+                                <a href="{{ route('perfil.show', ['id' => 1]) }}">Ver perfil</a>
+
                             </li>
+
+
+
+
+
                             <li><a class="dropdown-item" href="javascript:;"><i
                                         class="bx bx-cog"></i><span>Configuracion</span></a>
                             </li>
@@ -523,29 +526,29 @@
     </script>
 
     {{-- INICIA PARA PASS --}}
-<!-- JavaScript (con jQuery) -->
+    <!-- JavaScript (con jQuery) -->
 
-<!-- JavaScript (con jQuery) -->
-  <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-      $(document).ready(function() {
-          $('#togglePasswordVisibility').on('click', function(e) {
-              e.preventDefault();
-              var passwordInput = $('#passwordInput');
+    <!-- JavaScript (con jQuery) -->
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#togglePasswordVisibility').on('click', function(e) {
+                e.preventDefault();
+                var passwordInput = $('#passwordInput');
 
-              passwordInput.prop('readonly', !passwordInput.prop('readonly'));
+                passwordInput.prop('readonly', !passwordInput.prop('readonly'));
 
-              var currentType = passwordInput.attr('type');
-              var newType = (currentType === 'password') ? 'text' : 'password';
-              passwordInput.attr('type', newType);
+                var currentType = passwordInput.attr('type');
+                var newType = (currentType === 'password') ? 'text' : 'password';
+                passwordInput.attr('type', newType);
 
-              var linkText = (newType === 'password') ? 'Mostrar' : 'Ocultar';
-              $(this).text(linkText);
-          });
-      });
-  </script>
-{{-- FIN DE PASS --}}
+                var linkText = (newType === 'password') ? 'Mostrar' : 'Ocultar';
+                $(this).text(linkText);
+            });
+        });
+    </script>
+    {{-- FIN DE PASS --}}
 
 
 </body>
