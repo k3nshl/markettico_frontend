@@ -13,6 +13,7 @@ use App\Http\Controllers\Administrativo\ControllerGestionarProductos;
 use App\Http\Controllers\Administrativo\ControllerModerarContenido;
 use App\Http\Controllers\Administrativo\ControllerPlantillasCorreos;
 use App\Http\Controllers\Administrativo\ControllerLogin;
+use App\Http\Controllers\Administrativo\ControllerEstadisticas;
 use Illuminate\Support\Facades\Route;
 
 /*
