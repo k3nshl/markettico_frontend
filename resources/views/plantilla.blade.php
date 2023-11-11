@@ -86,8 +86,7 @@
                         </li>
                         <li> <a href="{{ route('estadisticas.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Estadisticas</a>
-<<<<<<< HEAD
-=======
+
                         </li>
                         <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Plantillas
                                 para Correos</a>
@@ -108,7 +107,7 @@
                                             class="bx bx-right-arrow-alt"></i>Correo solicitud</a>
                                 </li>
                             </ul>
->>>>>>> dev
+
                         </li>
                     </ul>
                 </li>
