@@ -122,21 +122,21 @@
                                                                         <label for="editTitulo" class="form-label">Nombre de
                                                                             Colección</label>
                                                                         <input type="text" class="form-control"
-                                                                            id="editTitulo">
+                                                                            id="titulo">
                                                                     </div>
 
                                                                     <div class="mb-3">
                                                                         <label for="editDescripcion"
                                                                             class="form-label">Descripción</label>
                                                                         <input type="email" class="form-control"
-                                                                            id="editDescripcion">
+                                                                            id="descripcion">
                                                                     </div>
 
                                                                     <div class="mb-3">
                                                                         <label for="editIcono"
                                                                             class="form-label">Icono</label>
                                                                         <input type="file" class="form-control"
-                                                                            id="editIcono" name="icono">
+                                                                            id="icono" name="icono">
                                                                     </div>
 
                                                                 </form>
