@@ -64,8 +64,13 @@ Route:: get('/plantilla_correo_expiracion_suspension', [ControllerPlantillasCorr
 Route:: get('/plantilla_correo_registro', [ControllerPlantillasCorreos::class,'correo_registro'])->name('correo_registro');
 Route:: get('/plantilla_correo_solicitud', [ControllerPlantillasCorreos::class,'correo_solicitud'])->name('correo_solicitud');
 
-Route::get('/perfil/show', [ControllerPerfilUsuario::class, 'perfil'])
+
+
+
+// Ruta actualizada para la vista en la carpeta "perfil"
+Route::get('/usuarios_administrativos/perfil', [ControllerPerfilUsuario::class, 'perfil'])
     ->name('perfil');
+
 
 
 
