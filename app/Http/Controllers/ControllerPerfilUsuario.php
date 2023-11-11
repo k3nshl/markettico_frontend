@@ -33,10 +33,11 @@ class ControllerPerfilUsuario extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        return view('perfil.show', ['id' => $id]);
     }
+
 
     /**
      * Show the form for editing the specified resource.
