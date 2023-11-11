@@ -41,3 +41,12 @@
 	letter-spacing: 1px;
 	color: #F2F2F2
 }
+
+/*color de rectangulos de estadistica*/
+.estadisticaRectangulos {
+	font-size: 22px;
+	margin-left: 10px;
+	margin-bottom: 0;
+	letter-spacing: 1px;
+	color: #04D9B2
+}
