@@ -33,6 +33,53 @@
     color: #000; /* Color de texto para botones inactivos */
 }
 
+
+#container_perfil {
+    margin-top: 50px;
+}
+
+#card_perfil {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#card_perfil img {
+    border-radius: 50%;
+}
+
+#cardbody_perfil{
+    padding: 30px;
+}
+
+.profile-info h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.profile-info p {
+    color: #777;
+}
+
+.password-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.password-container input {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+}
+
+#changePasswordBtn {
+    background-color: #3498db;
+    border-color: #04D9B2;
+}
+
+
+
+
 /*color de texto del login*/
 .login-text {
 	font-size: 22px;
