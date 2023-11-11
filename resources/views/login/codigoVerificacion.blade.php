@@ -17,7 +17,7 @@
 	<title>MarketTico-iniciar Sesión</title>
 </head>
 
-<body>
+<body class="bg-login">
 	<!-- wrapper -->
 	<div class="wrapper">
 		<div class="authentication-reset-password d-flex align-items-center justify-content-center">
