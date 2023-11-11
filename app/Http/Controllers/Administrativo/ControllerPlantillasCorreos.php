@@ -7,6 +7,28 @@ use Illuminate\Http\Request;
 
 class ControllerPlantillasCorreos extends Controller
 {
+
+    //Metodos para las rutas de las plantillas
+    public function correo_autenticacion(){
+        return view("plantillas_correos.correo_autenticacion");
+    }
+
+    public function correo_cambios_politicas(){
+        return view("plantillas_correos.correo_cambios_politicas");
+    }
+
+    public function correo_expiracion_suspension(){
+        return view("plantillas_correos.correo_expiracion_suspension");
+    }
+
+    public function correo_registro(){
+        return view("plantillas_correos.correo_registro");
+    }
+
+    public function correo_solicitud(){
+        return view("plantillas_correos.correo_solicitud");
+    }
+
     /**
      * Display a listing of the resource.
      */
