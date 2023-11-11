@@ -8,6 +8,9 @@ use App\Http\Controllers\Administrativo\ControllerSolicitudVendedor;
 use App\Http\Controllers\Administrativo\ControllerUsuariosAdministrativos;
 use App\Http\Controllers\Administrativo\ControllerGestionarPaginas;
 use App\Http\Controllers\Administrativo\ControllerCategorias;
+use App\Http\Controllers\Administrativo\ControllerHistoriales;
+use App\Http\Controllers\Administrativo\ControllerLogin;
+use App\Http\Controllers\Administrativo\ControllerEstadisticas;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +30,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'usuarios_administrativos.index');
 
+
+//Ruta de inicio de Sesión para más adelante
+//Route::view('/', 'login.inicioSesion');
+
 Route::resource('dashboard', ControllerDashboard::class);
 Route::resource('usuarios_administrativos', ControllerUsuariosAdministrativos::class);
 Route::resource('estados_roles', ControllerRoles::class);
@@ -35,3 +42,8 @@ Route::resource('moderador', ControllerGestionarPaginas::class);
 Route::resource('categorias', ControllerCategorias::class);
 Route::resource('planes', ControllerGestionarPlanes::class);
 Route::resource('solicitud', ControllerSolicitudVendedor::class);
+Route::resource('historial', ControllerHistoriales::class);
+Route::resource('estadisticas', ControllerEstadisticas::class);
+Route::resource('login', ControllerLogin::class);
+Route:: get('/verificacion', [ControllerLogin::class,'verificar'])->name('verif');
+
