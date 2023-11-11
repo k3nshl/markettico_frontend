@@ -47,3 +47,5 @@ Route::resource('estadisticas', ControllerEstadisticas::class);
 Route::resource('login', ControllerLogin::class);
 Route:: get('/verificacion', [ControllerLogin::class,'verificar'])->name('verif');
 
+//Rutas para acceder a las plantillas de los correos
+
