@@ -9,7 +9,7 @@
     <!-- Estilos de Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('../assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}">
-    
+
 
     <!--favicon-->
     <link rel="stylesheet" href="{{ asset('../assets/images/logo-markettico-icono.png') }}">
@@ -24,11 +24,12 @@
     <link rel="stylesheet" href="{{ asset('../assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('../assets/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('../assets/css/icons.css') }}">
-     <!--Estilos propios-->
+    <!--Estilos propios-->
     <link rel="stylesheet" type="text/css" href="{{ asset('../css/style.css') }}">
- 
+
     <!--plugins-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('../assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('../assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}">
 
 
     <title>MarketTico Admin</title>
@@ -59,49 +60,60 @@
                         <div class="menu-title">Superadmin</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('usuarios_administrativos.index') }}"><i class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
+                        <li> <a href="{{ route('usuarios_administrativos.index') }}"><i
+                                    class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
                         </li>
-                        <li> <a href="{{ route('estados_roles.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Estados/Roles</a>
+                        <li> <a href="{{ route('estados_roles.index') }}"><i
+                                    class="bx bx-right-arrow-alt"></i>Gestionar Estados/Roles</a>
                         </li>
-                        <li> <a href="{{ route('historial.index') }}"><i class="bx bx-right-arrow-alt"></i>Visualizar Historiales</a>
+                        <li> <a href="{{ route('historial.index') }}"><i class="bx bx-right-arrow-alt"></i>Visualizar
+                                Historiales</a>
                         </li>
                     </ul>
                 </li>
-            <li>
-                <a href="javascript:;" class="has-arrow">
-                    <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
-                    </div>
-                    <div class="menu-title">Administrador</div>
-                </a>
-                <ul>
-                    <li> <a href="{{ route('usuarios_administrativos.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
-                    </li>
-                    <li> <a href="{{ route('solicitud.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Vendedores</a>
-                    </li>
-                    <li> <a href="{{ route('estadisticas.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Estadisticas</a>
-                    </li>
-                </ul>
-            </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
+                        </div>
+                        <div class="menu-title">Administrador</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ route('usuarios_administrativos.index') }}"><i
+                                    class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
+                        </li>
+                        <li> <a href="{{ route('solicitud.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                Vendedores</a>
+                        </li>
+                        <li> <a href="{{ route('estadisticas.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                Estadisticas</a>
+                        </li>
+                    </ul>
+                </li>
 
-            <li>
-                <a href="javascript:;" class="has-arrow">
-                    <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
-                    </div>
-                    <div class="menu-title">Moderador</div>
-                </a>
-                <ul>
-                    <li> <a href="{{ route('moderador.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Paginas</a>
-                    </li>
-                    <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Planes</a>
-                    </li>
-                    <li> <a href="{{ route('categorias.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar Categorias</a>
-                    </li>
-                    <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Productos</a>
-                    </li>
-                    <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Contenido</a>
-                    </li>
-                </ul>
-            </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
+                        </div>
+                        <div class="menu-title">Moderador</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ route('moderador.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                Paginas</a>
+                        </li>
+                        <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                Planes</a>
+                        </li>
+                        <li> <a href="{{ route('categorias.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                Categorias</a>
+                        </li>
+                        <li> <a href="{{ route('productos.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                Productos</a>
+                        </li>
+                        <li> <a href="{{ route('contenido.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                Contenido</a>
+                        </li>
+                    </ul>
+                </li>
 
 
 
@@ -162,7 +174,7 @@
                                                 </div>
                                             </div>
                                         </a>
-                                       
+
                                     </div>
                                     <a href="javascript:;">
                                         <div class="text-center msg-footer">Ver todas las notificaciones</div>
@@ -186,8 +198,8 @@
                                         <a class="dropdown-item" href="javascript:;">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-online">
-                                                    <img src="../assets/images/avatars/avatar-1.png" class="msg-avatar"
-                                                        alt="user avatar">
+                                                    <img src="../assets/images/avatars/avatar-1.png"
+                                                        class="msg-avatar" alt="user avatar">
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <h6 class="msg-name">Daisy Anderson <span
@@ -197,7 +209,7 @@
                                                 </div>
                                             </div>
                                         </a>
-                                       
+
                                     </div>
                                     <a href="javascript:;">
                                         <div class="text-center msg-footer">Ver todos los mensajes</div>
@@ -282,8 +294,8 @@
         <!--start overlay-->
         <div class="overlay toggle-icon"></div>
         <!--end overlay-->
-        <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i
-                class='bx bxs-up-arrow-alt' style="background-color: 04D9D9; color: #f2f2f2"></i></a>
+        <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'
+                style="background-color: 04D9D9; color: #f2f2f2"></i></a>
         <!--End Back To Top Button-->
         <footer class="page-footer">
             <p class="mb-0">Copyright © 2023. Todos los derechos reservados Markettico.</p>
@@ -320,70 +332,70 @@
             $(".knob").knob();
         });
     </script>
-<!--Inicio datatables-->
-<script>
-    $(document).ready(function() {
-        $('#tablaUsuariosAdmin').DataTable();
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('#tablaRoles').DataTable();
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('#tablaEstados').DataTable();
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('#tablaSolicitudEspera').DataTable();
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('#tablaSolicitudAprobados').DataTable();
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('#tablaSolicitudRechazados').DataTable();
-    });
-</script>
-<!--Fin datatables-->
+    <!--Inicio datatables-->
+    <script>
+        $(document).ready(function() {
+            $('#tablaUsuariosAdmin').DataTable();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#tablaRoles').DataTable();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#tablaEstados').DataTable();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#tablaSolicitudEspera').DataTable();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#tablaSolicitudAprobados').DataTable();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#tablaSolicitudRechazados').DataTable();
+        });
+    </script>
+    <!--Fin datatables-->
 
 
-<!-- Inicio datatable moderador -->
+    <!-- Inicio datatable moderador -->
 
-<script>
-    $(document).ready(function() {
-        $('#tablaArticulo').DataTable();
-    });
-</script>
-
-
-<script>
-    $(document).ready(function() {
-        $('#tablaColeccion').DataTable();
-    });
-</script>
+    <script>
+        $(document).ready(function() {
+            $('#tablaArticulo').DataTable();
+        });
+    </script>
 
 
-
-<!-- Fin de datatable moderador -->
+    <script>
+        $(document).ready(function() {
+            $('#tablaColeccion').DataTable();
+        });
+    </script>
 
 
 
-<!-- Inicio datatable planes -->
+    <!-- Fin de datatable moderador -->
 
-<script>
-    $(document).ready(function() {
-        $('#tablaPlanes').DataTable();
-    });
-</script>
 
-<!-- Fin de datatable planes -->
+
+    <!-- Inicio datatable planes -->
+
+    <script>
+        $(document).ready(function() {
+            $('#tablaPlanes').DataTable();
+        });
+    </script>
+
+    <!-- Fin de datatable planes -->
 
 
 
@@ -406,7 +418,7 @@
             $('#tablaHistorialAcciones').DataTable();
         });
     </script>
-    
+
     <script>
         $(document).ready(function() {
             $('#tablaHistorialSuspenciones').DataTable();
@@ -425,6 +437,24 @@
         });
     </script>
 
+    <script>
+        $(document).ready(function() {
+            $('#tablaProductosEspera').DataTable();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#tablaProductosAprobados').DataTable();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#tablaProductosRechazados').DataTable();
+        });
+    </script>
+
 
     <!-- Fin de las tablas de historial -->
 
@@ -432,35 +462,36 @@
 
 
 
-<script>
-    $(document).ready(function() {
-        var table = $('#').DataTable({
-            lengthChange: false,
-            buttons: ['copy', 'excel', 'pdf', 'print']
+    <script>
+        $(document).ready(function() {
+            var table = $('#').DataTable({
+                lengthChange: false,
+                buttons: ['copy', 'excel', 'pdf', 'print']
+            });
         });
-    });
-</script>
+    </script>
 
     <script src="{{ asset('assets/js/index.js') }}"></script>
     <!--app JS-->
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
-   
+
 
     <script>
-        $(function () {
+        $(function() {
             $('[data-bs-toggle="popover"]').popover();
             $('[data-bs-toggle="tooltip"]').tooltip();
         })
     </script>
 
-<script src="https://cdn.tiny.cloud/1/ridcfj86k1i5y88uy1n1vznbruw2zv4icacguzwpjgeoum26/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/ridcfj86k1i5y88uy1n1vznbruw2zv4icacguzwpjgeoum26/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
 
-<script>
-    tinymce.init({
-      selector: '#mytextarea'
-    });
-</script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
 
 </body>
 
