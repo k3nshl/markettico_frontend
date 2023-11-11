@@ -610,7 +610,7 @@
                                                                                 <h5 class="modal-title"
                                                                                     id="DesbloquearUsuarioModalLabel">
                                                                                     Confirmar
-                                                                                    bloqueo</h5>
+                                                                                    desbloqueo</h5>
                                                                                 <button type="button" class="btn-close"
                                                                                     data-bs-dismiss="modal"
                                                                                     aria-label="Close"></button>
