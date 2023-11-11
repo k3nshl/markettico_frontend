@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Administrativo;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ControllerPerfilUsuario extends Controller
@@ -37,7 +38,6 @@ class ControllerPerfilUsuario extends Controller
     {
         return view('perfil.show', ['id' => $id]);
     }
-
 
     /**
      * Show the form for editing the specified resource.
