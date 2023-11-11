@@ -129,18 +129,15 @@
                         <li> <a href="{{ route('categorias.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Categorias</a>
                         </li>
-<<<<<<< HEAD
+
                         <li> <a href="{{ route('productos.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Productos</a>
                         </li>
                         <li> <a href="{{ route('contenido.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Contenido</a>
-=======
-                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Productos</a>
-                        </li>
-                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Contenido</a>
->>>>>>> dev
-                        </li>
+
+                        
+      
                     </ul>
                 </li>
 

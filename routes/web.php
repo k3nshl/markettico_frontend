@@ -11,12 +11,11 @@ use App\Http\Controllers\Administrativo\ControllerCategorias;
 use App\Http\Controllers\Administrativo\ControllerHistoriales;
 use App\Http\Controllers\Administrativo\ControllerLogin;
 use App\Http\Controllers\Administrativo\ControllerEstadisticas;
-<<<<<<< HEAD
+
 use App\Http\Controllers\Administrativo\ControllerGestionarProductos;
 use App\Http\Controllers\Administrativo\ControllerModerarContenido;
-=======
+
 use App\Http\Controllers\Administrativo\ControllerPlantillasCorreos;
->>>>>>> dev
 use Illuminate\Support\Facades\Route;
 
 /*
