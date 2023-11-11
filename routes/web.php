@@ -37,6 +37,12 @@ Route::view('/', 'usuarios_administrativos.index');
 //Ruta de inicio de Sesión para más adelante
 //Route::view('/', 'login.inicioSesion');
 
+//ruta para plantilla del correo de autenticacion
+//Route::view('/', 'plantillas_correos.correo_autenticacion');
+
+//ruta para plantilla del correo de registro
+//Route::view('/', 'plantillas_correos.correo_registro');
+
 Route::resource('dashboard', ControllerDashboard::class);
 Route::resource('usuarios_administrativos', ControllerUsuariosAdministrativos::class);
 Route::resource('estados_roles', ControllerRoles::class);

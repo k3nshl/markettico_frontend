@@ -50,3 +50,13 @@
 	letter-spacing: 1px;
 	color: #04D9B2
 }
+
+/*Estilos para números del correo autentificacion*/
+
+.colorCorreo {
+	font-size:23px;
+    line-height:20px;
+    color:#fcfdff;
+    margin:0;
+    word-break:break-word
+}
