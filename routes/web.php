@@ -68,6 +68,6 @@ Route:: get('/plantilla_correo_solicitud', [ControllerPlantillasCorreos::class,'
 
 
 // Ruta actualizada para la vista en la carpeta "perfil"
-Route::get('/perfil', [ControllerPerfilUsuario::class, 'perfil'])
+Route::get('/perfil', [ControllerPerfilUsuario::class, 'show'])
     ->name('perfil');
 
