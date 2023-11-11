@@ -86,6 +86,29 @@
                         </li>
                         <li> <a href="{{ route('estadisticas.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Estadisticas</a>
+<<<<<<< HEAD
+=======
+                        </li>
+                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Plantillas
+                                para Correos</a>
+                            <ul>
+                                <li> <a href="{{ route('correo_autenticacion') }}"><i
+                                            class="bx bx-right-arrow-alt"></i>Correo Autenticacion</a>
+                                </li>
+                                <li> <a href="{{ route('correo_cambios_politicas') }}"><i
+                                            class="bx bx-right-arrow-alt"></i>Correo cambios en politicas</a>
+                                </li>
+                                <li> <a href="{{ route('correo_expiracion_suspension') }}"><i
+                                            class="bx bx-right-arrow-alt"></i>Correo expiracion y suspencion</a>
+                                </li>
+                                <li> <a href="{{ route('correo_registro') }}"><i
+                                            class="bx bx-right-arrow-alt"></i>Correo registro</a>
+                                </li>
+                                <li> <a href="{{ route('correo_solicitud') }}"><i
+                                            class="bx bx-right-arrow-alt"></i>Correo solicitud</a>
+                                </li>
+                            </ul>
+>>>>>>> dev
                         </li>
                     </ul>
                 </li>
@@ -106,11 +129,17 @@
                         <li> <a href="{{ route('categorias.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Categorias</a>
                         </li>
+<<<<<<< HEAD
                         <li> <a href="{{ route('productos.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Productos</a>
                         </li>
                         <li> <a href="{{ route('contenido.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Contenido</a>
+=======
+                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Productos</a>
+                        </li>
+                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Gestionar Contenido</a>
+>>>>>>> dev
                         </li>
                     </ul>
                 </li>
@@ -133,7 +162,8 @@
                     </div>
                     <div class="search-bar flex-grow-1">
                         <div class="position-relative search-bar-box">
-                            <input type="text" class="form-control search-control" placeholder="Ingrese para buscar">
+                            <input type="text" class="form-control search-control"
+                                placeholder="Ingrese para buscar">
                             <span class="position-absolute top-50 search-show translate-middle-y"><i
                                     class='bx bx-search'></i></span>
                             <span class="position-absolute top-50 search-close translate-middle-y"><i
