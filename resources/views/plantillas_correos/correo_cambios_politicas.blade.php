@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
-    <link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" />
+    <link rel="stylesheet" href="{{ asset('../assets/images/logo-markettico-icono.png') }}">
     <!-- loader-->
     <link href="assets/css/pace.min.css" rel="stylesheet" />
     <script src="assets/js/pace.min.js"></script>
@@ -17,12 +17,12 @@
     <title>Actualización de Políticas</title>
 </head>
 
-<body class="">
+<body class="bg-light">
     <!-- wrapper -->
     <div class="wrapper">
-        <div class=" d-flex align-items-center justify-content-center">
+        <div class=" d-flex align-items-center justify-content-center vh-100">
             <div class="row">
-                <div class="col-12 col-lg-12 mx-auto">
+                <div class="col-12 col-lg-8 mx-auto">
                     <div class="card">
                         <div class="row g-12">
                             <div class="col-lg-12 border-end">
