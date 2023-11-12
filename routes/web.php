@@ -72,3 +72,4 @@ Route:: get('/plantilla_correo_solicitud', [ControllerPlantillasCorreos::class,'
 
 
 Route::get('/perfil/{id}', [ControllerPerfilUsuario::class, 'show'])->name('perfil.show');
+
