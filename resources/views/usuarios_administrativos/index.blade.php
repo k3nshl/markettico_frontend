@@ -28,7 +28,7 @@
 
 
                         <div class="tab-content">
-                            <div class="tab-pane  show active fade" id="tab-listaUsuarios">
+                            <div class="tab-pane show active fade" id="tab-listaUsuarios">
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="border p-3 rounded">
@@ -497,8 +497,6 @@
                                 </div>
                             </div>
 
-
-
                             <div class="tab-pane fade" id="tab-bloqueados">
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
@@ -823,8 +821,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </section>
 @endsection
