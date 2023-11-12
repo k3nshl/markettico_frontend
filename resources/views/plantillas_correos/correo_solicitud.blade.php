@@ -53,7 +53,7 @@
                                     </div>
 
                                     <div class="d-grid gap-2 my-5">
-                                        <a type="button" class="btn btn-primary" href="{{route('inicio')}}">Volver a la Página Principal</a>
+                                        <a type="button" class="btn btn-primary" href="#">Volver a la Página Principal</a>
                                     </div>
                                 </div>
                             </div>
