@@ -1,11 +1,11 @@
 @extends('plantilla')
 
-@section('gestion_nombre', 'Usuarios Administrativos')
+@section('gestion_nombre', 'Historiales')
 
 @section('contenido')
     <section class="content">
         <div class="row">
-            <div class="col-xl-12 mx-auto">
+            <div class="col-xl-10 mx-auto">
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
                     <div class="card-body">
 
@@ -93,10 +93,6 @@
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Acción
                                                             </th>
-                                                            <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Acciones
-                                                            </th>
-
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -108,81 +104,6 @@
                                                             <td>Pedrito</td>
                                                             <td>lunes</td>
                                                             <td>No sé</td>
-                                                            <td>
-
-                                                                <div class="text-center">
-                                                                    {{-- Botón de visualizar --}}
-                                                                    <button class="btn btn-primary btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#showHistorialRolesModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Visualizar historial">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-eye"
-                                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-                                                                </div>
-
-                                                                <!-- Modal de visaualizacion -->
-                                                                <div class="modal fade" id="showHistorialRolesModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="showHistorialRolesModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="showHistorialRolesModalLabel">
-                                                                                    Visualizar Historial de roles</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="id_rol"
-                                                                                            class="col-sm-4 col-form-label">Rol:
-                                                                                            <span>Acá</span></label>
-
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="id_usuario"
-                                                                                            class="col-sm-4 col-form-label">Usuario:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="fecha_hora"
-                                                                                            class="col-sm-4 col-form-label">Fecha
-                                                                                            y hora: <span>Acá</span></label>
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="accion"
-                                                                                            class="col-sm-4 col-form-label">Acción:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Regresar</button>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                            </td>
                                                         </tr>
 
                                                     </tbody>
@@ -225,9 +146,6 @@
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Usuario
                                                             </th>
-                                                            <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Acciones
-                                                            </th>
                                                         </tr>
 
                                                     </thead>
@@ -237,78 +155,6 @@
                                                             <td>Martes</td>
                                                             <td>No sé</td>
                                                             <td>Nanami Kento</td>
-                                                            <td>
-
-                                                                <div class="text-center">
-
-                                                                    {{-- Botón de visualizar --}}
-                                                                    <button class="btn btn-primary btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#showHistorialGestionCuentasModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Ver Bloqueados">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-eye"
-                                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-
-                                                                </div>
-
-                                                                <!-- Modal de visaualizacion -->
-                                                                <div class="modal fade"
-                                                                    id="showHistorialGestionCuentasModal" tabindex="-1"
-                                                                    aria-labelledby="showHistorialGestionCuentasModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="showHistorialGestionCuentasModalLabel">
-                                                                                    Visualizar Historial</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="fecha_horaLabel"
-                                                                                            class="col-sm-4 col-form-label">Fecha
-                                                                                            y hora: <span>Acá</span></label>
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="accionLabel"
-                                                                                            class="col-sm-4 col-form-label">Acción:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="usuarioLabel"
-                                                                                            class="col-sm-4 col-form-label">Usuario:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Regresar</button>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -350,10 +196,6 @@
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Acción
                                                             </th>
-                                                            <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Acciones
-                                                            </th>
-
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -362,75 +204,6 @@
                                                             <td>Fauricio</td>
                                                             <td>Jueves</td>
                                                             <td>No sé</td>
-                                                            <td>
-                                                                <div class="text-center">
-
-                                                                    {{-- Botón de visualizar --}}
-                                                                    <button class="btn btn-primary btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#showHistorialAccionesModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Visualizar Estado">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-eye"
-                                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-
-                                                                </div>
-
-                                                                <!-- Modal de visaualizacion -->
-                                                                <div class="modal fade" id="showHistorialAccionesModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="showHistorialAccionesModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="showHistorialAccionesModalLabel">
-                                                                                    Visualizar Usuario Administrativo</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="usuarioAcciones"
-                                                                                            class="col-sm-4 col-form-label">Usuario:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="fecha_horaAcciones"
-                                                                                            class="col-sm-4 col-form-label">Fecha
-                                                                                            y hora: <span>Acá</span></label>
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="accionAcciones"
-                                                                                            class="col-sm-4 col-form-label">Acción:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Regresar</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                            </td>
                                                         </tr>
 
                                                     </tbody>
@@ -596,9 +369,6 @@
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Fecha y
                                                                 hora
                                                             </th>
-                                                            <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Acciones
-                                                            </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -606,71 +376,6 @@
                                                             <td>1</td>
                                                             <td>2</td>
                                                             <td>10-10-10 3:00</td>
-                                                            <td>
-
-                                                                <div class="text-center">
-
-                                                                    {{-- Botón de visualizar --}}
-                                                                    <button class="btn btn-primary btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#showHistorialInicioSesionModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Visualizar Historial de Inicio de sesión">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-eye"
-                                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-
-                                                                </div>
-
-                                                                <!-- Modal de visualizacion -->
-                                                                <div class="modal fade"
-                                                                    id="showHistorialInicioSesionModal" tabindex="-1"
-                                                                    aria-labelledby="showHistorialInicioSesionModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="showHistorialInicioSesionModalLabel">
-                                                                                    Visualizar historial de Inicio de sesión
-                                                                                </h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="UsuarioSesion"
-                                                                                            class="col-sm-4 col-form-label">Usuario:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="fecha_horaSesion"
-                                                                                            class="col-sm-4 col-form-label">Fecha
-                                                                                            y hora: <span>Acá</span></label>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Regresar</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -709,9 +414,6 @@
                                                                 style="background-color: #05C7F2; color: #F2F2F2"> Fecha y
                                                                 hora
                                                             </th>
-                                                            <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Acciones
-                                                            </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -719,76 +421,6 @@
                                                             <td>1</td>
                                                             <td>2</td>
                                                             <td>10-10-10</td>
-                                                            <td>
-
-                                                                <div class="text-center">
-
-                                                                    {{-- Botón de visualizar --}}
-                                                                    <button class="btn btn-primary btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#showHistorialPaginasModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Ver Bloqueados">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-eye"
-                                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-
-                                                                </div>
-
-                                                                <!-- Modal de visualizacion -->
-                                                                <div class="modal fade" id="showHistorialPaginasModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="showHistorialPaginasModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="showHistorialPaginasModalLabel">
-                                                                                    Visualizar historial de Página</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row mb-3">
-                                                                                        <label
-                                                                                            for="id_pagina_informacionLabel"
-                                                                                            class="col-sm-4 col-form-label">Página
-                                                                                            de Información:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="fecha_horaPaginas"
-                                                                                            class="col-sm-4 col-form-label">Fecha
-                                                                                            y hora: <span>Acá</span></label>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Regresar</button>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

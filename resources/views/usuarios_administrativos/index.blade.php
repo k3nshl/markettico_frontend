@@ -583,7 +583,56 @@
                                                                         <i class="lni lni-trash"
                                                                             style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                                     </button>
+
+                                                                    <!-- Botón de bloquear -->
+                                                                    <button class="btn btn-sm btn-block"
+                                                                        style="background-color: #05f29d"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#DesbloquearUsuarioModal"
+                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                        title="Desbloquear Usuario Administrativo">
+                                                                        <div class="text-center">
+                                                                            <i class="lni lni-unlock"
+                                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                        </div>
+                                                                    </button>
                                                                 </div>
+
+
+                                                                <!-- Modal de bloquear  -->
+                                                                <div class="modal fade" id="DesbloquearUsuarioModal"
+                                                                    tabindex="-1"
+                                                                    aria-labelledby="DesbloquearUsuarioModalLabel"
+                                                                    aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="DesbloquearUsuarioModalLabel">
+                                                                                    Confirmar
+                                                                                    desbloqueo</h5>
+                                                                                <button type="button" class="btn-close"
+                                                                                    data-bs-dismiss="modal"
+                                                                                    aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                ¿Estás seguro de que deseas desbloquear este
+                                                                                usuario?
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                                                <button type="button"
+                                                                                    class="btn btn-danger"
+                                                                                    data-bs-dismiss="modal"
+                                                                                    data-bs-toggle="modal"
+                                                                                    data-bs-target="#bloqueoCorrectoModal">Bloquear</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
 
                                                                 <!-- Modal de visaualizacion -->
                                                                 <div class="modal fade" id="showUserBloqueadoModal"
