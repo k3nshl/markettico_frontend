@@ -135,8 +135,8 @@
                         <li> <a href="{{ route('contenido.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Contenido</a>
 
-                        
-      
+
+
                     </ul>
                 </li>
 
@@ -389,6 +389,19 @@
             $('#tablaSolicitudRechazados').DataTable();
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            $('#tablaCorreos').DataTable();
+        });
+
+        $(document).ready(function() {
+            $('#tablaAnuncios').DataTable();
+        });
+
+        $(document).ready(function() {
+            $('#tablaAlertas').DataTable();
+        });
+    </script>
     <!--Fin datatables-->
 
 
@@ -485,9 +498,6 @@
     <!-- Fin de las tablas de historial -->
 
 
-
-
-
     <script>
         $(document).ready(function() {
             var table = $('#').DataTable({
@@ -518,6 +528,31 @@
             selector: '#mytextarea'
         });
     </script>
+
+<script>
+    $(document).ready(function(){
+        $("#portada").change(function(){
+            readURL(this, "#imagen-preview-portada");
+        });
+
+        $("#otroInput").change(function(){
+            readURL(this, "#imagen-preview-otroInput");
+        });
+    });
+
+    function readURL(input, previewId) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $(previewId).attr('src', e.target.result);
+                $(previewId).show(); 
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 
 </body>
 

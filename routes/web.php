@@ -14,6 +14,7 @@ use App\Http\Controllers\Administrativo\ControllerModerarContenido;
 use App\Http\Controllers\Administrativo\ControllerPlantillasCorreos;
 use App\Http\Controllers\Administrativo\ControllerLogin;
 use App\Http\Controllers\Administrativo\ControllerEstadisticas;
+use App\Http\Controllers\Administrativo\ControllerNotificaciones;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,7 +48,6 @@ Route::resource('planes', ControllerGestionarPlanes::class);
 Route::resource('solicitud', ControllerSolicitudVendedor::class);
 Route::resource('historial', ControllerHistoriales::class);
 Route::resource('estadisticas', ControllerEstadisticas::class);
-
 Route::resource('login', ControllerLogin::class);
 //Ruta para verificación dos pasos
 Route::resource('login', ControllerLogin::class);
@@ -63,3 +63,7 @@ Route:: get('/plantilla_correo_expiracion_suspension', [ControllerPlantillasCorr
 Route:: get('/plantilla_correo_registro', [ControllerPlantillasCorreos::class,'correo_registro'])->name('correo_registro');
 Route:: get('/plantilla_correo_solicitud', [ControllerPlantillasCorreos::class,'correo_solicitud'])->name('correo_solicitud');
 
+// Rutas para las notificaciones
+Route::get('/notificaciones', [ControllerNotificaciones::class, 'index'])->name('notificaciones');
+// Ruta para create de notificaciones
+Route::get('/notificaciones-correo/create', [ControllerNotificaciones::class, 'createCorreo'])->name('correo.create');
