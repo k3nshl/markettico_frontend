@@ -13,14 +13,14 @@
                             <li class="nav-item">
                                 <button class="nav-link active custom-bg-color" data-bs-toggle="tab"
                                     data-bs-target="#tab-gestionRoles">
-                                    <i class="bx bx-notepad me-2"></i> Historial de roles
+                                    <i class="bx bx-notepad me-2"></i> Roles
                                 </button>
                             </li>
 
                             <li class="nav-item">
                                 <button class="nav-link custom-bg-color" data-bs-toggle="tab"
                                     data-bs-target="#tab-gestionCuentas">
-                                    <i class="bx bx-notepad me-2"></i> Historial de cuentas
+                                    <i class="bx bx-notepad me-2"></i> Cuentas
 
                                 </button>
                             </li>
@@ -28,28 +28,21 @@
                             <li class="nav-item">
                                 <button class="nav-link custom-bg-color" data-bs-toggle="tab"
                                     data-bs-target="#tab-acciones">
-                                    <i class="bx bx-notepad me-2"></i> Historial de acciones
+                                    <i class="bx bx-notepad me-2"></i> Acciones
                                 </button>
                             </li>
 
                             <li class="nav-item">
                                 <button class="nav-link custom-bg-color" data-bs-toggle="tab"
                                     data-bs-target="#tab-suspencion">
-                                    <i class="bx bx-notepad me-2"></i> Historial de suspenciones
-                                </button>
-                            </li>
-
-                            <li class="nav-item">
-                                <button class="nav-link custom-bg-color" data-bs-toggle="tab"
-                                    data-bs-target="#tab-inicioSesion">
-                                    <i class="bx bx-notepad me-2"></i> Historial inicios de sesión
+                                    <i class="bx bx-notepad me-2"></i> Suspenciones
                                 </button>
                             </li>
 
                             <li class="nav-item">
                                 <button class="nav-link custom-bg-color" data-bs-toggle="tab"
                                     data-bs-target="#tab-gestionPaginas">
-                                    <i class="bx bx-notepad me-2"></i> Historial de páginas
+                                    <i class="bx bx-notepad me-2"></i> Páginas
 
                                 </button>
                             </li>
@@ -332,50 +325,6 @@
 
 
                                                             </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="tab-inicioSesion">
-                                <div class="row justify-content-center align-items-center">
-                                    <div class="col">
-                                        <div class="border p-3 rounded">
-                                            <div class="card-title d-flex align-items-center justify-content-between">
-                                                <div class="d-flex align-items-center">
-                                                    <div><i
-                                                            class="fadeIn animated bx bx-notepad me-1 font-22 text-info"></i>
-                                                    </div>
-                                                    <h5 class="mb-0 text-dark" title="">Historial de Inicios de
-                                                        sesiones</h5>
-                                                </div>
-                                            </div>
-                                            <hr />
-
-                                            <div class="table-responsive">
-                                                <table id="tablaHistorialInicioSesion" class="table table-bordered">
-                                                    <thead class="theadUsuariosAdministradores">
-                                                        <tr class="text-center">
-                                                            <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">ID</th>
-                                                            <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Usuario
-                                                            </th>
-                                                            <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Fecha y
-                                                                hora
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>2</td>
-                                                            <td>10-10-10 3:00</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
