@@ -49,7 +49,7 @@
 
                                         <p class="text-muted">
                                             
-                                            Atentamente: Equipo administrivo, MarketTico.
+                                            Atentamente: Equipo administrativo, MarketTico.
                                         </p>
 
                                     </div>
