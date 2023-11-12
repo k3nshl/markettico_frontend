@@ -42,7 +42,8 @@
         <div class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
                 <div>
-                    <img src="{{ asset('../assets/images/logo-markettico-icono.png') }}" class="logo-icon" alt="logo icon">
+                    <img src="{{ asset('../assets/images/logo-markettico-icono.png') }}" class="logo-icon"
+                        alt="logo icon">
                 </div>
                 <div>
                     <h4 class="logo-text">MarketTico</h4>
@@ -250,7 +251,8 @@
                     <div class="user-box dropdown">
                         <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret"
                             href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ asset('../assets/images/avatars/avatar-2.png') }}" class="user-img" alt="user avatar">
+                            <img src="{{ asset('../assets/images/avatars/avatar-2.png') }}" class="user-img"
+                                alt="user avatar">
                             <div class="user-info ps-3">
                                 <p class="user-name mb-0">Delia Smith</p>
                                 <p class="designattion mb-0">Project Manager</p>
@@ -585,6 +587,14 @@
             }
         }
     </script>
+
+{{-- Para limpiar el campo de verificar contra --}}
+    <script>
+        $('#VerificarContra').on('hidden.bs.modal', function() {
+            $('#password').val('');
+        });
+    </script>
+
 
 </body>
 

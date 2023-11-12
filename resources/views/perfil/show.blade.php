@@ -55,43 +55,70 @@
                         </div>
                         <div class="col-sm-3 col-4 text-end">
                             <div class="d-flex flex-column">
-                                <button class="btn btn-sm mb-2 mb-sm-0" data-bs-toggle="modal" data-bs-target="#PassModal"
-                                    style="background-color: #04D9B2; color: #F2F2F2">
+                                <button class="btn btn-sm mb-2 mb-sm-0" data-bs-toggle="modal"
+                                    data-bs-target="#VerificarContra" style="background-color: #04D9B2; color: #F2F2F2">
                                     Cambiar Contraseña
                                 </button>
                             </div>
                         </div>
                     </div>
-                    
 
-
-                    <!-- Modal de cambiar pass -->
-                    <div class="modal fade" id="PassModal"
-                        tabindex="-1"
-                        aria-labelledby="PassModalLabel"
+                    <!-- Modal de verificar contra actual -->
+                    <div class="modal fade" id="VerificarContra" tabindex="-1" aria-labelledby="PassModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title"
-                                        id="PassModalLabel">
-                                       Cambiar Contraseña</h5>
-                                    <button type="button" class="btn-close"
-                                        data-bs-dismiss="modal"
-                                        aria-label="Close"
-                                        data-bs-toggle="tooltip"
-                                        data-bs-placement="top"
-                                        title="Cerrar"></button>
+                                    <h5 class="modal-title" id="VerificarContraLabel">
+                                        Verificar contraseña actual</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Cerrar"></button>
+                                </div>
+
+                                {{-- Modal verificar contraseña actual --}}
+                                <div class="modal-body">
+                                    <form>
+
+                                        <div class="mb-3">
+                                            <label for="VerificarContraLabel" class="form-label">Digite su contraseña
+                                                actual:</label>
+                                            <input type="text" class="form-control" id="password">
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-info text-white"
+                                        style="background-color: #04D9D9; border-color: #04D9D9;" data-bs-toggle="modal"
+                                        data-bs-target="#PassModal" data-bs-dismiss="modal">
+                                        <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                                        Verificar
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal de cambiar pass -->
+                    <div class="modal fade" id="PassModal" tabindex="-1" aria-labelledby="PassModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="PassModalLabel">
+                                        Cambiar Contraseña</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Cerrar"></button>
                                 </div>
 
                                 <div class="modal-body">
                                     <form>
 
                                         <div class="mb-3">
-                                            <label for="passwordLabel"
-                                                class="form-label">Contraseña nueva:</label>
-                                            <input type="text" class="form-control"
-                                                id="password">
+                                            <label for="passwordLabel" class="form-label">Contraseña nueva:</label>
+                                            <input type="text" class="form-control" id="password">
                                         </div>
                                     </form>
                                 </div>
@@ -105,19 +132,12 @@
                                         Guardar
                                     </button>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
 
                     <div class="row mb-3 password-container">
-
                         <div class="col-sm-3 text-secondary">
-
-                        </div>
-                        <div class="col-sm-3 text-secondary">
-                            <a href="#" id="togglePasswordVisibility">Mostrar</a>
                         </div>
                     </div>
 
