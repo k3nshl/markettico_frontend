@@ -17,46 +17,37 @@
     <title>Resultado de Solicitud</title>
 </head>
 
-<body class="">
+<body class="bg-light">
     <!-- wrapper -->
     <div class="wrapper">
-        <div class=" d-flex align-items-center justify-content-center">
-            <div class="row">
-                <div class="col-12 col-lg-12 mx-auto">
-                    <div class="card">
-                        <div class="row g-12">
-                            <div class="col-lg-12 border-end">
-                                <div class="card-body">
-                                    <div class="p-5">
-                                        <div class="mb-4 text-center">
-                                            <div>
-                                                <img src="../assets/images/logo-markettico-icono.png" class="logo-icon"
-                                                    alt="logo icon">
-                                            </div>
-                                            <div>
-                                                <h4 class="logo-text">MarketTico</h4>
-                                            </div>
-                                        </div>
-                                        <h2 class="mt-5 font-weight-bold text-center">Resultado de Solicitud</h2>
-
-                                        <!-- Cambia el fondo y el color del texto según sea aprobado o rechazado -->
-                                        <div class="mt-5 text-center" style="background-color: #28a745; color: #fff; padding: 15px; border-radius: 10px;">
-                                            @if($aprobado)
-                                                <h4 class="font-weight-bold">¡Felicidades! Tu solicitud ha sido aprobada</h4>
-                                            @else
-                                                <h4 class="font-weight-bold">Lo sentimos, tu solicitud ha sido rechazada</h4>
-                                            @endif
-                                        </div>
-
-                                        <!-- Agrega aquí cualquier información adicional que desees mostrar -->
-
-                                    </div>
-
-                                    <div class="d-grid gap-2 my-5">
-                                        <a type="button" class="btn btn-primary" href="#">Volver a la Página Principal</a>
-                                    </div>
-                                </div>
+        <div class="d-flex align-items-center justify-content-center vh-100">
+            <div class="col-12 col-lg-6">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <div>
+                                <img src="../assets/images/logo-markettico-icono.png" class="logo-icon" alt="logo icon"> <h4 class="">MarkeTtico</h4>
                             </div>
+                        </div>
+                        <h2 class="mt-4 font-weight-bold text-center">Resultado de Solicitud</h2>
+                        <!-- Cambia el fondo y el color del texto según sea aprobado o rechazado -->
+                        <div class="mt-4 text-center">
+                            <!-- if aprobado muestra esto -->
+                            <h4 class="font-weight-bold">¡Felicidades! Tu solicitud ha sido <span class="badge bg-success">aprobada</span></h4>
+                            <hr>
+                            <span>A partir de este momento formas parte de los vendedores de Markettico, te invitamos a adquirir el plan que se ajuste a tus necesidades para poder crear tu tienda y vender productos en nuestra marketplace.</span>
+                            <div class="d-grid gap-2 my-2">
+                                <a type="button" class="btn btn-primary" href="#">Ir a comprar un plan</a>
+                            </div>
+                            <!-- if rechazado muestra esto -->
+                            <h4 class="font-weight-bold">Lo sentimos, tu solicitud ha sido <span class="badge bg-danger">rechazada</span></h4>
+                            <span>Motivo aquí</span>
+                            <hr>
+                            <span>Te invitamos a enviar nuevamente la solicitud con los datos corregidos y actualizados para poder revisar y valorar nuevamente tu solicitud para formar parte de nuestra marketplace como vendedor.</span>
+                            <div class="d-grid gap-2 my-2">
+                                <a type="button" class="btn btn-primary" href="#">Enviar nueva solicitud</a>
+                            </div>
+                            <!-- fin if -->
                         </div>
                     </div>
                 </div>
