@@ -750,7 +750,7 @@
                                                                                     <div class="row mb-3">
                                                                                         <div class="col-sm">
                                                                                             <label for="id_vendedor"
-                                                                                                class="form-label">Vendedo:</label>
+                                                                                                class="form-label">Vendedor:</label>
                                                                                             <input type="text"
                                                                                                 class="form-control"
                                                                                                 id="id_vendedor"
