@@ -1,8 +1,9 @@
 @extends('plantilla')
 
-@section('gestion_nombre', 'Usuarios Administrativos')
+@section('gestion_nombre', 'Notificaciones')
 
 @section('contenido')
+
     <section class="content">
         <div class="row">
             <div class="col-xl-12 mx-auto">
@@ -12,23 +13,33 @@
                         <ul class="nav nav-pills mb-3" role="tablist">
                             <li class="nav-item">
                                 <button class="nav-link active custom-bg-color" data-bs-toggle="tab"
-                                    data-bs-target="#tab-listaUsuarios">
-                                    <i class="bx bx-notepad me-2"></i> Lista de usuarios
+                                    data-bs-target="#tab-correos">
+                                    <i class="lni lni-envelope"></i> Correos
 
                                 </button>
                             </li>
 
                             <li class="nav-item">
                                 <button class="nav-link custom-bg-color" data-bs-toggle="tab"
-                                    data-bs-target="#tab-bloqueados">
-                                    <i class="bx bx-notepad me-2"></i> Lista de usuarios bloqueados
+                                    data-bs-target="#tab-anuncios">
+                                    <i class="lni lni-alarm"></i> Anuncios
+
+                                </button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link custom-bg-color" data-bs-toggle="tab" data-bs-target="#tab-alertas">
+                                    <i class="fadeIn animated bx bx-comment-error"></i> Alertas
+
                                 </button>
                             </li>
                         </ul>
 
 
                         <div class="tab-content">
-                            <div class="tab-pane  show active fade" id="tab-listaUsuarios">
+
+                            {{-- Correos o --}}
+                            <div class="tab-pane  show active fade" id="tab-correos">
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="border p-3 rounded">
@@ -37,28 +48,28 @@
                                                     <div><i
                                                             class="fadeIn animated bx bx-notepad me-1 font-22 text-info"></i>
                                                     </div>
-                                                    <h5 class="mb-0 text-dark" title="Agregar Usuario">Lista de Usuarios
-                                                        Administrativos</h5>
+                                                    <h5 class="mb-0 text-dark" title="Agregar Usuario">Lista de Correos</h5>
                                                 </div>
                                                 <div class="d-flex align-items-center">
                                                     <div class="me-2">
-                                                        <h5 class="m-0">Registrar</h5>
+                                                        <h5 class="m-0">Redactar</h5>
                                                     </div>
                                                     <div class="me-2">
                                                         <button type="button" class="btn btn-info text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#modalAgregarUsuario"
+                                                            data-bs-toggle="modal" data-bs-target="#modalRedactarCorreo"
                                                             style="background-color: #04D9B2; border-color: #04D9D9;"
                                                             data-bs-toggle="tooltip" data-bs-placement="top"
                                                             title="Agregar Usuario Administrativo">+</button>
                                                     </div>
 
-                                                    <div class="modal fade" id="modalAgregarUsuario" tabindex="-1"
-                                                        aria-labelledby="modalAgregarUsuarioLabel" aria-hidden="true">
+                                                    {{-- Modal Registrar --}}
+                                                    <div class="modal fade" id="modalRedactarCorreo" tabindex="-1"
+                                                        aria-labelledby="modalRedactarCorreoLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title" id="modalAgregarUsuarioLabel">
-                                                                        Agregar Usuario Administrativo</h5>
+                                                                        Redactar Correo</h5>
                                                                     <button type="button" class="btn-close"
                                                                         data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
@@ -80,6 +91,8 @@
                                                                             <div class="col-sm-8">
                                                                                 <input type="password" class="form-control"
                                                                                     id="password" placeholder="Contraseña">
+
+
                                                                             </div>
                                                                         </div>
 
@@ -155,21 +168,19 @@
                                             <hr />
 
                                             <div class="table-responsive">
-                                                <table id="tablaUsuariosAdmin" class="table table-bordered">
-                                                    <thead class="theadUsuariosAdministradores">
+                                                <table id="tablaCorreos" class="table table-bordered">
+                                                    <thead class="theadtablaCorreos">
                                                         <tr class="text-center">
 
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">ID</th>
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Nombre
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Titulo
                                                             </th>
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Rol
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Fecha
                                                             </th>
-                                                            <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Estado
-                                                            </th>
+
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Acciones
                                                             </th>
@@ -179,13 +190,11 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>1</td>
-                                                            <td>EjemploUsuario</td>
+                                                            <td>Necesito beca</td>
                                                             <td>
-                                                                <p class="badge bg-primary">Administrador</p>
+                                                                11/11/23
                                                             </td>
-                                                            <td>
-                                                                <p class="badge bg-success">Activo</p>
-                                                            </td>
+
                                                             <td>
                                                                 <div class="text-center">
 
@@ -201,17 +210,8 @@
                                                                         </div>
                                                                     </button>
 
-                                                                    <!-- Botón de editar con modal -->
-                                                                    <button class="btn btn-warning btn-sm btn-block"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#editarUsuarioModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Editar Usuario Administrativo">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-pencil-alt"
-                                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
+
+
 
                                                                     <!-- Botón de eliminar -->
                                                                     <button class="btn btn-danger btn-sm btn-block"
@@ -221,27 +221,7 @@
                                                                             style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                                     </button>
 
-
-                                                                    <!-- Botón de bloquear -->
-                                                                    <button class="btn btn-sm btn-block"
-                                                                        style="background-color: #05f29d"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#bloquearUsuarioModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Bloquear Usuario Administrativo">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-lock"
-                                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-
-
                                                                 </div>
-
-
-
-
 
                                                                 <!-- Modal de visaualizacion -->
                                                                 <div class="modal fade" id="showUserModal" tabindex="-1"
@@ -252,7 +232,7 @@
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
                                                                                     id="showUserModalLabel">
-                                                                                    Visualizar Usuario Administrativo</h5>
+                                                                                    Visualizar Datos del Correo</h5>
                                                                                 <button type="button" class="btn-close"
                                                                                     data-bs-dismiss="modal"
                                                                                     aria-label="Close"
@@ -453,39 +433,6 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <!-- Modal de bloquear  -->
-                                                                <div class="modal fade" id="bloquearUsuarioModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="bloquearUsuarioModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="bloquearUsuarioModalLabel">
-                                                                                    Confirmar
-                                                                                    bloqueo</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                ¿Estás seguro de que deseas bloquear este
-                                                                                usuario?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-danger"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#bloqueoCorrectoModal">Bloquear</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
                                                             </td>
                                                         </tr>
 
@@ -497,9 +444,8 @@
                                 </div>
                             </div>
 
-
-
-                            <div class="tab-pane fade" id="tab-bloqueados">
+                            {{-- Anuncios --}}
+                            <div class="tab-pane fade" id="tab-anuncios">
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="border p-3 rounded">
@@ -508,32 +454,99 @@
                                                     <div><i
                                                             class="fadeIn animated bx bx-notepad me-1 font-22 text-info"></i>
                                                     </div>
-                                                    <h5 class="mb-0 text-dark" title="">Lista de usuarios
-                                                        bloqueados</h5>
+                                                    <h5 class="mb-0 text-dark" title="Agregar Anuncio">Lista de Anuncios
+                                                    </h5>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="me-2">
+                                                        <h5 class="m-0">Registrar</h5>
+                                                    </div>
+                                                    <div class="me-2">
+                                                        <button type="button" class="btn btn-info text-white"
+                                                            data-bs-toggle="modal" data-bs-target="#modalAgregarAnuncio"
+                                                            style="background-color: #04D9B2; border-color: #04D9D9;"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Agregar Anuncio">+</button>
+                                                    </div>
+
+                                                    {{-- Modal Registrar --}}
+                                                    <div class="modal fade" id="modalAgregarAnuncio" tabindex="-1"
+                                                        aria-labelledby="modalAgregarAnuncioLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="modalAgregarAnuncioLabel">
+                                                                        Registrar</h5>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form>
+
+                                                                        <div class="mb-3">
+                                                                            <label for="titulo"
+                                                                                class="col-sm-4 col-form-label">Titulo:</label>
+
+                                                                            <input type="titulo" class="form-control"
+                                                                                id="titulo" placeholder="Titulo">
+
+                                                                        </div>
+
+                                                                        <div class="mb-3">
+                                                                            <label for="otroInput"
+                                                                                class="col-sm-4 col-form-label">Imagen de
+                                                                                portada:</label>
+                                                                            <input type="file"
+                                                                                class="form-control input-imagen"
+                                                                                id="portada" name="portada">
+                                                                            <div class="text-center p-3">
+                                                                                <img src="#" id="imagen-preview-portada"
+                                                                                    alt="Vista previa de la imagen"
+                                                                                    class="rounded-3 imagen-preview"
+                                                                                    style="width:300px; height: 200px; object-fit: cover; display: none;">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="mb-3">
+                                                                            <label for="contenido"
+                                                                                class="col-sm-4 col-form-label">Contenido:</label>
+
+                                                                            <textarea id="mytextarea" name="textareaRegistrarAnuncio" rows="3" placeholder="Contenido"></textarea>
+
+                                                                        </div>
+
+
+                                                                    </form>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Cerrar</button>
+                                                                    <button type="button" class="btn btn-info text-white"
+                                                                        style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                        <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                                                                        Guardar
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
 
                                             <hr />
                                             <div class="table-responsive">
-                                                <table id="tablaUsuariosBloqueados" class="table table-bordered">
-                                                    <thead class="theadUsuariosAdministradores">
+                                                <table id="tablaAnuncios" class="table table-bordered">
+                                                    <thead class="theadAnuncios">
                                                         <tr class="text-center">
 
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">ID</th>
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Usuario
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Titulo
                                                             </th>
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">
-                                                                Descripción
-                                                            </th>
-                                                            <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Tipo
-                                                                Usuario
-                                                            </th>
-                                                            <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Vendedor
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Fecha
                                                             </th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Acciones
@@ -544,10 +557,10 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>1</td>
-                                                            <td>Juanito Perez</td>
-                                                            <td>Bloqueado por falta de datos</td>
-                                                            <td>Un usuario</td>
-                                                            <td>Nanami Kento</td>
+                                                            <td>Iphone gratis para el que se coma un moco</td>
+                                                            <td>11/11/2023</td>
+
+
                                                             <td>
 
                                                                 <div class="text-center">
@@ -555,9 +568,9 @@
                                                                     {{-- Botón de visualizar --}}
                                                                     <button class="btn btn-primary btn-sm"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#showUserBloqueadoModal"
+                                                                        data-bs-target="#showUserAnuncioModal"
                                                                         data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Ver Bloqueados">
+                                                                        title="Ver Anuncios">
                                                                         <div class="text-center">
                                                                             <i class="lni lni-eye"
                                                                                 style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
@@ -567,9 +580,9 @@
                                                                     <!-- Botón de editar con modal -->
                                                                     <button class="btn btn-warning btn-sm"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#editarUsuarioBloqueadoModal"
+                                                                        data-bs-target="#editarAnuncios"
                                                                         data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Editar Usuario Bloqueados">
+                                                                        title="Editar Anuncio">
                                                                         <div class="text-center">
                                                                             <i class="lni lni-pencil-alt"
                                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
@@ -579,72 +592,23 @@
                                                                     {{-- Botón de eliminar --}}
                                                                     <button class="btn btn-danger btn-sm"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#eliminarUsuarioBloqueadoModal">
+                                                                        data-bs-target="#eliminarAnuncio">
                                                                         <i class="lni lni-trash"
                                                                             style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                                     </button>
-
-                                                                    <!-- Botón de bloquear -->
-                                                                    <button class="btn btn-sm btn-block"
-                                                                        style="background-color: #05f29d"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#DesbloquearUsuarioModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Desbloquear Usuario Administrativo">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-unlock"
-                                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
                                                                 </div>
 
-
-                                                                <!-- Modal de bloquear  -->
-                                                                <div class="modal fade" id="DesbloquearUsuarioModal"
+                                                                <!-- Modal de visualizacion -->
+                                                                <div class="modal fade" id="showUserAnuncioModal"
                                                                     tabindex="-1"
-                                                                    aria-labelledby="DesbloquearUsuarioModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="DesbloquearUsuarioModalLabel">
-                                                                                    Confirmar
-                                                                                    desbloqueo</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                ¿Estás seguro de que deseas desbloquear este
-                                                                                usuario?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-danger"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#bloqueoCorrectoModal">Bloquear</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                <!-- Modal de visaualizacion -->
-                                                                <div class="modal fade" id="showUserBloqueadoModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="showUserBloqueadoModalLabel"
+                                                                    aria-labelledby="showUserAnuncioModalLabel"
                                                                     aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
-                                                                                    id="showUserBloqueadoModalLabel">
-                                                                                    Visualizar usuarios bloqueados</h5>
+                                                                                    id="showUserAnuncioModal">
+                                                                                    Visualizar anuncios</h5>
                                                                                 <button type="button" class="btn-close"
                                                                                     data-bs-dismiss="modal"
                                                                                     aria-label="Close"
@@ -656,29 +620,33 @@
                                                                             <div class="modal-body">
                                                                                 <form>
                                                                                     <div class="row mb-3">
-                                                                                        <label for="id_usuario"
-                                                                                            class="col-sm-4 col-form-label">Usuario:
-                                                                                            <span>Acá</span></label>
-
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="descripcion"
-                                                                                            class="col-sm-4 col-form-label">Descripción:
-                                                                                            <span>Acá</span></label>
-
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="tipo_usuario"
-                                                                                            class="col-sm-4 col-form-label">Tipo
-                                                                                            de usuario:
+                                                                                        <label for="id_vendedor"
+                                                                                            class="col-sm-4 col-form-label">Titulo:
                                                                                             <span>Acá</span></label>
 
                                                                                     </div>
                                                                                     <div class="row mb-3">
                                                                                         <label for="id_vendedor"
-                                                                                            class="col-sm-4 col-form-label">Vendedor:
+                                                                                            class="col-sm-4 col-form-label">Imagen
+                                                                                            de portada:
                                                                                             <span>Acá</span></label>
+                                                                                    </div>
 
+                                                                                    <div class="row mb-3">
+                                                                                        <div class="col-sm">
+                                                                                            <label for="fecha"
+                                                                                                class="form-label">Fecha:</label>
+                                                                                            <input type="date"
+                                                                                                class="form-control"
+                                                                                                id="fecha"
+                                                                                                placeholder="Fecha">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="row mb-3">
+                                                                                        <label for="id_vendedor"
+                                                                                            class="col-sm-4 col-form-label">Contenido:
+                                                                                            <span>Acá</span></label>
                                                                                     </div>
                                                                                 </form>
                                                                             </div>
@@ -694,18 +662,16 @@
                                                                     </div>
                                                                 </div>
 
-
                                                                 <!-- Modal de edición -->
-                                                                <div class="modal fade" id="editarUsuarioBloqueadoModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="editarUsuarioBloqueadoModalLabel"
+                                                                <div class="modal fade" id="editarAnuncios"
+                                                                    tabindex="-1" aria-labelledby="editarAnuncioLabel"
                                                                     aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
-                                                                                    id="editarUsuarioBloqueadoModalLabel">
-                                                                                    Editar usuario bloqueado</h5>
+                                                                                    id="editarAnuncioLabel">
+                                                                                    Editar Anuncio</h5>
                                                                                 <button type="button" class="btn-close"
                                                                                     data-bs-dismiss="modal"
                                                                                     aria-label="Close"
@@ -718,45 +684,48 @@
                                                                                 <form>
                                                                                     <div class="row mb-3">
                                                                                         <div class="col-sm">
-                                                                                            <label for="id_usuario"
-                                                                                                class="form-label">Usuario:</label>
+                                                                                            <label for="titulo"
+                                                                                                class="form-label">Título:</label>
                                                                                             <input type="text"
                                                                                                 class="form-control"
-                                                                                                id="id_usuario"
-                                                                                                placeholder="Nombre de Usuario">
+                                                                                                id="titulo"
+                                                                                                placeholder="Titulo">
                                                                                         </div>
                                                                                     </div>
+
                                                                                     <div class="row mb-3">
                                                                                         <div class="col-sm">
-                                                                                            <label for="descripcion"
-                                                                                                class="form-label">Descripción:</label>
-                                                                                            <input type="text"
+                                                                                            <label for="fecha"
+                                                                                                class="form-label">Fecha:</label>
+                                                                                            <input type="date"
                                                                                                 class="form-control"
-                                                                                                id="descripcion"
-                                                                                                placeholder="Descripción">
+                                                                                                id="fecha"
+                                                                                                placeholder="Fecha">
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <div class="col-sm">
-                                                                                            <label for="tipo_usuario"
-                                                                                                class="form-label">Tipo de
-                                                                                                usuario:</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="tipo_usuario"
-                                                                                                placeholder="Tipo de usuario">
+
+                                                                                    <div class="mb-3">
+                                                                                        <label for="portada"
+                                                                                            class="col-sm-4 col-form-label">Imagen
+                                                                                            de portada:</label>
+                                                                                        <input type="file"
+                                                                                            class="form-control input-imagen"
+                                                                                            id="otroInput" name="otroInput">
+                                                                                        <div class="text-center p-3">
+                                                                                            <img src="#" id="imagen-preview-otroInput"
+                                                                                                alt="Vista previa de la imagen"
+                                                                                                class="rounded-3 imagen-preview"
+                                                                                                style="width:300px; height: 200px; object-fit: cover; display: none;">
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <div class="col-sm">
-                                                                                            <label for="id_vendedor"
-                                                                                                class="form-label">Vendedor:</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="id_vendedor"
-                                                                                                placeholder="Nombre del Vendedor">
-                                                                                        </div>
+
+
+                                                                                    <div class="mb-3">
+                                                                                        <label for="contenido"
+                                                                                            class="col-sm-4 col-form-label">Contenido:</label>
+                                                                                        <textarea id="mytextarea" name="textareaEditarAnuncio" rows="3" placeholder="Contenido"></textarea>
                                                                                     </div>
+
                                                                                 </form>
                                                                             </div>
 
@@ -779,15 +748,14 @@
                                                                 </div>
 
                                                                 {{-- Modal de eliminar --}}
-                                                                <div class="modal fade" id="eliminarUsuarioBloqueadoModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="eliminarUsuarioBloqueadoModalLabel"
+                                                                <div class="modal fade" id="eliminarAnuncio"
+                                                                    tabindex="-1" aria-labelledby="eliminarAnuncioLabel"
                                                                     aria-hidden="true">
                                                                     <div class="modal-dialog">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
-                                                                                    id="eliminarUsuarioBloqueadoModalLabel">
+                                                                                    id="eliminarAnuncioLabel">
                                                                                     Confirmar eliminación</h5>
                                                                                 <button type="button" class="btn-close"
                                                                                     data-bs-dismiss="modal"
@@ -795,7 +763,296 @@
                                                                             </div>
                                                                             <div class="modal-body">
                                                                                 ¿Estás seguro de que deseas eliminar este
-                                                                                usuario bloqueado?
+                                                                                anuncio?
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                                                <button type="button"
+                                                                                    class="btn btn-danger"
+                                                                                    data-bs-dismiss="modal"
+                                                                                    data-bs-toggle="modal"
+                                                                                    data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Alertas --}}
+                            <div class="tab-pane fade" id="tab-alertas">
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="col">
+                                        <div class="border p-3 rounded">
+                                            <div class="card-title d-flex align-items-center justify-content-between">
+                                                <div class="d-flex align-items-center">
+                                                    <div><i
+                                                            class="fadeIn animated bx bx-notepad me-1 font-22 text-info"></i>
+                                                    </div>
+                                                    <h5 class="mb-0 text-dark" title="Agregar Alerta">Lista de alertas
+                                                    </h5>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="me-2">
+                                                        <h5 class="m-0">Registrar</h5>
+                                                    </div>
+                                                    <div class="me-2">
+                                                        <button type="button" class="btn btn-info text-white"
+                                                            data-bs-toggle="modal" data-bs-target="#modalAgregarAlerta"
+                                                            style="background-color: #04D9B2; border-color: #04D9D9;"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Agregar Alerta">+</button>
+                                                    </div>
+
+                                                    {{-- Modal Registrar --}}
+                                                    <div class="modal fade" id="modalAgregarAlerta" tabindex="-1"
+                                                        aria-labelledby="modalAgregarAlertaLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="modalAgregarAlertaLabel">
+                                                                        Registrar</h5>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form>
+
+                                                                        <div class="mb-3">
+                                                                            <label for="titulo"
+                                                                                class="col-sm-4 col-form-label">Titulo:</label>
+
+                                                                            <input type="titulo" class="form-control"
+                                                                                id="titulo" placeholder="Titulo">
+
+                                                                        </div>
+
+                                                                        <div class="mb-3">
+                                                                            <label for="contenido"
+                                                                                class="col-sm-4 col-form-label">Contenido:</label>
+
+                                                                            <input type="titulo" class="form-control"
+                                                                                id="contenido" placeholder="Contenido">
+
+                                                                        </div>
+
+
+                                                                    </form>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Cerrar</button>
+                                                                    <button type="button" class="btn btn-info text-white"
+                                                                        style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                        <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                                                                        Guardar
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <hr />
+
+                                            <div class="table-responsive">
+                                                <table id="tablaAlertas" class="table table-bordered">
+                                                    <thead class="theadAlertas">
+                                                        <tr class="text-center">
+
+                                                            <th class="bg_datatable"
+                                                                style="background-color: #05C7F2; color: #F2F2F2">ID</th>
+                                                            <th class="bg_datatable"
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Titulo
+                                                            </th>
+                                                            <th class="bg_datatable"
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Fecha
+                                                            </th>
+                                                            <th class="bg_datatable"
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Acciones
+                                                            </th>
+                                                        </tr>
+
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>Iphone gratis para el que se coma un moco</td>
+                                                            <td>11/11/2023</td>
+
+                                                            <td>
+                                                                <div class="text-center">
+
+                                                                    {{-- Botón de visualizar --}}
+                                                                    <button class="btn btn-primary btn-sm"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#showUserAlertaModal"
+                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                        title="Ver alertas">
+                                                                        <div class="text-center">
+                                                                            <i class="lni lni-eye"
+                                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
+                                                                        </div>
+                                                                    </button>
+
+                                                                    <!-- Botón de editar con modal -->
+                                                                    <button class="btn btn-warning btn-sm"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#editarAlerta"
+                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                        title="Editar Alerta">
+                                                                        <div class="text-center">
+                                                                            <i class="lni lni-pencil-alt"
+                                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                        </div>
+                                                                    </button>
+
+                                                                    {{-- Botón de eliminar --}}
+                                                                    <button class="btn btn-danger btn-sm"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#eliminarAlerta">
+                                                                        <i class="lni lni-trash"
+                                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                    </button>
+                                                                </div>
+
+                                                                <!-- Modal de visualizacion -->
+                                                                <div class="modal fade" id="showUserAlertaModal"
+                                                                    tabindex="-1"
+                                                                    aria-labelledby="showUserAlertaModalLabel"
+                                                                    aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-scrollable">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="showUserAlertaModal">
+                                                                                    Visualizar alertas</h5>
+                                                                                <button type="button" class="btn-close"
+                                                                                    data-bs-dismiss="modal"
+                                                                                    aria-label="Close"
+                                                                                    data-bs-toggle="tooltip"
+                                                                                    data-bs-placement="top"
+                                                                                    title="Cerrar"></button>
+                                                                            </div>
+
+                                                                            <div class="modal-body">
+                                                                                <form>
+                                                                                    <div class="mb-3">
+                                                                                        <label for="titulo"
+                                                                                            class="col-sm-4 col-form-label">Titulo:
+                                                                                            <span>Acá</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3">
+                                                                                        <label for="contenido"
+                                                                                            class="col-sm-4 col-form-label">Contenido:
+                                                                                            <span>Acá</span></label>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-bs-dismiss="modal">Regresar</button>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- Modal de edición -->
+                                                                <div class="modal fade" id="editarAlerta" tabindex="-1"
+                                                                    aria-labelledby="editarAlertaLabel"
+                                                                    aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-scrollable">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="editarAlertaLabel">
+                                                                                    Editar Alerta</h5>
+                                                                                <button type="button" class="btn-close"
+                                                                                    data-bs-dismiss="modal"
+                                                                                    aria-label="Close"
+                                                                                    data-bs-toggle="tooltip"
+                                                                                    data-bs-placement="top"
+                                                                                    title="Cerrar"></button>
+                                                                            </div>
+
+                                                                            <div class="modal-body">
+                                                                                <form>
+                                                                                    <div class="mb-3">
+                                                                                        <label for="titulo"
+                                                                                            class="col-sm-4 col-form-label">Titulo:</label>
+
+                                                                                        <input type="titulo"
+                                                                                            class="form-control"
+                                                                                            id="titulo"
+                                                                                            placeholder="Titulo">
+
+                                                                                    </div>
+
+                                                                                    <div class="mb-3">
+                                                                                        <label for="contenido"
+                                                                                            class="col-sm-4 col-form-label">Contenido:</label>
+
+                                                                                        <input type="titulo"
+                                                                                            class="form-control"
+                                                                                            id="contenido"
+                                                                                            placeholder="Contenido">
+
+                                                                                    </div>
+
+                                                                                </form>
+                                                                            </div>
+
+
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-bs-dismiss="modal">Cerrar</button>
+                                                                                <button type="button"
+                                                                                    class="btn btn-info text-white"
+                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                    <i class="bx bx-save"
+                                                                                        style="color: #F2F2F2;"></i>
+                                                                                    Guardar
+                                                                                </button>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                {{-- Modal de eliminar --}}
+                                                                <div class="modal fade" id="eliminarAlerta"
+                                                                    tabindex="-1" aria-labelledby="eliminarAlertaLabel"
+                                                                    aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="eliminarAlertaLabel">
+                                                                                    Confirmar eliminación</h5>
+                                                                                <button type="button" class="btn-close"
+                                                                                    data-bs-dismiss="modal"
+                                                                                    aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                ¿Estás seguro de que deseas eliminar esta
+                                                                                alerta?
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button"
@@ -827,4 +1084,5 @@
 
         </div>
     </section>
+
 @endsection
