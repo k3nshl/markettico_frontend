@@ -314,7 +314,7 @@
 
                             <div class="tab-pane fade" id="tab-registro">
                                 <div class="row justify-content-center align-items-center">
-                                    <div class="col-md-7 p-3">
+                                    <div class="col-md-9 p-3">
                                         <div class="border p-4 rounded">
 
                                             <div class="d-flex justify-content-between align-items-end mb-3">
