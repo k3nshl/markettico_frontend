@@ -183,7 +183,7 @@
 
                                                                                     <form method="post">
                                                                                         <textarea class="form-control" name="mytextarea" 
-                                                                                        rows="5">Hello, World!</textarea>
+                                                                                        rows="5" placeholder="Motivo de rechazo"></textarea>
                                                                                     </form>
                                                                                 </div>
 
