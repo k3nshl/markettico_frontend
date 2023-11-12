@@ -9,7 +9,7 @@
     <section class="content">
 
         <div class="row">
-            <div class="col-xl-7 mx-auto">
+            <div class="col-xl-9 mx-auto">
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
                 
                     <div class="card-body">
