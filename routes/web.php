@@ -75,5 +75,3 @@ Route::get('/perfil/{id}', [ControllerPerfilUsuario::class, 'show'])->name('perf
 
 // Rutas para las notificaciones
 Route::get('/notificaciones', [ControllerNotificaciones::class, 'index'])->name('notificaciones');
-// Ruta para create de notificaciones
-Route::get('/notificaciones-correo/create', [ControllerNotificaciones::class, 'createCorreo'])->name('correo.create');

@@ -42,7 +42,7 @@
         <div class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
                 <div>
-                    <img src="../assets/images/logo-markettico-icono.png" class="logo-icon" alt="logo icon">
+                    <img src="{{ asset('../assets/images/logo-markettico-icono.png') }}" class="logo-icon" alt="logo icon">
                 </div>
                 <div>
                     <h4 class="logo-text">MarketTico</h4>
@@ -87,6 +87,9 @@
                         <li> <a href="{{ route('estadisticas.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Estadisticas</a>
 
+                        </li>
+                        <li> <a href="{{ route('notificaciones') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                Notificaciones</a>
                         </li>
                         <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Plantillas
                                 para Correos</a>
@@ -247,22 +250,19 @@
                     <div class="user-box dropdown">
                         <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret"
                             href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
+                            <img src="{{ asset('../assets/images/avatars/avatar-2.png') }}" class="user-img" alt="user avatar">
                             <div class="user-info ps-3">
                                 <p class="user-name mb-0">Delia Smith</p>
                                 <p class="designattion mb-0">Project Manager</p>
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                     
+
                             <li>
                                 <a class="dropdown-item" href="{{ route('perfil.show', ['id' => 1]) }}">
                                     <i class="bx bx-user"></i><span>Perfil</span>
                                 </a>
                             </li>
-
-                          
-
 
                             <li><a class="dropdown-item" href="javascript:;"><i
                                         class="bx bx-cog"></i><span>Configuracion</span></a>
@@ -541,7 +541,7 @@
 
     <!-- JavaScript (con jQuery) -->
     <!-- Scripts -->
-    
+
     <script>
         $(document).ready(function() {
             $('#togglePasswordVisibility').on('click', function(e) {
@@ -561,30 +561,30 @@
     </script>
     {{-- FIN DE PASS --}}
 
-<script>
-    $(document).ready(function(){
-        $("#portada").change(function(){
-            readURL(this, "#imagen-preview-portada");
+    <script>
+        $(document).ready(function() {
+            $("#portada").change(function() {
+                readURL(this, "#imagen-preview-portada");
+            });
+
+            $("#otroInput").change(function() {
+                readURL(this, "#imagen-preview-otroInput");
+            });
         });
 
-        $("#otroInput").change(function(){
-            readURL(this, "#imagen-preview-otroInput");
-        });
-    });
+        function readURL(input, previewId) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
-    function readURL(input, previewId) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+                reader.onload = function(e) {
+                    $(previewId).attr('src', e.target.result);
+                    $(previewId).show();
+                };
 
-            reader.onload = function (e) {
-                $(previewId).attr('src', e.target.result);
-                $(previewId).show(); 
-            };
-
-            reader.readAsDataURL(input.files[0]);
+                reader.readAsDataURL(input.files[0]);
+            }
         }
-    }
-</script>
+    </script>
 
 </body>
 
