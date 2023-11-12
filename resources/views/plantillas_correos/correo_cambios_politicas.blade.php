@@ -47,11 +47,14 @@
                                             de nuestros usuarios. Por favor, tómese un momento para revisar los cambios.
                                         </p>
 
-                                        <!-- Agrega aquí el mensaje representativo sobre la actualización de políticas -->
+                                        <p class="text-muted">
+                                            
+                                            Atentamente: Equipo administrivo, MarketTico.
+                                        </p>
 
                                     </div>
 
-                                    <div class="d-grid gap-2 my-5">
+                                    <div class="d-grid gap-2 my-2">
                                         <a type="button" class="btn btn-primary" href="#">Ver
                                             Políticas</a>
                                     </div>
