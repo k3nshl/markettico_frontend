@@ -50,19 +50,19 @@
                         <div class="col-sm-3">
                             <h6 class="mb-0">Contraseña:</h6>
                         </div>
-                        <div class="col-sm-6 text-secondary">
+                        <div class="col-sm-6 col-8 text-secondary">
                             <input type="password" value="123" class="form-control" id="passwordInput" readonly>
                         </div>
-                        <div class="col-sm-3 text-secondary">
-                            <button class="btn btn-sm"
-                            data-bs-toggle="modal"
-                            data-bs-target="#PassModal"
-                            data-bs-toggle="tooltip" data-bs-placement="top"
-                            style="background-color: #04D9B2; color: #F2F2F2" id="">
-                            Cambiar Contraseña</button>
-                        </button>
+                        <div class="col-sm-3 col-4 text-end">
+                            <div class="d-flex flex-column">
+                                <button class="btn btn-sm mb-2 mb-sm-0" data-bs-toggle="modal" data-bs-target="#PassModal"
+                                    style="background-color: #04D9B2; color: #F2F2F2">
+                                    Cambiar Contraseña
+                                </button>
+                            </div>
                         </div>
                     </div>
+                    
 
 
                     <!-- Modal de cambiar pass -->
@@ -110,16 +110,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-
-
 
                     <div class="row mb-3 password-container">
 
