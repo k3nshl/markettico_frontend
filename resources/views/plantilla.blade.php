@@ -538,30 +538,7 @@
         });
     </script>
 
-    {{-- INICIA PARA PASS --}}
-    <!-- JavaScript (con jQuery) -->
 
-    <!-- JavaScript (con jQuery) -->
-    <!-- Scripts -->
-
-    <script>
-        $(document).ready(function() {
-            $('#togglePasswordVisibility').on('click', function(e) {
-                e.preventDefault();
-                var passwordInput = $('#passwordInput');
-
-                passwordInput.prop('readonly', !passwordInput.prop('readonly'));
-
-                var currentType = passwordInput.attr('type');
-                var newType = (currentType === 'password') ? 'text' : 'password';
-                passwordInput.attr('type', newType);
-
-                var linkText = (newType === 'password') ? 'Mostrar' : 'Ocultar';
-                $(this).text(linkText);
-            });
-        });
-    </script>
-    {{-- FIN DE PASS --}}
 
     <script>
         $(document).ready(function() {
