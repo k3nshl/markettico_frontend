@@ -114,7 +114,7 @@
                                                                     <!-- Botón de editar con modal -->
                                                                     <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                                                         data-bs-target="#editarCategoriaModal" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" title="Editar Categoria">
+                                                                        data-bs-placement="top" title="Editar SubCategoria">
                                                                         <div class="text-center">
                                                                             <i class="lni lni-pencil-alt"
                                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
