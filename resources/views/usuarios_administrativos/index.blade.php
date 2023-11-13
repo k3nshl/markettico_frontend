@@ -13,7 +13,7 @@
                             <li class="nav-item">
                                 <button class="nav-link active custom-bg-color" data-bs-toggle="tab"
                                     data-bs-target="#tab-listaUsuarios">
-                                    <i class="bx bx-notepad me-2"></i> Lista de usuarios
+                                    <i class="bx bx-notepad me-2"></i> Usuarios
 
                                 </button>
                             </li>
@@ -21,7 +21,7 @@
                             <li class="nav-item">
                                 <button class="nav-link custom-bg-color" data-bs-toggle="tab"
                                     data-bs-target="#tab-bloqueados">
-                                    <i class="bx bx-notepad me-2"></i> Lista de usuarios bloqueados
+                                    <i class="bx bx-notepad me-2"></i> Usuarios bloqueados
                                 </button>
                             </li>
                         </ul>
