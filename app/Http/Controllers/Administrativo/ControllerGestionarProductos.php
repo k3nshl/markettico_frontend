@@ -12,7 +12,7 @@ class ControllerGestionarProductos extends Controller
      */
     public function index()
     {
-        return view('gestionar_productos.index');
+        return view('gestionarProductos.index');
     }
 
     /**

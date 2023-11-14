@@ -12,7 +12,7 @@ class ControllerEstados extends Controller
      */
     public function index()
     {
-        return view('estados_roles.index');
+        return view('estadosRoles.index');
     }
 
     /**
