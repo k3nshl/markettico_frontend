@@ -98,7 +98,7 @@
                                 <li> <a href="{{ route('correoAutenticacion') }}"><i
                                             class="bx bx-right-arrow-alt"></i>Correo Autenticacion</a>
                                 </li>
-                                <li> <a href="{{ route('CorreoCambiosPoliticas') }}"><i
+                                <li> <a href="{{ route('correoCambiosPoliticas') }}"><i
                                             class="bx bx-right-arrow-alt"></i>Correo cambios en politicas</a>
                                 </li>
                                 <li> <a href="{{ route('correoExpiracionSuspension') }}"><i

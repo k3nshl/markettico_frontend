@@ -65,10 +65,10 @@ Route:: get('/verificacion', [ControllerLogin::class,'verificar'])->name('verif'
 
 //Rutas para acceder a las plantillas de los correos
 Route:: get('/plantillaCorreoAutenticacion', [ControllerPlantillasCorreos::class,'correoAutenticacion'])->name('correoAutenticacion');
-Route:: get('/plantillaCorreoCambios_politicas', [ControllerPlantillasCorreos::class,'CorreoCambios_politicas'])->name('CorreoCambiosPoliticas');
-Route:: get('/plantillaCorreoExpiracionSuspension', [ControllerPlantillasCorreos::class,'CorreoExpiracionSuspension'])->name('CorreoExpiracionSuspension');
-Route:: get('/plantillaCorreoRegistro', [ControllerPlantillasCorreos::class,'CorreoRegistro'])->name('CorreoRegistro');
-Route:: get('/plantillaCorreoSolicitud', [ControllerPlantillasCorreos::class,'CorreoSolicitud'])->name('CorreoSolicitud');
+Route:: get('/plantillaCorreoCambios_politicas', [ControllerPlantillasCorreos::class,'CorreoCambios_politicas'])->name('correoCambiosPoliticas');
+Route:: get('/plantillaCorreoExpiracionSuspension', [ControllerPlantillasCorreos::class,'CorreoExpiracionSuspension'])->name('correoExpiracionSuspension');
+Route:: get('/plantillaCorreoRegistro', [ControllerPlantillasCorreos::class,'CorreoRegistro'])->name('correoRegistro');
+Route:: get('/plantillaCorreoSolicitud', [ControllerPlantillasCorreos::class,'CorreoSolicitud'])->name('correoSolicitud');
 
 
 Route::get('/perfil/{id}', [ControllerPerfilUsuario::class, 'show'])->name('perfil.show');
