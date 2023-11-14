@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::view('/', 'usuarios_administrativos.index');
+Route::view('/', 'usuariosAdministrativos.index');
 
 
 //Ruta de inicio de Sesión para más adelante
@@ -46,7 +46,7 @@ Route::view('/', 'usuarios_administrativos.index');
 //Route::view('/', 'plantillas_correos.correo_registro');
 
 Route::resource('dashboard', ControllerDashboard::class);
-Route::resource('usuarios_administrativos', ControllerUsuariosAdministrativos::class);
+Route::resource('usuariosAdministrativos', ControllerUsuariosAdministrativos::class);
 Route::resource('estados_roles', ControllerRoles::class);
 Route::resource('estados_roles', ControllerEstados::class);
 Route::resource('moderador', ControllerGestionarPaginas::class);

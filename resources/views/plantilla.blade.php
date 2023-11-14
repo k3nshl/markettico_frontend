@@ -61,7 +61,7 @@
                         <div class="menu-title">Superadmin</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('usuarios_administrativos.index') }}"><i
+                        <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
                         </li>
                         <li> <a href="{{ route('estados_roles.index') }}"><i
@@ -79,7 +79,7 @@
                         <div class="menu-title">Administrador</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('usuarios_administrativos.index') }}"><i
+                        <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
                         </li>
                         <li> <a href="{{ route('solicitud.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
