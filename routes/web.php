@@ -64,11 +64,11 @@ Route::resource('contenido', ControllerModerarContenido::class);
 Route:: get('/verificacion', [ControllerLogin::class,'verificar'])->name('verif');
 
 //Rutas para acceder a las plantillas de los correos
-Route:: get('/plantilla_correo_autenticacion', [ControllerPlantillasCorreos::class,'correo_autenticacion'])->name('correo_autenticacion');
-Route:: get('/plantilla_correo_cambios_politicas', [ControllerPlantillasCorreos::class,'correo_cambios_politicas'])->name('correo_cambios_politicas');
-Route:: get('/plantilla_correo_expiracion_suspension', [ControllerPlantillasCorreos::class,'correo_expiracion_suspension'])->name('correo_expiracion_suspension');
-Route:: get('/plantilla_correo_registro', [ControllerPlantillasCorreos::class,'correo_registro'])->name('correo_registro');
-Route:: get('/plantilla_correo_solicitud', [ControllerPlantillasCorreos::class,'correo_solicitud'])->name('correo_solicitud');
+Route:: get('/plantillaCorreoAutenticacion', [ControllerPlantillasCorreos::class,'correoAutenticacion'])->name('correoAutenticacion');
+Route:: get('/plantillaCorreoCambios_politicas', [ControllerPlantillasCorreos::class,'CorreoCambios_politicas'])->name('CorreoCambios_politicas');
+Route:: get('/plantillaCorreoExpiracionSuspension', [ControllerPlantillasCorreos::class,'CorreoExpiracionSuspension'])->name('CorreoExpiracionSuspension');
+Route:: get('/plantillaCorreoRegistro', [ControllerPlantillasCorreos::class,'CorreoRegistro'])->name('CorreoRegistro');
+Route:: get('/plantillaCorreoSolicitud', [ControllerPlantillasCorreos::class,'CorreoSolicitud'])->name('CorreoSolicitud');
 
 
 Route::get('/perfil/{id}', [ControllerPerfilUsuario::class, 'show'])->name('perfil.show');
