@@ -181,7 +181,9 @@
                                                             <td>1</td>
                                                             <td>EjemploUsuario</td>
                                                             <td>
-                                                                <p>Administrador</p>
+
+                                                                <p class="">Administrador</p>
+
                                                             </td>
                                                             <td>
                                                                 <p class="badge bg-success">Activo</p>
