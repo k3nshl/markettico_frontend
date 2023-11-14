@@ -95,19 +95,19 @@
                         <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Plantillas
                                 para Correos</a>
                             <ul>
-                                <li> <a href="{{ route('correo_autenticacion') }}"><i
+                                <li> <a href="{{ route('correoAutenticacion') }}"><i
                                             class="bx bx-right-arrow-alt"></i>Correo Autenticacion</a>
                                 </li>
-                                <li> <a href="{{ route('correo_cambios_politicas') }}"><i
+                                <li> <a href="{{ route('correoCambiosPoliticas') }}"><i
                                             class="bx bx-right-arrow-alt"></i>Correo cambios en politicas</a>
                                 </li>
-                                <li> <a href="{{ route('correo_expiracion_suspension') }}"><i
+                                <li> <a href="{{ route('correoExpiracionSuspension') }}"><i
                                             class="bx bx-right-arrow-alt"></i>Correo expiracion y suspencion</a>
                                 </li>
-                                <li> <a href="{{ route('correo_registro') }}"><i
+                                <li> <a href="{{ route('correoRegistro') }}"><i
                                             class="bx bx-right-arrow-alt"></i>Correo registro</a>
                                 </li>
-                                <li> <a href="{{ route('correo_solicitud') }}"><i
+                                <li> <a href="{{ route('correoSolicitud') }}"><i
                                             class="bx bx-right-arrow-alt"></i>Correo solicitud</a>
                                 </li>
                             </ul>
@@ -259,13 +259,11 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-
                             <li>
                                 <a class="dropdown-item" href="{{ route('perfil.show', ['id' => 1]) }}">
                                     <i class="bx bx-user"></i><span>Perfil</span>
                                 </a>
                             </li>
-
                             <li><a class="dropdown-item" href="javascript:;"><i
                                         class="bx bx-cog"></i><span>Configuracion</span></a>
                             </li>

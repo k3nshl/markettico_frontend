@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
-    <link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" />
+    <link rel="stylesheet" href="{{ asset('../assets/images/logo-markettico-icono.png') }}">
     <!-- loader-->
     <link href="assets/css/pace.min.css" rel="stylesheet" />
     <script src="assets/js/pace.min.js"></script>
@@ -37,38 +37,61 @@
                                                 <h4 class="logo-text">MarketTico</h4>
                                             </div>
                                         </div>
-                                        <h2 class="mt-5 font-weight-bold text-center">Atención</h2>
+                                        <h2 class="mt-5 font-weight-bold text-center">Bienvenid@</h2>
 
-                                        <h4 class="mt-5 font-weight-bold text-center">Expiración o Suspención</h4>
+                                        <h4 class="mt-5 font-weight-bold text-center">Registro de Usuario</h4>
 
                                         <p class="text-muted">
-                                        <h6 class="text-center"></h6>Tu cuenta ha sido suspendida o está pronta a suspender!
+                                        <h6 class="text-center">Sebastian Cerdas</h6>Tús credenciales como usuario administrador de la empresa, son las siguiente!
                                         </p>
 
                                         <div class="mb-3 mt-5 text-center">
                                             <div class="">
-                                                <h5 class="form-label">Vendedor:</h5>
+                                                <h5 class="form-label">Usuario:</h5>
                                                 <td style="padding:0px 35px 25px 35px">
     
                                                     <p style="font-size:23px;line-height:20px;color:#001435;margin:0;word-break:break-word"
                                                         dir="ltr">
-                                                        <b>Ariana Hernández</b>
+                                                        <b>cerdas16</b>
                                                     </p>
     
                                                 </td>
                                             </div>
     
                                             <br>
-                                        
+                                            <div class="">
+                                                <h5 class="form-label">Correo Empresarial:</h5>
+                                                <td style="padding:0px 35px 25px 35px">
+    
+                                                    <p style="font-size:23px;line-height:20px;color:#001435;margin:0;word-break:break-word"
+                                                        dir="ltr">
+                                                        <b>sebastian.cerdas@ucr.ac.cr</b>
+                                                    </p>
+    
+                                                </td>
+                                            </div>
                                             <br>
+                                            <div class="">
+                                                <h5 class="form-label">Contraseña Temporal:</h5>
+                                                <td style="padding:0px 35px 25px 35px">
+    
+                                                    <p style="font-size:23px;line-height:20px;color:#001435;margin:0;word-break:break-word"
+                                                        dir="ltr">
+                                                        <b>cSKDzk323</b>
+                                                    </p>
+    
+                                                </td>
+                                            </div>
 
 
                                     </div>
 
                                     
 
+                                        
+
                                     <div class="d-grid gap-2 my-5">
-                                        <a type="button" class="btn btn-primary" href="{{route("login.index")}}">Ir a Renovar Plan</a>
+                                        <a type="button" class="btn btn-primary" href="{{route("login.index")}}">Ir a Iniciar Sesión</a>
                                     </div>
                                 </div>
                             </div>

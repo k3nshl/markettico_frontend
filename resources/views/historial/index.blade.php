@@ -92,7 +92,7 @@
                                                         <tr>
                                                             <td>1</td>
                                                             <td>
-                                                                <p class="badge bg-primary">Administrador</p>
+                                                                <p class="">Administrador</p>
                                                             </td>
                                                             <td>Pedrito</td>
                                                             <td>lunes</td>

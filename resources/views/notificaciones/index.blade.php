@@ -94,6 +94,22 @@
                                                                             </div>
                                                                         </div>
 
+                                                                        <div class="mb-3 row">
+                                                                            <div class="col">
+                                                                                <label>Fecha incio:</label>
+                                                                                <input type="date" class="form-control"
+                                                                                    name="fecha_inicio">
+                                                                            </div>
+
+                                                                            <div class="col">
+                                                                                <label>Fecha final:</label>
+                                                                                <input type="date" class="form-control"
+                                                                                    name="fecha_final">
+                                                                            </div>
+
+                                                                        </div>
+
+
                                                                         <div class="mb-3">
                                                                             <label for="contenido"
                                                                                 class="col-sm-4 col-form-label">Contenido:</label>
@@ -391,7 +407,7 @@
                                                     <div><i
                                                             class="fadeIn animated bx bx-notepad me-1 font-22 text-info"></i>
                                                     </div>
-                                                    <h5 class="mb-0 text-dark" title="Agregar Alerta">Lista de alertas
+                                                    <h5 class="mb-0 text-dark" title="Agregar Alerta">Lista de Alertas
                                                     </h5>
                                                 </div>
                                                 <div class="d-flex align-items-center">
