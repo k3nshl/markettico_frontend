@@ -9,24 +9,24 @@ class ControllerPlantillasCorreos extends Controller
 {
 
     //Metodos para las rutas de las plantillas
-    public function correo_autenticacion(){
-        return view("plantillas_correos.correo_autenticacion");
+    public function correoAutenticacion(){
+        return view("plantillasCorreos.correoAutenticacion");
     }
 
-    public function correo_cambios_politicas(){
-        return view("plantillas_correos.correo_cambios_politicas");
+    public function correoCambiosPoliticas(){
+        return view("plantillasCorreos.correoCambiosPoliticas");
     }
 
-    public function correo_expiracion_suspension(){
-        return view("plantillas_correos.correo_expiracion_suspension");
+    public function correoExpiracionSuspension(){
+        return view("plantillasCorreos.correoExpiracionSuspension");
     }
 
-    public function correo_registro(){
-        return view("plantillas_correos.correo_registro");
+    public function correoRegistro(){
+        return view("plantillasCorreos.correoRegistro");
     }
 
-    public function correo_solicitud(){
-        return view("plantillas_correos.correo_solicitud");
+    public function correoSolicitud(){
+        return view("plantillasCorreos.correoSolicitud");
     }
 
     /**
