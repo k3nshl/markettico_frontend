@@ -65,7 +65,7 @@ Route:: get('/verificacion', [ControllerLogin::class,'verificar'])->name('verif'
 
 //Rutas para acceder a las plantillas de los correos
 Route:: get('/plantillaCorreoAutenticacion', [ControllerPlantillasCorreos::class,'correoAutenticacion'])->name('correoAutenticacion');
-Route:: get('/plantillaCorreoCambios_politicas', [ControllerPlantillasCorreos::class,'CorreoCambios_politicas'])->name('CorreoCambios_politicas');
+Route:: get('/plantillaCorreoCambios_politicas', [ControllerPlantillasCorreos::class,'CorreoCambios_politicas'])->name('CorreoCambiosPoliticas');
 Route:: get('/plantillaCorreoExpiracionSuspension', [ControllerPlantillasCorreos::class,'CorreoExpiracionSuspension'])->name('CorreoExpiracionSuspension');
 Route:: get('/plantillaCorreoRegistro', [ControllerPlantillasCorreos::class,'CorreoRegistro'])->name('CorreoRegistro');
 Route:: get('/plantillaCorreoSolicitud', [ControllerPlantillasCorreos::class,'CorreoSolicitud'])->name('CorreoSolicitud');
