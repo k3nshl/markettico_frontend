@@ -124,7 +124,7 @@
                     </a>
                     <ul>
                         <li> <a href="{{ route('moderador.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
-                                Paginas</a>
+                                Páginas</a>
                         </li>
                         <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Planes</a>
