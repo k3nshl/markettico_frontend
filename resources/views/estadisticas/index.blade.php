@@ -227,6 +227,19 @@
 							 </div>
 						  </div>
 						</div>
+
+						
+    <div class="col-12 col-lg-6 " hidden>
+							   <div class="card radius-10 overflow-hidden">
+								<div class="card-body">
+								   <p>Page Views</p>
+								   <h4 class="mb-0">8,293 <small class="font-13">5.2% <i class="zmdi zmdi-long-arrow-up"></i></small></h4>
+								</div>
+								<div class="chart-container-2"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+								  <canvas id="chart3" width="245" height="210" style="display: block; width: 245px; height: 210px;" class="chartjs-render-monitor"></canvas>
+								</div>
+							  </div>
+							 </div>
 				  
 
                         <!--end switcher-->
@@ -255,17 +268,6 @@
 
 
 
-    <div class="col-12 col-lg-6 " hidden>
-							   <div class="card radius-10 overflow-hidden">
-								<div class="card-body">
-								   <p>Page Views</p>
-								   <h4 class="mb-0">8,293 <small class="font-13">5.2% <i class="zmdi zmdi-long-arrow-up"></i></small></h4>
-								</div>
-								<div class="chart-container-2"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-								  <canvas id="chart3" width="245" height="210" style="display: block; width: 245px; height: 210px;" class="chartjs-render-monitor"></canvas>
-								</div>
-							  </div>
-							 </div>
 					  
             </section>  
 @endsection
