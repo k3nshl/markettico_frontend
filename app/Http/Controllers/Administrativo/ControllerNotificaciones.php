@@ -5,36 +5,14 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerPlantillasCorreos extends Controller
+class ControllerNotificaciones extends Controller
 {
-
-    //Metodos para las rutas de las plantillas
-    public function correoAutenticacion(){
-        return view("plantillasCorreos.correoAutenticacion");
-    }
-
-    public function correoCambiosPoliticas(){
-        return view("plantillasCorreos.correoCambiosPoliticas");
-    }
-
-    public function correoExpiracionSuspension(){
-        return view("plantillasCorreos.correoExpiracionSuspension");
-    }
-
-    public function correoRegistro(){
-        return view("plantillasCorreos.correoRegistro");
-    }
-
-    public function correoSolicitud(){
-        return view("plantillasCorreos.correoSolicitud");
-    }
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('notificaciones.index');
     }
 
     /**
@@ -84,4 +62,5 @@ class ControllerPlantillasCorreos extends Controller
     {
         //
     }
+
 }

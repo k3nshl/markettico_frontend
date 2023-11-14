@@ -9,7 +9,7 @@
     <section class="content">
 
         <div class="row">
-            <div class="col-xl-7 mx-auto">
+            <div class="col-xl-9 mx-auto">
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
                 
                     <div class="card-body">
@@ -47,14 +47,16 @@
                                         <table id="tablaArticulo"A class="table table-bordered">
                                             <thead class="theadUsuariosAdministradores">
                                                 <tr>
-                                                    <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Nombre de Colección</th>
+                                                    <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">ID</th>
+                                                    <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Nombre</th>
                                                     <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
                                 
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>EjemploUsuario</td>
+                                                    <td>1</td>
+                                                    <td>Politicas</td>
                                                     <td>
                                                         <div class="text-center">
 

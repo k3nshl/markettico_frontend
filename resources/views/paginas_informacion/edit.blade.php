@@ -2,7 +2,6 @@
 
 @section('gestion_nombre', 'Articulo editar')
 
-
 @section('contenido')
 
     <section class="content">
@@ -42,7 +41,7 @@
                                                     class="col-sm-4 col-form-label">Contenido:</label>
 
                                                 <form method="post">
-                                                    <textarea id="mytextarea" name="mytextarea" rows="3">Hello, World!</textarea>
+                                                    <textarea id="mytextarea" name="mytextarea" rows="3"></textarea>
                                                 </form>
 
                                             </div>
@@ -60,17 +59,12 @@
                                         </div>
 
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
 
         </div>
     </section>

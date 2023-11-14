@@ -13,7 +13,7 @@
                             <li class="nav-item">
                                 <button class="nav-link active custom-bg-color" data-bs-toggle="tab"
                                     data-bs-target="#tab-listaUsuarios">
-                                    <i class="bx bx-notepad me-2"></i> Lista de usuarios
+                                    <i class="bx bx-notepad me-2"></i> Usuarios
 
                                 </button>
                             </li>
@@ -21,14 +21,14 @@
                             <li class="nav-item">
                                 <button class="nav-link custom-bg-color" data-bs-toggle="tab"
                                     data-bs-target="#tab-bloqueados">
-                                    <i class="bx bx-notepad me-2"></i> Lista de usuarios bloqueados
+                                    <i class="bx bx-notepad me-2"></i> Usuarios Bloqueados
                                 </button>
                             </li>
                         </ul>
 
 
                         <div class="tab-content">
-                            <div class="tab-pane  show active fade" id="tab-listaUsuarios">
+                            <div class="tab-pane show active fade" id="tab-listaUsuarios">
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="border p-3 rounded">
@@ -181,7 +181,9 @@
                                                             <td>1</td>
                                                             <td>EjemploUsuario</td>
                                                             <td>
-                                                                <p class="badge bg-primary">Administrador</p>
+
+                                                                <p class="">Administrador</p>
+
                                                             </td>
                                                             <td>
                                                                 <p class="badge bg-success">Activo</p>
@@ -497,8 +499,6 @@
                                 </div>
                             </div>
 
-
-
                             <div class="tab-pane fade" id="tab-bloqueados">
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
@@ -508,8 +508,8 @@
                                                     <div><i
                                                             class="fadeIn animated bx bx-notepad me-1 font-22 text-info"></i>
                                                     </div>
-                                                    <h5 class="mb-0 text-dark" title="">Lista de usuarios
-                                                        bloqueados</h5>
+                                                    <h5 class="mb-0 text-dark" title="">Lista de Usuarios
+                                                        Bloqueados</h5>
                                                 </div>
                                             </div>
 
@@ -750,7 +750,7 @@
                                                                                     <div class="row mb-3">
                                                                                         <div class="col-sm">
                                                                                             <label for="id_vendedor"
-                                                                                                class="form-label">Vendedo:</label>
+                                                                                                class="form-label">Vendedor:</label>
                                                                                             <input type="text"
                                                                                                 class="form-control"
                                                                                                 id="id_vendedor"
@@ -823,8 +823,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </section>
 @endsection
