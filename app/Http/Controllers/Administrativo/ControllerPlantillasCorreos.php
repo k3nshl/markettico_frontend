@@ -13,7 +13,7 @@ class ControllerPlantillasCorreos extends Controller
         return view("plantillasCorreos.correoAutenticacion");
     }
 
-    public function CorreoCambiosPoliticas(){
+    public function correoCambiosPoliticas(){
         return view("plantillasCorreos.correoCambiosPoliticas");
     }
 
