@@ -259,13 +259,11 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-
                             <li>
                                 <a class="dropdown-item" href="{{ route('perfil.show', ['id' => 1]) }}">
                                     <i class="bx bx-user"></i><span>Perfil</span>
                                 </a>
                             </li>
-
                             <li><a class="dropdown-item" href="javascript:;"><i
                                         class="bx bx-cog"></i><span>Configuracion</span></a>
                             </li>

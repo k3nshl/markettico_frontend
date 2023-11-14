@@ -326,8 +326,7 @@
 
                                             <div class="d-flex justify-content-between align-items-end mb-3">
                                                 <h5 class="text-dark"><i
-                                                        class="bx bx-user-plus me-2 font-22 text-info"></i>Registrar el
-                                                    plan</h5>
+                                                        class="bx bx-user-plus me-2 font-22 text-info"></i>Registrar plan</h5>
 
                                             </div>
 
