@@ -12,7 +12,7 @@ class ControllerSolicitudVendedor extends Controller
      */
     public function index()
     {
-        return view('solicitud_vendedor.index');
+        return view('solicitudVendedor.index');
     }
 
     /**

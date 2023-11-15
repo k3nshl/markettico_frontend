@@ -64,7 +64,7 @@
                         <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
                         </li>
-                        <li> <a href="{{ route('estados_roles.index') }}"><i
+                        <li> <a href="{{ route('estadosRoles.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>Gestionar Estados/Roles</a>
                         </li>
                         <li> <a href="{{ route('historial.index') }}"><i class="bx bx-right-arrow-alt"></i>Visualizar

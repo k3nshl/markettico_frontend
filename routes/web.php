@@ -47,8 +47,8 @@ Route::view('/', 'usuariosAdministrativos.index');
 
 Route::resource('dashboard', ControllerDashboard::class);
 Route::resource('usuariosAdministrativos', ControllerUsuariosAdministrativos::class);
-Route::resource('estados_roles', ControllerRoles::class);
-Route::resource('estados_roles', ControllerEstados::class);
+Route::resource('estadosRoles', ControllerRoles::class);
+Route::resource('estadosRoles', ControllerEstados::class);
 Route::resource('paginas', ControllerGestionarPaginas::class);
 Route::resource('categorias', ControllerCategorias::class);
 Route::resource('planes', ControllerGestionarPlanes::class);
