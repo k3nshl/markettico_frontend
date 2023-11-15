@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\Administrativo\ControllerDashboard;
 use App\Http\Controllers\Administrativo\ControllerEstados;
 use App\Http\Controllers\Administrativo\ControllerGestionarPlanes;
@@ -28,11 +28,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-/*Route::get('/', function () {
+/*
+Route::get('/', function () {
     return view('welcome');
-});*/
-
+});
+*/
 Route::view('/', 'usuarios_administrativos.index');
 
 
