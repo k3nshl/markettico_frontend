@@ -13,7 +13,7 @@ class ControllerGestionarPaginas extends Controller
     public function index()
     {
         $id = 1; 
-        return view('paginas_informacion.gestionarPaginas', compact('id'));
+        return view('paginasInformacion.gestionarPaginas', compact('id'));
     }
 
     /**
@@ -21,7 +21,7 @@ class ControllerGestionarPaginas extends Controller
      */
     public function create()
     {
-        return view('paginas_informacion.create');
+        return view('paginasInformacion.create');
     }
 
     /**
@@ -38,7 +38,7 @@ class ControllerGestionarPaginas extends Controller
     public function show($id)
     {
 
-        return view('paginas_informacion.show', ['id' => $id]);
+        return view('paginasInformacion.show', ['id' => $id]);
     }
 
     /**
@@ -46,7 +46,7 @@ class ControllerGestionarPaginas extends Controller
      */
     public function edit(string $id)
     {
-        return view('paginas_informacion.edit', ['id' => $id]);
+        return view('paginasInformacion.edit', ['id' => $id]);
     }
 
     /**
