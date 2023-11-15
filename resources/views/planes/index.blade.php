@@ -76,7 +76,7 @@
                                                                     <!-- Botón de editar con modal -->
                                                                     <button class="btn btn-warning btn-sm"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#editarPlanModal">
+                                                                        data-bs-target="#editarPlanModal"  title="Editar planes">
                                                                         <div class="text-center">
                                                                             <i class="lni lni-pencil-alt"
                                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
