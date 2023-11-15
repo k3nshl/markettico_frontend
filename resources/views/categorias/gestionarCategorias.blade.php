@@ -207,6 +207,7 @@
                                                                             data-bs-dismiss="modal">Cancelar</button>
                                                                         <!-- Form para eliminar categoria -->
                                                                         <form action="">
+                                                                            
                                                                             <button type="button" class="btn btn-danger"
                                                                                 data-bs-dismiss="modal"
                                                                                 data-bs-toggle="modal"
