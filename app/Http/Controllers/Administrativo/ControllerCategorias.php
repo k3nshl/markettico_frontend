@@ -12,6 +12,7 @@ class ControllerCategorias extends Controller
      */
     public function index()
     {
+        $data=0;
         $id=1;
         return view('categorias.gestionarCategorias', compact('id'));
     }
