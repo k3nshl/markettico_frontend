@@ -123,7 +123,7 @@
                         <div class="menu-title">Moderador</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('moderador.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                        <li> <a href="{{ route('paginas.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Páginas</a>
                         </li>
                         <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
