@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\Rol;
 use Illuminate\Http\Request;
 
 class ControllerRoles extends Controller
@@ -12,7 +13,8 @@ class ControllerRoles extends Controller
      */
     public function index()
     {
-        return view('estados_roles.index');
+        $roles = Rol::all();
+        return view('estados_roles.index',compact('roles'));
     }
 
     /**
