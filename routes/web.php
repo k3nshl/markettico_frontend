@@ -49,7 +49,7 @@ Route::resource('dashboard', ControllerDashboard::class);
 Route::resource('usuariosAdministrativos', ControllerUsuariosAdministrativos::class);
 Route::resource('estados_roles', ControllerRoles::class);
 Route::resource('estados_roles', ControllerEstados::class);
-Route::resource('moderador', ControllerGestionarPaginas::class);
+Route::resource('paginas', ControllerGestionarPaginas::class);
 Route::resource('categorias', ControllerCategorias::class);
 Route::resource('planes', ControllerGestionarPlanes::class);
 Route::resource('solicitud', ControllerSolicitudVendedor::class);
