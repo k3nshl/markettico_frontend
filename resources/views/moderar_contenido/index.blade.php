@@ -221,9 +221,14 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Cancelar</button>
+                                                                        <!-- Form de eliminar -->
+                                                                        <form action="">
                                                                         <button type="button" class="btn btn-danger"
                                                                             data-bs-dismiss="modal" data-bs-toggle="modal"
-                                                                            data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                            data-bs-target="#eliminacionCorrectaModal">Eliminar
+                                                                        </button>
+                                                                    </form>
+                                                                        <!-- Fin form de eliminar -->
                                                                     </div>
                                                                 </div>
                                                             </div>

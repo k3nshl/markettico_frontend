@@ -20,7 +20,8 @@
                             </div>
 
                             <hr>
-                            <form>
+
+                            <form action="">
                                 <div class="mb-3">
                                     <label for="titulo" class="form-label">Nombre de Colección:</label>
                                     <input type="text" class="form-control" id="titulo"
@@ -41,6 +42,7 @@
                                     </button>
                                 </div>
                             </form>
+                            
                         </div>
 
 
