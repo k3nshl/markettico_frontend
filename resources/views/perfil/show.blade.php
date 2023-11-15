@@ -13,7 +13,7 @@
                         <img src="../assets/images/avatars/avatar-2.png" alt="Admin" class="rounded-circle p-1"
                             width="110" style="background-color: #04D9B2;">
                         <div class="mt-3 profile-info">
-                            <h4>Delia Smith</h4>
+                            <span id="nombre_completo">Delia Smith</span>
                             <p class="text-secondary mb-1">Full Stack Developer</p>
                             <p class="text-muted font-size-sm">Limón city</p>
                         </div>
@@ -34,14 +34,6 @@
                         </div>
                         <div class="col-sm-9 text-secondary">
                             <span id="id_estado">Activo</span>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-3">
-                            <h6 class="mb-0">Nombre completo:</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                            <span id="nombre_completo">Charlotte Rojas Padilla</span>
                         </div>
                     </div>
 
