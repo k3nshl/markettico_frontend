@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\Estado;
 use Illuminate\Http\Request;
 
 class ControllerEstados extends Controller
@@ -29,6 +30,13 @@ class ControllerEstados extends Controller
     public function store(Request $request)
     {
         //
+        $request->merge([
+            'nombre' => 'Inactivo',
+        ]);
+
+        $item = new Estado();
+        $item->nombre = $request->nombre;
+        return $request;
     }
 
     /**
