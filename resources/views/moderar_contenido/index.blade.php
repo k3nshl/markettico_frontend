@@ -206,8 +206,7 @@
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title"
-                                                                            id="eliminarModalLabel">
+                                                                        <h5 class="modal-title" id="eliminarModalLabel">
                                                                             Confirmar
                                                                             eliminación</h5>
                                                                         <button type="button" class="btn-close"
@@ -221,9 +220,15 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Cancelar</button>
-                                                                        <button type="button" class="btn btn-danger"
-                                                                            data-bs-dismiss="modal" data-bs-toggle="modal"
-                                                                            data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                        <!-- Form de eliminar -->
+                                                                        <form action="">
+                                                                            <button type="button" class="btn btn-danger"
+                                                                                data-bs-dismiss="modal"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#eliminacionCorrectaModal">Eliminar
+                                                                            </button>
+                                                                        </form>
+                                                                        <!-- Fin form de eliminar -->
                                                                     </div>
                                                                 </div>
                                                             </div>
