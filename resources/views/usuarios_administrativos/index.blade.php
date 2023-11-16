@@ -63,7 +63,8 @@
                                                                         data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <form>
+
+                                                                    <form action="">
                                                                         <div class="row mb-3">
                                                                             <label for="nombre_completo"
                                                                                 class="col-sm-4 col-form-label">Nombre de

@@ -331,7 +331,8 @@
                                             </div>
 
                                             <hr />
-                                            <form>
+                                            {{-- Form Registrar --}}
+                                            <form action="">
                                                 <div class="row mb-3">
                                                     <label for="nombre" class="col-sm-4 col-form-label">Nombre del
                                                         plan:</label>
