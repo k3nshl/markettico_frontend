@@ -364,6 +364,9 @@
                                                                     tabindex="-1" aria-labelledby="editarRolModalLabel"
                                                                     aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
+                                                                        <form action="{{route('estados_roles_roles.update',1)}}" method="POST">
+                                                                            @csrf
+                                                                            @method('put')
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
@@ -396,7 +399,7 @@
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Cerrar</button>
-                                                                                <button type="button"
+                                                                                <button type="submit"
                                                                                     class="btn btn-info text-white"
                                                                                     style="background-color: #04D9D9; border-color: #04D9D9;">
                                                                                     <i class="bx bx-save"
@@ -406,6 +409,7 @@
                                                                             </div>
 
                                                                         </div>
+                                                                    </form>
                                                                     </div>
                                                                 </div>
 
