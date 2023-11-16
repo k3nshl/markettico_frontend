@@ -47,6 +47,9 @@ Route::view('/', 'usuarios_administrativos.index');
 
 Route::resource('dashboard', ControllerDashboard::class);
 Route::resource('usuarios_administrativos', ControllerUsuariosAdministrativos::class);
+
+Route::get('rol/{id}', [ControllerRoles::class,'destroy']);
+
 Route::resource('estados_roles_roles', ControllerRoles::class);
 Route::resource('estados_roles', ControllerEstados::class);
 Route::resource('moderador', ControllerGestionarPaginas::class);
