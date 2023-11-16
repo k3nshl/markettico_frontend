@@ -101,7 +101,7 @@
                 
                                                                     <!-- Botón de editar con modal -->
                                                                     <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                                        data-bs-target="#editarCategoriaModal" data-bs-toggle="tooltip"
+                                                                        data-bs-target="#editarSubCategoriaModal" data-bs-toggle="tooltip"
                                                                         data-bs-placement="top" title="Editar Categoria">
                                                                         <div class="text-center">
                                                                             <i class="lni lni-pencil-alt"
@@ -111,14 +111,14 @@
                 
                 
                                                                     <!-- Modal de edición -->
-                                                                    <div class="modal fade" id="editarCategoriaModal" tabindex="-1"
-                                                                        aria-labelledby="editarCategoriaModalLabel" aria-hidden="true">
+                                                                    <div class="modal fade" id="editarSubCategoriaModal" tabindex="-1"
+                                                                        aria-labelledby="editarSubCategoriaModalLabel" aria-hidden="true">
                                                                         <div class="modal-dialog modal-dialog-scrollable">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
                                                                                     <h5 class="modal-title"
-                                                                                        id="editarCategoriaModalLabel">
-                                                                                        Editar Categoría</h5>
+                                                                                        id="editarSubCategoriaModalLabel">
+                                                                                        Editar SubCategoría</h5>
                                                                                     <button type="button" class="btn-close"
                                                                                         data-bs-dismiss="modal" aria-label="Close"
                                                                                         data-bs-toggle="tooltip"
