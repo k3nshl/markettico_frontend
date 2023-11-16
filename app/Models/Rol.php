@@ -15,16 +15,16 @@ class Rol extends Model
 
     public function estado()
     {
-        return $this->belongsTo(Estado::class, 'estado_id');
+        return $this->belongsTo(Estado::class, 'id_estado');
     }
 
     public function usuariosAdministrativos()
     {
-        return $this->hasMany(UsuarioAdministrativo::class, 'rol_id');
+        return $this->hasMany(usuariosAdministrativos::class, 'id_rol');
     }
 
     public function historialGestionRoles()
     {
-        return $this->hasMany(HistorialGestionRoles::class, 'rol_id');
+        return $this->hasMany(HistorialGestionRoles::class, 'id_rol');
     }
 }
