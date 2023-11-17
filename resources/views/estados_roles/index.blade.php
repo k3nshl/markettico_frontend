@@ -62,6 +62,8 @@
 
                                                     <div class="modal fade" id="modalAgregarEstado" tabindex="-1"
                                                         aria-labelledby="modalAgregarEstadoLabel" aria-hidden="true">
+                                                        <form action="{{ route('estados.store') }}" method="post">
+                                                            @csrf
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -88,7 +90,7 @@
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-bs-dismiss="modal">Cerrar</button>
-                                                                    <button type="button" class="btn btn-info text-white"
+                                                                    <button type="submit" class="btn btn-info text-white"
                                                                         style="background-color: #04D9D9; border-color: #04D9D9;">
                                                                         <i class="bx bx-save" style="color: #F2F2F2;"></i>
                                                                         Guardar
@@ -96,6 +98,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </form>
                                                     </div>
                                                 </div>
                                             </div>
