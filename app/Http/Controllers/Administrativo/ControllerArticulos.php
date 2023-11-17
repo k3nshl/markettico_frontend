@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerLogin extends Controller
+class ControllerArticulos extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,11 +13,6 @@ class ControllerLogin extends Controller
     public function index()
     {
         //
-        return view("login.inicioSesion");
-    }
-
-    public function validarLogin(Request $request){
-        return view("login.codigoVerificacion");
     }
 
     /**
@@ -25,7 +20,7 @@ class ControllerLogin extends Controller
      */
     public function create()
     {
-        //
+        return view('paginasInformacion.createArticulo');
     }
 
     /**
@@ -33,7 +28,7 @@ class ControllerLogin extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Store de articulos";
     }
 
     /**
@@ -49,7 +44,7 @@ class ControllerLogin extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('paginasInformacion.editArticulo');
     }
 
     /**
@@ -57,7 +52,7 @@ class ControllerLogin extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Update de artículos";
     }
 
     /**
@@ -65,6 +60,6 @@ class ControllerLogin extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Destroy de artículos";
     }
 }

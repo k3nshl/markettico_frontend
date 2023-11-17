@@ -21,6 +21,8 @@
                                     </div>
 
                                     <hr />
+
+                                    {{-- Listado de reseñas --}}
                                     <div class="table-responsive">
                                         <table id="tablaSolicitudEspera" class="table table-bordered">
                                             <thead class="theadSolicitudEspera">
@@ -82,34 +84,31 @@
                                                                     </div>
 
                                                                     <div class="modal-body">
-                                                                        <form>
-                                                                            <div class="row mb-3">
-                                                                                <label for="nombre"
-                                                                                    class="col-sm-4 col-form-label">Comprador:</label>
-                                                                            </div>
+                                                                        <div class="row mb-3">
+                                                                            <label for="nombre"
+                                                                                class="col-sm-4 col-form-label">Comprador:</label>
+                                                                        </div>
 
-                                                                            <div class="row mb-3">
-                                                                                <label for="tipo"
-                                                                                    class="col-sm-4 col-form-label">Producto-Servicio:</label>
-                                                                            </div>
+                                                                        <div class="row mb-3">
+                                                                            <label for="tipo"
+                                                                                class="col-sm-4 col-form-label">Producto-Servicio:</label>
+                                                                        </div>
 
 
-                                                                            <div class="row mb-3">
-                                                                                <label for="costo"
-                                                                                    class="col-sm-4 col-form-label">Vendedor:</label>
-                                                                            </div>
+                                                                        <div class="row mb-3">
+                                                                            <label for="costo"
+                                                                                class="col-sm-4 col-form-label">Vendedor:</label>
+                                                                        </div>
 
-                                                                            <div class="row mb-3">
-                                                                                <label for="costo"
-                                                                                    class="col-sm-4 col-form-label">Mensaje:</label>
-                                                                            </div>
+                                                                        <div class="row mb-3">
+                                                                            <label for="costo"
+                                                                                class="col-sm-4 col-form-label">Mensaje:</label>
+                                                                        </div>
 
-                                                                            <div class="row mb-3">
-                                                                                <label for="costo"
-                                                                                    class="col-sm-4 col-form-label">Puntuación:</label>
-                                                                            </div>
-
-                                                                        </form>
+                                                                        <div class="row mb-3">
+                                                                            <label for="costo"
+                                                                                class="col-sm-4 col-form-label">Puntuación:</label>
+                                                                        </div>
                                                                     </div>
 
                                                                     <div class="modal-footer">
@@ -141,8 +140,10 @@
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Cancelar</button>
                                                                         <!-- Form de eliminar -->
-                                                                        <form action="">
-                                                                            <button type="button" class="btn btn-danger"
+                                                                        <form action="{{ route('moderarContenido.destroy', 1) }}" method="POST">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <button type="submit" class="btn btn-danger"
                                                                                 data-bs-dismiss="modal"
                                                                                 data-bs-toggle="modal"
                                                                                 data-bs-target="#eliminacionCorrectaModal">Eliminar

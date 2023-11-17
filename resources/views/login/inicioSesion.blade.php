@@ -52,16 +52,17 @@
                                         <hr />
                                     </div>
                                     <div class="form-body">
-                                        <form class="row g-3">
+                                        <form action="{{ route('validarLogin') }}" class="row g-3" method="POST">
+                                            @csrf
                                             <div class="col-12">
                                                 <label for="inputEmailAddress" class="form-label">Correo Empresarial</label>
-                                                <input type="user" class="form-control" id="inputUser"
+                                                <input type="user" name="correo_empresarial" class="form-control" id="inputUser"
                                                     placeholder="Correo Empresarial">
                                             </div>
                                             <div class="col-12">
                                                 <label for="inputChoosePassword" class="form-label">Contraseña</label>
                                                 <div class="input-group" id="show_hide_password">
-                                                    <input type="password" class="form-control border-end-0"
+                                                    <input type="password" name="password" class="form-control border-end-0"
                                                         id="inputPassword" value=""
                                                         placeholder="Ingresa Contraseña"> <a href="javascript:;"
                                                         class="input-group-text bg-transparent"></a>
@@ -75,8 +76,8 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="d-grid">
-                                                    <a type="submit" class="btn btn-primary" href="{{ route('verif')}}"><i
-                                                            class="bx bxs-lock-open"></i>Inicia Sesión</a>
+                                                    <button type="submit" class="btn btn-primary"><i
+                                                            class="bx bxs-lock-open"></i>Inicia Sesión</button>
                                                 </div>
                                             </div>
                                         </form>

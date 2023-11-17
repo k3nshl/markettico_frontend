@@ -5,15 +5,14 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerPaginas extends Controller
+class ControllerPaginasInformacion extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $id = 1; 
-        return view('paginasInformacion.index', compact('id'));
+        return view('paginasInformacion.index');
     }
 
     /**
@@ -21,7 +20,7 @@ class ControllerPaginas extends Controller
      */
     public function create()
     {
-        return view('paginasInformacion.create');
+        //
     }
 
     /**
@@ -29,7 +28,7 @@ class ControllerPaginas extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Store de paginas de informacion";
     }
 
     /**
@@ -37,8 +36,7 @@ class ControllerPaginas extends Controller
      */
     public function show($id)
     {
-
-        return view('paginasInformacion.show', ['id' => $id]);
+        return view('paginasInformacion.show');
     }
 
     /**
@@ -46,7 +44,7 @@ class ControllerPaginas extends Controller
      */
     public function edit(string $id)
     {
-        return view('paginasInformacion.edit', ['id' => $id]);
+        //
     }
 
     /**
@@ -54,7 +52,7 @@ class ControllerPaginas extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Update de paginas de informacion";
     }
 
     /**
@@ -62,6 +60,6 @@ class ControllerPaginas extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Destroy de paginas de informacion";
     }
 }

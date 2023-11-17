@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Administrativo\ControllerAlertas;
 use App\Http\Controllers\Administrativo\ControllerAnuncios;
+use App\Http\Controllers\Administrativo\ControllerArticulos;
 use App\Http\Controllers\Administrativo\ControllerEstados;
 use App\Http\Controllers\Administrativo\ControllerRoles;
 use App\Http\Controllers\Administrativo\ControllerUsuariosAdministrativos;
@@ -11,7 +12,7 @@ use App\Http\Controllers\Administrativo\ControllerModerarContenido;
 use App\Http\Controllers\Administrativo\ControllerPlantillasCorreos;
 use App\Http\Controllers\Administrativo\ControllerLogin;
 use App\Http\Controllers\Administrativo\ControllerEstadisticas;
-use App\Http\Controllers\Administrativo\ControllerPaginas;
+use App\Http\Controllers\Administrativo\ControllerPaginasInformacion;
 use App\Http\Controllers\Administrativo\ControllerPerfilUsuario;
 use App\Http\Controllers\Administrativo\ControllerPlanes;
 use App\Http\Controllers\Administrativo\ControllerSolicitudesProductos;
@@ -41,8 +42,9 @@ Route::get('estadosRoles', [ControllerEstados::class,'index'])->name('estadosRol
 Route::resource('estados', ControllerEstados::class);
 Route::resource('roles', ControllerRoles::class);
 
-// Rutas para paginas de informacion
-Route::resource('paginasInformacion', ControllerPaginas::class);
+// Rutas para paginas de informacion y articulos
+Route::resource('paginasInformacion', ControllerPaginasInformacion::class);
+Route::resource('articulos', ControllerArticulos::class);
 
 // Rutas para categorias y subcategorias
 Route::resource('categorias', ControllerCategorias::class);
@@ -62,18 +64,18 @@ Route::resource('historiales', ControllerHistoriales::class);
 Route::resource('estadisticas', ControllerEstadisticas::class);
 
 //Rutas para login y verificacion
-Route::resource('login', ControllerLogin::class);
-Route:: get('/verificacion', [ControllerLogin::class,'verificar'])->name('verif');
+Route::get('/login', [ControllerLogin::class,'index'])->name('login');
+Route::post('/validarLogin', [ControllerLogin::class,'validarLogin'])->name('validarLogin');
 
 // Rutas para moderar contenido
 Route::resource('moderarContenido', ControllerModerarContenido::class);
 
 //Rutas para plantillas de los correos
-Route:: get('/plantillaCorreoAutenticacion', [ControllerPlantillasCorreos::class,'correoAutenticacion'])->name('correoAutenticacion');
-Route:: get('/plantillaCorreoCambiosPoliticas', [ControllerPlantillasCorreos::class,'correoCambiosPoliticas'])->name('correoCambiosPoliticas');
-Route:: get('/plantillaCorreoExpiracionSuspension', [ControllerPlantillasCorreos::class,'CorreoExpiracionSuspension'])->name('correoExpiracionSuspension');
-Route:: get('/plantillaCorreoRegistro', [ControllerPlantillasCorreos::class,'CorreoRegistro'])->name('correoRegistro');
-Route:: get('/plantillaCorreoSolicitud', [ControllerPlantillasCorreos::class,'CorreoSolicitud'])->name('correoSolicitud');
+Route::get('/plantillaCorreoAutenticacion', [ControllerPlantillasCorreos::class,'correoAutenticacion'])->name('correoAutenticacion');
+Route::get('/plantillaCorreoCambiosPoliticas', [ControllerPlantillasCorreos::class,'correoCambiosPoliticas'])->name('correoCambiosPoliticas');
+Route::get('/plantillaCorreoExpiracionSuspension', [ControllerPlantillasCorreos::class,'CorreoExpiracionSuspension'])->name('correoExpiracionSuspension');
+Route::get('/plantillaCorreoRegistro', [ControllerPlantillasCorreos::class,'CorreoRegistro'])->name('correoRegistro');
+Route::get('/plantillaCorreoSolicitud', [ControllerPlantillasCorreos::class,'CorreoSolicitud'])->name('correoSolicitud');
 
 // Rutas para el perfil del usuario
 Route::get('/perfil/{id}', [ControllerPerfilUsuario::class, 'show'])->name('perfil.show');
