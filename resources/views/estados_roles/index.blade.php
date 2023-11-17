@@ -3,6 +3,7 @@
 @section('gestion_nombre', 'Estados/Roles')
 
 @section('contenido')
+{{$roles}}
 
     <section class="content">
         <div class="row">
@@ -364,6 +365,7 @@
                                                                     tabindex="-1" aria-labelledby="editarRolModalLabel"
                                                                     aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
+                                                                        {{-- + id_rol a editar --}}
                                                                         <form action="{{route('estados_roles_roles.update',1)}}" method="POST">
                                                                             @csrf
                                                                             @method('put')
@@ -389,7 +391,8 @@
                                                                                             Rol</label>
                                                                                         <input type="text"
                                                                                             class="form-control"
-                                                                                            id="editarNombreRol">
+                                                                                            id="editarNombreRol"
+                                                                                            name="nombre">                                                                                       
                                                                                     </div>
 
                                                                                 </form>
