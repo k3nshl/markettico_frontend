@@ -38,7 +38,7 @@ class ControllerUsuariosAdministrativos extends Controller
      */
     public function store(Request $request)
     {
-        /*$item = new UsuarioAdministrativo();
+        $item = new UsuarioAdministrativo();
 
         $item->id_rol = 1;
         $item->id_estado = 1;
@@ -51,7 +51,7 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->save();
 
         return $item;
-        */
+        
     }
 
     /**
