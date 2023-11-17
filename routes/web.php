@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Administrativo\ControllerDashboard;
 use App\Http\Controllers\Administrativo\ControllerEstados;
@@ -33,6 +34,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
+
 Route::view('/', 'usuarios_administrativos.index');
 
 
@@ -48,7 +50,7 @@ Route::view('/', 'usuarios_administrativos.index');
 Route::resource('dashboard', ControllerDashboard::class);
 Route::resource('usuarios_administrativos', ControllerUsuariosAdministrativos::class);
 Route::resource('estados_roles', ControllerRoles::class);
-Route::resource('estados_roles', ControllerEstados::class);
+Route::resource('estados', ControllerEstados::class);
 Route::resource('moderador', ControllerGestionarPaginas::class);
 Route::resource('categorias', ControllerCategorias::class);
 Route::resource('planes', ControllerGestionarPlanes::class);
@@ -58,17 +60,17 @@ Route::resource('estadisticas', ControllerEstadisticas::class);
 Route::resource('login', ControllerLogin::class);
 //Ruta para verificación dos pasos
 Route::resource('login', ControllerLogin::class);
-Route:: get('/verificacion', [ControllerLogin::class,'verificar'])->name('verif');
+Route::get('/verificacion', [ControllerLogin::class, 'verificar'])->name('verif');
 Route::resource('productos', ControllerGestionarProductos::class);
 Route::resource('contenido', ControllerModerarContenido::class);
-Route:: get('/verificacion', [ControllerLogin::class,'verificar'])->name('verif');
+Route::get('/verificacion', [ControllerLogin::class, 'verificar'])->name('verif');
 
 //Rutas para acceder a las plantillas de los correos
-Route:: get('/plantillaCorreoAutenticacion', [ControllerPlantillasCorreos::class,'correoAutenticacion'])->name('correoAutenticacion');
-Route:: get('/plantillaCorreoCambiosPoliticas', [ControllerPlantillasCorreos::class,'correoCambiosPoliticas'])->name('correoCambiosPoliticas');
-Route:: get('/plantillaCorreoExpiracionSuspension', [ControllerPlantillasCorreos::class,'CorreoExpiracionSuspension'])->name('correoExpiracionSuspension');
-Route:: get('/plantillaCorreoRegistro', [ControllerPlantillasCorreos::class,'CorreoRegistro'])->name('correoRegistro');
-Route:: get('/plantillaCorreoSolicitud', [ControllerPlantillasCorreos::class,'CorreoSolicitud'])->name('correoSolicitud');
+Route::get('/plantillaCorreoAutenticacion', [ControllerPlantillasCorreos::class, 'correoAutenticacion'])->name('correoAutenticacion');
+Route::get('/plantillaCorreoCambiosPoliticas', [ControllerPlantillasCorreos::class, 'correoCambiosPoliticas'])->name('correoCambiosPoliticas');
+Route::get('/plantillaCorreoExpiracionSuspension', [ControllerPlantillasCorreos::class, 'CorreoExpiracionSuspension'])->name('correoExpiracionSuspension');
+Route::get('/plantillaCorreoRegistro', [ControllerPlantillasCorreos::class, 'CorreoRegistro'])->name('correoRegistro');
+Route::get('/plantillaCorreoSolicitud', [ControllerPlantillasCorreos::class, 'CorreoSolicitud'])->name('correoSolicitud');
 
 
 Route::get('/perfil/{id}', [ControllerPerfilUsuario::class, 'show'])->name('perfil.show');

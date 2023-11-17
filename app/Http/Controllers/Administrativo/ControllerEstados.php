@@ -29,14 +29,15 @@ class ControllerEstados extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $request->merge([
-            'nombre' => 'Inactivo',
-        ]);
 
-        $item = new Estado();
-        $item->nombre = $request->nombre;
-        return $request;
+        // $request->merge([
+        //'nombre' => 'Inactivo',
+        //]);
+
+        // $item = new Estado();
+        //$item->nombre = 'Inactivo';
+        //$item->save();
+        //return $item;
     }
 
     /**
