@@ -282,7 +282,8 @@
                                                                         aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <form>
+                                                                    <form action="{{route('store')}}" method="POST">
+                                                                        @csrf
                                                                         <div class="row mb-3">
                                                                             <label for="nombre"
                                                                                 class="col-sm-4 col-form-label">Nombre
@@ -294,12 +295,12 @@
                                                                             </div>
                                                                         </div>
 
-                                                                    </form>
+                                                                   
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-bs-dismiss="modal">Cerrar</button>
-                                                                    <button type="button" class="btn btn-info text-white"
+                                                                    <button type="submit" class="btn btn-info text-white"
                                                                         style="background-color: #04D9D9; border-color: #04D9D9;">
                                                                         <i class="bx bx-save" style="color: #F2F2F2;"></i>
                                                                         Guardar
@@ -307,6 +308,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -433,11 +435,16 @@
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Cancelar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-danger"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                                  <!-- Form de eliminar -->  
+                                                                                <form action="">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-danger"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#eliminacionCorrectaModal">Eliminar
+                                                                                    </button>
+                                                                                </form>
+                                                                                <!-- Fin Form de eliminar -->
                                                                             </div>
                                                                         </div>
                                                                     </div>

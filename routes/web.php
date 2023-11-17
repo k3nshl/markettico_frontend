@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\Administrativo\ControllerDashboard;
 use App\Http\Controllers\Administrativo\ControllerEstados;
 use App\Http\Controllers\Administrativo\ControllerGestionarPlanes;
@@ -28,11 +28,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-/*Route::get('/', function () {
+/*
+Route::get('/', function () {
     return view('welcome');
-});*/
-
+});
+*/
 Route::view('/', 'usuarios_administrativos.index');
 
 
@@ -47,7 +47,11 @@ Route::view('/', 'usuarios_administrativos.index');
 
 Route::resource('dashboard', ControllerDashboard::class);
 Route::resource('usuarios_administrativos', ControllerUsuariosAdministrativos::class);
-Route::resource('estados_roles', ControllerRoles::class);
+
+//Rutas roles
+Route::get('rol/{id}', [ControllerRoles::class,'destroy']);
+Route::post('store',[ControllerRoles::class,'store'])->name('store');
+
 Route::resource('estados_roles', ControllerEstados::class);
 Route::resource('moderador', ControllerGestionarPaginas::class);
 Route::resource('categorias', ControllerCategorias::class);
@@ -75,3 +79,6 @@ Route::get('/perfil/{id}', [ControllerPerfilUsuario::class, 'show'])->name('perf
 
 // Rutas para las notificaciones
 Route::get('/notificaciones', [ControllerNotificaciones::class, 'index'])->name('notificaciones');
+
+//ruta de prueba 
+Route::get('/pruebastore', [ControllerUsuariosAdministrativos::class, 'store']);
