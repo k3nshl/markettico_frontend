@@ -34,10 +34,10 @@ class ControllerEstados extends Controller
         //'nombre' => 'Inactivo',
         //]);
 
-          $item = new Estado();
+     $item = new Estado();
         $item->nombre = 'Activo';
         $item->save();
-        //return $item;
+        return $item;
         return redirect('/estados');
     }
 
