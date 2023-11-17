@@ -77,7 +77,7 @@
                                             <td>
                                                 <div class="text-center">
 
-                                                    <a href="{{ route('moderador.show', $id) }}"
+                                                    <a href="{{ route('paginasInformacion.show', $id) }}"
                                                         class="btn btn-primary btn-sm" data-bs-toggle="tooltip"
                                                         data-bs-placement="top" title="Visualizar Artículo">
                                                         <div class="text-center">

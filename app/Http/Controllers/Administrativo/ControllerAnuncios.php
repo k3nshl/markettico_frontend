@@ -5,14 +5,17 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerGestionarProductos extends Controller
+class ControllerAnuncios extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('gestionar_productos.index');
+        // Enviar listado de anuncios a la vista
+        // Enviar listado de alertas a la vista
+
+        return view('notificaciones.index');
     }
 
     /**
@@ -28,7 +31,7 @@ class ControllerGestionarProductos extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Store de anuncios";
     }
 
     /**
@@ -52,7 +55,7 @@ class ControllerGestionarProductos extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Update de anuncios";
     }
 
     /**
@@ -60,6 +63,6 @@ class ControllerGestionarProductos extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Destroy de anuncios";
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerGestionarPlanes extends Controller
+class ControllerPlanes extends Controller
 {
     /**
      * Display a listing of the resource.

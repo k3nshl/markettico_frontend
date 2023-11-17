@@ -5,15 +5,14 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerGestionarPaginas extends Controller
+class ControllerSubcategorias extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $id = 1; 
-        return view('paginas_informacion.gestionarPaginas', compact('id'));
+        //
     }
 
     /**
@@ -21,7 +20,7 @@ class ControllerGestionarPaginas extends Controller
      */
     public function create()
     {
-        return view('paginas_informacion.create');
+        //
     }
 
     /**
@@ -29,16 +28,15 @@ class ControllerGestionarPaginas extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Store Subcategorias";
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $id)
     {
-
-        return view('paginas_informacion.show', ['id' => $id]);
+        //
     }
 
     /**
@@ -46,7 +44,7 @@ class ControllerGestionarPaginas extends Controller
      */
     public function edit(string $id)
     {
-        return view('paginas_informacion.edit', ['id' => $id]);
+        //
     }
 
     /**
@@ -54,7 +52,7 @@ class ControllerGestionarPaginas extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Update Subcategorias";
     }
 
     /**
@@ -62,6 +60,6 @@ class ControllerGestionarPaginas extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Destroy Subcategorias";
     }
 }
