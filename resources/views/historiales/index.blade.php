@@ -292,24 +292,22 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="Labelsuscripcion"
-                                                                                            class="col-sm-4 col-form-label">Subscripción:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="labelDescripcion"
-                                                                                            class="col-sm-4 col-form-label">Descripción:
-                                                                                            <span>Acá</span></label>
+                                                                                <div class="row mb-3">
+                                                                                    <label for="Labelsuscripcion"
+                                                                                        class="col-sm-4 col-form-label">Subscripción:
+                                                                                        <span>Acá</span></label>
+                                                                                </div>
+                                                                                <div class="row mb-3">
+                                                                                    <label for="labelDescripcion"
+                                                                                        class="col-sm-4 col-form-label">Descripción:
+                                                                                        <span>Acá</span></label>
 
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="Suspencion_fecha"
-                                                                                            class="col-sm-4 col-form-label">Fecha:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
-                                                                                </form>
+                                                                                </div>
+                                                                                <div class="row mb-3">
+                                                                                    <label for="Suspencion_fecha"
+                                                                                        class="col-sm-4 col-form-label">Fecha:
+                                                                                        <span>Acá</span></label>
+                                                                                </div>
                                                                             </div>
 
                                                                             <div class="modal-footer">

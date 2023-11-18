@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerSolicitudVendedor extends Controller
+class ControllerSolicitudesProductos extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('solicitud_vendedor.index');
+        return view('solicitudes.indexProductos');
     }
 
     /**

@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-xl-9 mx-auto">
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
-                
+
                     <div class="card-body">
 
                         <div class="row justify-content-center align-items-center">
@@ -29,7 +29,7 @@
                                                 <h5 class="m-0"></h5>
                                             </div>
                                             <div class="me-2">
-                                                <a href="{{ route('moderador.create') }}" class="btn btn-info text-white"
+                                                <a href="{{ route('articulos.create') }}" class="btn btn-info text-white"
                                                     style="background-color: #04D9B2; border-color: #04D9D9;"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="Agregar artículo">Agregar artículo</a>
@@ -47,10 +47,13 @@
                                         <table id="tablaArticulo"A class="table table-bordered">
                                             <thead class="theadUsuariosAdministradores">
                                                 <tr>
-                                                    <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">ID</th>
-                                                    <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Nombre</th>
-                                                    <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
-                                
+                                                    <th class="bg_datatable"
+                                                        style="background-color: #05C7F2; color: #F2F2F2">ID</th>
+                                                    <th class="bg_datatable"
+                                                        style="background-color: #05C7F2; color: #F2F2F2">Nombre</th>
+                                                    <th class="bg_datatable"
+                                                        style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
+
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -61,8 +64,7 @@
                                                         <div class="text-center">
 
                                                             <!-- Botón visualizar -->
-
-                                                            <a href="" class="btn btn-primary btn-sm"
+                                                            <a href="#" class="btn btn-primary btn-sm"
                                                                 data-bs-toggle="tooltip" data-bs-placement="top"
                                                                 title="Visualizar Artículo">
                                                                 <div class="text-center">
@@ -73,9 +75,9 @@
 
 
                                                             <!-- Botón de editar -->
-                                                            <a href="{{ route('moderador.edit', $id) }}" class="btn btn-warning btn-sm"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Editar Artículo">
+                                                            <a href="{{ route('articulos.edit', 1) }}"
+                                                                class="btn btn-warning btn-sm" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" title="Editar Artículo">
                                                                 <div class="text-center">
                                                                     <i class="lni lni-pencil-alt"
                                                                         style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
@@ -113,9 +115,15 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Cancelar</button>
-                                                                        <button type="button" class="btn btn-danger"
-                                                                            data-bs-dismiss="modal" data-bs-toggle="modal"
-                                                                            data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                        <form action="{{ route('articulos.destroy', 1) }}"
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <button type="submit" class="btn btn-danger"
+                                                                                data-bs-dismiss="modal"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
