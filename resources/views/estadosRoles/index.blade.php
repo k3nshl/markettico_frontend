@@ -392,11 +392,7 @@
                                                                 <div class="modal fade" id="editarRolModal"
                                                                     tabindex="-1" aria-labelledby="editarRolModalLabel"
                                                                     aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        {{-- + id_rol a editar --}}
-                                                                        <form action="{{route('roles.update',1)}}" method="POST">
-                                                                            @csrf
-                                                                            @method('put')
+                                                                    <div class="modal-dialog modal-dialog-scrollable">                                                                                                                            
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
@@ -411,6 +407,7 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
+                                                                                {{-- + id_rol a editar --}}  
                                                                                 <form
                                                                                     action="{{ route('roles.update', 1) }}"
                                                                                     method="POST">
