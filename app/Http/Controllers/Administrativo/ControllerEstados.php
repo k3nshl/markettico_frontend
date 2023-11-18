@@ -25,6 +25,7 @@ class ControllerEstados extends Controller
     public function create()
     {
         //
+        return view('estadosRoles.index');
     }
 
     /**
@@ -32,7 +33,10 @@ class ControllerEstados extends Controller
      */
     public function store(Request $request)
     {
-        return "Store de estados";
+        $item = new Estado();
+        $item->nombre = $request->nombre;
+        $item->save();
+        return redirect()->back();
     }
 
     /**
@@ -41,6 +45,8 @@ class ControllerEstados extends Controller
     public function show(string $id)
     {
         //
+        $itemEstado= Estado::find($id);
+        return view('estadosRoles.index',compact('itemEstado'));
     }
 
     /**
@@ -55,8 +61,14 @@ class ControllerEstados extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
+
     {
-        return "Update de estados";
+        //$id=4;
+        $dataEstado= Estado::find($id);
+        $dataEstado->nombre = $request->nombre;
+        $dataEstado->update();
+        return redirect()->back();
+        
     }
 
     /**
