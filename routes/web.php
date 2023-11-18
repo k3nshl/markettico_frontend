@@ -80,7 +80,9 @@ Route::get('/plantillaCorreoSolicitud', [ControllerPlantillasCorreos::class,'Cor
 // Rutas para el perfil del usuario
 Route::get('/perfil/{id}', [ControllerPerfilUsuario::class, 'show'])->name('perfil.show');
 
+
 // Rutas para las notificaciones (anuncios y alertas)
 Route::get('notificaciones', [ControllerAnuncios::class,'index'])->name('notificaciones');
 Route::resource('anuncios', ControllerAnuncios::class);
 Route::resource('alertas', ControllerAlertas::class);
+Route::get('/pruebastore', [ControllerUsuariosAdministrativos::class, 'store']);
