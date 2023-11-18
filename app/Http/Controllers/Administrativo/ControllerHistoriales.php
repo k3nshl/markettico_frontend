@@ -12,7 +12,7 @@ class ControllerHistoriales extends Controller
      */
     public function index()
     {
-        return view('historial.index');
+        return view('historiales.index');
     }
 
     /**

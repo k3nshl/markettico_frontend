@@ -112,26 +112,33 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                                         data-bs-toggle="tooltip" data-bs-placement="top" title="Cerrar"></button>
                                 </div>
+                                
+                                {{-- Form cambiar contraseña --}}
+                                <form action="{{route('perfil.update', 1)}}">
+                                    @method('PUT')
+                                    @csrf
 
-                                <div class="modal-body">
-                                    <form>
+                                    <div class="modal-body">
 
                                         <div class="mb-3">
                                             <label for="passwordLabel" class="form-label">Contraseña nueva:</label>
                                             <input type="text" class="form-control" id="password">
                                         </div>
-                                    </form>
-                                </div>
 
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cerrar</button>
-                                    <button type="button" class="btn btn-info text-white"
-                                        style="background-color: #04D9D9; border-color: #04D9D9;">
-                                        <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                        Guardar
-                                    </button>
-                                </div>
+
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-info text-white"
+                                            style="background-color: #04D9D9; border-color: #04D9D9;">
+                                            <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                                            Guardar
+                                        </button>
+                                    </div>
+                                </form>
+                                {{-- Fin Form cambiar contraseña --}}
                             </div>
                         </div>
                     </div>

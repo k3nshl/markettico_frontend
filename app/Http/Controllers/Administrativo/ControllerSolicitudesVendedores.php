@@ -5,17 +5,14 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerEstados extends Controller
+class ControllerSolicitudesVendedores extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // Enviar el listado de roles a la vista
-        // Enviar el listado de estados a la vista
-
-        return view('estadosRoles.index');
+        return view('solicitudes.indexVendedores');
     }
 
     /**
@@ -31,7 +28,7 @@ class ControllerEstados extends Controller
      */
     public function store(Request $request)
     {
-        return "Store de estados";
+        //
     }
 
     /**
@@ -55,7 +52,7 @@ class ControllerEstados extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "Update de estados";
+        //
     }
 
     /**
@@ -63,6 +60,6 @@ class ControllerEstados extends Controller
      */
     public function destroy(string $id)
     {
-        return "Destroy de estados";
+        //
     }
 }

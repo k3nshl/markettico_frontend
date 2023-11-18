@@ -12,9 +12,7 @@ class ControllerCategorias extends Controller
      */
     public function index()
     {
-        $data=0;
-        $id=1;
-        return view('categorias.gestionarCategorias', compact('id'));
+        return view('categorias.index');
     }
 
 
@@ -31,7 +29,7 @@ class ControllerCategorias extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**
@@ -40,7 +38,7 @@ class ControllerCategorias extends Controller
     public function show($id)
     {
        
-        return view('categorias.show', ['id' => $id]);
+        return view('categorias.show');
     }
 
     /**
@@ -56,7 +54,7 @@ class ControllerCategorias extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
     }
 
     /**

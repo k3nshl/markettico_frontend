@@ -21,6 +21,8 @@
                                     </div>
 
                                     <hr />
+
+                                    {{-- Listado de reseñas --}}
                                     <div class="table-responsive">
                                         <table id="tablaSolicitudEspera" class="table table-bordered">
                                             <thead class="theadSolicitudEspera">
@@ -57,16 +59,6 @@
                                                                 </div>
                                                             </button>
 
-                                                            <!-- Botón de editar con modal -->
-                                                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                                data-bs-target="#editarModal" data-bs-toggle="tooltip"
-                                                                data-bs-placement="top" title="Editar Rol">
-                                                                <div class="text-center">
-                                                                    <i class="lni lni-pencil-alt"
-                                                                        style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                </div>
-                                                            </button>
-
                                                             {{-- Botón de eliminar --}}
                                                             <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                                                 data-bs-target="#eliminarModal">
@@ -92,103 +84,31 @@
                                                                     </div>
 
                                                                     <div class="modal-body">
-                                                                        <form>
-                                                                            <div class="row mb-3">
-                                                                                <label for="nombre"
-                                                                                    class="col-sm-4 col-form-label">Comprador:</label>
-                                                                            </div>
+                                                                        <div class="row mb-3">
+                                                                            <label for="nombre"
+                                                                                class="col-sm-4 col-form-label">Comprador:</label>
+                                                                        </div>
 
-                                                                            <div class="row mb-3">
-                                                                                <label for="tipo"
-                                                                                    class="col-sm-4 col-form-label">Producto-Servicio:</label>
-                                                                            </div>
-
-
-                                                                            <div class="row mb-3">
-                                                                                <label for="costo"
-                                                                                    class="col-sm-4 col-form-label">Vendedor:</label>
-                                                                            </div>
-
-                                                                            <div class="row mb-3">
-                                                                                <label for="costo"
-                                                                                    class="col-sm-4 col-form-label">Mensaje:</label>
-                                                                            </div>
-
-                                                                            <div class="row mb-3">
-                                                                                <label for="costo"
-                                                                                    class="col-sm-4 col-form-label">Puntuación:</label>
-                                                                            </div>
-
-                                                                        </form>
-                                                                    </div>
-
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Regresar</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Modal de Editar -->
-
-                                                        <div class="modal fade" id="editarModal" data-backdrop="static"
-                                                            data-keyboard="false" tabindex="-1"
-                                                            aria-labelledby="showUserModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-scrollable">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="showModalLabel">
-                                                                            Visualizar Reseña</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal" aria-label="Close"
-                                                                            data-bs-toggle="tooltip"
-                                                                            data-bs-placement="top"
-                                                                            title="Cerrar"></button>
-                                                                    </div>
-
-                                                                    <div class="modal-body">
-                                                                        <form>
-                                                                            <div class="mb-3">
-                                                                                <label for="nombre"
-                                                                                    class="col-sm-4 col-form-label">Comprador:</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="comprador"
-                                                                                    placeholder="Nombre del comprador">
-                                                                            </div>
-
-                                                                            <div class="mb-3">
-                                                                                <label for="tipo"
-                                                                                    class="col-sm-4 col-form-label">Producto-Servicio:</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="producto_servicio"
-                                                                                    placeholder="Nombre del producto-servicio">
-                                                                            </div>
+                                                                        <div class="row mb-3">
+                                                                            <label for="tipo"
+                                                                                class="col-sm-4 col-form-label">Producto-Servicio:</label>
+                                                                        </div>
 
 
-                                                                            <div class="mb-3">
-                                                                                <label for="costo"
-                                                                                    class="col-sm-4 col-form-label">Vendedor:</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="vendedor"
-                                                                                    placeholder="Nombre del vendedor">
-                                                                            </div>
+                                                                        <div class="row mb-3">
+                                                                            <label for="costo"
+                                                                                class="col-sm-4 col-form-label">Vendedor:</label>
+                                                                        </div>
 
-                                                                            <div class="mb-3">
-                                                                                <label for="costo"
-                                                                                    class="col-sm-4 col-form-label">Mensaje:</label>
-                                                                                <textarea type="text" class="form-control" id="mensaje" placeholder="Mensaje" rows="3"></textarea>
-                                                                            </div>
+                                                                        <div class="row mb-3">
+                                                                            <label for="costo"
+                                                                                class="col-sm-4 col-form-label">Mensaje:</label>
+                                                                        </div>
 
-                                                                            <div class="mb-3">
-                                                                                <label for="costo"
-                                                                                    class="col-sm-4 col-form-label">Puntuación:</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="puntuacion"
-                                                                                    placeholder="Puntuación">
-                                                                            </div>
-
-                                                                        </form>
+                                                                        <div class="row mb-3">
+                                                                            <label for="costo"
+                                                                                class="col-sm-4 col-form-label">Puntuación:</label>
+                                                                        </div>
                                                                     </div>
 
                                                                     <div class="modal-footer">
@@ -200,7 +120,6 @@
                                                         </div>
 
                                                         <!-- Modal de eliminar -->
-
                                                         <div class="modal fade" id="eliminarModal" tabindex="-1"
                                                             aria-labelledby="eliminarRolModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
@@ -221,11 +140,12 @@
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Cancelar</button>
                                                                         <!-- Form de eliminar -->
-                                                                        <form action="">
-                                                                            <button type="button" class="btn btn-danger"
-                                                                                data-bs-dismiss="modal"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#eliminacionCorrectaModal">Eliminar
+                                                                        <form
+                                                                            action="{{ route('moderarContenido.destroy', 1) }}">
+                                                                            @method('DELETE')
+                                                                            @csrf
+                                                                            <button type="submit" class="btn btn-danger"
+                                                                                >Eliminar
                                                                             </button>
                                                                         </form>
                                                                         <!-- Fin form de eliminar -->

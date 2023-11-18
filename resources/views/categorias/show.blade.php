@@ -4,8 +4,6 @@
 
 @section('contenido')
 
-
-
     <section class="content">
         <div class="row">
             <div class="col-xl-12 mx-auto">
@@ -33,6 +31,7 @@
                                                     title="Agregar Nueva Subcategoria">+</button>
                                             </div>
 
+                                            <!-- Modal de agregar -->
                                             <div class="modal fade" id="modalAgregarSubCategoria" tabindex="-1"
                                                 aria-labelledby="modalAgregarSubCategoriaLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
@@ -44,11 +43,11 @@
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form>
+                                                            <form action=" {{ route('subcategorias.store') }}" method="POST">
+                                                                @csrf
                                                                 <div class="row mb-3">
                                                                     <label for="nombre"
-                                                                        class="col-sm-4 col-form-label">Nombre de la
-                                                                        subcategoría:</label>
+                                                                        class="col-sm-4 col-form-label">Nombre:</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" class="form-control"
                                                                             id="nombre" name="nombre"
@@ -57,8 +56,7 @@
                                                                 </div>
                                                                 <div class="row mb-3">
                                                                     <label for="descripcion"
-                                                                        class="col-sm-4 col-form-label">Descripción de la
-                                                                        categoría:</label>
+                                                                        class="col-sm-4 col-form-label">Descripción:</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" class="form-control"
                                                                             id="descripcion" name="descripcion"
@@ -66,23 +64,26 @@
                                                                     </div>
                                                                 </div>
 
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Cerrar</button>
+                                                                    <button type="submit" class="btn btn-info text-white"
+                                                                        style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                        <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                                                                        Guardar
+                                                                    </button>
+                                                                </div>
+
                                                             </form>
                                                         </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Cerrar</button>
-                                                            <button type="button" class="btn btn-info text-white"
-                                                                style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                                Guardar
-                                                            </button>
-                                                        </div>
+                                                       
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <hr />
+                                    {{-- Lista de subcategorías --}}
                                     <div class="table-responsive">
                                         <table id="tablaRoles" class="table table-bordered">
                                             <thead class="theadRoles">
@@ -103,9 +104,6 @@
                                                     <td>Cocina</td>
                                                     <td>Ahhhajjajbbcbxxuusisisisiis</td>
                                                     <td>
-
-
-
                                                         <!-- Botón de editar con modal -->
                                                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                                             data-bs-target="#editarCategoriaModal" data-bs-toggle="tooltip"
@@ -134,34 +132,39 @@
                                                                     </div>
 
                                                                     <div class="modal-body">
-                                                                        <form>
-                                                                            <div class="mb-3">
-                                                                                <label for="editarNombreCategoria"
-                                                                                    class="form-label">Nombre de la
-                                                                                    subcategoría</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="editarNombreCategoria">
+                                                                        <form action=" {{ route('subcategorias.update', 1) }}" method="POST">
+                                                                            @method('PUT')
+                                                                            @csrf
+                                                                            <div class="row mb-3">
+                                                                                <label for="nombre"
+                                                                                    class="col-sm-4 col-form-label">Nombre:</label>
+                                                                                <div class="col-sm-8">
+                                                                                    <input type="text" class="form-control"
+                                                                                        id="nombre" name="nombre"
+                                                                                        placeholder="Ingrese el nombre">
+                                                                                </div>
                                                                             </div>
-                                                                            <div class="mb-3">
-                                                                                <label for="editarDescripcion"
-                                                                                    class="form-label">Descripción</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="editarDescripcion">
+                                                                            <div class="row mb-3">
+                                                                                <label for="descripcion"
+                                                                                    class="col-sm-4 col-form-label">Descripción:</label>
+                                                                                <div class="col-sm-8">
+                                                                                    <input type="text" class="form-control"
+                                                                                        id="descripcion" name="descripcion"
+                                                                                        placeholder="Ingrese la descripción">
+                                                                                </div>
                                                                             </div>
-
+            
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary"
+                                                                                    data-bs-dismiss="modal">Cerrar</button>
+                                                                                <button type="submit" class="btn btn-info text-white"
+                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                    <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                                                                                    Guardar
+                                                                                </button>
+                                                                            </div>
+            
                                                                         </form>
-                                                                    </div>
-
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Cerrar</button>
-                                                                        <button type="button"
-                                                                            class="btn btn-info text-white"
-                                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                            <i class="bx bx-save"
-                                                                                style="color: #F2F2F2;"></i>
-                                                                            Guardar
-                                                                        </button>
                                                                     </div>
 
                                                                 </div>
@@ -195,8 +198,10 @@
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Cancelar</button>
                                                                         <!-- Form de eliminación -->
-                                                                        <form action="">
-                                                                            <button type="button" class="btn btn-danger"
+                                                                        <form action="{{ route('subcategorias.destroy', 1) }}" method="POST">
+                                                                            @method('DELETE')
+                                                                            @csrf
+                                                                            <button type="submit" class="btn btn-danger"
                                                                                 data-bs-dismiss="modal"
                                                                                 data-bs-toggle="modal"
                                                                                 data-bs-target="#eliminacionCorrectaModal">Eliminar
