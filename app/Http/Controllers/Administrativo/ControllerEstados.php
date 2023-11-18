@@ -13,7 +13,10 @@ class ControllerEstados extends Controller
      */
     public function index()
     {
-        return view('estados_roles.index');
+        // Enviar el listado de roles a la vista
+        // Enviar el listado de estados a la vista
+
+        return view('estadosRoles.index');
     }
 
     /**
@@ -29,16 +32,7 @@ class ControllerEstados extends Controller
      */
     public function store(Request $request)
     {
-
-        // $request->merge([
-        //'nombre' => 'Inactivo',
-        //]);
-
-        $item = new Estado();
-        $item->nombre = 'Activo';
-        $item->save();
-        //return $item;
-        return redirect('/estados');
+        return "Store de estados";
     }
 
     /**
@@ -62,7 +56,7 @@ class ControllerEstados extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Update de estados";
     }
 
     /**
@@ -70,6 +64,6 @@ class ControllerEstados extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Destroy de estados";
     }
 }

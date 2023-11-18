@@ -115,7 +115,7 @@
                                                                                     <div class="row mb-3">
                                                                                         <label for="nombre"
                                                                                             class="col-sm-4 col-form-label">Nombre
-                                                                                            del producto: 
+                                                                                            del producto:
                                                                                         </label>
                                                                                     </div>
 
@@ -183,14 +183,22 @@
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Regresar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-success"
-                                                                                    data-bs-dismiss="modal">Aprobar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-danger"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#showAfirmacionModal">Rechazar</button>
+                                                                                <form action="" method="POST">
+                                                                                    @csrf
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-success"
+                                                                                        data-bs-dismiss="modal">Aprobar
+                                                                                    </button>
+                                                                                </form>
+                                                                                <form action="" method="POST">
+                                                                                    @csrf
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-danger"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#showAfirmacionModal">Rechazar
+                                                                                    </button>
+                                                                                </form>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -278,7 +286,8 @@
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">ID</th>
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Nombre del
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Nombre
+                                                                del
                                                                 producto</th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Precio
@@ -337,7 +346,7 @@
                                                                                     <div class="row mb-3">
                                                                                         <label for="nombre"
                                                                                             class="col-sm-4 col-form-label">Nombre
-                                                                                            del producto: 
+                                                                                            del producto:
                                                                                         </label>
                                                                                     </div>
 
@@ -444,7 +453,8 @@
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">ID</th>
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Nombre del
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Nombre
+                                                                del
                                                                 producto</th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Precio
@@ -503,7 +513,7 @@
                                                                                     <div class="row mb-3">
                                                                                         <label for="nombre"
                                                                                             class="col-sm-4 col-form-label">Nombre
-                                                                                            del producto: 
+                                                                                            del producto:
                                                                                         </label>
                                                                                     </div>
 

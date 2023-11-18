@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerHistoriales extends Controller
+class ControllerArticulos extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('historiales.index');
+        //
     }
 
     /**
@@ -20,7 +20,7 @@ class ControllerHistoriales extends Controller
      */
     public function create()
     {
-        //
+        return view('paginasInformacion.createArticulo');
     }
 
     /**
@@ -28,7 +28,7 @@ class ControllerHistoriales extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Store de articulos";
     }
 
     /**
@@ -44,7 +44,7 @@ class ControllerHistoriales extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('paginasInformacion.editArticulo');
     }
 
     /**
@@ -52,7 +52,7 @@ class ControllerHistoriales extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Update de artículos";
     }
 
     /**
@@ -60,6 +60,6 @@ class ControllerHistoriales extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Destroy de artículos";
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use function Laravel\Prompts\alert;
+
 class ControllerPerfilUsuario extends Controller
 {
     /**
@@ -52,7 +54,7 @@ class ControllerPerfilUsuario extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        alert('Hola');
     }
 
     /**

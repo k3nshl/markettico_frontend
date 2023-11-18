@@ -12,7 +12,7 @@ class ControllerModerarContenido extends Controller
      */
     public function index()
     {
-        return view('moderar_contenido.index');
+        return view('moderarContenido.index');
     }
 
     /**
@@ -60,6 +60,6 @@ class ControllerModerarContenido extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Destroy de reseñas";
     }
 }

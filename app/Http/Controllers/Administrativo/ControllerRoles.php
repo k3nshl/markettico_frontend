@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\Rol;
 use Illuminate\Http\Request;
 
 class ControllerRoles extends Controller
@@ -12,7 +13,7 @@ class ControllerRoles extends Controller
      */
     public function index()
     {
-        return view('estados_roles.index');
+       
     }
 
     /**
@@ -28,7 +29,23 @@ class ControllerRoles extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Store de roles";
+
+        $request->merge([
+            'nombre' => 'admin',
+            'id_estado' => '2',
+        ]);
+
+
+        // return "hola";
+        $rol = new Rol();
+
+        $rol->nombre= $request->nombre;
+        $rol->id_estado= $request->id_estado;
+        $rol->save();
+
+        // $roles = Rol::all();
+        // return view('estados_roles.index',compact('roles'));
     }
 
     /**
@@ -52,7 +69,7 @@ class ControllerRoles extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Update de roles";
     }
 
     /**
@@ -60,6 +77,9 @@ class ControllerRoles extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Destroy de roles";
+        $rol =  Rol::find($id);
+        $rol->delete();
+        return $rol;
     }
 }
