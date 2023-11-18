@@ -3,7 +3,7 @@
 @section('gestion_nombre', 'Estados/Roles')
 
 @section('contenido')
-{{$roles}}
+{{-- {{$roles}} --}}
 
     <section class="content">
         <div class="row">
@@ -61,6 +61,7 @@
                                                             title="Agregar Nuevo Estado">+</button>
                                                     </div>
 
+                                                    <!-- Modal de agregar estado-->
                                                     <div class="modal fade" id="modalAgregarEstado" tabindex="-1"
                                                         aria-labelledby="modalAgregarEstadoLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
@@ -72,11 +73,12 @@
                                                                         data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <form>
+                                                                    <form action="{{ route('estados.store') }}"
+                                                                        method="POST">
+                                                                        @csrf
                                                                         <div class="row mb-3">
                                                                             <label for="nombre"
-                                                                                class="col-sm-4 col-form-label">Nombre
-                                                                                del Estado:</label>
+                                                                                class="col-sm-4 col-form-label">Nombre:</label>
                                                                             <div class="col-sm-8">
                                                                                 <input type="text" class="form-control"
                                                                                     id="nombre" name="nombre"
@@ -84,23 +86,28 @@
                                                                             </div>
                                                                         </div>
 
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-info text-white"
+                                                                                style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                <i class="bx bx-save"
+                                                                                    style="color: #F2F2F2;"></i>
+                                                                                Guardar
+                                                                            </button>
+                                                                        </div>
+
                                                                     </form>
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Cerrar</button>
-                                                                    <button type="button" class="btn btn-info text-white"
-                                                                        style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                        <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                                        Guardar
-                                                                    </button>
-                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <hr />
+                                            {{-- Listado de estados --}}
                                             <div class="table-responsive">
                                                 <table id="tablaEstados" class="table table-bordered">
                                                     <thead class="theadEstados">
@@ -146,9 +153,6 @@
                                                                     </button>
                                                                 </div>
 
-
-
-
                                                                 <!-- Modal de edición -->
                                                                 <div class="modal fade" id="editarEstadoModal"
                                                                     tabindex="-1"
@@ -169,31 +173,38 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="mb-3">
-                                                                                        <label for="editarNombreEstado"
-                                                                                            class="form-label">Nombre
-                                                                                            del
-                                                                                            Estado</label>
-                                                                                        <input type="text"
-                                                                                            class="form-control"
-                                                                                            id="editarNombreEstado">
+                                                                                <form
+                                                                                    action="{{ route('estados.update', 1) }}"
+                                                                                    method="POST">
+                                                                                    @csrf
+                                                                                    @method('PUT')
+
+                                                                                    <div class="row mb-3">
+                                                                                        <label for="nombre"
+                                                                                            class="col-sm-4 col-form-label">Nombre:</label>
+                                                                                        <div class="col-sm-8">
+                                                                                            <input type="text"
+                                                                                                class="form-control"
+                                                                                                id="nombre"
+                                                                                                name="nombre"
+                                                                                                placeholder="Ingrese el nombre del Estado">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-bs-dismiss="modal">Cerrar</button>
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-info text-white"
+                                                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                            <i class="bx bx-save"
+                                                                                                style="color: #F2F2F2;"></i>
+                                                                                            Guardar
+                                                                                        </button>
                                                                                     </div>
 
                                                                                 </form>
-                                                                            </div>
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cerrar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-info text-white"
-                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                    <i class="bx bx-save"
-                                                                                        style="color: #F2F2F2;"></i>
-                                                                                    Guardar
-                                                                                </button>
                                                                             </div>
 
                                                                         </div>
@@ -225,11 +236,17 @@
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Cancelar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-danger"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                                <form
+                                                                                    action="{{ route('estados.destroy', 1) }}"
+                                                                                    method="post">
+                                                                                    @csrf
+                                                                                    @method('DELETE')
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-danger"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                                </form>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -271,6 +288,7 @@
                                                             title="Agregar Nuevo Rol">+</button>
                                                     </div>
 
+                                                    <!-- Modal de agregar rol-->
                                                     <div class="modal fade" id="modalAgregarRol" tabindex="-1"
                                                         aria-labelledby="modalAgregarRolLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
@@ -283,7 +301,9 @@
                                                                         aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <form>
+                                                                    <form action="{{ route('roles.store') }}"
+                                                                        method="POST">
+                                                                        @csrf
                                                                         <div class="row mb-3">
                                                                             <label for="nombre"
                                                                                 class="col-sm-4 col-form-label">Nombre
@@ -295,23 +315,31 @@
                                                                             </div>
                                                                         </div>
 
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-info text-white"
+                                                                                style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                <i class="bx bx-save"
+                                                                                    style="color: #F2F2F2;"></i>
+                                                                                Guardar
+                                                                            </button>
+                                                                        </div>
+
+
                                                                     </form>
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Cerrar</button>
-                                                                    <button type="button" class="btn btn-info text-white"
-                                                                        style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                        <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                                        Guardar
-                                                                    </button>
-                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <hr />
+
+                                            {{-- Listado de roles --}}
                                             <div class="table-responsive">
                                                 <table id="tablaRoles" class="table table-bordered">
                                                     <thead class="theadRoles">
@@ -366,7 +394,7 @@
                                                                     aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         {{-- + id_rol a editar --}}
-                                                                        <form action="{{route('estados_roles_roles.update',1)}}" method="POST">
+                                                                        <form action="{{route('roles.update',1)}}" method="POST">
                                                                             @csrf
                                                                             @method('put')
                                                                         <div class="modal-content">
@@ -383,32 +411,37 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="mb-3">
-                                                                                        <label for="editarNombreEstado"
-                                                                                            class="form-label">Nombre
-                                                                                            del
-                                                                                            Rol</label>
-                                                                                        <input type="text"
-                                                                                            class="form-control"
-                                                                                            id="editarNombreRol"
-                                                                                            name="nombre">                                                                                       
+                                                                                <form
+                                                                                    action="{{ route('roles.update', 1) }}"
+                                                                                    method="POST">
+                                                                                    @csrf
+                                                                                    @method('PUT')
+                                                                                    <div class="row mb-3">
+                                                                                        <label for="nombre"
+                                                                                            class="col-sm-4 col-form-label">Nombre
+                                                                                            del Rol:</label>
+                                                                                        <div class="col-sm-8">
+                                                                                            <input type="text"
+                                                                                                class="form-control"
+                                                                                                id="nombre"
+                                                                                                name="nombre"
+                                                                                                placeholder="Ingrese el nombre del Rol">
+                                                                                        </div>
                                                                                     </div>
 
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-bs-dismiss="modal">Cerrar</button>
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-info text-white"
+                                                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                            <i class="bx bx-save"
+                                                                                                style="color: #F2F2F2;"></i>
+                                                                                            Guardar
+                                                                                        </button>
+                                                                                    </div>
                                                                                 </form>
-                                                                            </div>
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cerrar</button>
-                                                                                <button type="submit"
-                                                                                    class="btn btn-info text-white"
-                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                    <i class="bx bx-save"
-                                                                                        style="color: #F2F2F2;"></i>
-                                                                                    Guardar
-                                                                                </button>
                                                                             </div>
 
                                                                         </div>
@@ -440,9 +473,13 @@
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Cancelar</button>
-                                                                                  <!-- Form de eliminar -->  
-                                                                                <form action="">
-                                                                                    <button type="button"
+                                                                                <!-- Form de eliminar -->
+                                                                                <form
+                                                                                    action=" {{ route('roles.destroy', 1) }} "
+                                                                                    method="POST">
+                                                                                    @csrf
+                                                                                    @method('DELETE')
+                                                                                    <button type="submit"
                                                                                         class="btn btn-danger"
                                                                                         data-bs-dismiss="modal"
                                                                                         data-bs-toggle="modal"

@@ -13,8 +13,7 @@ class ControllerRoles extends Controller
      */
     public function index()
     {
-        $roles = Rol::all();
-        return view('estados_roles.index',compact('roles'));
+       
     }
 
     /**
@@ -30,7 +29,23 @@ class ControllerRoles extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Store de roles";
+
+        $request->merge([
+            'nombre' => 'admin',
+            'id_estado' => '2',
+        ]);
+
+
+        // return "hola";
+        $rol = new Rol();
+
+        $rol->nombre= $request->nombre;
+        $rol->id_estado= $request->id_estado;
+        $rol->save();
+
+        // $roles = Rol::all();
+        // return view('estados_roles.index',compact('roles'));
     }
 
     /**
@@ -54,10 +69,7 @@ class ControllerRoles extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $rol = Rol::find($id);
-        $rol["nombre"] = $request["nombre"];
-        $rol->save();
-        return redirect('/estados_roles_roles');
+        //
     }
 
     /**
@@ -65,6 +77,7 @@ class ControllerRoles extends Controller
      */
     public function destroy(string $id)
     {
+        return "Destroy de roles";
         $rol =  Rol::find($id);
         $rol->delete();
         return $rol;

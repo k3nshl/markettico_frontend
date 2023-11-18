@@ -61,13 +61,13 @@
                         <div class="menu-title">Superadmin</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('usuarios_administrativos.index') }}"><i
+                        <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
                         </li>
-                        <li> <a href="{{ route('estados_roles.index') }}"><i
+                        <li> <a href="{{ route('estadosRoles') }}"><i
                                     class="bx bx-right-arrow-alt"></i>Gestionar Estados/Roles</a>
                         </li>
-                        <li> <a href="{{ route('historial.index') }}"><i class="bx bx-right-arrow-alt"></i>Visualizar
+                        <li> <a href="{{ route('historiales.index') }}"><i class="bx bx-right-arrow-alt"></i>Visualizar
                                 Historiales</a>
                         </li>
                     </ul>
@@ -79,10 +79,10 @@
                         <div class="menu-title">Administrador</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('usuarios_administrativos.index') }}"><i
+                        <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
                         </li>
-                        <li> <a href="{{ route('solicitud.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                        <li> <a href="{{ route('solicitudes-vendedores.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Vendedores</a>
                         </li>
                         <li> <a href="{{ route('estadisticas.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
@@ -123,7 +123,7 @@
                         <div class="menu-title">Moderador</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('moderador.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                        <li> <a href="{{ route('paginasInformacion.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Paginas</a>
                         </li>
                         <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
@@ -133,13 +133,11 @@
                                 Categorias</a>
                         </li>
 
-                        <li> <a href="{{ route('productos.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                        <li> <a href="{{ route('solicitudes-productos.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Productos</a>
                         </li>
-                        <li> <a href="{{ route('contenido.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                        <li> <a href="{{ route('moderarContenido.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Contenido</a>
-
-
 
                     </ul>
                 </li>
@@ -149,9 +147,6 @@
             </ul>
             <!--end navigation-->
         </div>
-
-
-
 
         <!--end sidebar wrapper -->
         <!--start header -->

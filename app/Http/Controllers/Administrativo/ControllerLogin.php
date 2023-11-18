@@ -16,7 +16,7 @@ class ControllerLogin extends Controller
         return view("login.inicioSesion");
     }
 
-    public function verificar(){
+    public function validarLogin(Request $request){
         return view("login.codigoVerificacion");
     }
 
