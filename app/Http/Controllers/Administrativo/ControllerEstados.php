@@ -64,9 +64,9 @@ class ControllerEstados extends Controller
 
     {
         //$id=4;
-        $dataEstado= Estado::find($id);
-        $dataEstado->nombre = $request->nombre;
-        $dataEstado->update();
+        $itemEstado= Estado::find($id);
+        $itemEstado->nombre = $request->nombre;
+        $itemEstado->update();
         return redirect()->back();
         
     }
