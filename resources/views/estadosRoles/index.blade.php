@@ -63,6 +63,8 @@
                                                     <!-- Modal de agregar estado-->
                                                     <div class="modal fade" id="modalAgregarEstado" tabindex="-1"
                                                         aria-labelledby="modalAgregarEstadoLabel" aria-hidden="true">
+                                                        <form action="{{ route('estados.store') }}" method="post">
+                                                            @csrf
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -99,9 +101,9 @@
 
                                                                     </form>
                                                                 </div>
-
                                                             </div>
                                                         </div>
+                                                    </form>
                                                     </div>
                                                 </div>
                                             </div>
