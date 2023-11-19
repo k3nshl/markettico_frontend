@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\Rol;
 use Illuminate\Http\Request;
 
 class ControllerEstados extends Controller
@@ -15,7 +16,8 @@ class ControllerEstados extends Controller
         // Enviar el listado de roles a la vista
         // Enviar el listado de estados a la vista
 
-        return view('estadosRoles.index');
+        $roles = Rol::all();
+        return view('estadosRoles.index', compact('roles'));
     }
 
     /**
