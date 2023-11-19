@@ -312,7 +312,11 @@
                                                                             <div class="col-sm-8">
                                                                                 <input type="text" class="form-control"
                                                                                     id="nombre" name="nombre"
-                                                                                    placeholder="Ingrese el nombre del Rol">
+                                                                                    placeholder="Ingrese el nombre del Rol"required>
+
+                                                                                    <input type="hidden" class="form-control"
+                                                                                    name="id_estado" value="1">
+                                                                                    
                                                                             </div>
                                                                         </div>
 

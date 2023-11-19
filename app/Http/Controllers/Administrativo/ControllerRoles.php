@@ -29,23 +29,12 @@ class ControllerRoles extends Controller
      */
     public function store(Request $request)
     {
-        return "Store de roles";
-
-        $request->merge([
-            'nombre' => 'admin',
-            'id_estado' => '2',
-        ]);
-
-
-        // return "hola";
+       
         $rol = new Rol();
-
         $rol->nombre= $request->nombre;
         $rol->id_estado= $request->id_estado;
         $rol->save();
-
-        // $roles = Rol::all();
-        // return view('estados_roles.index',compact('roles'));
+        return redirect()->back();
     }
 
     /**
@@ -53,7 +42,7 @@ class ControllerRoles extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
