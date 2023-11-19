@@ -13,8 +13,7 @@ class ControllerRoles extends Controller
      */
     public function index()
     {
-        $roles = Rol::all();
-        return view('estados_roles.index',compact('roles'));
+       
     }
 
     /**
@@ -30,6 +29,8 @@ class ControllerRoles extends Controller
      */
     public function store(Request $request)
     {
+        return "Store de roles";
+
         $request->merge([
             'nombre' => 'admin',
             'id_estado' => '2',
@@ -68,7 +69,7 @@ class ControllerRoles extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Update de roles";
     }
 
     /**
@@ -76,6 +77,7 @@ class ControllerRoles extends Controller
      */
     public function destroy(string $id)
     {
+        return "Destroy de roles";
         $rol =  Rol::find($id);
         $rol->delete();
         return $rol;

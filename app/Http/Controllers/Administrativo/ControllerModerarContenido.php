@@ -12,7 +12,7 @@ class ControllerModerarContenido extends Controller
      */
     public function index()
     {
-        return view('moderar_contenido.index');
+        return view('moderarContenido.index');
     }
 
     /**

@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerDashboard extends Controller
+class ControllerAlertas extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('dashboard.index');
+        //
     }
 
     /**
@@ -28,7 +28,7 @@ class ControllerDashboard extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Store de alertas";
     }
 
     /**
@@ -52,7 +52,7 @@ class ControllerDashboard extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Update de alertas";
     }
 
     /**
@@ -60,6 +60,6 @@ class ControllerDashboard extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Destroy de alertas";
     }
 }

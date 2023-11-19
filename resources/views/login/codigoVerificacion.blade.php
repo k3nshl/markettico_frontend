@@ -39,14 +39,17 @@
                                         </div>
 										<h4 class="mt-5 font-weight-bold">Código Verificación</h4>
 										<p class="text-muted">Has recibido un código de verificación a tu correo empresarial!</p>
-										<div class="mb-3 mt-5">
-											<label class="form-label">Código</label>
-											<input type="text" class="form-control" placeholder="Ingresar Código de Verificación" />
-										</div>  
-										<div class="d-grid gap-2">
-											<button type="button" class="btn btn-primary">Verificar</button> 
-                                            <a href="{{route("login.index")}}" class="btn btn-light"><i class='bx bx-arrow-back mr-1'></i>Regresar al Login</a>
-										</div>
+										<form action="#" method="post">
+											@csrf
+											<div class="mb-3 mt-5">
+												<label class="form-label">Código</label>
+												<input type="text" name="codigo" class="form-control" placeholder="Ingresar Código de Verificación" />
+											</div>  
+											<div class="d-grid gap-2">
+												<button type="submit" class="btn btn-primary">Verificar</button> 
+												<a href="{{route("login")}}" class="btn btn-light"><i class='bx bx-arrow-back mr-1'></i>Regresar al Login</a>
+											</div>
+										</form>
 									</div>
 								</div>
 							</div>

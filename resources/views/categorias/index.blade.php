@@ -42,47 +42,53 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
                                                         </div>
+
+                                                        {{-- Model para registrar --}}
                                                         <div class="modal-body">
-                                                            <form>
+                                                            <form action="{{ route('categorias.store') }}" method="POST">
+                                                                @csrf
                                                                 <div class="row mb-3">
                                                                     <label for="nombre"
-                                                                        class="col-sm-4 col-form-label">Nombre de la
-                                                                        categoría:</label>
+                                                                        class="col-sm-4 col-form-label">Nombre:</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" class="form-control"
-                                                                            id="nombre" name="nombre"
-                                                                            placeholder="Ingrese el nombre">
+                                                                            name="nombre" placeholder="Ingrese el nombre">
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="row mb-3">
                                                                     <label for="descripcion"
-                                                                        class="col-sm-4 col-form-label">Descripción de la
-                                                                        categoría:</label>
+                                                                        class="col-sm-4 col-form-label">Descripción:</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" class="form-control"
-                                                                            id="descripcion" name="descripcion"
+                                                                            name="descripcion"
                                                                             placeholder="Ingrese la descripción">
                                                                     </div>
                                                                 </div>
 
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Cerrar</button>
+
+                                                                    <button type="submit" class="btn btn-info text-white"
+                                                                        style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                        <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                                                                        Guardar
+                                                                    </button>
+
+                                                                </div>
+
                                                             </form>
                                                         </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Cerrar</button>
-                                                            <button type="button" class="btn btn-info text-white"
-                                                                style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                                Guardar
-                                                            </button>
-                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <hr />
+
+                                    {{-- Lista de categorías --}}
                                     <div class="table-responsive">
                                         <table id="tablaRoles" class="table table-bordered">
                                             <thead class="theadRoles">
@@ -104,11 +110,8 @@
                                                     <td>Ahhhajjajbbcbxxuusisisisiis</td>
                                                     <td>
 
-
-
-
-
-                                                        <a href="{{ route('categorias.show', $id) }}"
+                                                        <!-- Botón de visualizar con modal -->
+                                                        <a href="{{ route('categorias.show', 1) }}"
                                                             class="btn btn-primary btn-sm" data-bs-toggle="tooltip"
                                                             data-bs-placement="top" title="Visualizar Subcategoría">
                                                             <div class="text-center">
@@ -126,7 +129,6 @@
                                                                     style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                             </div>
                                                         </button>
-
 
                                                         <!-- Modal de edición -->
                                                         <div class="modal fade" id="editarCategoriaModal" tabindex="-1"
@@ -146,34 +148,41 @@
                                                                     </div>
 
                                                                     <div class="modal-body">
-                                                                        <form>
-                                                                            <div class="mb-3">
-                                                                                <label for="editarNombreCategoria"
-                                                                                    class="form-label">Nombre de la
-                                                                                    categoría</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="editarNombreCategoria">
+                                                                        <form action="{{ route('categorias.update', 1) }}" method="POST">
+                                                                            @csrf
+                                                                            @method('PUT')
+                                                                            <div class="row mb-3">
+                                                                                <label for="nombre"
+                                                                                    class="col-sm-4 col-form-label">Nombre:</label>
+                                                                                <div class="col-sm-8">
+                                                                                    <input type="text" class="form-control"
+                                                                                        name="nombre" placeholder="Ingrese el nombre">
+                                                                                </div>
                                                                             </div>
-                                                                            <div class="mb-3">
-                                                                                <label for="editarDescripcion"
-                                                                                    class="form-label">Descripción</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="editarDescripcion">
+            
+                                                                            <div class="row mb-3">
+                                                                                <label for="descripcion"
+                                                                                    class="col-sm-4 col-form-label">Descripción:</label>
+                                                                                <div class="col-sm-8">
+                                                                                    <input type="text" class="form-control"
+                                                                                        name="descripcion"
+                                                                                        placeholder="Ingrese la descripción">
+                                                                                </div>
                                                                             </div>
-
+            
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary"
+                                                                                    data-bs-dismiss="modal">Cerrar</button>
+            
+                                                                                <button type="submit" class="btn btn-info text-white"
+                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                    <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                                                                                    Guardar
+                                                                                </button>
+            
+                                                                            </div>
+            
                                                                         </form>
-                                                                    </div>
-
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Cerrar</button>
-                                                                        <button type="button"
-                                                                            class="btn btn-info text-white"
-                                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                            <i class="bx bx-save"
-                                                                                style="color: #F2F2F2;"></i>
-                                                                            Guardar
-                                                                        </button>
                                                                     </div>
 
                                                                 </div>
@@ -205,16 +214,18 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Cancelar</button>
-                                                                        <!-- Form para eliminar categoria -->
-                                                                        <form action="">
-                                                                            <h1>Hola mundo</h1>
-                                                                            <button type="button" class="btn btn-danger"
+
+                                                                        <form action="{{ route('categorias.destroy', 1)}}" method="POST">
+                                                                            @method('DELETE')
+                                                                            @csrf
+                                                                            
+                                                                            <button type="submit" class="btn btn-danger"
                                                                                 data-bs-dismiss="modal"
                                                                                 data-bs-toggle="modal"
                                                                                 data-bs-target="#eliminacionCorrectaModal">Eliminar
                                                                             </button>
-                                                                            <!-- Fin form para eliminar categoria -->
                                                                         </form>
+
                                                                     </div>
                                                                 </div>
                                                             </div>
