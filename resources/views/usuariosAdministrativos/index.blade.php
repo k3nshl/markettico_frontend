@@ -64,7 +64,11 @@
                                                                 </div>
                                                                 <div class="modal-body">
 
-                                                                    <form action="">
+                                                                    <form
+                                                                        action="{{ route('usuariosAdministrativos.store') }}"
+                                                                        method="POST">
+                                                                        @method('POST')
+                                                                        @csrf
                                                                         <div class="row mb-3">
                                                                             <label for="nombre_completo"
                                                                                 class="col-sm-4 col-form-label">Nombre de
@@ -135,17 +139,18 @@
                                                                                 </select>
                                                                             </div>
                                                                         </div>
-                                                                    </form>
+
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-bs-dismiss="modal">Cerrar</button>
-                                                                    <button type="button" class="btn btn-info text-white"
+                                                                    <button type="submit" class="btn btn-info text-white"
                                                                         style="background-color: #04D9D9; border-color: #04D9D9;">
                                                                         <i class="bx bx-save" style="color: #F2F2F2;"></i>
                                                                         Guardar
                                                                     </button>
                                                                 </div>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -341,7 +346,11 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form>
+                                                                                <form
+                                                                                    action="{{ route('usuariosAdministrativos.update', 1) }}"
+                                                                                    method="POST">
+                                                                                    @method('PUT')
+                                                                                    @csrf
                                                                                     <div class="mb-3">
                                                                                         <label for="editNombreUsuario"
                                                                                             class="col-sm-4 col-form-label">Nombre</label>
@@ -401,14 +410,14 @@
                                                                                         </select>
                                                                                     </div>
 
-                                                                                </form>
+
                                                                             </div>
 
                                                                             <div class="modal-footer">
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Cerrar</button>
-                                                                                <button type="button"
+                                                                                <button type="submit"
                                                                                     class="btn btn-info text-white"
                                                                                     style="background-color: #04D9D9; border-color: #04D9D9;">
                                                                                     <i class="bx bx-save"
@@ -416,7 +425,7 @@
                                                                                     Guardar
                                                                                 </button>
                                                                             </div>
-
+                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -446,11 +455,18 @@
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Cancelar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-danger"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                                <form
+                                                                                    action="{{ route('usuariosAdministrativos.destroy', 1) }}"
+                                                                                    method="POST">
+                                                                                    @method('DELETE')
+                                                                                    @csrf
+                                                                                    <button type="sumit"
+                                                                                        class="btn btn-danger"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#eliminacionCorrectaModal">Eliminar
+                                                                                    </button>
+                                                                                </form>
                                                                             </div>
                                                                         </div>
                                                                     </div>

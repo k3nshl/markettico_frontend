@@ -28,7 +28,7 @@ class ControllerPlanes extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "store planes";
     }
 
     /**
@@ -52,7 +52,7 @@ class ControllerPlanes extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "update planes";
     }
 
     /**
@@ -60,6 +60,6 @@ class ControllerPlanes extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "destroy planes";
     }
 }
