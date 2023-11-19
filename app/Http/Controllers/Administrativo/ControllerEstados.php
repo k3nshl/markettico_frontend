@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\Estado;
+use App\Models\Rol;
 use Illuminate\Http\Request;
 
 class ControllerEstados extends Controller
@@ -15,7 +17,8 @@ class ControllerEstados extends Controller
         // Enviar el listado de roles a la vista
         // Enviar el listado de estados a la vista
 
-        return view('estadosRoles.index');
+        $roles = Rol::all();
+        return view('estadosRoles.index', compact('roles'));
     }
 
     /**
@@ -24,6 +27,7 @@ class ControllerEstados extends Controller
     public function create()
     {
         //
+        return view('estadosRoles.index');
     }
 
     /**
@@ -31,7 +35,10 @@ class ControllerEstados extends Controller
      */
     public function store(Request $request)
     {
-        return "Store de estados";
+        $item = new Estado();
+        $item->nombre = $request->nombre;
+        $item->save();
+        return redirect()->back();
     }
 
     /**
@@ -40,6 +47,8 @@ class ControllerEstados extends Controller
     public function show(string $id)
     {
         //
+        $itemEstado= Estado::find($id);
+        return view('estadosRoles.index',compact('itemEstado'));
     }
 
     /**
@@ -54,8 +63,14 @@ class ControllerEstados extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
+
     {
-        return "Update de estados";
+        //$id=4;
+        $itemEstado= Estado::find($id);
+        $itemEstado->nombre = $request->nombre;
+        $itemEstado->update();
+        return redirect()->back();
+        
     }
 
     /**

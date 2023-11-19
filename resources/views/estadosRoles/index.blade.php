@@ -63,6 +63,8 @@
                                                     <!-- Modal de agregar estado-->
                                                     <div class="modal fade" id="modalAgregarEstado" tabindex="-1"
                                                         aria-labelledby="modalAgregarEstadoLabel" aria-hidden="true">
+                                                        <form action="{{ route('estados.store') }}" method="post">
+                                                            @csrf
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -99,9 +101,9 @@
 
                                                                     </form>
                                                                 </div>
-
                                                             </div>
                                                         </div>
+                                                    </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -310,7 +312,11 @@
                                                                             <div class="col-sm-8">
                                                                                 <input type="text" class="form-control"
                                                                                     id="nombre" name="nombre"
-                                                                                    placeholder="Ingrese el nombre del Rol">
+                                                                                    placeholder="Ingrese el nombre del Rol"required>
+
+                                                                                    <input type="hidden" class="form-control"
+                                                                                    name="id_estado" value="1">
+                                                                                    
                                                                             </div>
                                                                         </div>
 
@@ -356,9 +362,18 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+
+                                                        @if (count($roles)>0)
+                                                                                                                        
+                                                        
+                                                        @foreach ($roles as $item)
                                                         <tr>
-                                                            <td>1</td>
-                                                            <td>Superadmin</td>
+
+                                                           
+                                                                
+                                                           
+                                                            <td>{{$item->id_rol}}</td>
+                                                            <td>{{$item->nombre}}</td>
                                                             <td>
 
                                                                 <div class="text-center">
@@ -379,13 +394,13 @@
                                                                     {{-- Botón de eliminar --}}
                                                                     <button class="btn btn-danger btn-sm"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#eliminarRolModal">
+                                                                        data-bs-target="#eliminarRolModal{{$item->id_rol}}">
                                                                         <i class="lni lni-trash"
                                                                             style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                                     </button>
                                                                 </div>
 
-
+                                                                
 
                                                                 <!-- Modal de edición -->
                                                                 <div class="modal fade" id="editarRolModal"
@@ -444,14 +459,14 @@
                                                                 </div>
 
                                                                 <!-- Modal de eliminar -->
-                                                                <div class="modal fade" id="eliminarRolModal"
+                                                                <div class="modal fade" id="eliminarRolModal{{$item->id_rol}}"
                                                                     tabindex="-1" aria-labelledby="eliminarRolModalLabel"
                                                                     aria-hidden="true">
                                                                     <div class="modal-dialog">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
-                                                                                    id="eliminarRolModalLabel">
+                                                                                    id="eliminarRolModalLabel{{$item->id_rol}}">
                                                                                     Confirmar
                                                                                     eliminación</h5>
                                                                                 <button type="button" class="btn-close"
@@ -469,15 +484,15 @@
                                                                                     data-bs-dismiss="modal">Cancelar</button>
                                                                                 <!-- Form de eliminar -->
                                                                                 <form
-                                                                                    action=" {{ route('roles.destroy', 1) }} "
+                                                                                    action=" {{ route('roles.destroy',$item->id_rol) }} "
                                                                                     method="POST">
                                                                                     @csrf
                                                                                     @method('DELETE')
                                                                                     <button type="submit"
                                                                                         class="btn btn-danger"
-                                                                                        data-bs-dismiss="modal"
+                                                                                       {{--  data-bs-dismiss="modal"
                                                                                         data-bs-toggle="modal"
-                                                                                        data-bs-target="#eliminacionCorrectaModal">Eliminar
+                                                                                        data-bs-target="#eliminacionCorrectaModal" --}}>Eliminar
                                                                                     </button>
                                                                                 </form>
                                                                                 <!-- Fin Form de eliminar -->
@@ -487,6 +502,8 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
+                                                        @endforeach
+                                                        @endif
                                                     </tbody>
                                                 </table>
                                             </div>
