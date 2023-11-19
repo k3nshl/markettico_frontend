@@ -3,6 +3,7 @@
 @section('gestion_nombre', 'Estados/Roles')
 
 @section('contenido')
+{{-- {{$roles}} --}}
 
     <section class="content">
         <div class="row">
@@ -406,7 +407,7 @@
                                                                 <div class="modal fade" id="editarRolModal"
                                                                     tabindex="-1" aria-labelledby="editarRolModalLabel"
                                                                     aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
+                                                                    <div class="modal-dialog modal-dialog-scrollable">                                                                                                                            
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
@@ -421,6 +422,8 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
+                                                                                {{-- 2 --}}
+                                                                                {{-- + id_rol a editar --}}                                                                  
                                                                                 <form
                                                                                     action="{{ route('roles.update', 1) }}"
                                                                                     method="POST">
@@ -455,6 +458,7 @@
                                                                             </div>
 
                                                                         </div>
+                                                                    </form>
                                                                     </div>
                                                                 </div>
 
