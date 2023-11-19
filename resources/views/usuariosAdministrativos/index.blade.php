@@ -75,7 +75,7 @@
                                                                                 Usuario:</label>
                                                                             <div class="col-sm-8">
                                                                                 <input type="text" class="form-control"
-                                                                                    id="nombre_completo"
+                                                                                    id="nombre_completo" name="nombre_completo"
                                                                                     placeholder="Nombre de Usuario">
                                                                             </div>
                                                                         </div>
@@ -84,7 +84,7 @@
                                                                                 class="col-sm-4 col-form-label">Contraseña:</label>
                                                                             <div class="col-sm-8">
                                                                                 <input type="password" class="form-control"
-                                                                                    id="password" placeholder="Contraseña">
+                                                                                    id="password" placeholder="Contraseña" name="password">
                                                                             </div>
                                                                         </div>
 
@@ -96,7 +96,7 @@
                                                                             <div class="col-sm-8">
                                                                                 <input type="email" class="form-control"
                                                                                     id="correo_empresarial"
-                                                                                    placeholder="Correo Empresarial">
+                                                                                    placeholder="Correo Empresarial" name="correo_empresarial">
                                                                             </div>
                                                                         </div>
                                                                         <div class="row mb-3">
@@ -106,7 +106,7 @@
                                                                             <div class="col-sm-8">
                                                                                 <input type="text" class="form-control"
                                                                                     id="numero_telefonico"
-                                                                                    placeholder="Número Telefónico">
+                                                                                    placeholder="Número Telefónico" name="numero_telefonico">
                                                                             </div>
                                                                         </div>
                                                                         <div class="row mb-3">
@@ -114,12 +114,12 @@
                                                                                 class="col-sm-4 col-form-label">Rol del
                                                                                 Usuario:</label>
                                                                             <div class="col-sm-8">
-                                                                                <select class="form-select" id="id_rol">
-                                                                                    <option value="superadmin">Superadmin
+                                                                                <select class="form-select" id="id_rol" name="id_rol">
+                                                                                    <option value="1">Superadmin
                                                                                     </option>
-                                                                                    <option value="administrador">
+                                                                                    <option value="2">
                                                                                         Administrador</option>
-                                                                                    <option value="moderador">Moderador
+                                                                                    <option value="3">Moderador
                                                                                     </option>
                                                                                 </select>
                                                                             </div>
@@ -132,9 +132,9 @@
                                                                             <div class="col-sm-8">
 
                                                                                 <select class="form-select"
-                                                                                    id="id_estado">
-                                                                                    <option value="activo">Activo</option>
-                                                                                    <option value="inactivo">Inactivo
+                                                                                    id="id_estado" name="id_estado">
+                                                                                    <option value="1">Activo</option>
+                                                                                    <option value="0">Inactivo
                                                                                     </option>
                                                                                 </select>
                                                                             </div>
