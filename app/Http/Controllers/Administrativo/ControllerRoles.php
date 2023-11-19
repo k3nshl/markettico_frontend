@@ -29,20 +29,11 @@ class ControllerRoles extends Controller
      */
     public function store(Request $request)
     {
-        // return "Store de roles";
-
-        // $request->merge([
-        //     'nombre' => 'admin',
-        //     'id_estado' => '2',
-        // ]);
-
+       
         $rol = new Rol();
         $rol->nombre= $request->nombre;
-        // $rol->id_estado= $request->id_estado;
-        $rol->id_estado= 2;
+        $rol->id_estado= $request->id_estado;
         $rol->save();
-
-        // $roles = Rol::all();
         return redirect()->back();
     }
 
