@@ -238,10 +238,10 @@
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Cancelar</button>
                                                                                 <form
-                                                                                    action="{{ route('estados.destroy', 1) }}"
-                                                                                    method="post">
+                                                                                action="{{ route('estados.destroy', 14) }}"
+                                                                                    method="POST">
                                                                                     @csrf
-                                                                                    @method('DELETE')
+                                                                                    @method('delete')
                                                                                     <button type="submit"
                                                                                         class="btn btn-danger"
                                                                                         data-bs-dismiss="modal"

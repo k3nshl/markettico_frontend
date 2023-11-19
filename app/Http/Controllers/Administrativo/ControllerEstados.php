@@ -54,9 +54,12 @@ class ControllerEstados extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $id = 10; 
+        $itemEs = Estado::find($id); 
+        $item->update();
+        return view('estadosRoles.index');
     }
 
     /**
@@ -76,8 +79,18 @@ class ControllerEstados extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        return "Destroy de estados";
+
+            // Encuentra el modelo por su ID
+            $item = Estado::find($id);
+    
+            // Elimina el modelo
+            $item->delete();
+
+    
+            // Redirige a la página de índice con un mensaje de éxito
+            return redirect()->back();
+            
     }
 }
