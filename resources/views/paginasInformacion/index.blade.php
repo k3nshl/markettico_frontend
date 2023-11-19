@@ -8,39 +8,44 @@
 
         <div class="container">
             <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
-                
+
                 <div class="card-body">
                     <div class="row">
 
 
                         <div class="col-md-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h5 class="text-dark"><i class="bx bx-notepad me-2 font-22  text-info"></i>Agregar Colección
+                                <h5 class="text-dark"><i class="bx bx-notepad me-2 font-22  text-info"></i>Agregar Página
                                 </h5>
                             </div>
 
                             <hr>
-                            <form>
+
+                            <form action="{{ route('paginasInformacion.store') }}" method="POST">
+                                @csrf
+                                @method('POST')
                                 <div class="mb-3">
-                                    <label for="titulo" class="form-label">Nombre de Colección:</label>
-                                    <input type="text" class="form-control" id="titulo"
-                                        placeholder="Nombre de Colección">
+                                    <label for="titulo" class="form-label">Título:</label>
+                                    <input type="text" name="titulo" class="form-control" id="titulo"
+                                        placeholder="Título de página">
                                 </div>
                                 <div class="mb-3">
                                     <label for="descripcion" class="form-label">Descripción:</label>
-                                    <input type="text" class="form-control" id="descripcion" placeholder="Descripción">
+                                    <input type="text" name="descripcion" class="form-control" id="descripcion"
+                                        placeholder="Descripción">
                                 </div>
                                 <div class="mb-3">
                                     <label for="icono" class="form-label">Icono:</label>
                                     <input type="file" class="form-control" id="icono" name="icono">
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <button type="button" class="btn btn-info"
+                                    <button type="submit" class="btn btn-info"
                                         style="background-color: #04D9D9; border-color: #04D9D9; color: #F2F2F2;">
                                         <i class="bx bx-save" style="color: #F2F2F2;"></i> Guardar
                                     </button>
                                 </div>
                             </form>
+
                         </div>
 
 
@@ -48,7 +53,7 @@
                         <div class="col-md-8">
                             <div class="d-flex justify-content-between align-items-end mb-3">
                                 <h5 class="text-dark"><i class="bx bx-notepad me-2 font-22 text-info"></i>Lista de
-                                    Colecciones</h5>
+                                    Páginas</h5>
 
                             </div>
                             <hr>
@@ -75,7 +80,7 @@
                                             <td>
                                                 <div class="text-center">
 
-                                                    <a href="{{ route('moderador.show', $id) }}"
+                                                    <a href="{{ route('paginasInformacion.show', 1) }}"
                                                         class="btn btn-primary btn-sm" data-bs-toggle="tooltip"
                                                         data-bs-placement="top" title="Visualizar Artículo">
                                                         <div class="text-center">
@@ -117,39 +122,42 @@
                                                             </div>
 
                                                             <div class="modal-body">
-                                                                <form>
+                                                                <form action="{{ route('paginasInformacion.update', 1) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    @method('PUT')
                                                                     <div class="mb-3">
-                                                                        <label for="editTitulo" class="form-label">Nombre de
-                                                                            Colección</label>
-                                                                        <input type="text" class="form-control"
-                                                                            id="titulo">
+                                                                        <label for="titulo"
+                                                                            class="form-label">Título:</label>
+                                                                        <input type="text" name="titulo"
+                                                                            class="form-control" id="titulo"
+                                                                            placeholder="Título de página">
                                                                     </div>
-
                                                                     <div class="mb-3">
-                                                                        <label for="editDescripcion"
-                                                                            class="form-label">Descripción</label>
-                                                                        <input type="email" class="form-control"
-                                                                            id="descripcion">
+                                                                        <label for="descripcion"
+                                                                            class="form-label">Descripción:</label>
+                                                                        <input type="text" name="descripcion"
+                                                                            class="form-control" id="descripcion"
+                                                                            placeholder="Descripción">
                                                                     </div>
-
                                                                     <div class="mb-3">
-                                                                        <label for="editIcono"
-                                                                            class="form-label">Icono</label>
+                                                                        <label for="icono"
+                                                                            class="form-label">Icono:</label>
                                                                         <input type="file" class="form-control"
                                                                             id="icono" name="icono">
                                                                     </div>
 
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Cerrar</button>
+                                                                        <button type="submit" class="btn btn-info text-white"
+                                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                            <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                                                                            Guardar
+                                                                        </button>
+                                                                    </div>
+                                                                    
                                                                 </form>
-                                                            </div>
-
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-bs-dismiss="modal">Cerrar</button>
-                                                                <button type="button" class="btn btn-info text-white"
-                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                    <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                                    Guardar
-                                                                </button>
                                                             </div>
 
                                                         </div>
@@ -174,9 +182,14 @@
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
                                                                     data-bs-dismiss="modal">Cancelar</button>
-                                                                <button type="button" class="btn btn-danger"
-                                                                    data-bs-dismiss="modal" data-bs-toggle="modal"
-                                                                    data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                <form action="{{ route('paginasInformacion.destroy', 1) }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-danger"
+                                                                        data-bs-dismiss="modal" data-bs-toggle="modal"
+                                                                        data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>

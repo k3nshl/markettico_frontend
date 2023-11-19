@@ -67,14 +67,16 @@
                                                                         data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <form>
-
+                                                                    <form action="{{ route('anuncios.store') }}"
+                                                                        method="POST">
+                                                                        @csrf
                                                                         <div class="mb-3">
                                                                             <label for="titulo"
                                                                                 class="col-sm-4 col-form-label">Titulo:</label>
 
-                                                                            <input type="titulo" class="form-control"
-                                                                                id="titulo" placeholder="Titulo">
+                                                                            <input type="titulo" name="titulo"
+                                                                                class="form-control" id="titulo"
+                                                                                placeholder="Titulo">
 
                                                                         </div>
 
@@ -84,7 +86,7 @@
                                                                                 portada:</label>
                                                                             <input type="file"
                                                                                 class="form-control input-imagen"
-                                                                                id="portada" name="portada">
+                                                                                id="portada" name="img_portada">
                                                                             <div class="text-center p-3">
                                                                                 <img src="#"
                                                                                     id="imagen-preview-portada"
@@ -109,27 +111,28 @@
 
                                                                         </div>
 
-
                                                                         <div class="mb-3">
                                                                             <label for="contenido"
                                                                                 class="col-sm-4 col-form-label">Contenido:</label>
 
-                                                                            <textarea id="mytextarea" name="textareaRegistrarAnuncio" rows="3" placeholder="Contenido"></textarea>
-
+                                                                            <textarea id="mytextarea" name="contenido" rows="3" placeholder="Contenido"></textarea>
                                                                         </div>
 
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-info text-white"
+                                                                                style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                <i class="bx bx-save"
+                                                                                    style="color: #F2F2F2;"></i>
+                                                                                Guardar
+                                                                            </button>
+                                                                        </div>
 
                                                                     </form>
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Cerrar</button>
-                                                                    <button type="button" class="btn btn-info text-white"
-                                                                        style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                        <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                                        Guardar
-                                                                    </button>
-                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -137,6 +140,8 @@
                                             </div>
 
                                             <hr />
+
+                                            {{-- Listado de anuncios --}}
                                             <div class="table-responsive">
                                                 <table id="tablaAnuncios" class="table table-bordered">
                                                     <thead class="theadAnuncios">
@@ -166,10 +171,7 @@
                                                             <td>Iphone gratis para el que se coma un moco</td>
                                                             <td>11/11/2023</td>
                                                             <td>11/11/2024</td>
-
-
                                                             <td>
-
                                                                 <div class="text-center">
 
                                                                     {{-- Botón de visualizar --}}
@@ -225,37 +227,38 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="id_vendedor"
-                                                                                            class="col-sm-4 col-form-label">Titulo:
-                                                                                            <span>Acá</span></label>
+                                                                                <div class="row mb-3">
+                                                                                    <label for="id_vendedor"
+                                                                                        class="col-sm-4 col-form-label">Titulo:
+                                                                                        <span>Acá</span></label>
 
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="id_vendedor"
-                                                                                            class="col-sm-4 col-form-label">Imagen
-                                                                                            de portada:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row mb-3">
+                                                                                    <label for="id_vendedor"
+                                                                                        class="col-sm-4 col-form-label">Imagen
+                                                                                        de portada:
+                                                                                        <span>Acá</span></label>
+                                                                                </div>
 
-                                                                                    <div class="row mb-3">
-                                                                                        <div class="col-sm">
-                                                                                            <label for="fecha"
-                                                                                                class="form-label">Fecha:</label>
-                                                                                            <input type="date"
-                                                                                                class="form-control"
-                                                                                                id="fecha"
-                                                                                                placeholder="Fecha">
-                                                                                        </div>
+                                                                                <div class="row mb-3">
+                                                                                    <div class="col-sm">
+                                                                                        <label for="fecha"
+                                                                                            class="form-label">Fecha inicio: <span>Acá</span></label>
                                                                                     </div>
+                                                                                </div>
 
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="id_vendedor"
-                                                                                            class="col-sm-4 col-form-label">Contenido:
-                                                                                            <span>Acá</span></label>
+                                                                                <div class="row mb-3">
+                                                                                    <div class="col-sm">
+                                                                                        <label for="fecha"
+                                                                                            class="form-label">Fecha final: <span>Acá</span></label>
                                                                                     </div>
-                                                                                </form>
+                                                                                </div>
+
+                                                                                <div class="row mb-3">
+                                                                                    <label for="id_vendedor"
+                                                                                        class="col-sm-4 col-form-label">Contenido:
+                                                                                        <span>Acá</span></label>
+                                                                                </div>
                                                                             </div>
 
                                                                             <div class="modal-footer">
@@ -288,68 +291,80 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row mb-3">
-                                                                                        <div class="col-sm">
-                                                                                            <label for="titulo"
-                                                                                                class="form-label">Título:</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="titulo"
-                                                                                                placeholder="Titulo">
-                                                                                        </div>
-                                                                                    </div>
+                                                                                <form
+                                                                                    action="{{ route('anuncios.update', 1) }}"
+                                                                                    method="POST">
+                                                                                    @csrf
+                                                                                    @method('PUT')
 
-                                                                                    <div class="row mb-3">
-                                                                                        <div class="col-sm">
-                                                                                            <label for="fecha"
-                                                                                                class="form-label">Fecha:</label>
-                                                                                            <input type="date"
-                                                                                                class="form-control"
-                                                                                                id="fecha"
-                                                                                                placeholder="Fecha">
-                                                                                        </div>
+                                                                                    <div class="mb-3">
+                                                                                        <label for="titulo"
+                                                                                            class="col-sm-4 col-form-label">Titulo:</label>
+
+                                                                                        <input type="titulo"
+                                                                                            name="titulo"
+                                                                                            class="form-control"
+                                                                                            id="titulo"
+                                                                                            placeholder="Titulo">
+
                                                                                     </div>
 
                                                                                     <div class="mb-3">
-                                                                                        <label for="portada"
+                                                                                        <label for="otroInput"
                                                                                             class="col-sm-4 col-form-label">Imagen
-                                                                                            de portada:</label>
+                                                                                            de
+                                                                                            portada:</label>
                                                                                         <input type="file"
                                                                                             class="form-control input-imagen"
-                                                                                            id="otroInput"
-                                                                                            name="otroInput">
+                                                                                            id="portada"
+                                                                                            name="img_portada">
                                                                                         <div class="text-center p-3">
                                                                                             <img src="#"
-                                                                                                id="imagen-preview-otroInput"
+                                                                                                id="imagen-preview-portada"
                                                                                                 alt="Vista previa de la imagen"
                                                                                                 class="rounded-3 imagen-preview"
                                                                                                 style="width:300px; height: 200px; object-fit: cover; display: none;">
                                                                                         </div>
                                                                                     </div>
 
+                                                                                    <div class="mb-3 row">
+                                                                                        <div class="col">
+                                                                                            <label>Fecha incio:</label>
+                                                                                            <input type="date"
+                                                                                                class="form-control"
+                                                                                                name="fecha_inicio">
+                                                                                        </div>
+
+                                                                                        <div class="col">
+                                                                                            <label>Fecha final:</label>
+                                                                                            <input type="date"
+                                                                                                class="form-control"
+                                                                                                name="fecha_final">
+                                                                                        </div>
+
+                                                                                    </div>
 
                                                                                     <div class="mb-3">
                                                                                         <label for="contenido"
                                                                                             class="col-sm-4 col-form-label">Contenido:</label>
-                                                                                        <textarea id="mytextarea" name="textareaEditarAnuncio" rows="3" placeholder="Contenido"></textarea>
+
+                                                                                        <textarea id="mytextarea" name="contenido" rows="3" placeholder="Contenido"></textarea>
+                                                                                    </div>
+
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-bs-dismiss="modal">Cerrar</button>
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-info text-white"
+                                                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                            <i class="bx bx-save"
+                                                                                                style="color: #F2F2F2;"></i>
+                                                                                            Guardar
+                                                                                        </button>
                                                                                     </div>
 
                                                                                 </form>
-                                                                            </div>
-
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cerrar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-info text-white"
-                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                    <i class="bx bx-save"
-                                                                                        style="color: #F2F2F2;"></i>
-                                                                                    Guardar
-                                                                                </button>
                                                                             </div>
 
                                                                         </div>
@@ -378,11 +393,20 @@
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Cancelar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-danger"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                                {{-- Form de eliminar --}}
+                                                                                <form
+                                                                                    action="{{ route('anuncios.destroy', 1) }}"
+                                                                                    method="POST">
+                                                                                    @csrf
+                                                                                    @method('DELETE')
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-danger"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#eliminacionCorrectaModal">Eliminar
+                                                                                    </button>
+                                                                                </form>
+                                                                                {{-- Fin form de eliminar --}}
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -435,38 +459,61 @@
                                                                         aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <form>
-
+                                                                    <form action="{{ route('alertas.store') }}"
+                                                                        method="POST">
+                                                                        @csrf
                                                                         <div class="mb-3">
                                                                             <label for="titulo"
                                                                                 class="col-sm-4 col-form-label">Titulo:</label>
 
-                                                                            <input type="titulo" class="form-control"
-                                                                                id="titulo" placeholder="Titulo">
+                                                                            <input type="text" name="titulo"
+                                                                                class="form-control" id="titulo"
+                                                                                placeholder="Titulo">
 
                                                                         </div>
 
                                                                         <div class="mb-3">
-                                                                            <label for="contenido"
-                                                                                class="col-sm-4 col-form-label">Contenido:</label>
+                                                                            <label for="descripción"
+                                                                                class="col-sm-4 col-form-label">Descripción:</label>
 
-                                                                            <input type="titulo" class="form-control"
-                                                                                id="contenido" placeholder="Contenido">
+                                                                            <input type="text" name="descripcion"
+                                                                                class="form-control" id="descripción"
+                                                                                placeholder="Escribe una pequeña descripción">
 
+                                                                        </div>
+
+                                                                        <div class="mb-3 row">
+                                                                            <div class="col">
+                                                                                <label>Fecha incio:</label>
+                                                                                <input type="date" class="form-control"
+                                                                                    name="fecha_inicio">
+                                                                            </div>
+
+                                                                            <div class="col">
+                                                                                <label>Fecha final:</label>
+                                                                                <input type="date" class="form-control"
+                                                                                    name="fecha_final">
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-info text-white"
+                                                                                style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                <i class="bx bx-save"
+                                                                                    style="color: #F2F2F2;"></i>
+                                                                                Guardar
+                                                                            </button>
                                                                         </div>
 
 
                                                                     </form>
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Cerrar</button>
-                                                                    <button type="button" class="btn btn-info text-white"
-                                                                        style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                        <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                                        Guardar
-                                                                    </button>
-                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -474,7 +521,7 @@
                                             </div>
 
                                             <hr />
-
+                                            {{-- Listado de alertas --}}
                                             <div class="table-responsive">
                                                 <table id="tablaAlertas" class="table table-bordered">
                                                     <thead class="theadAlertas">
@@ -561,19 +608,33 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="mb-3">
-                                                                                        <label for="titulo"
-                                                                                            class="col-sm-4 col-form-label">Titulo:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
+                                                                                <div class="row mb-3">
+                                                                                    <label for="id_vendedor"
+                                                                                        class="col-sm-4 col-form-label">Titulo:
+                                                                                        <span>Acá</span></label>
 
-                                                                                    <div class="mb-3">
-                                                                                        <label for="contenido"
-                                                                                            class="col-sm-4 col-form-label">Contenido:
-                                                                                            <span>Acá</span></label>
+                                                                                </div>
+
+                                                                                <div class="row mb-3">
+                                                                                    <label for="id_vendedor"
+                                                                                        class="col-sm-4 col-form-label">Descripción:
+                                                                                        <span>Acá</span></label>
+                                                                                </div>
+
+                                                                                <div class="row mb-3">
+                                                                                    <div class="col-sm">
+                                                                                        <label for="fecha"
+                                                                                            class="form-label">Fecha incio: <span>Acá</span></label>
                                                                                     </div>
-                                                                                </form>
+                                                                                </div>
+
+                                                                                <div class="row mb-3">
+                                                                                    <div class="col-sm">
+                                                                                        <label for="fecha"
+                                                                                            class="form-label">Fecha final: <span>Acá</span></label>
+                                                                                    </div>
+                                                                                </div>
+
                                                                             </div>
 
                                                                             <div class="modal-footer">
@@ -606,12 +667,18 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form>
+                                                                                <form
+                                                                                    action="{{ route('alertas.update', 1) }}"
+                                                                                    method="POST">
+                                                                                    @csrf
+                                                                                    @method('PUT')
+
                                                                                     <div class="mb-3">
                                                                                         <label for="titulo"
                                                                                             class="col-sm-4 col-form-label">Titulo:</label>
 
-                                                                                        <input type="titulo"
+                                                                                        <input type="text"
+                                                                                            name="titulo"
                                                                                             class="form-control"
                                                                                             id="titulo"
                                                                                             placeholder="Titulo">
@@ -619,31 +686,48 @@
                                                                                     </div>
 
                                                                                     <div class="mb-3">
-                                                                                        <label for="contenido"
-                                                                                            class="col-sm-4 col-form-label">Contenido:</label>
+                                                                                        <label for="descripción"
+                                                                                            class="col-sm-4 col-form-label">Descripción:</label>
 
-                                                                                        <input type="titulo"
+                                                                                        <input type="text"
+                                                                                            name="descripcion"
                                                                                             class="form-control"
-                                                                                            id="contenido"
-                                                                                            placeholder="Contenido">
+                                                                                            id="descripción"
+                                                                                            placeholder="Escribe una pequeña descripción">
 
                                                                                     </div>
 
+                                                                                    <div class="mb-3 row">
+                                                                                        <div class="col">
+                                                                                            <label>Fecha incio:</label>
+                                                                                            <input type="date"
+                                                                                                class="form-control"
+                                                                                                name="fecha_inicio">
+                                                                                        </div>
+
+                                                                                        <div class="col">
+                                                                                            <label>Fecha final:</label>
+                                                                                            <input type="date"
+                                                                                                class="form-control"
+                                                                                                name="fecha_final">
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-bs-dismiss="modal">Cerrar</button>
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-info text-white"
+                                                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                            <i class="bx bx-save"
+                                                                                                style="color: #F2F2F2;"></i>
+                                                                                            Guardar
+                                                                                        </button>
+                                                                                    </div>
+
                                                                                 </form>
-                                                                            </div>
-
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cerrar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-info text-white"
-                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                    <i class="bx bx-save"
-                                                                                        style="color: #F2F2F2;"></i>
-                                                                                    Guardar
-                                                                                </button>
                                                                             </div>
 
                                                                         </div>
@@ -672,11 +756,16 @@
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Cancelar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-danger"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                                <form action="{{ route('alertas.destroy', 1) }}"
+                                                                                    method="POST">
+                                                                                    @csrf
+                                                                                    @method('DELETE')
+                                                                                    <button type="button"
+                                                                                        class="btn btn-danger"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                                </form>
                                                                             </div>
                                                                         </div>
                                                                     </div>

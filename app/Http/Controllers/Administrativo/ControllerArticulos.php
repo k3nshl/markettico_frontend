@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
-use App\Models\Rol;
 use Illuminate\Http\Request;
 
-class ControllerRoles extends Controller
+class ControllerArticulos extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       
+        //
     }
 
     /**
@@ -21,7 +20,7 @@ class ControllerRoles extends Controller
      */
     public function create()
     {
-        //
+        return view('paginasInformacion.createArticulo');
     }
 
     /**
@@ -29,12 +28,7 @@ class ControllerRoles extends Controller
      */
     public function store(Request $request)
     {
-       
-        $rol = new Rol();
-        $rol->nombre= $request->nombre;
-        $rol->id_estado= $request->id_estado;
-        $rol->save();
-        return redirect()->back();
+        return "Store de articulos";
     }
 
     /**
@@ -42,7 +36,7 @@ class ControllerRoles extends Controller
      */
     public function show(string $id)
     {
-        
+        //
     }
 
     /**
@@ -50,7 +44,7 @@ class ControllerRoles extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('paginasInformacion.editArticulo');
     }
 
     /**
@@ -58,12 +52,7 @@ class ControllerRoles extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //1
-        $rol = Rol::find($id);
-        $rol->nombre = $request->nombre;
-        $rol->save();
-        //return "update rol";
-        return redirect('/estadosRoles');
+        return "Update de artículos";
     }
 
     /**
@@ -71,8 +60,6 @@ class ControllerRoles extends Controller
      */
     public function destroy(string $id)
     {
-        $rol =  Rol::find($id);
-        $rol->delete();
-        return redirect()->back();
+        return "Destroy de artículos";
     }
 }
