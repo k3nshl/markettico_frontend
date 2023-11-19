@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\Estado;
+use App\Models\Rol;
 use Illuminate\Http\Request;
 
 class ControllerEstados extends Controller
