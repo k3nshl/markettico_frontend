@@ -140,13 +140,12 @@
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Cancelar</button>
                                                                         <!-- Form de eliminar -->
-                                                                        <form action="{{ route('moderarContenido.destroy', 1) }}" method="POST">
-                                                                            @csrf
+                                                                        <form
+                                                                            action="{{ route('moderarContenido.destroy', 1) }}">
                                                                             @method('DELETE')
+                                                                            @csrf
                                                                             <button type="submit" class="btn btn-danger"
-                                                                                data-bs-dismiss="modal"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#eliminacionCorrectaModal">Eliminar
+                                                                                >Eliminar
                                                                             </button>
                                                                         </form>
                                                                         <!-- Fin form de eliminar -->

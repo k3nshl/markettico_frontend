@@ -60,6 +60,6 @@ class ControllerModerarContenido extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Destroy de reseñas";
     }
 }

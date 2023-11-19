@@ -23,6 +23,7 @@
 
                             <form action="{{ route('paginasInformacion.store') }}" method="POST">
                                 @csrf
+                                @method('POST')
                                 <div class="mb-3">
                                     <label for="titulo" class="form-label">Título:</label>
                                     <input type="text" name="titulo" class="form-control" id="titulo"
