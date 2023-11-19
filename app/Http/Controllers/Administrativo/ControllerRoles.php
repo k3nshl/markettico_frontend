@@ -71,7 +71,7 @@ class ControllerRoles extends Controller
     {
         //1
         $rol = Rol::find($id);
-        $rol["nombre"] = $request["nombre"];
+        $rol->nombre = $request->nombre;
         $rol->save();
         //return "update rol";
         return redirect('/estadosRoles');
