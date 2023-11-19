@@ -66,9 +66,8 @@ class ControllerRoles extends Controller
      */
     public function destroy(string $id)
     {
-        return "Destroy de roles";
         $rol =  Rol::find($id);
         $rol->delete();
-        return $rol;
+        return redirect()->back();
     }
 }
