@@ -58,7 +58,12 @@ class ControllerRoles extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "Update de roles";
+        //1
+        $rol = Rol::find($id);
+        $rol->nombre = $request->nombre;
+        $rol->save();
+        //return "update rol";
+        return redirect('/estadosRoles');
     }
 
     /**
