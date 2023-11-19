@@ -3,7 +3,7 @@
 @section('gestion_nombre', 'Estados/Roles')
 
 @section('contenido')
-{{-- {{$roles}} --}}
+    {{-- {{$roles}} --}}
 
     <section class="content">
         <div class="row">
@@ -66,45 +66,49 @@
                                                         aria-labelledby="modalAgregarEstadoLabel" aria-hidden="true">
                                                         <form action="{{ route('estados.store') }}" method="post">
                                                             @csrf
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="modalAgregarEstadoLabel">
-                                                                        Agregar Nuevo Estado</h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form action="{{ route('estados.store') }}"
-                                                                        method="POST">
-                                                                        @csrf
-                                                                        <div class="row mb-3">
-                                                                            <label for="nombre"
-                                                                                class="col-sm-4 col-form-label">Nombre:</label>
-                                                                            <div class="col-sm-8">
-                                                                                <input type="text" class="form-control"
-                                                                                    id="nombre" name="nombre"
-                                                                                    placeholder="Ingrese el nombre del Estado">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="modalAgregarEstadoLabel">
+                                                                            Agregar Nuevo Estado</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form action="{{ route('estados.store') }}"
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            <div class="row mb-3">
+                                                                                <label for="nombre"
+                                                                                    class="col-sm-4 col-form-label">Nombre:</label>
+                                                                                <div class="col-sm-8">
+                                                                                    <input type="text"
+                                                                                        class="form-control" id="nombre"
+                                                                                        name="nombre"
+                                                                                        placeholder="Ingrese el nombre del Estado">
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
 
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary"
-                                                                                data-bs-dismiss="modal">Cerrar</button>
-                                                                            <button type="submit"
-                                                                                class="btn btn-info text-white"
-                                                                                style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                <i class="bx bx-save"
-                                                                                    style="color: #F2F2F2;"></i>
-                                                                                Guardar
-                                                                            </button>
-                                                                        </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-bs-dismiss="modal">Cerrar</button>
+                                                                                <button type="submit"
+                                                                                    class="btn btn-info text-white"
+                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                    <i class="bx bx-save"
+                                                                                        style="color: #F2F2F2;"></i>
+                                                                                    Guardar
+                                                                                </button>
+                                                                            </div>
 
-                                                                    </form>
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </form>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -126,135 +130,139 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>Activo</td>
-                                                            <td>
+                                                        @foreach ($estados as $item)
+                                                            <tr>
+                                                                <td>{{ $item->id_estado }}</td>
+                                                                <td>{{ $item->nombre }}</td>
+                                                                <td>
 
-                                                                <div class="text-center">
+                                                                    <div class="text-center">
 
 
-                                                                    <!-- Botón de editar con modal -->
-                                                                    <button class="btn btn-warning btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#editarEstadoModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Editar Estado">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-pencil-alt"
+                                                                        <!-- Botón de editar con modal -->
+                                                                        <button class="btn btn-warning btn-sm"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#editarEstadoModal"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top" title="Editar Estado">
+                                                                            <div class="text-center">
+                                                                                <i class="lni lni-pencil-alt"
+                                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                            </div>
+                                                                        </button>
+
+                                                                        {{-- Botón de eliminar --}}
+                                                                        <button class="btn btn-danger btn-sm"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#eliminarEstadoModal">
+                                                                            <i class="lni lni-trash"
                                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-                                                                    {{-- Botón de eliminar --}}
-                                                                    <button class="btn btn-danger btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#eliminarEstadoModal">
-                                                                        <i class="lni lni-trash"
-                                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                    </button>
-                                                                </div>
-
-                                                                <!-- Modal de edición -->
-                                                                <div class="modal fade" id="editarEstadoModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="editarEstadoModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="editarUsuarioModalLabel">
-                                                                                    Editar Estado</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                <form
-                                                                                    action="{{ route('estados.update', 1) }}"
-                                                                                    method="POST">
-                                                                                    @csrf
-                                                                                    @method('PUT')
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="nombre"
-                                                                                            class="col-sm-4 col-form-label">Nombre:</label>
-                                                                                        <div class="col-sm-8">
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="nombre"
-                                                                                                name="nombre"
-                                                                                                placeholder="Ingrese el nombre del Estado">
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                    <div class="modal-footer">
-                                                                                        <button type="button"
-                                                                                            class="btn btn-secondary"
-                                                                                            data-bs-dismiss="modal">Cerrar</button>
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-info text-white"
-                                                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                            <i class="bx bx-save"
-                                                                                                style="color: #F2F2F2;"></i>
-                                                                                            Guardar
-                                                                                        </button>
-                                                                                    </div>
-
-                                                                                </form>
-                                                                            </div>
-
-                                                                        </div>
+                                                                        </button>
                                                                     </div>
-                                                                </div>
 
-                                                                <!-- Modal de eliminar -->
-                                                                <div class="modal fade" id="eliminarEstadoModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="eliminarEstadoModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="eliminarEstadoModalLabel">
-                                                                                    Confirmar
-                                                                                    eliminación</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                ¿Estás seguro de que
-                                                                                deseas eliminar
-                                                                                este estado?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                                                <form
-                                                                                action="{{ route('estados.destroy', 14) }}"
-                                                                                    method="POST">
-                                                                                    @csrf
-                                                                                    @method('delete')
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-danger"
+                                                                    <!-- Modal de edición -->
+                                                                    <div class="modal fade" id="editarEstadoModal"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="editarEstadoModalLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="editarUsuarioModalLabel">
+                                                                                        Editar Estado</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
                                                                                         data-bs-dismiss="modal"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
-                                                                                </form>
+                                                                                        aria-label="Close"
+                                                                                        data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Cerrar"></button>
+                                                                                </div>
+
+                                                                                <div class="modal-body">
+                                                                                    <form
+                                                                                        action="{{ route('estados.update', 1) }}"
+                                                                                        method="POST">
+                                                                                        @csrf
+                                                                                        @method('PUT')
+
+                                                                                        <div class="row mb-3">
+                                                                                            <label for="nombre"
+                                                                                                class="col-sm-4 col-form-label">Nombre:</label>
+                                                                                            <div class="col-sm-8">
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    id="nombre"
+                                                                                                    name="nombre"
+                                                                                                    placeholder="Ingrese el nombre del Estado">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button"
+                                                                                                class="btn btn-secondary"
+                                                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                                                            <button type="submit"
+                                                                                                class="btn btn-info text-white"
+                                                                                                style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                                <i class="bx bx-save"
+                                                                                                    style="color: #F2F2F2;"></i>
+                                                                                                Guardar
+                                                                                            </button>
+                                                                                        </div>
+
+                                                                                    </form>
+                                                                                </div>
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+
+                                                                    <!-- Modal de eliminar -->
+                                                                    <div class="modal fade" id="eliminarEstadoModal"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="eliminarEstadoModalLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="eliminarEstadoModalLabel">
+                                                                                        Confirmar
+                                                                                        eliminación</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"></button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    ¿Estás seguro de que
+                                                                                    deseas eliminar
+                                                                                    este estado?
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-bs-dismiss="modal">Cancelar</button>
+                                                                                    <form
+                                                                                        action="{{ route('estados.destroy', $item->id_estado) }}"
+                                                                                        method="POST">
+                                                                                        @csrf
+                                                                                        @method('delete')
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-danger"
+                                                                                            data-bs-dismiss="modal"
+                                                                                            data-bs-toggle="modal"
+                                                                                            data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -315,9 +323,9 @@
                                                                                     id="nombre" name="nombre"
                                                                                     placeholder="Ingrese el nombre del Rol"required>
 
-                                                                                    <input type="hidden" class="form-control"
+                                                                                <input type="hidden" class="form-control"
                                                                                     name="id_estado" value="1">
-                                                                                    
+
                                                                             </div>
                                                                         </div>
 
@@ -364,149 +372,149 @@
                                                     </thead>
                                                     <tbody>
 
-                                                        @if (count($roles)>0)
-                                                                                                                        
-                                                        
-                                                        @foreach ($roles as $item)
-                                                        <tr>
-
-                                                           
-                                                                
-                                                           
-                                                            <td>{{$item->id_rol}}</td>
-                                                            <td>{{$item->nombre}}</td>
-                                                            <td>
-
-                                                                <div class="text-center">
+                                                        @if ($roles)
 
 
-                                                                    <!-- Botón de editar con modal -->
-                                                                    <button class="btn btn-warning btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#editarRolModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Editar Rol">
+                                                            @foreach ($roles as $item)
+                                                                <tr>
+                                                                    <td>{{ $item->id_rol }}</td>
+                                                                    <td>{{ $item->nombre }}</td>
+                                                                    <td>
                                                                         <div class="text-center">
-                                                                            <i class="lni lni-pencil-alt"
-                                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                            <!-- Botón de editar con modal -->
+                                                                            <button class="btn btn-warning btn-sm"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#editarRolModal"
+                                                                                data-bs-toggle="tooltip"
+                                                                                data-bs-placement="top"
+                                                                                title="Editar Rol">
+                                                                                <div class="text-center">
+                                                                                    <i class="lni lni-pencil-alt"
+                                                                                        style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                                </div>
+                                                                            </button>
+
+                                                                            {{-- Botón de eliminar --}}
+                                                                            <button class="btn btn-danger btn-sm"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#eliminarRolModal{{ $item->id_rol }}">
+                                                                                <i class="lni lni-trash"
+                                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                            </button>
                                                                         </div>
-                                                                    </button>
 
-                                                                    {{-- Botón de eliminar --}}
-                                                                    <button class="btn btn-danger btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#eliminarRolModal{{$item->id_rol}}">
-                                                                        <i class="lni lni-trash"
-                                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                    </button>
-                                                                </div>
 
-                                                                
 
-                                                                <!-- Modal de edición -->
-                                                                <div class="modal fade" id="editarRolModal"
-                                                                    tabindex="-1" aria-labelledby="editarRolModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">                                                                                                                            
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="editarUsuarioModalLabel">
-                                                                                    Editar Rol</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                {{-- 2 --}}
-                                                                                {{-- + id_rol a editar --}}                                                                  
-                                                                                <form
-                                                                                    action="{{ route('roles.update', 1) }}"
-                                                                                    method="POST">
-                                                                                    @csrf
-                                                                                    @method('PUT')
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="nombre"
-                                                                                            class="col-sm-4 col-form-label">Nombre
-                                                                                            del Rol:</label>
-                                                                                        <div class="col-sm-8">
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="nombre"
-                                                                                                name="nombre"
-                                                                                                placeholder="Ingrese el nombre del Rol">
-                                                                                        </div>
+                                                                        <!-- Modal de edición -->
+                                                                        <div class="modal fade" id="editarRolModal"
+                                                                            tabindex="-1"
+                                                                            aria-labelledby="editarRolModalLabel"
+                                                                            aria-hidden="true">
+                                                                            <div
+                                                                                class="modal-dialog modal-dialog-scrollable">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title"
+                                                                                            id="editarUsuarioModalLabel">
+                                                                                            Editar Rol</h5>
+                                                                                        <button type="button"
+                                                                                            class="btn-close"
+                                                                                            data-bs-dismiss="modal"
+                                                                                            aria-label="Close"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-placement="top"
+                                                                                            title="Cerrar"></button>
                                                                                     </div>
 
+                                                                                    <div class="modal-body">
+                                                                                        {{-- 2 --}}
+                                                                                        {{-- + id_rol a editar --}}
+                                                                                        <form
+                                                                                            action="{{ route('roles.update', $item->id_rol) }}"
+                                                                                            method="POST">
+                                                                                            @csrf
+                                                                                            @method('PUT')
+                                                                                            <div class="row mb-3">
+                                                                                                <label for="nombre"
+                                                                                                    class="col-sm-4 col-form-label">Nombre
+                                                                                                    del Rol:</label>
+                                                                                                <div class="col-sm-8">
+                                                                                                    <input type="text"
+                                                                                                        class="form-control"
+                                                                                                        id="nombre"
+                                                                                                        name="nombre"
+                                                                                                        placeholder="Ingrese el nombre del Rol">
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div class="modal-footer">
+                                                                                                <button type="button"
+                                                                                                    class="btn btn-secondary"
+                                                                                                    data-bs-dismiss="modal">Cerrar</button>
+                                                                                                <button type="submit"
+                                                                                                    class="btn btn-info text-white"
+                                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                                    <i class="bx bx-save"
+                                                                                                        style="color: #F2F2F2;"></i>
+                                                                                                    Guardar
+                                                                                                </button>
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <!-- Modal de eliminar -->
+                                                                        <div class="modal fade"
+                                                                            id="eliminarRolModal{{ $item->id_rol }}"
+                                                                            tabindex="-1"
+                                                                            aria-labelledby="eliminarRolModalLabel"
+                                                                            aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title"
+                                                                                            id="eliminarRolModalLabel{{ $item->id_rol }}">
+                                                                                            Confirmar
+                                                                                            eliminación</h5>
+                                                                                        <button type="button"
+                                                                                            class="btn-close"
+                                                                                            data-bs-dismiss="modal"
+                                                                                            aria-label="Close"></button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        ¿Estás seguro de que
+                                                                                        deseas eliminar
+                                                                                        este rol?
+                                                                                    </div>
                                                                                     <div class="modal-footer">
                                                                                         <button type="button"
                                                                                             class="btn btn-secondary"
-                                                                                            data-bs-dismiss="modal">Cerrar</button>
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-info text-white"
-                                                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                            <i class="bx bx-save"
-                                                                                                style="color: #F2F2F2;"></i>
-                                                                                            Guardar
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </form>
-                                                                    </div>
-                                                                </div>
-
-                                                                <!-- Modal de eliminar -->
-                                                                <div class="modal fade" id="eliminarRolModal{{$item->id_rol}}"
-                                                                    tabindex="-1" aria-labelledby="eliminarRolModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="eliminarRolModalLabel{{$item->id_rol}}">
-                                                                                    Confirmar
-                                                                                    eliminación</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                ¿Estás seguro de que
-                                                                                deseas eliminar
-                                                                                este rol?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                                                <!-- Form de eliminar -->
-                                                                                <form
-                                                                                    action=" {{ route('roles.destroy',$item->id_rol) }} "
-                                                                                    method="POST">
-                                                                                    @csrf
-                                                                                    @method('DELETE')
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-danger"
-                                                                                       {{--  data-bs-dismiss="modal"
+                                                                                            data-bs-dismiss="modal">Cancelar</button>
+                                                                                        <!-- Form de eliminar -->
+                                                                                        <form
+                                                                                            action=" {{ route('roles.destroy', $item->id_rol) }} "
+                                                                                            method="POST">
+                                                                                            @csrf
+                                                                                            @method('DELETE')
+                                                                                            <button type="submit"
+                                                                                                class="btn btn-danger"
+                                                                                                {{--  data-bs-dismiss="modal"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#eliminacionCorrectaModal" --}}>Eliminar
-                                                                                    </button>
-                                                                                </form>
-                                                                                <!-- Fin Form de eliminar -->
+                                                                                            </button>
+                                                                                        </form>
+                                                                                        <!-- Fin Form de eliminar -->
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        @endforeach
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
                                                         @endif
                                                     </tbody>
                                                 </table>

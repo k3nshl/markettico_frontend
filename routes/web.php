@@ -39,7 +39,7 @@ Route::get('/',[ControllerUsuariosAdministrativos::class, 'index']);
 Route::resource('/usuariosAdministrativos', ControllerUsuariosAdministrativos::class);
 
 //Rutas estados y roles
-Route::get('estadosRoles', [ControllerEstados::class, 'index'])->name('estadosRoles');
+
 Route::resource('estados', ControllerEstados::class);
 Route::resource('roles', ControllerRoles::class);
 
