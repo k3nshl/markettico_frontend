@@ -407,7 +407,8 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                {{-- + id_rol a editar --}}  
+                                                                                {{-- 2 --}}
+                                                                                {{-- + id_rol a editar --}}                                                                  
                                                                                 <form
                                                                                     action="{{ route('roles.update', 1) }}"
                                                                                     method="POST">
