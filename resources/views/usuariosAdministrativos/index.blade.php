@@ -75,7 +75,8 @@
                                                                                 Usuario:</label>
                                                                             <div class="col-sm-8">
                                                                                 <input type="text" class="form-control"
-                                                                                    id="nombre_completo" name="nombre_completo"
+                                                                                    id="nombre_completo"
+                                                                                    name="nombre_completo"
                                                                                     placeholder="Nombre de Usuario">
                                                                             </div>
                                                                         </div>
@@ -84,7 +85,8 @@
                                                                                 class="col-sm-4 col-form-label">Contraseña:</label>
                                                                             <div class="col-sm-8">
                                                                                 <input type="password" class="form-control"
-                                                                                    id="password" placeholder="Contraseña" name="password">
+                                                                                    id="password" placeholder="Contraseña"
+                                                                                    name="password">
                                                                             </div>
                                                                         </div>
 
@@ -96,7 +98,8 @@
                                                                             <div class="col-sm-8">
                                                                                 <input type="email" class="form-control"
                                                                                     id="correo_empresarial"
-                                                                                    placeholder="Correo Empresarial" name="correo_empresarial">
+                                                                                    placeholder="Correo Empresarial"
+                                                                                    name="correo_empresarial">
                                                                             </div>
                                                                         </div>
                                                                         <div class="row mb-3">
@@ -106,7 +109,8 @@
                                                                             <div class="col-sm-8">
                                                                                 <input type="text" class="form-control"
                                                                                     id="numero_telefonico"
-                                                                                    placeholder="Número Telefónico" name="numero_telefonico">
+                                                                                    placeholder="Número Telefónico"
+                                                                                    name="numero_telefonico">
                                                                             </div>
                                                                         </div>
                                                                         <div class="row mb-3">
@@ -114,7 +118,8 @@
                                                                                 class="col-sm-4 col-form-label">Rol del
                                                                                 Usuario:</label>
                                                                             <div class="col-sm-8">
-                                                                                <select class="form-select" id="id_rol" name="id_rol">
+                                                                                <select class="form-select" id="id_rol"
+                                                                                    name="id_rol">
                                                                                     <option value="1">Superadmin
                                                                                     </option>
                                                                                     <option value="2">
@@ -131,8 +136,8 @@
                                                                                 Usuario:</label>
                                                                             <div class="col-sm-8">
 
-                                                                                <select class="form-select"
-                                                                                    id="id_estado" name="id_estado">
+                                                                                <select class="form-select" id="id_estado"
+                                                                                    name="id_estado">
                                                                                     <option value="1">Activo</option>
                                                                                     <option value="0">Inactivo
                                                                                     </option>
@@ -183,331 +188,348 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>EjemploUsuario</td>
-                                                            <td>
+                                                        @foreach ($data as $item)
+                                                            <tr>
+                                                                <td>{{$item->id_usuario_administrativo}}</td>
+                                                                <td>{{$item->nombre_completo}}</td>
+                                                                <td>
 
-                                                                <p class="">Administrador</p>
+                                                                    <p class="">Administrador</p>
 
-                                                            </td>
-                                                            <td>
-                                                                <p class="badge bg-success">Activo</p>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-center">
+                                                                </td>
+                                                                <td>
+                                                                    <p class="badge bg-success">Activo</p>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="text-center">
 
-                                                                    <!-- Botón de visualizar -->
-                                                                    <button class="btn btn-primary btn-sm btn-block"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#showUserModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Visualizar Estado">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-eye"
-                                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-                                                                    <!-- Botón de editar con modal -->
-                                                                    <button class="btn btn-warning btn-sm btn-block"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#editarUsuarioModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Editar Usuario Administrativo">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-pencil-alt"
-                                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-                                                                    <!-- Botón de eliminar -->
-                                                                    <button class="btn btn-danger btn-sm btn-block"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#eliminarUsuarioModal">
-                                                                        <i class="lni lni-trash"
-                                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                    </button>
-
-
-                                                                    <!-- Botón de bloquear -->
-                                                                    <button class="btn btn-sm btn-block"
-                                                                        style="background-color: #05f29d"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#bloquearUsuarioModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Bloquear Usuario Administrativo">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-lock"
-                                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-
-
-                                                                </div>
-
-
-
-
-
-                                                                <!-- Modal de visaualizacion -->
-                                                                <div class="modal fade" id="showUserModal" tabindex="-1"
-                                                                    aria-labelledby="showUserModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="showUserModalLabel">
-                                                                                    Visualizar Usuario Administrativo</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
+                                                                        <!-- Botón de visualizar -->
+                                                                        <button class="btn btn-primary btn-sm btn-block"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#showUserModal"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            title="Visualizar Estado">
+                                                                            <div class="text-center">
+                                                                                <i class="lni lni-eye"
+                                                                                    style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
                                                                             </div>
+                                                                        </button>
 
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="mb-3">
-                                                                                        <label for="showNombreUsuario"
-                                                                                            class="form-label">Nombre:
-                                                                                            <span>Acá</span>
-                                                                                        </label>
+                                                                        <!-- Botón de editar con modal -->
+                                                                        <button class="btn btn-warning btn-sm btn-block"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#editarUsuarioModal"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            title="Editar Usuario Administrativo">
+                                                                            <div class="text-center">
+                                                                                <i class="lni lni-pencil-alt"
+                                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                            </div>
+                                                                        </button>
 
-                                                                                    </div>
+                                                                        <!-- Botón de eliminar -->
+                                                                        <button class="btn btn-danger btn-sm btn-block"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#eliminarUsuarioModal">
+                                                                            <i class="lni lni-trash"
+                                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                        </button>
 
-                                                                                    <div class="mb-3">
-                                                                                        <label for="showCorreoEmpresarial"
-                                                                                            class="form-label">Correo
-                                                                                            Empresarial:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
 
-                                                                                    <div class="mb-3">
-                                                                                        <label for="showNumeroTelefonico"
-                                                                                            class="form-label">Número
-                                                                                            Telefónico:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
+                                                                        <!-- Botón de bloquear -->
+                                                                        <button class="btn btn-sm btn-block"
+                                                                            style="background-color: #05f29d"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#bloquearUsuarioModal"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            title="Bloquear Usuario Administrativo">
+                                                                            <div class="text-center">
+                                                                                <i class="lni lni-lock"
+                                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                            </div>
+                                                                        </button>
 
-                                                                                    <div class="mb-3">
-                                                                                        <label for="showRolUsuario"
-                                                                                            class="form-label">Rol:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
 
-                                                                                    <div class="mb-3">
-                                                                                        <label for="showEstadoUsuario"
-                                                                                            class="form-label">Estado:
-                                                                                            <span>Acá</span></label>
-                                                                                    </div>
-                                                                                    <div class="mb-3">
-                                                                                        <label for="showEstadoUsuario"
-                                                                                            class="form-label">Fecha de
-                                                                                            registro: <span>Acá</span>
-                                                                                        </label>
-                                                                                    </div>
 
+                                                                    </div>
+
+
+
+
+
+                                                                    <!-- Modal de visaualizacion -->
+                                                                    <div class="modal fade" id="showUserModal"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="showUserModalLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="showUserModalLabel">
+                                                                                        Visualizar Usuario Administrativo
+                                                                                    </h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"
+                                                                                        data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Cerrar"></button>
+                                                                                </div>
+
+                                                                                <div class="modal-body">
+                                                                                    <form>
+                                                                                        <div class="mb-3">
+                                                                                            <label for="showNombreUsuario"
+                                                                                                class="form-label">Nombre:
+                                                                                                <span>{{$item->nombre_completo}}</span>
+                                                                                            </label>
+
+                                                                                        </div>
+
+                                                                                        <div class="mb-3">
+                                                                                            <label
+                                                                                                for="showCorreoEmpresarial"
+                                                                                                class="form-label">Correo
+                                                                                                Empresarial:
+                                                                                                <span>{{$item->correo_empresarial}}</span></label>
+                                                                                        </div>
+
+                                                                                        <div class="mb-3">
+                                                                                            <label
+                                                                                                for="showNumeroTelefonico"
+                                                                                                class="form-label">Número
+                                                                                                Telefónico:
+                                                                                                <span>Acá</span></label>
+                                                                                        </div>
+
+                                                                                        <div class="mb-3">
+                                                                                            <label for="showRolUsuario"
+                                                                                                class="form-label">Rol:
+                                                                                                <span>Acá</span></label>
+                                                                                        </div>
+
+                                                                                        <div class="mb-3">
+                                                                                            <label for="showEstadoUsuario"
+                                                                                                class="form-label">Estado:
+                                                                                                <span>Acá</span></label>
+                                                                                        </div>
+                                                                                        <div class="mb-3">
+                                                                                            <label for="showEstadoUsuario"
+                                                                                                class="form-label">Fecha de
+                                                                                                registro: <span>Acá</span>
+                                                                                            </label>
+                                                                                        </div>
+
+                                                                                    </form>
+                                                                                </div>
+
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-bs-dismiss="modal">Regresar</button>
+
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <!-- Modal de edición -->
+                                                                    <div class="modal fade" id="editarUsuarioModal"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="editarUsuarioModalLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="editarUsuarioModalLabel">
+                                                                                        Editar Usuario Administrativo</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"
+                                                                                        data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Cerrar"></button>
+                                                                                </div>
+
+                                                                                <div class="modal-body">
+                                                                                    <form
+                                                                                        action="{{ route('usuariosAdministrativos.update', 1) }}"
+                                                                                        method="POST">
+                                                                                        @method('PUT')
+                                                                                        @csrf
+                                                                                        <div class="mb-3">
+                                                                                            <label for="editNombreUsuario"
+                                                                                                class="col-sm-4 col-form-label">Nombre</label>
+                                                                                            <input type="text"
+                                                                                                class="form-control"
+                                                                                                id="editNombreUsuario"
+                                                                                                placeholder="Nombre de usuario">
+                                                                                        </div>
+
+                                                                                        <div class="mb-3">
+                                                                                            <label
+                                                                                                for="editCorreoEmpresarial"
+                                                                                                class="form-label">Correo
+                                                                                                empresarial</label>
+                                                                                            <input type="email"
+                                                                                                class="form-control"
+                                                                                                id="editCorreoEmpresarial"
+                                                                                                placeholder="Correo empresarial">
+                                                                                        </div>
+
+                                                                                        <div class="mb-3">
+                                                                                            <label
+                                                                                                for="editNumeroTelefonico"
+                                                                                                class="form-label">Número
+                                                                                                telefónico</label>
+                                                                                            <input type="text"
+                                                                                                class="form-control"
+                                                                                                id="editNumeroTelefonico"
+                                                                                                placeholder="Número telefónico">
+                                                                                        </div>
+
+                                                                                        <div class="mb-3">
+                                                                                            <label for="editRolUsuario"
+                                                                                                class="form-label">Rol
+                                                                                            </label>
+                                                                                            <select class="form-select"
+                                                                                                id="editRolUsuario">
+                                                                                                <option value="superadmin">
+                                                                                                    Superadmin
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="administrador">
+                                                                                                    Administrador
+                                                                                                </option>
+                                                                                                <option value="moderador">
+                                                                                                    Moderador</option>
+                                                                                            </select>
+                                                                                        </div>
+
+                                                                                        <div class="mb-3">
+                                                                                            <label for="editEstadoUsuario"
+                                                                                                class="form-label">Estado
+                                                                                            </label>
+                                                                                            <select class="form-select"
+                                                                                                id="editEstadoUsuario">
+                                                                                                <option value="activo">
+                                                                                                    Activo</option>
+                                                                                                <option value="inactivo">
+                                                                                                    Inactivo</option>
+                                                                                            </select>
+                                                                                        </div>
+
+
+                                                                                </div>
+
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-bs-dismiss="modal">Cerrar</button>
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-info text-white"
+                                                                                        style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                        <i class="bx bx-save"
+                                                                                            style="color: #F2F2F2;"></i>
+                                                                                        Guardar
+                                                                                    </button>
+                                                                                </div>
                                                                                 </form>
                                                                             </div>
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Regresar</button>
-
-                                                                            </div>
-
                                                                         </div>
                                                                     </div>
-                                                                </div>
 
-
-                                                                <!-- Modal de edición -->
-                                                                <div class="modal fade" id="editarUsuarioModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="editarUsuarioModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="editarUsuarioModalLabel">
-                                                                                    Editar Usuario Administrativo</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
+                                                                    {{-- Modal de eliminar --}}
+                                                                    <div class="modal fade" id="eliminarUsuarioModal"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="eliminarUsuarioModalLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="eliminarUsuarioModalLabel">
+                                                                                        Confirmar
+                                                                                        eliminación</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"></button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    ¿Estás seguro de que deseas eliminar
+                                                                                    este
+                                                                                    usuario
+                                                                                    administrativo?
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-bs-dismiss="modal">Cancelar</button>
+                                                                                    <form
+                                                                                        action="{{ route('usuariosAdministrativos.destroy', 1) }}"
+                                                                                        method="POST">
+                                                                                        @method('DELETE')
+                                                                                        @csrf
+                                                                                        <button type="sumit"
+                                                                                            class="btn btn-danger"
+                                                                                            data-bs-dismiss="modal"
+                                                                                            data-bs-toggle="modal"
+                                                                                            data-bs-target="#eliminacionCorrectaModal">Eliminar
+                                                                                        </button>
+                                                                                    </form>
+                                                                                </div>
                                                                             </div>
-
-                                                                            <div class="modal-body">
-                                                                                <form
-                                                                                    action="{{ route('usuariosAdministrativos.update', 1) }}"
-                                                                                    method="POST">
-                                                                                    @method('PUT')
-                                                                                    @csrf
-                                                                                    <div class="mb-3">
-                                                                                        <label for="editNombreUsuario"
-                                                                                            class="col-sm-4 col-form-label">Nombre</label>
-                                                                                        <input type="text"
-                                                                                            class="form-control"
-                                                                                            id="editNombreUsuario"
-                                                                                            placeholder="Nombre de usuario">
-                                                                                    </div>
-
-                                                                                    <div class="mb-3">
-                                                                                        <label for="editCorreoEmpresarial"
-                                                                                            class="form-label">Correo
-                                                                                            empresarial</label>
-                                                                                        <input type="email"
-                                                                                            class="form-control"
-                                                                                            id="editCorreoEmpresarial"
-                                                                                            placeholder="Correo empresarial">
-                                                                                    </div>
-
-                                                                                    <div class="mb-3">
-                                                                                        <label for="editNumeroTelefonico"
-                                                                                            class="form-label">Número
-                                                                                            telefónico</label>
-                                                                                        <input type="text"
-                                                                                            class="form-control"
-                                                                                            id="editNumeroTelefonico"
-                                                                                            placeholder="Número telefónico">
-                                                                                    </div>
-
-                                                                                    <div class="mb-3">
-                                                                                        <label for="editRolUsuario"
-                                                                                            class="form-label">Rol
-                                                                                        </label>
-                                                                                        <select class="form-select"
-                                                                                            id="editRolUsuario">
-                                                                                            <option value="superadmin">
-                                                                                                Superadmin
-                                                                                            </option>
-                                                                                            <option value="administrador">
-                                                                                                Administrador
-                                                                                            </option>
-                                                                                            <option value="moderador">
-                                                                                                Moderador</option>
-                                                                                        </select>
-                                                                                    </div>
-
-                                                                                    <div class="mb-3">
-                                                                                        <label for="editEstadoUsuario"
-                                                                                            class="form-label">Estado
-                                                                                        </label>
-                                                                                        <select class="form-select"
-                                                                                            id="editEstadoUsuario">
-                                                                                            <option value="activo">
-                                                                                                Activo</option>
-                                                                                            <option value="inactivo">
-                                                                                                Inactivo</option>
-                                                                                        </select>
-                                                                                    </div>
-
-
-                                                                            </div>
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cerrar</button>
-                                                                                <button type="submit"
-                                                                                    class="btn btn-info text-white"
-                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                    <i class="bx bx-save"
-                                                                                        style="color: #F2F2F2;"></i>
-                                                                                    Guardar
-                                                                                </button>
-                                                                            </div>
-                                                                            </form>
                                                                         </div>
                                                                     </div>
-                                                                </div>
 
-                                                                {{-- Modal de eliminar --}}
-                                                                <div class="modal fade" id="eliminarUsuarioModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="eliminarUsuarioModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="eliminarUsuarioModalLabel">
-                                                                                    Confirmar
-                                                                                    eliminación</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                ¿Estás seguro de que deseas eliminar este
-                                                                                usuario
-                                                                                administrativo?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                                                <form
-                                                                                    action="{{ route('usuariosAdministrativos.destroy', 1) }}"
-                                                                                    method="POST">
-                                                                                    @method('DELETE')
-                                                                                    @csrf
-                                                                                    <button type="sumit"
+                                                                    <!-- Modal de bloquear  -->
+                                                                    <div class="modal fade" id="bloquearUsuarioModal"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="bloquearUsuarioModalLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="bloquearUsuarioModalLabel">
+                                                                                        Confirmar
+                                                                                        bloqueo</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"></button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    ¿Estás seguro de que deseas bloquear
+                                                                                    este
+                                                                                    usuario?
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-bs-dismiss="modal">Cancelar</button>
+                                                                                    <button type="button"
                                                                                         class="btn btn-danger"
                                                                                         data-bs-dismiss="modal"
                                                                                         data-bs-toggle="modal"
-                                                                                        data-bs-target="#eliminacionCorrectaModal">Eliminar
-                                                                                    </button>
-                                                                                </form>
+                                                                                        data-bs-target="#bloqueoCorrectoModal">Bloquear</button>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-
-                                                                <!-- Modal de bloquear  -->
-                                                                <div class="modal fade" id="bloquearUsuarioModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="bloquearUsuarioModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="bloquearUsuarioModalLabel">
-                                                                                    Confirmar
-                                                                                    bloqueo</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                ¿Estás seguro de que deseas bloquear este
-                                                                                usuario?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-danger"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#bloqueoCorrectoModal">Bloquear</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

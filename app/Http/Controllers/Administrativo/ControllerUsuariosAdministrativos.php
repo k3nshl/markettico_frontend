@@ -34,9 +34,7 @@ class ControllerUsuariosAdministrativos extends Controller
      */
     public function store(Request $request)
     {
-
         $item = new UsuarioAdministrativo();
-
         $item->id_rol = $request->id_rol;
         $item->id_estado = $request->id_estado;
         $item->nombre_completo = $request->nombre_completo;
@@ -45,7 +43,6 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->numero_telefonico = $request->numero_telefonico;
         $item->fecha_hora = date(Date::now());
         $item->save();
-
         return redirect()->back();
 
     }
@@ -75,14 +72,12 @@ class ControllerUsuariosAdministrativos extends Controller
     public function update(Request $request, string $id)
     {
         $item = UsuarioAdministrativo::find($id);
-
         $item->id_rol = $request->id_rol;
         $item->id_estado = $request->id_estado;
         $item->nombre_completo = $request->nombre_completo;
         $item->correo_empresarial = $request->correo_empresarial;
         $item->numero_telefonico = $request->numero_telefonico;
         $item->update();
-
         return redirect()->back();
         
     }
@@ -92,10 +87,9 @@ class ControllerUsuariosAdministrativos extends Controller
      */
     public function destroy(string $id)
     {
-
         $item = UsuarioAdministrativo::find($id);
         $item->delete();
-
         return redirect()->back();
+        
     }
 }
