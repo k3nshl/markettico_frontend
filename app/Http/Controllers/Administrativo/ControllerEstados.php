@@ -56,7 +56,6 @@ class ControllerEstados extends Controller
      */
     public function edit($id)
     {
-        $id = 10; 
         $itemEs = Estado::find($id); 
         $item->update();
         return view('estadosRoles.index');
