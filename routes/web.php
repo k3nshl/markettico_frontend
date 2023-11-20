@@ -66,7 +66,7 @@ Route::resource('estadisticas', ControllerEstadisticas::class);
 
 //Rutas para login y verificacion
 Route::get('/login', [ControllerLogin::class, 'index'])->name('login');
-Route::post('/validarLogin', [ControllerLogin::class, 'validarLogin'])->name('validarLogin');
+Route::post('/validarLogin', [ControllerLogin::class, 'login'])->name('validarLogin');
 
 // Rutas para moderar contenido
 Route::resource('moderarContenido', ControllerModerarContenido::class);
@@ -87,3 +87,8 @@ Route::get('notificaciones', [ControllerAnuncios::class, 'index'])->name('notifi
 Route::resource('anuncios', ControllerAnuncios::class);
 Route::resource('alertas', ControllerAlertas::class);
 Route::get('/pruebastore', [ControllerUsuariosAdministrativos::class, 'store']);
+
+
+
+// Inicio de sesion
+Route::post('/iniciando-sesion',  [ControllerUsuario::class, 'login'])->name('usuarios.login');
