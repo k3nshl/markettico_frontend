@@ -54,10 +54,11 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+        
                                                         <tr>
                                                             <td>1</td>
-                                                            <td>EjemploUsuario</td>
-                                                            <td>ejemplo@empresa.com</td>
+                                                            <td>juanCarlos</td>
+                                                            <td> 20000</td>
                                                             <td>
                                                                 <div class="text-center">
 
@@ -189,15 +190,15 @@
                                                                                             plan:</label>
                                                                                         <input type="text"
                                                                                             class="form-control"
-                                                                                            id="nombre"
+                                                                                            id="nombre" name="nombre"
                                                                                             placeholder="Nombre del plan">
                                                                                     </div>
-
+                                                                                    
                                                                                     <div class="mb-3">
                                                                                         <label for="tipo"
                                                                                             class="form-label">Tipo:</label>
                                                                                         <select class="form-select"
-                                                                                            id="tipo">
+                                                                                            id="tipo" name="tipo">
                                                                                             <option value="opcion1">Plan
                                                                                                 básico</option>
                                                                                             <option value="opcion2">Plan
@@ -214,7 +215,7 @@
                                                                                             class="form-label">Costo:</label>
                                                                                         <input type="number"
                                                                                             class="form-control"
-                                                                                            id="costo"
+                                                                                            id="costo" name="costo"
                                                                                             placeholder="Costo">
                                                                                     </div>
 
@@ -225,7 +226,7 @@
                                                                                             productos:</label>
                                                                                         <input type="number"
                                                                                             class="form-control"
-                                                                                            id="cantidad_productos"
+                                                                                            id="cantidad_productos" name="cantidad_productos"
                                                                                             placeholder="Límite máximo de venta de productos">
                                                                                     </div>
 
@@ -258,7 +259,7 @@
                                                                                             plan (en meses):</label>
                                                                                         <input type="text"
                                                                                             class="form-control"
-                                                                                            id="duracion"
+                                                                                            id="duracion" name="duracion"
                                                                                             placeholder="Duración del plan">
                                                                                     </div>
 
@@ -321,6 +322,7 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
+                                                       
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -350,7 +352,7 @@
                                                     <label for="nombre" class="col-sm-4 col-form-label">Nombre del
                                                         plan:</label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="nombre"
+                                                        <input type="text" class="form-control" id="nombre" name="nombre"
                                                             placeholder="Nombre del plan">
                                                     </div>
                                                 </div>
@@ -358,7 +360,7 @@
                                                 <div class="row mb-3">
                                                     <label for="tipo" class="col-sm-4 col-form-label">Tipo:</label>
                                                     <div class="col-sm-8">
-                                                        <select class="form-select" id="nombre">
+                                                        <select class="form-select" id="tipo" name="tipo">
                                                             <option value="opcion1">Plan básico</option>
                                                             <option value="opcion2">Plan empresarial</option>
                                                             <option value="opcion3">Plan premium</option>
@@ -372,7 +374,7 @@
                                                 <div class="row mb-3">
                                                     <label for="costo" class="col-sm-4 col-form-label">Costo:</label>
                                                     <div class="col-sm-8">
-                                                        <input type="number" class="form-control" id="costo"
+                                                        <input type="number" class="form-control" id="costo " name="costo"
                                                             placeholder="Costo">
                                                     </div>
                                                 </div>
@@ -383,24 +385,31 @@
                                                     <div class="col-sm-8">
                                                         <input type="number" class="form-control"
                                                             id="cantidad_productos"
-                                                            placeholder="Límite máximo de venta de productos">
+                                                            placeholder="Límite máximo de venta de productos" name="cantidad_productos">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
                                                     <label class="col-sm-4 col-form-label">¿Es multitienda?</label>
                                                     <div class="col-sm-8">
+
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="radio"
                                                                 name="multitienda" id="multitienda-si" value="si">
                                                             <label class="form-check-label"
                                                                 for="multitienda-si">Sí</label>
                                                         </div>
+
+
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="radio"
-                                                                name="es_multitienda" id="multitienda-no" value="no">
+                                                                name="multitienda" id="multitienda-no" value="no">
+
+
                                                             <label class="form-check-label"
                                                                 for="multitienda-no">No</label>
+
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -409,7 +418,7 @@
                                                     <label for="duracion" class="col-sm-4 col-form-label">Duración del
                                                         plan (en meses):</label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="duracion"
+                                                        <input type="text" class="form-control" id="duracion"  name="duracion"
                                                             placeholder="Duración del plan">
                                                     </div>
                                                 </div>
