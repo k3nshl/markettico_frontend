@@ -15,7 +15,6 @@ class ControllerEstados extends Controller
     public function index()
     {
         $estados = Estado::all();
-        
         $roles = Rol::all();
         return view('estadosRoles.index', compact('estados', 'roles'));
     }
