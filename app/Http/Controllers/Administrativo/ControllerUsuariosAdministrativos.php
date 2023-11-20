@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redis;
 
 class ControllerUsuariosAdministrativos extends Controller
 {
@@ -39,7 +40,7 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->id_rol = $request->id_rol;
         $item->id_estado = $request->id_estado;
         $item->nombre_completo = $request->nombre_completo;
-        $item->password = Hash::make($request->password);
+        $item->password = sha1($request->password);
         $item->correo_empresarial = $request->correo_empresarial;
         $item->numero_telefonico = $request->numero_telefonico;
         $item->fecha_hora = date(Date::now());
@@ -87,6 +88,26 @@ class ControllerUsuariosAdministrativos extends Controller
     {
         $item = UsuarioAdministrativo::find($id);
         $item->delete();
+        return redirect()->back();
+    }
+    public function validar_password(Request $request)
+    {
+        $pass = Auth::user()->password;
+
+        $password = sha1($request->password);
+
+        if ($pass == $password) {
+            return redirect()->back()->with('success', 'true');
+        } else {
+            return redirect()->back()->with('success', 'false');
+        }
+    }
+
+    public function actualizar_password(Request $request)
+    {
+        $item = UsuarioAdministrativo::find(Auth::user()->id_usuario_administrativo);
+        $item->password = sha1($request->password);
+        $item->update();
         return redirect()->back();
     }
 }

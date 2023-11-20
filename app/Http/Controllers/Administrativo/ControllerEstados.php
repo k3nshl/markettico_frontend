@@ -14,11 +14,14 @@ class ControllerEstados extends Controller
      */
     public function index()
     {
-        // Este si sirve
+        // Este si sirve yeaaah
         $estados = Estado::all();
+
         $roles = Rol::all();
+
         return view('estadosRoles.index', compact('estados', 'roles'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -71,7 +74,7 @@ class ControllerEstados extends Controller
         $itemEstado->nombre = $request->nombre;
         $itemEstado->update();
         return redirect()->back();
-        
+              
     }
 
     /**

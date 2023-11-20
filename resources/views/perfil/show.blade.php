@@ -5,7 +5,15 @@
 @section('contenido')
 
     <section class="content">
+        @if ( session('success') == "true")
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $("#PassModal").modal("show");
+                });
+            </script>
 
+        @endif
         <div class="container" id="container_perfil">
             <div class="card col-sm-8 mx-auto mt-4 border-top border-0 border-4 border-info" id="card_perfil">
                 <div class="card-body" id="cardbody_perfil">
@@ -77,26 +85,29 @@
 
                                 {{-- Modal verificar contraseña actual --}}
                                 <div class="modal-body">
-                                    <form>
-
+                                    <form action="{{ route('contrasena.actual') }}" method="POST">
+                                        @csrf
+                                        @method('POST')
                                         <div class="mb-3">
                                             <label for="VerificarContraLabel" class="form-label">Digite su contraseña
                                                 actual:</label>
-                                            <input type="text" class="form-control" id="password">
+                                            <input type="text" class="form-control" id="password" name="password">
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="submit" class="btn btn-info text-white"
+                                                style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                                                Verificar
+                                            </button>
+        
                                         </div>
                                     </form>
                                 </div>
+                    
 
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                    <button type="button" class="btn btn-info text-white"
-                                        style="background-color: #04D9D9; border-color: #04D9D9;" data-bs-toggle="modal"
-                                        data-bs-target="#PassModal" data-bs-dismiss="modal">
-                                        <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                        Verificar
-                                    </button>
-
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -112,17 +123,17 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                                         data-bs-toggle="tooltip" data-bs-placement="top" title="Cerrar"></button>
                                 </div>
-                                
+
                                 {{-- Form cambiar contraseña --}}
-                                <form action="{{route('perfil.update', 1)}}">
-                                    @method('PUT')
+                                <form action="{{ route('actualizar.password') }}" method="POST">
+                                    @method('POST')
                                     @csrf
 
                                     <div class="modal-body">
 
                                         <div class="mb-3">
                                             <label for="passwordLabel" class="form-label">Contraseña nueva:</label>
-                                            <input type="text" class="form-control" id="password">
+                                            <input type="text" class="form-control" id="password" name="password">
                                         </div>
 
 
@@ -178,4 +189,5 @@
             </div>
         </div>
     </section>
+   
 @endsection
