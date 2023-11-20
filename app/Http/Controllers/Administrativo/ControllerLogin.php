@@ -74,9 +74,7 @@ class ControllerLogin extends Controller
     function login(Request $request)
     {
         //comparar password encriptado
-        
-
-
+    
         $user = UsuarioAdministrativo::where('cedula_empresarial', $request->correo_empresarial)->first();
 
         if ($user && $user->estado == 1 && $user->conrreo_empresarial == $request->correo_empresarial) {
