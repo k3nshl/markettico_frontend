@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use App\Models\UsuarioAdministrativo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Hash;
 
@@ -44,7 +45,6 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->fecha_hora = date(Date::now());
         $item->save();
         return redirect()->back();
-
     }
 
     /**
@@ -63,7 +63,6 @@ class ControllerUsuariosAdministrativos extends Controller
     {
         $item = UsuarioAdministrativo::find($id);
         return view('usuariosAdministrativos.index', compact('item'));
-    
     }
 
     /**
@@ -79,7 +78,6 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->numero_telefonico = $request->numero_telefonico;
         $item->update();
         return redirect()->back();
-        
     }
 
     /**
@@ -90,6 +88,5 @@ class ControllerUsuariosAdministrativos extends Controller
         $item = UsuarioAdministrativo::find($id);
         $item->delete();
         return redirect()->back();
-        
     }
 }
