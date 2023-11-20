@@ -105,11 +105,8 @@ class ControllerUsuariosAdministrativos extends Controller
 
     public function actualizar_password(Request $request)
     {
-
         $item = UsuarioAdministrativo::find(Auth::user()->id_usuario_administrativo);
-
         $item->password = sha1($request->password);
-
         $item->update();
         return redirect()->back();
     }

@@ -6,7 +6,6 @@
 
     <section class="content">
         @if ( session('success') == "true")
-            <h1>{{ session('success') }}</h1>
             {{-- jquery cdn  prueba no esta llegando jquery--}}
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <script>
@@ -15,12 +14,6 @@
                 });
             </script>
 
-        @endif
-
-        @if (Auth::user())
-            <h1>bieeeeeennnnn</h1>
-        @else
-            <h1>maaaaaaaaaall</h1>
         @endif
         <div class="container" id="container_perfil">
             <div class="card col-sm-8 mx-auto mt-4 border-top border-0 border-4 border-info" id="card_perfil">
@@ -102,26 +95,20 @@
                                             <input type="text" class="form-control" id="password" name="password">
                                         </div>
 
-                                        {{-- boton de prueba --}}
-                                        <button type="submit" class="btn btn-info text-white"
-                                            style="background-color: #04D9D9; border-color: #04D9D9;">
-                                            <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                            Verificar2
-                                        </button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="submit" class="btn btn-info text-white"
+                                                style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                                                Verificar
+                                            </button>
+        
+                                        </div>
                                     </form>
                                 </div>
                     
 
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                    <button type="button" class="btn btn-info text-white"
-                                        style="background-color: #04D9D9; border-color: #04D9D9;" data-bs-toggle="modal"
-                                        data-bs-target="#PassModal" data-bs-dismiss="modal">
-                                        <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                        Verificar
-                                    </button>
-
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
