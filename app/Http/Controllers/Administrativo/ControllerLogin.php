@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\UsuarioAdministrativo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ControllerLogin extends Controller
 {
@@ -74,10 +75,9 @@ class ControllerLogin extends Controller
     function login(Request $request)
     {
         //comparar password encriptado
-    
         $user = UsuarioAdministrativo::where('cedula_empresarial', $request->correo_empresarial)->first();
-
-        if ($user && $user->estado == 1 && $user->conrreo_empresarial == $request->correo_empresarial) {
+        $password_login = Hash::make($request->password);
+        if ($user && $user->estado == 1 && $user->conrreo_empresarial == $request->correo_empresarial && $password_login = $user->password ) {
             Auth::login($user);
             return redirect()->route('estados.index');
         } else {
