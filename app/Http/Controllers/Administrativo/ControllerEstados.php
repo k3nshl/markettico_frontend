@@ -14,11 +14,10 @@ class ControllerEstados extends Controller
      */
     public function index()
     {
-        // Enviar el listado de roles a la vista
-        // Enviar el listado de estados a la vista
-
+        // Este si sirve
+        $estados = Estado::all();
         $roles = Rol::all();
-        return view('estadosRoles.index', compact('roles'));
+        return view('estadosRoles.index', compact('estados', 'roles'));
     }
 
     /**
@@ -57,7 +56,7 @@ class ControllerEstados extends Controller
     public function edit($id)
     {
         $itemEs = Estado::find($id); 
-        $item->update();
+        $itemEs->update();
         return view('estadosRoles.index');
     }
 
