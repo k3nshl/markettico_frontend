@@ -90,7 +90,7 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->delete();
         return redirect()->back();
     }
-    public function validar_password(Request $request)
+    public function validarPassword(Request $request)
     {
         $pass = Auth::user()->password;
 
@@ -103,7 +103,7 @@ class ControllerUsuariosAdministrativos extends Controller
         }
     }
 
-    public function actualizar_password(Request $request)
+    public function actualizarPassword(Request $request)
     {
         $item = UsuarioAdministrativo::find(Auth::user()->id_usuario_administrativo);
         $item->password = sha1($request->password);
