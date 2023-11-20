@@ -107,10 +107,10 @@
                                                                                 class="col-sm-4 col-form-label">Número
                                                                                 Telefónico:</label>
                                                                             <div class="col-sm-8">
-                                                                                <input type="text" class="form-control"
+                                                                                <input type="number" class="form-control"
                                                                                     id="numero_telefonico"
                                                                                     placeholder="Número Telefónico"
-                                                                                    name="numero_telefonico">
+                                                                                    name="numero_telefonico" min=0>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row mb-3">
@@ -409,18 +409,7 @@
                                                                                             </select>
                                                                                         </div>
 
-                                                                                        <div class="mb-3">
-                                                                                            <label for="editEstadoUsuario"
-                                                                                                class="form-label">Estado
-                                                                                            </label>
-                                                                                            <select class="form-select"
-                                                                                                id="editEstadoUsuario">
-                                                                                                <option value="activo">
-                                                                                                    Activo</option>
-                                                                                                <option value="inactivo">
-                                                                                                    Inactivo</option>
-                                                                                            </select>
-                                                                                        </div>
+                                                                                       
 
 
                                                                                 </div>
