@@ -91,6 +91,7 @@
                                                                                 </div>
                                                                             </div>
 
+
                                                                             <div class="modal-footer">
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
@@ -329,6 +330,22 @@
                                                                             </div>
                                                                         </div>
 
+                                                                        
+                                                                        <div class="row mb-3">
+                                                                            <label for="id_estado"
+                                                                                class="col-sm-4 col-form-label">Estado:
+                                                                                </label>
+                                                                            <div class="col-sm-8">
+
+                                                                                <select class="form-select" id="id_estado"
+                                                                                    name="id_estado">
+                                                                                    <option value="1">Activo</option>
+                                                                                    <option value="0">Inactivo
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+
                                                                         <div class="modal-footer">
                                                                             <button type="button"
                                                                                 class="btn btn-secondary"
@@ -446,6 +463,22 @@
                                                                                                         placeholder="Ingrese el nombre del Rol">
                                                                                                 </div>
                                                                                             </div>
+
+                                                                                            
+                                                                            <div class="row mb-3">
+                                                                                <label for="id_estado"
+                                                                                    class="col-sm-4 col-form-label">Estado:
+                                                                                    </label>
+                                                                                <div class="col-sm-8">
+    
+                                                                                    <select class="form-select" id="id_estado"
+                                                                                        name="id_estado">
+                                                                                        <option value="1">Activo</option>
+                                                                                        <option value="0">Inactivo
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
 
                                                                                             <div class="modal-footer">
                                                                                                 <button type="button"
