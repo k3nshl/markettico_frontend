@@ -1,7 +1,6 @@
 @extends('plantilla')
 
-@section('gestion_nombre', 'Articulo')
-
+@section('gestion_nombre', 'Articulo editar')
 
 @section('contenido')
 
@@ -11,67 +10,61 @@
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
                     <div class="card-body">
 
+                        {{-- Form de crear --}}
                         <div class="row justify-content-center align-items-center">
                             <div class="col">
                                 <div class="border p-3 rounded">
                                     <div class="card-title d-flex align-items-center justify-content-between">
                                         <div class="d-flex align-items-center">
                                             <div><i class="lni lni-clipboard me-1 font-22 text-info"></i></div>
-                                            <h5 class="mb-0 text-dark" title="Agregar Usuario">Registrar Articulo</h5>
+                                            <h5 class="mb-0 text-dark" title="Agregar Usuario">Editar Articulo</h5>
                                         </div>
                                     </div>
                                     <hr />
 
                                     <div>
+                                        <form action="{{ route('articulos.update', 1) }}" method="post">
+                                            @csrf
+                                            @method('PUT')
 
-                                        <div class="row mb-3">
                                             <div class="">
-
-                                                <label for="nombre_completo" class="col-sm-4 col-form-label">Titulo del
+                                                <label for="titulo" class="col-form-label">Titulo del
                                                     articulo:</label>
 
-                                                <input type="text" class="form-control" id="nombre_completo"
+                                                <input type="text" name="titulo" class="form-control" id="titulo"
                                                     placeholder="Titulo del articulo">
 
                                             </div>
 
-
                                             <div class="mt-3">
 
-                                                <label for="nombre_completo"
-                                                    class="col-sm-4 col-form-label">Contenido:</label>
+                                                <label for="contenido" class="col-form-label">Contenido:</label>
 
-                                                <form method="post">
-                                                    <textarea id="mytextarea" name="mytextarea" rows="3">Hello, World!</textarea>
-                                                </form>
+                                                <textarea id="mytextarea" name="contenido" rows="3" placeholder="Escribe el contenido del artículo"></textarea>
 
                                             </div>
 
-                                            <div class="mt-3">
+                                            <div class="text-end">
+                                                <hr />
 
-                                                <button type="button" class="btn btn-info float-end text-white"
+                                                <a href="{{ route('paginasInformacion.show', 1) }}"
+                                                    class="btn btn-secondary">Regresar</a>
+
+                                                <button type="submit" class="btn btn-info text-white"
                                                     style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                    <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                    Guardar
+                                                    <i class="bx bx-save" style="color: #F2F2F2;"></i>Actualizar
                                                 </button>
                                             </div>
 
-
-                                        </div>
+                                        </form>
 
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </section>
 

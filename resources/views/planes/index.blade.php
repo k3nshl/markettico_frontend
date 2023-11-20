@@ -13,8 +13,8 @@
                             <li class="nav-item">
                                 <button class="nav-link active custom-bg-color" data-bs-toggle="tab"
                                     data-bs-target="#tab-info">
-                                    <i class="bx bx-notepad me-2"></i> Lista de planes
-                                    
+                                    <i class="bx bx-notepad me-2"></i>Planes
+
                                 </button>
                             </li>
                             <li class="nav-item">
@@ -32,7 +32,8 @@
                                         <div class="border p-3 rounded">
 
                                             <div class="d-flex justify-content-between align-items-end mb-3">
-                                                <h5 class="text-dark"><i class="bx bxs-user me-2 font-22 text-info"></i>Planes de Vendedores</h5>                
+                                                <h5 class="text-dark"><i
+                                                        class="bx bxs-user me-2 font-22 text-info"></i>Lista de Planes</h5>
                                             </div>
 
                                             <hr />
@@ -40,10 +41,16 @@
                                                 <table id="tablaPlanes" class="table table-bordered">
                                                     <thead class="theadUsuariosAdministradores">
                                                         <tr>
-                                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">ID</th>
-                                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Nombre del plan</th>
-                                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Costo</th>
-                                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
+                                                            <th class="bg_datatable"
+                                                                style="background-color: #05C7F2; color: #F2F2F2">ID</th>
+                                                            <th class="bg_datatable"
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Nombre
+                                                            </th>
+                                                            <th class="bg_datatable"
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Costo</th>
+                                                            <th class="bg_datatable"
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Acciones
+                                                            </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -154,8 +161,8 @@
                                                                 </div>
 
                                                                 <!-- Modal de edición -->
-                                                                <div class="modal fade" id="editarPlanModal" tabindex="-1"
-                                                                    aria-labelledby="editarPlanModalLabel"
+                                                                <div class="modal fade" id="editarPlanModal"
+                                                                    tabindex="-1" aria-labelledby="editarPlanModalLabel"
                                                                     aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         <div class="modal-content">
@@ -170,7 +177,12 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form>
+                                                                                {{-- Form Editar --}}
+                                                                                <form
+                                                                                    action="{{ route('planes.update', 1) }}"
+                                                                                    method="POST">
+                                                                                    @method('PUT')
+                                                                                    @csrf
                                                                                     <div class="mb-3">
                                                                                         <label for="nombre"
                                                                                             class="form-label">Nombre del
@@ -249,14 +261,14 @@
                                                                                             id="duracion"
                                                                                             placeholder="Duración del plan">
                                                                                     </div>
-                                                                                </form>
+
                                                                             </div>
 
                                                                             <div class="modal-footer">
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Cerrar</button>
-                                                                                <button type="button"
+                                                                                <button type="submit"
                                                                                     class="btn btn-info text-white"
                                                                                     style="background-color: #04D9D9; border-color: #04D9D9;">
                                                                                     <i class="bx bx-save"
@@ -264,6 +276,7 @@
                                                                                     Guardar
                                                                                 </button>
                                                                             </div>
+                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -293,11 +306,15 @@
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Cancelar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-danger"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                                {{-- form de eliminar --}}
+                                                                                <form
+                                                                                    action="{{ route('planes.destroy', 1) }}">
+                                                                                    @method('DELETE')
+                                                                                    @csrf
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-danger">Eliminar
+                                                                                    </button>
+                                                                                </form>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -314,16 +331,21 @@
 
                             <div class="tab-pane fade" id="tab-registro">
                                 <div class="row justify-content-center align-items-center">
-                                    <div class="col-md-7 p-3">
+                                    <div class="col-md p-3">
                                         <div class="border p-4 rounded">
 
                                             <div class="d-flex justify-content-between align-items-end mb-3">
-                                                <h5 class="text-dark"><i class="bx bx-user-plus me-2 font-22 text-info"></i>Registrar el plan</h5>
-        
+                                                <h5 class="text-dark"><i
+                                                        class="bx bx-user-plus me-2 font-22 text-info"></i>Registrar plan
+                                                </h5>
+
                                             </div>
-                                
+
                                             <hr />
-                                            <form>
+                                            {{-- Form Registrar --}}
+                                            <form action="{{ route('planes.store') }}" method="POST">
+                                                @method('POST')
+                                                @csrf
                                                 <div class="row mb-3">
                                                     <label for="nombre" class="col-sm-4 col-form-label">Nombre del
                                                         plan:</label>
@@ -391,11 +413,19 @@
                                                             placeholder="Duración del plan">
                                                     </div>
                                                 </div>
+                                                <div class="row mb-3">
+                                                    <label for="contenido"
+                                                        class="col-sm-4 col-form-label">Características:</label>
+                                                    <textarea id="mytextarea" name="textareaEditarAnuncio" rows="3" placeholder="Escribe las características"></textarea>
+
+                                                </div>
+
+                                                <hr>
 
                                                 <div class="row">
                                                     <label class="col-sm-3 col-form-label"></label>
                                                     <div class="col-sm-9 text-end">
-                                                        <button type="button" class="btn btn-info text-white"
+                                                        <button type="submit" class="btn btn-info text-white"
                                                             style="background-color: #04D9D9; border-color: #04D9D9;">
                                                             <i class="bx bx-save" style="color: #F2F2F2;"></i>
                                                             Guardar

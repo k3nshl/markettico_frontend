@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerGestionarProductos extends Controller
+class ControllerPlanes extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('gestionar_productos.index');
+        return view('planes.index');
     }
 
     /**
@@ -28,7 +28,7 @@ class ControllerGestionarProductos extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "store planes";
     }
 
     /**
@@ -52,7 +52,7 @@ class ControllerGestionarProductos extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "update planes";
     }
 
     /**
@@ -60,6 +60,6 @@ class ControllerGestionarProductos extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "destroy planes";
     }
 }

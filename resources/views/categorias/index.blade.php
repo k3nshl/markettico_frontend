@@ -1,8 +1,10 @@
 @extends('plantilla')
 
-@section('gestion_nombre', 'Gestión de Subcategorías')
+@section('gestion_nombre', 'Gestión de Categorías')
 
 @section('contenido')
+
+
 
     <section class="content">
         <div class="row">
@@ -16,8 +18,7 @@
                                     <div class="card-title d-flex align-items-center justify-content-between">
                                         <div class="d-flex align-items-center">
                                             <div><i class="lni lni-clipboard me-1 font-22 text-info"></i></div>
-                                            <h5 class="mb-0 text-dark" title="Agregar SubCategoría">Lista de Subcategorias
-                                            </h5>
+                                            <h5 class="mb-0 text-dark" title="Agregar Categoría">Lista de Categorias</h5>
                                         </div>
                                         <div class="d-flex align-items-center">
                                             <div class="me-2">
@@ -25,41 +26,42 @@
                                             </div>
                                             <div class="me-2">
                                                 <button type="button" class="btn btn-info text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#modalAgregarSubCategoria"
+                                                    data-bs-toggle="modal" data-bs-target="#modalAgregarCategoria"
                                                     style="background-color: #04D9B2; border-color: #04D9D9;"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Agregar Nueva Subcategoria">+</button>
+                                                    title="Agregar Nueva Categoría">+</button>
                                             </div>
 
-                                            <!-- Modal de agregar -->
-                                            <div class="modal fade" id="modalAgregarSubCategoria" tabindex="-1"
-                                                aria-labelledby="modalAgregarSubCategoriaLabel" aria-hidden="true">
+                                            <div class="modal fade" id="modalAgregarCategoria" tabindex="-1"
+                                                aria-labelledby="modalAgregarCategoriaLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="modalAgregarSubCategoria">
-                                                                Agregar Nueva subcategoría</h5>
+                                                            <h5 class="modal-title" id="modalAgregarCategoria">
+                                                                Agregar Nueva categoría</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
                                                         </div>
+
+                                                        {{-- Model para registrar --}}
                                                         <div class="modal-body">
-                                                            <form action=" {{ route('subcategorias.store') }}" method="POST">
+                                                            <form action="{{ route('categorias.store') }}" method="POST">
                                                                 @csrf
                                                                 <div class="row mb-3">
                                                                     <label for="nombre"
                                                                         class="col-sm-4 col-form-label">Nombre:</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" class="form-control"
-                                                                            id="nombre" name="nombre"
-                                                                            placeholder="Ingrese el nombre">
+                                                                            name="nombre" placeholder="Ingrese el nombre">
                                                                     </div>
                                                                 </div>
+
                                                                 <div class="row mb-3">
                                                                     <label for="descripcion"
                                                                         class="col-sm-4 col-form-label">Descripción:</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" class="form-control"
-                                                                            id="descripcion" name="descripcion"
+                                                                            name="descripcion"
                                                                             placeholder="Ingrese la descripción">
                                                                     </div>
                                                                 </div>
@@ -67,23 +69,26 @@
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-bs-dismiss="modal">Cerrar</button>
+
                                                                     <button type="submit" class="btn btn-info text-white"
                                                                         style="background-color: #04D9D9; border-color: #04D9D9;">
                                                                         <i class="bx bx-save" style="color: #F2F2F2;"></i>
                                                                         Guardar
                                                                     </button>
+
                                                                 </div>
 
                                                             </form>
                                                         </div>
-                                                       
+
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <hr />
-                                    {{-- Lista de subcategorías --}}
+
+                                    {{-- Lista de categorías --}}
                                     <div class="table-responsive">
                                         <table id="tablaRoles" class="table table-bordered">
                                             <thead class="theadRoles">
@@ -101,9 +106,20 @@
                                             <tbody class="text-center">
                                                 <tr>
                                                     <td>1</td>
-                                                    <td>Cocina</td>
+                                                    <td>Hogar</td>
                                                     <td>Ahhhajjajbbcbxxuusisisisiis</td>
                                                     <td>
+
+                                                        <!-- Botón de visualizar con modal -->
+                                                        <a href="{{ route('categorias.show', 1) }}"
+                                                            class="btn btn-primary btn-sm" data-bs-toggle="tooltip"
+                                                            data-bs-placement="top" title="Visualizar Subcategoría">
+                                                            <div class="text-center">
+                                                                <i class="lni lni-eye"
+                                                                    style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
+                                                            </div>
+                                                        </a>
+
                                                         <!-- Botón de editar con modal -->
                                                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                                             data-bs-target="#editarCategoriaModal" data-bs-toggle="tooltip"
@@ -114,10 +130,10 @@
                                                             </div>
                                                         </button>
 
-
                                                         <!-- Modal de edición -->
                                                         <div class="modal fade" id="editarCategoriaModal" tabindex="-1"
-                                                            aria-labelledby="editarCategoriaModalLabel" aria-hidden="true">
+                                                            aria-labelledby="editarCategoriaModalLabel"
+                                                            aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-scrollable">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
@@ -132,24 +148,24 @@
                                                                     </div>
 
                                                                     <div class="modal-body">
-                                                                        <form action=" {{ route('subcategorias.update', 1) }}" method="POST">
-                                                                            @method('PUT')
+                                                                        <form action="{{ route('categorias.update', 1) }}" method="POST">
                                                                             @csrf
+                                                                            @method('PUT')
                                                                             <div class="row mb-3">
                                                                                 <label for="nombre"
                                                                                     class="col-sm-4 col-form-label">Nombre:</label>
                                                                                 <div class="col-sm-8">
                                                                                     <input type="text" class="form-control"
-                                                                                        id="nombre" name="nombre"
-                                                                                        placeholder="Ingrese el nombre">
+                                                                                        name="nombre" placeholder="Ingrese el nombre">
                                                                                 </div>
                                                                             </div>
+            
                                                                             <div class="row mb-3">
                                                                                 <label for="descripcion"
                                                                                     class="col-sm-4 col-form-label">Descripción:</label>
                                                                                 <div class="col-sm-8">
                                                                                     <input type="text" class="form-control"
-                                                                                        id="descripcion" name="descripcion"
+                                                                                        name="descripcion"
                                                                                         placeholder="Ingrese la descripción">
                                                                                 </div>
                                                                             </div>
@@ -157,11 +173,13 @@
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Cerrar</button>
+            
                                                                                 <button type="submit" class="btn btn-info text-white"
                                                                                     style="background-color: #04D9D9; border-color: #04D9D9;">
                                                                                     <i class="bx bx-save" style="color: #F2F2F2;"></i>
                                                                                     Guardar
                                                                                 </button>
+            
                                                                             </div>
             
                                                                         </form>
@@ -178,7 +196,7 @@
 
                                                         <!-- Modal de eliminación -->
                                                         <div class="modal fade" id="eliminarCategoriaModal"
-                                                            tabindex="-1" aria-labelledby="eliminarCategoriaModalLabel"
+                                                            tabindex="-1" aria-labelledby="eliminarRolModalLabel"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
@@ -191,23 +209,23 @@
                                                                             aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        ¿Estás seguro de que deseas eliminar esta
-                                                                        subcategoría?
+                                                                        ¿Estás seguro de que deseas eliminar esta categoría?
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Cancelar</button>
-                                                                        <!-- Form de eliminación -->
-                                                                        <form action="{{ route('subcategorias.destroy', 1) }}" method="POST">
+
+                                                                        <form action="{{ route('categorias.destroy', 1)}}" method="POST">
                                                                             @method('DELETE')
                                                                             @csrf
+                                                                            
                                                                             <button type="submit" class="btn btn-danger"
                                                                                 data-bs-dismiss="modal"
                                                                                 data-bs-toggle="modal"
                                                                                 data-bs-target="#eliminacionCorrectaModal">Eliminar
                                                                             </button>
                                                                         </form>
-                                                                        <!-- Form de eliminación -->
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -224,6 +242,7 @@
                 </div>
             </div>
         </div>
+
 
         </div>
         </div>

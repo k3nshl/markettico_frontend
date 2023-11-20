@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\UsuarioAdministrativo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ControllerLogin extends Controller
 {
@@ -16,7 +18,7 @@ class ControllerLogin extends Controller
         return view("login.inicioSesion");
     }
 
-    public function verificar(){
+    public function validarLogin(Request $request){
         return view("login.codigoVerificacion");
     }
 
@@ -67,4 +69,30 @@ class ControllerLogin extends Controller
     {
         //
     }
+
+    
+    function login(Request $request)
+    {
+        //comparar password encriptado
+    
+        $user = UsuarioAdministrativo::where('cedula_empresarial', $request->correo_empresarial)->first();
+
+        if ($user && $user->estado == 1 && $user->conrreo_empresarial == $request->correo_empresarial) {
+            Auth::login($user);
+            return redirect()->route('estados.index');
+        } else {
+            return redirect()->route('usuarios.iniciar_sesion')->with('error', 'Contraseña o usuario incorrectas');
+        }
+    }
+
+
+    function logout()
+    {
+        Auth::logout();
+        return redirect()->route('estados.index');
+    }
+    
+
+
+    
 }

@@ -42,7 +42,8 @@
         <div class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
                 <div>
-                    <img src="../assets/images/logo-markettico-icono.png" class="logo-icon" alt="logo icon">
+                    <img src="{{ asset('../assets/images/logo-markettico-icono.png') }}" class="logo-icon"
+                        alt="logo icon">
                 </div>
                 <div>
                     <h4 class="logo-text">MarketTico</h4>
@@ -60,13 +61,13 @@
                         <div class="menu-title">Superadmin</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('usuarios_administrativos.index') }}"><i
+                        <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
                         </li>
-                        <li> <a href="{{ route('estados_roles.index') }}"><i
+                        <li> <a href="{{ route('estados.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>Gestionar Estados/Roles</a>
                         </li>
-                        <li> <a href="{{ route('historial.index') }}"><i class="bx bx-right-arrow-alt"></i>Visualizar
+                        <li> <a href="{{ route('historiales.index') }}"><i class="bx bx-right-arrow-alt"></i>Visualizar
                                 Historiales</a>
                         </li>
                     </ul>
@@ -78,32 +79,35 @@
                         <div class="menu-title">Administrador</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('usuarios_administrativos.index') }}"><i
+                        <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
                         </li>
-                        <li> <a href="{{ route('solicitud.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                        <li> <a href="{{ route('solicitudes-vendedores.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Vendedores</a>
                         </li>
                         <li> <a href="{{ route('estadisticas.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Estadisticas</a>
 
                         </li>
+                        <li> <a href="{{ route('notificaciones') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                Notificaciones</a>
+                        </li>
                         <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Plantillas
                                 para Correos</a>
                             <ul>
-                                <li> <a href="{{ route('correo_autenticacion') }}"><i
+                                <li> <a href="{{ route('correoAutenticacion') }}"><i
                                             class="bx bx-right-arrow-alt"></i>Correo Autenticacion</a>
                                 </li>
-                                <li> <a href="{{ route('correo_cambios_politicas') }}"><i
+                                <li> <a href="{{ route('correoCambiosPoliticas') }}"><i
                                             class="bx bx-right-arrow-alt"></i>Correo cambios en politicas</a>
                                 </li>
-                                <li> <a href="{{ route('correo_expiracion_suspension') }}"><i
+                                <li> <a href="{{ route('correoExpiracionSuspension') }}"><i
                                             class="bx bx-right-arrow-alt"></i>Correo expiracion y suspencion</a>
                                 </li>
-                                <li> <a href="{{ route('correo_registro') }}"><i
+                                <li> <a href="{{ route('correoRegistro') }}"><i
                                             class="bx bx-right-arrow-alt"></i>Correo registro</a>
                                 </li>
-                                <li> <a href="{{ route('correo_solicitud') }}"><i
+                                <li> <a href="{{ route('correoSolicitud') }}"><i
                                             class="bx bx-right-arrow-alt"></i>Correo solicitud</a>
                                 </li>
                             </ul>
@@ -119,7 +123,7 @@
                         <div class="menu-title">Moderador</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('moderador.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                        <li> <a href="{{ route('paginasInformacion.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Paginas</a>
                         </li>
                         <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
@@ -129,13 +133,11 @@
                                 Categorias</a>
                         </li>
 
-                        <li> <a href="{{ route('productos.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                        <li> <a href="{{ route('solicitudes-productos.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Productos</a>
                         </li>
-                        <li> <a href="{{ route('contenido.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                        <li> <a href="{{ route('moderarContenido.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Contenido</a>
-
-
 
                     </ul>
                 </li>
@@ -145,9 +147,6 @@
             </ul>
             <!--end navigation-->
         </div>
-
-
-
 
         <!--end sidebar wrapper -->
         <!--start header -->
@@ -247,23 +246,19 @@
                     <div class="user-box dropdown">
                         <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret"
                             href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
+                            <img src="{{ asset('../assets/images/avatars/avatar-2.png') }}" class="user-img"
+                                alt="user avatar">
                             <div class="user-info ps-3">
                                 <p class="user-name mb-0">Delia Smith</p>
                                 <p class="designattion mb-0">Project Manager</p>
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                     
                             <li>
                                 <a class="dropdown-item" href="{{ route('perfil.show', ['id' => 1]) }}">
                                     <i class="bx bx-user"></i><span>Perfil</span>
                                 </a>
                             </li>
-
-                          
-
-
                             <li><a class="dropdown-item" href="javascript:;"><i
                                         class="bx bx-cog"></i><span>Configuracion</span></a>
                             </li>
@@ -396,6 +391,19 @@
             $('#tablaSolicitudRechazados').DataTable();
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            $('#tablaCorreos').DataTable();
+        });
+
+        $(document).ready(function() {
+            $('#tablaAnuncios').DataTable();
+        });
+
+        $(document).ready(function() {
+            $('#tablaAlertas').DataTable();
+        });
+    </script>
     <!--Fin datatables-->
 
 
@@ -492,9 +500,6 @@
     <!-- Fin de las tablas de historial -->
 
 
-
-
-
     <script>
         $(document).ready(function() {
             var table = $('#').DataTable({
@@ -526,30 +531,39 @@
         });
     </script>
 
-    {{-- INICIA PARA PASS --}}
-    <!-- JavaScript (con jQuery) -->
 
-    <!-- JavaScript (con jQuery) -->
-    <!-- Scripts -->
-    
+
     <script>
         $(document).ready(function() {
-            $('#togglePasswordVisibility').on('click', function(e) {
-                e.preventDefault();
-                var passwordInput = $('#passwordInput');
+            $("#portada").change(function() {
+                readURL(this, "#imagen-preview-portada");
+            });
 
-                passwordInput.prop('readonly', !passwordInput.prop('readonly'));
-
-                var currentType = passwordInput.attr('type');
-                var newType = (currentType === 'password') ? 'text' : 'password';
-                passwordInput.attr('type', newType);
-
-                var linkText = (newType === 'password') ? 'Mostrar' : 'Ocultar';
-                $(this).text(linkText);
+            $("#otroInput").change(function() {
+                readURL(this, "#imagen-preview-otroInput");
             });
         });
+
+        function readURL(input, previewId) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $(previewId).attr('src', e.target.result);
+                    $(previewId).show();
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
-    {{-- FIN DE PASS --}}
+
+{{-- Para limpiar el campo de verificar contra --}}
+    <script>
+        $('#VerificarContra').on('hidden.bs.modal', function() {
+            $('#password').val('');
+        });
+    </script>
 
 
 </body>
