@@ -64,8 +64,8 @@
                         <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
                         </li>
-                        <li> <a href="{{ route('estados.index') }}"><i
-                                    class="bx bx-right-arrow-alt"></i>Gestionar Estados/Roles</a>
+                        <li> <a href="{{ route('estados.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                Estados/Roles</a>
                         </li>
                         <li> <a href="{{ route('historiales.index') }}"><i class="bx bx-right-arrow-alt"></i>Visualizar
                                 Historiales</a>
@@ -82,7 +82,8 @@
                         <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
                         </li>
-                        <li> <a href="{{ route('solicitudes-vendedores.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                        <li> <a href="{{ route('solicitudes-vendedores.index') }}"><i
+                                    class="bx bx-right-arrow-alt"></i>Gestionar
                                 Vendedores</a>
                         </li>
                         <li> <a href="{{ route('estadisticas.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
@@ -123,7 +124,8 @@
                         <div class="menu-title">Moderador</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('paginasInformacion.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                        <li> <a href="{{ route('paginasInformacion.index') }}"><i
+                                    class="bx bx-right-arrow-alt"></i>Gestionar
                                 Paginas</a>
                         </li>
                         <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
@@ -133,10 +135,12 @@
                                 Categorias</a>
                         </li>
 
-                        <li> <a href="{{ route('solicitudes-productos.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                        <li> <a href="{{ route('solicitudes-productos.index') }}"><i
+                                    class="bx bx-right-arrow-alt"></i>Gestionar
                                 Productos</a>
                         </li>
-                        <li> <a href="{{ route('moderarContenido.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                        <li> <a href="{{ route('moderarContenido.index') }}"><i
+                                    class="bx bx-right-arrow-alt"></i>Gestionar
                                 Contenido</a>
 
                     </ul>
@@ -355,47 +359,39 @@
     <script src="{{ asset('assets/js/index.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('assets/js/index.js') }}"></script>
+    <!--app JS-->
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="https://cdn.tiny.cloud/1/ridcfj86k1i5y88uy1n1vznbruw2zv4icacguzwpjgeoum26/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
     <script>
         $(function() {
             $(".knob").knob();
         });
-    </script>
-    <!--Inicio datatables-->
-    <script>
+
+        // Datatables
         $(document).ready(function() {
             $('#tablaUsuariosAdmin').DataTable();
         });
-    </script>
-    <script>
         $(document).ready(function() {
             $('#tablaRoles').DataTable();
         });
-    </script>
-    <script>
         $(document).ready(function() {
             $('#tablaEstados').DataTable();
         });
-    </script>
-    <script>
         $(document).ready(function() {
             $('#tablaSolicitudEspera').DataTable();
         });
-    </script>
-    <script>
         $(document).ready(function() {
             $('#tablaSolicitudAprobados').DataTable();
         });
-    </script>
-    <script>
         $(document).ready(function() {
             $('#tablaSolicitudRechazados').DataTable();
         });
-    </script>
-    <script>
         $(document).ready(function() {
             $('#tablaCorreos').DataTable();
         });
-
         $(document).ready(function() {
             $('#tablaAnuncios').DataTable();
         });
@@ -403,137 +399,70 @@
         $(document).ready(function() {
             $('#tablaAlertas').DataTable();
         });
-    </script>
-    <!--Fin datatables-->
-
-
-    <!-- Inicio datatable moderador -->
-
-    <script>
         $(document).ready(function() {
             $('#tablaArticulo').DataTable();
         });
-    </script>
-
-
-    <script>
         $(document).ready(function() {
             $('#tablaColeccion').DataTable();
         });
-    </script>
-
-
-
-    <!-- Fin de datatable moderador -->
-
-
-
-    <!-- Inicio datatable planes -->
-
-    <script>
         $(document).ready(function() {
             $('#tablaPlanes').DataTable();
         });
-    </script>
 
-    <!-- Fin de datatable planes -->
-
-
-
-
-    <!-- Inicio de las tablas de historial -->
-    <script>
         $(document).ready(function() {
             $('#tablaHistorialRoles').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaHistorialGestionCuentas').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaHistorialAcciones').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaHistorialSuspenciones').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaHistorialInicioSesion').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaHistorialPaginas').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaProductosEspera').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaProductosAprobados').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaProductosRechazados').DataTable();
         });
-    </script>
 
 
-    <!-- Fin de las tablas de historial -->
+        // Tooltips y Popovers
+        $(function() {
+            $('[data-bs-toggle="popover"]').popover();
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        })
 
+        // Texto enriquecido
+        tinymce.init({
+            selector: '#mytextarea'
+        });
 
-    <script>
         $(document).ready(function() {
             var table = $('#').DataTable({
                 lengthChange: false,
                 buttons: ['copy', 'excel', 'pdf', 'print']
             });
         });
-    </script>
-
-    <script src="{{ asset('assets/js/index.js') }}"></script>
-    <!--app JS-->
-    <script src="{{ asset('assets/js/app.js') }}"></script>
-
-
-
-    <script>
-        $(function() {
-            $('[data-bs-toggle="popover"]').popover();
-            $('[data-bs-toggle="tooltip"]').tooltip();
-        })
-    </script>
-
-    <script src="https://cdn.tiny.cloud/1/ridcfj86k1i5y88uy1n1vznbruw2zv4icacguzwpjgeoum26/tinymce/6/tinymce.min.js"
-        referrerpolicy="origin"></script>
-
-    <script>
-        tinymce.init({
-            selector: '#mytextarea'
-        });
-    </script>
-
-
-
-    <script>
         $(document).ready(function() {
             $("#portada").change(function() {
                 readURL(this, "#imagen-preview-portada");
@@ -556,16 +485,11 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-    </script>
 
-{{-- Para limpiar el campo de verificar contra --}}
-    <script>
         $('#VerificarContra').on('hidden.bs.modal', function() {
             $('#password').val('');
         });
     </script>
-
-
 </body>
 
 </html>

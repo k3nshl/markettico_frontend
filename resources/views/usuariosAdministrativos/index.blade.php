@@ -252,13 +252,7 @@
                                                                             </div>
                                                                         </button>
 
-
-
                                                                     </div>
-
-
-
-
 
                                                                     <!-- Modal de visaualizacion -->
                                                                     <div class="modal fade" id="showUserModal"
