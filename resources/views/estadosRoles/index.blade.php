@@ -183,7 +183,7 @@
 
                                                                                 <div class="modal-body">
                                                                                     <form
-                                                                                        action="{{ route('estados.update', 1) }}"
+                                                                                        action="{{ route('estados.update', $item->id_estado) }}"
                                                                                         method="POST">
                                                                                         @csrf
                                                                                         @method('PUT')
@@ -252,10 +252,7 @@
                                                                                         @csrf
                                                                                         @method('delete')
                                                                                         <button type="submit"
-                                                                                            class="btn btn-danger"
-                                                                                            data-bs-dismiss="modal"
-                                                                                            data-bs-toggle="modal"
-                                                                                            data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                                            class="btn btn-danger">Eliminar</button>
                                                                                     </form>
                                                                                 </div>
                                                                             </div>
@@ -266,6 +263,8 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+
+                                                {{session('error')}}
                                             </div>
                                         </div>
                                     </div>
