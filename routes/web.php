@@ -59,7 +59,7 @@ Route::resource('solicitudes-productos', ControllerSolicitudesProductos::class);
 Route::resource('planes', ControllerPlanes::class);
 
 // Rutas para historiales
-Route::resource('historiales', ControllerHistoriales::class);
+Route::resource('/historiales', ControllerHistoriales::class);
 
 // Rutas para estadisticas
 Route::resource('estadisticas', ControllerEstadisticas::class);
