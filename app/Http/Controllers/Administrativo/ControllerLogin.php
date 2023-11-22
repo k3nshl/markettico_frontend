@@ -19,7 +19,8 @@ class ControllerLogin extends Controller
         return view("login.inicioSesion");
     }
 
-    public function validarLogin(Request $request){
+    public function validarLogin(Request $request)
+    {
         return view("login.codigoVerificacion");
     }
 
@@ -71,17 +72,17 @@ class ControllerLogin extends Controller
         //
     }
 
-    
+
     function login(Request $request)
     {
-        //comparar password encriptado
-        $user = UsuarioAdministrativo::where('cedula_empresarial', $request->correo_empresarial)->first();
-        $password_login = Hash::make($request->password);
-        if ($user && $user->estado == 1 && $user->conrreo_empresarial == $request->correo_empresarial && $password_login = $user->password ) {
-            Auth::login($user);
-            return redirect()->route('estados.index');
+        $user = UsuarioAdministrativo::where('correo_empresarial', $request->correo_empresarial)->first();
+        $password_login = sha1($request->password);
+
+        if ($user->id_estado == 1 && $user->correo_empresarial == $request->correo_empresarial && $user->password == $password_login) {
+            auth::login($user);
+            return redirect()->route('perfil.show', Auth::user()->id_usuario_administrativo);
         } else {
-            return redirect()->route('usuarios.iniciar_sesion')->with('error', 'Contraseña o usuario incorrectas');
+            return redirect()->route('login')->with('error', 'Contraseña o usuario incorrectas');
         }
     }
 
@@ -91,8 +92,6 @@ class ControllerLogin extends Controller
         Auth::logout();
         return redirect()->route('estados.index');
     }
-    
 
 
-    
 }

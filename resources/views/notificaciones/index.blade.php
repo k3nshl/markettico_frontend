@@ -96,6 +96,22 @@
                                                                             </div>
                                                                         </div>
 
+                                                                        <div class="row mb-3">
+                                                                            <label for="etiqueta"
+                                                                                class="col-sm-4 col-form-label">Etiqueta:
+                                                                                </label>
+                                                                            <div class="col-sm-8">
+
+                                                                                <select class="form-select" id="etiqueta"
+                                                                                    name="etiqueta">
+                                                                                    <option value="1">Nuevo</option>
+                                                                                    <option value="2">Mejora
+                                                                                    </option>
+                                                                                    <option value="3">Beta</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+
                                                                         <div class="mb-3 row">
                                                                             <div class="col">
                                                                                 <label>Fecha incio:</label>
@@ -240,6 +256,8 @@
                                                                                         <span>Acá</span></label>
                                                                                 </div>
 
+                                                            
+
                                                                                 <div class="row mb-3">
                                                                                     <div class="col-sm">
                                                                                         <label for="fecha"
@@ -324,6 +342,22 @@
                                                                                                 alt="Vista previa de la imagen"
                                                                                                 class="rounded-3 imagen-preview"
                                                                                                 style="width:300px; height: 200px; object-fit: cover; display: none;">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="row mb-3">
+                                                                                        <label for="etiqueta"
+                                                                                            class="col-sm-4 col-form-label">Etiqueta:
+                                                                                            </label>
+                                                                                        <div class="col-sm-8">
+            
+                                                                                            <select class="form-select" id="etiqueta"
+                                                                                                name="etiqueta">
+                                                                                                <option value="1">Nuevo</option>
+                                                                                                <option value="2">Mejora
+                                                                                                </option>
+                                                                                                <option value="3">Beta</option>
+                                                                                            </select>
                                                                                         </div>
                                                                                     </div>
 
@@ -480,6 +514,23 @@
                                                                                 class="form-control" id="descripción"
                                                                                 placeholder="Escribe una pequeña descripción">
 
+                                                                        </div>
+
+                                                                        
+                                                                        <div class="row mb-3">
+                                                                            <label for="tipo_destinatario"
+                                                                                class="col-sm-4 col-form-label">Tipo de destinatario:
+                                                                                </label>
+                                                                            <div class="col-sm-8">
+
+                                                                                <select class="form-select" id="tipo_destinatario"
+                                                                                    name="tipo_destinatario">
+                                                                                    <option value="1">Compradores</option>
+                                                                                    <option value="2">Vendedores
+                                                                                    </option>
+                                                                                    <option value="3">Todos</option>
+                                                                                </select>
+                                                                            </div>
                                                                         </div>
 
                                                                         <div class="mb-3 row">
@@ -695,6 +746,22 @@
                                                                                             id="descripción"
                                                                                             placeholder="Escribe una pequeña descripción">
 
+                                                                                    </div>
+
+                                                                                    <div class="row mb-3">
+                                                                                        <label for="tipo_destinatario"
+                                                                                            class="col-sm-4 col-form-label">Tipo de destinatario:
+                                                                                            </label>
+                                                                                        <div class="col-sm-8">
+            
+                                                                                            <select class="form-select" id="tipo_destinatario"
+                                                                                                name="tipo_destinatario">
+                                                                                                <option value="1">Compradores</option>
+                                                                                                <option value="2">Vendedores
+                                                                                                </option>
+                                                                                                <option value="3">Todos</option>
+                                                                                            </select>
+                                                                                        </div>
                                                                                     </div>
 
                                                                                     <div class="mb-3 row">
