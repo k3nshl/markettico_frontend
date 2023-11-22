@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\Articulo;
+use App\Models\PaginaInformacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ControllerPaginasInformacion extends Controller
 {
@@ -12,7 +15,9 @@ class ControllerPaginasInformacion extends Controller
      */
     public function index()
     {
-        return view('paginasInformacion.index');
+        $data_paginas = PaginaInformacion::all();
+
+        return view('paginasInformacion.index', compact('data_paginas'));
     }
 
     /**
@@ -20,7 +25,6 @@ class ControllerPaginasInformacion extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -28,7 +32,22 @@ class ControllerPaginasInformacion extends Controller
      */
     public function store(Request $request)
     {
-        return "Store de paginas de informacion";
+
+        $item = new PaginaInformacion();
+        $item->titulo = $request->titulo;
+        $item->descripcion = $request->descripcion;
+
+        $imagen = $request->icono;
+
+        if ($imagen) {
+            $filename = $imagen->getClientOriginalName();
+
+            $imagen->move(public_path('img/fotografias'), $filename);
+            $item->icono = $filename;
+        }
+
+        $item->save();
+        return redirect()->back();
     }
 
     /**
@@ -36,7 +55,9 @@ class ControllerPaginasInformacion extends Controller
      */
     public function show($id)
     {
-        return view('paginasInformacion.show');
+        $data_articulos = Articulo::where('id_pagina_informacion', $id)->get();
+        $id_pagina =$id;
+        return view('paginasInformacion.show', compact('data_articulos','id_pagina'));
     }
 
     /**
@@ -52,7 +73,20 @@ class ControllerPaginasInformacion extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "Update de paginas de informacion";
+        $item = PaginaInformacion::find($id);
+        $item->titulo = $request->titulo;
+        $item->descripcion = $request->descripcion;
+
+        $imagen = $request->icono;
+
+        if ($imagen) {
+            $filename = $imagen->getClientOriginalName();
+
+            $imagen->move(public_path('img/fotografias'), $filename);
+            $item->icono = $filename;
+        }
+        $item->update();
+        return redirect()->back();
     }
 
     /**
@@ -60,6 +94,9 @@ class ControllerPaginasInformacion extends Controller
      */
     public function destroy(string $id)
     {
-        return "Destroy de paginas de informacion";
+        $item = PaginaInformacion::find($id);
+        $item->delete();
+
+        return redirect()->back();
     }
 }

@@ -32,7 +32,8 @@
                                                     placeholder="Titulo del articulo">
 
                                             </div>
-
+                                            <input type="hidden" name="id_pagina" value="{{$id_pagina}}">
+                                            <input type="hidden" name="id_estado" value="1">
                                             <div class="mt-3">
 
                                                 <label for="contenido" class="col-form-label">Contenido:</label>
