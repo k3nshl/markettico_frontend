@@ -227,6 +227,20 @@
                                 </div>
                             </div>
 
+
+
+                            <form action="{{ route('solicitudes-vendedores.store') }}" method="POST">
+                                                                                    @method('POST')
+                                                                                    @csrf
+                                                                                    <button type="submit" class="btn btn-warning text-dark"
+                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                            <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                                                            Guardar:D
+                                                        </button>
+                                                                                </form>
+
+                            
+
                             <!-- tab-Aprobados -->
 
                             <div class="tab-pane fade" id="tab-aprobados">
@@ -472,6 +486,8 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
+                                                        
+
                                                     </tbody>
                                                 </table>
                                             </div>

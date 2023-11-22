@@ -425,11 +425,7 @@
                                                 <div class="row">
                                                     <label class="col-sm-3 col-form-label"></label>
                                                     <div class="col-sm-9 text-end">
-                                                        <button type="submit" class="btn btn-info text-white"
-                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                            <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                            Guardar
-                                                        </button>
+                                                        
                                                     </div>
                                                 </div>
                                             </form>
