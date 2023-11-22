@@ -298,24 +298,24 @@
                                                                                                 for="showNumeroTelefonico"
                                                                                                 class="form-label">Número
                                                                                                 Telefónico:
-                                                                                                <span>Acá</span></label>
+                                                                                                <span>{{$item->numero_telefonico}}</span></label>
                                                                                         </div>
 
                                                                                         <div class="mb-3">
                                                                                             <label for="showRolUsuario"
                                                                                                 class="form-label">Rol:
-                                                                                                <span>Acá</span></label>
+                                                                                                <span>{{$item->roles->nombre}}</span></label>
                                                                                         </div>
 
                                                                                         <div class="mb-3">
                                                                                             <label for="showEstadoUsuario"
                                                                                                 class="form-label">Estado:
-                                                                                                <span>Acá</span></label>
+                                                                                                <span>{{$item->estados->nombre}}</span></label>
                                                                                         </div>
                                                                                         <div class="mb-3">
                                                                                             <label for="showEstadoUsuario"
                                                                                                 class="form-label">Fecha de
-                                                                                                registro: <span>Acá</span>
+                                                                                                registro: <span>{{$item->fecha_hora}}</span>
                                                                                             </label>
                                                                                         </div>
 
@@ -356,7 +356,7 @@
 
                                                                                 <div class="modal-body">
                                                                                     <form
-                                                                                        action="{{ route('usuariosAdministrativos.update', 1) }}"
+                                                                                        action="{{ route('usuariosAdministrativos.update', $item->id_usuario_administrativo) }}"
                                                                                         method="POST">
                                                                                         @method('PUT')
                                                                                         @csrf
@@ -366,6 +366,8 @@
                                                                                             <input type="text"
                                                                                                 class="form-control"
                                                                                                 id="editNombreUsuario"
+                                                                                                name="nombre_completo"
+                                                                                                value="{{$item->nombre_completo}}"
                                                                                                 placeholder="Nombre de usuario">
                                                                                         </div>
 
@@ -377,6 +379,8 @@
                                                                                             <input type="email"
                                                                                                 class="form-control"
                                                                                                 id="editCorreoEmpresarial"
+                                                                                                name="correo_empresarial"
+                                                                                                value="{{$item->correo_empresarial}}"
                                                                                                 placeholder="Correo empresarial">
                                                                                         </div>
 
@@ -388,7 +392,27 @@
                                                                                             <input type="text"
                                                                                                 class="form-control"
                                                                                                 id="editNumeroTelefonico"
+                                                                                                name="numero_telefonico"
+                                                                                                value="{{$item->numero_telefonico}}"
                                                                                                 placeholder="Número telefónico">
+                                                                                        </div>
+
+                                                                                        <div class="mb-3">
+                                                                                            <input type="text"
+                                                                                                class="form-control"
+                                                                                                id="editIdUsuario"
+                                                                                                name="id_usuario_administrativo"
+                                                                                                value="{{$item->id_usuario_administrativo}}"
+                                                                                                hidden>
+                                                                                        </div>
+
+                                                                                        <div class="mb-3">
+                                                                                            <input type="text"
+                                                                                                class="form-control"
+                                                                                                id="editIdUsuario"
+                                                                                                name="id_estado"
+                                                                                                value="{{$item->id_estado}}"
+                                                                                                hidden>
                                                                                         </div>
 
                                                                                         <div class="mb-3">
@@ -408,10 +432,6 @@
                                                                                                     Moderador</option>
                                                                                             </select>
                                                                                         </div>
-
-                                                                                       
-
-
                                                                                 </div>
 
                                                                                 <div class="modal-footer">
