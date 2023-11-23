@@ -13,7 +13,8 @@ class ControllerSubcategorias extends Controller
      */
     public function index()
     {
-        //
+        $subcategorias = Subcategoria::all();
+        //return view("", compact(""));
     }
 
     /**
@@ -35,6 +36,7 @@ class ControllerSubcategorias extends Controller
         $subcategoria->descripcion = $request->descripcion;
         $subcategoria->id_estado = $request->id_estado;
         $subcategoria->save();
+        //return redirect()->route("");
     }
 
     /**
@@ -64,8 +66,7 @@ class ControllerSubcategorias extends Controller
         $subcategoria->descripcion = $request->descripcion;
         $subcategoria->id_estado = $request->id_estado;
         $subcategoria->save();
-
-        //return redirect()->back();
+        //return redirect()->route("");
     }
 
     /**
