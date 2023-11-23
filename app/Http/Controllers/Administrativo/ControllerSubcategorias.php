@@ -30,14 +30,11 @@ class ControllerSubcategorias extends Controller
     public function store(Request $request)
     {
         $subcategoria = new Subcategoria();
-        $subcategoria->id_plan = $request->id_plan;
-        $subcategoria->id_vendedor = $request->id_vendedor;
+        $subcategoria->id_categoria = $request->id_categoria;
+        $subcategoria->nombre = $request->nombre;
+        $subcategoria->descripcion = $request->descripcion;
         $subcategoria->id_estado = $request->id_estado;
-        $subcategoria->fecha_vencimiento = $request->fecha_vencimiento;
-        $subcategoria->periodo_gracia = $request->periodo_gracia;
-        $subcategoria->fecha_adquisicion = $request->fecha_adquisicion;
-        $subcategoria->costo = $request->costo;
-        $subcategoria->save(); 
+        $subcategoria->save();
     }
 
     /**
