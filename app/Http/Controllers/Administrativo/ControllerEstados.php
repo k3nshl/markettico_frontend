@@ -55,8 +55,8 @@ class ControllerEstados extends Controller
      */
     public function edit($id)
     {
-        $itemEs = Estado::find($id); 
-        $itemEs->update();
+        $item = Estado::find($id); 
+        $item->update();
         return view('estadosRoles.index');
     }
 
@@ -64,23 +64,21 @@ class ControllerEstados extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-
     {
-        //$id=4;
-        $itemEstado= Estado::find($id);
-        $itemEstado->nombre = $request->nombre;
-        $itemEstado->update();
+        $estado = Estado::find($id);
+        $estado->nombre = $request->nombre;
+        $estado->save();
         return redirect()->back();
-        
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(string $id)
     {
 
             // Encuentra el modelo por su ID
+            $id=20;
             $item = Estado::find($id);
     
             // Elimina el modelo

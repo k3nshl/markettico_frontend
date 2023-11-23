@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Vendedor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Redirect;
 
 class ControllerSolicitudesVendedores extends Controller
 {
@@ -14,7 +15,8 @@ class ControllerSolicitudesVendedores extends Controller
      */
     public function index()
     {
-        return view('solicitudes.indexVendedores');
+        $vendedores = Vendedor::all();
+        return view('solicitudes.indexVendedores',compact('vendedores'));
     }
 
     /**
@@ -33,29 +35,26 @@ class ControllerSolicitudesVendedores extends Controller
         
         $item = new Vendedor();
 
-        $item->id_vendedor_propietario = 2;
-        $item->nombre_empresa = "Ucr siquirres";
-        $item->telefono_empresarial = "881888243";
-        $item->correo_empresarial = "ucr@gmail.com";
+       // $item->id_vendedor_propietario = 2;
+        $item->nombre_empresa = "artesanias belen";
+        $item->telefono_empresarial = "66634342";
+        $item->correo_empresarial = "maxipali@gmail.com";
         $item->cedula_juridica = "34343434";
-        $item->password = "123";
-        $item->ubicacion = "siquirres";
-        $item->foto_perfil ="foto_perfil";
-        $item->foto_portada ="UCRPortada";
-        $item->nombre_completo ="juaquin lorenza";
-        $item->correo_electronico ="juanL@gmail.com";
-        $item->telefono ="7676584";
-        $item->id_estado =2;
-        $item->tipo_identificacion ="pasaporte";
-        $item->numero_identificacion = "9090909";
+        $item->password = "1234";
+        $item->ubicacion = "Guacimo";
+        $item->foto_perfil ="fotoperfil";
+        $item->foto_portada ="belenPortada";
+        $item->nombre_completo ="maria belen xd";
+        $item->correo_electronico ="mb@gmail.com";
+        $item->telefono ="12354";
+        $item->id_estado =1;
+        $item->tipo_identificacion ="cedula";
+        $item->numero_identificacion = "208250640";
         $item->tipo_vendedor = 1;
         
-        $item->updated_at = Date::now();
-        $item->created_at = Date::now();
         $item->save();
 
         return redirect()->back();
-
     }
 
     /**
@@ -63,7 +62,8 @@ class ControllerSolicitudesVendedores extends Controller
      */
     public function show(string $id)
     {
-        //
+        $item = Vendedor::find($id);
+        return view('solicitudes.indexVendedores', compact('item'));
     }
 
     /**
@@ -79,7 +79,10 @@ class ControllerSolicitudesVendedores extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = Vendedor::find($id);
+        $item->nombre_empresa = "EDITADOOOO";
+        $item->update();
+        return Redirect()->back();
     }
 
     /**
@@ -87,6 +90,9 @@ class ControllerSolicitudesVendedores extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        
+        $item = Vendedor::find($id);
+        $item->delete();
+        return redirect()->back();
     }
 }

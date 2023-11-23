@@ -135,9 +135,9 @@
                                                                 <td>{{ $item->id_estado }}</td>
                                                                 <td>{{ $item->nombre }}</td>
                                                                 <td>
-
+                                                                
                                                                     <div class="text-center">
-
+                                                                    
 
                                                                         <!-- Botón de editar con modal -->
                                                                         <button class="btn btn-warning btn-sm"
@@ -149,8 +149,8 @@
                                                                                 <i class="lni lni-pencil-alt"
                                                                                     style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                                             </div>
+                                                                            
                                                                         </button>
-
                                                                         {{-- Botón de eliminar --}}
                                                                         <button class="btn btn-danger btn-sm"
                                                                             data-bs-toggle="modal"
@@ -170,7 +170,7 @@
                                                                                 <div class="modal-header">
                                                                                     <h5 class="modal-title"
                                                                                         id="editarUsuarioModalLabel">
-                                                                                        Editar Estado</h5>
+                                                                                        Editar Estado {{$item->id_estado}}</h5>
                                                                                     <button type="button"
                                                                                         class="btn-close"
                                                                                         data-bs-dismiss="modal"
@@ -182,7 +182,7 @@
 
                                                                                 <div class="modal-body">
                                                                                     <form
-                                                                                        action="{{ route('estados.update', 1) }}"
+                                                                                        action="{{ route('estados.update', $item->id_estado) }}"
                                                                                         method="POST">
                                                                                         @csrf
                                                                                         @method('PUT')
@@ -208,7 +208,7 @@
                                                                                                 style="background-color: #04D9D9; border-color: #04D9D9;">
                                                                                                 <i class="bx bx-save"
                                                                                                     style="color: #F2F2F2;"></i>
-                                                                                                Guardar
+                                                                                                Guardar 
                                                                                             </button>
                                                                                         </div>
 
@@ -239,14 +239,14 @@
                                                                                 <div class="modal-body">
                                                                                     ¿Estás seguro de que
                                                                                     deseas eliminar
-                                                                                    este estado?
+                                                                                    este estado? 
                                                                                 </div>
                                                                                 <div class="modal-footer">
                                                                                     <button type="button"
                                                                                         class="btn btn-secondary"
                                                                                         data-bs-dismiss="modal">Cancelar</button>
                                                                                     <form
-                                                                                        action="{{ route('estados.destroy', $item->id_estado) }}"
+                                                                                        action="{{ route('estados.destroy', 20) }}"
                                                                                         method="POST">
                                                                                         @csrf
                                                                                         @method('delete')
@@ -261,6 +261,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
+                                                                
                                                             </tr>
                                                         @endforeach
                                                     </tbody>
@@ -295,7 +296,7 @@
                                                             data-bs-toggle="modal" data-bs-target="#modalAgregarRol"
                                                             style="background-color: #04D9B2; border-color: #04D9D9;"
                                                             data-bs-toggle="tooltip" data-bs-placement="top"
-                                                            title="Agregar Nuevo Rol">+</button>
+                                                            title="Agregar Nuevo Rol ">+</button>
                                                     </div>
 
                                                     <!-- Modal de agregar rol-->

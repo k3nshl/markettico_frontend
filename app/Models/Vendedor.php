@@ -12,7 +12,8 @@ class Vendedor extends Model
     
     protected $table ='vendedores';
     protected $primaryKey = "id_vendedor";
-     
+    
+    public $timestamps=false;
 
     
 }

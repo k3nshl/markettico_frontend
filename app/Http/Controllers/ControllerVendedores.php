@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vendedor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 
 class ControllerVendedores extends Controller
 {
@@ -32,6 +33,28 @@ class ControllerVendedores extends Controller
     public function store()
     {
 
+        $item = new Vendedor();
+
+        $item->id_vendedor_propietario = 2;
+        $item->nombre_empresa = "artesanias belen";
+        $item->telefono_empresarial = "66634342";
+        $item->correo_empresarial = "maxipali@gmail.com";
+        $item->cedula_juridica = "34343434";
+        $item->password = "1234";
+        $item->ubicacion = "siquirres";
+        $item->foto_perfil ="fotoperfil";
+        $item->foto_portada ="maxiPortada";
+        $item->nombre_completo ="maria belen xd";
+        $item->correo_electronico ="mb@gmail.com";
+        $item->telefono ="654545";
+        $item->id_estado =6;
+        $item->tipo_identificacion ="cedula";
+        $item->numero_identificacion = "208250640";
+        $item->tipo_vendedor = 1;
+        
+        $item->save();
+
+        return redirect()->back();
       
         
     }
@@ -50,11 +73,7 @@ class ControllerVendedores extends Controller
      */
     public function edit(string $id)
     {
-        
-        $item = Vendedor::find($id);
-        $item->update();
-        return view('solicitudes-vendedores.index');
-
+        //
     }
 
     /**
@@ -63,9 +82,9 @@ class ControllerVendedores extends Controller
     public function update(Request $request, string $id)
     {
         
-       
-       
-
+        $item = Vendedor::find($id);
+        $item->update();
+        return view('solicitudes-vendedores.index', 2);
 
     }
 

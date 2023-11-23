@@ -230,15 +230,36 @@
 
 
                             <form action="{{ route('solicitudes-vendedores.store') }}" method="POST">
-                                                                                    @method('POST')
-                                                                                    @csrf
-                                                                                    <button type="submit" class="btn btn-warning text-dark"
-                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                            <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                            Guardar:D
-                                                        </button>
-                                                                                </form>
+                                 @method('POST')
+                                 @csrf
+                               <button type="submit" class="btn btn-warning text-dark"
+                              style="background-color: #04D9D9; border-color: #04D9D9;">
+                               <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                             Guardar:D
+                                </button>
+                                </form>
 
+
+
+                                <form action="{{ route('solicitudes-vendedores.update', 2) }}" method="POST">
+                             @method('PUT')
+                                 @csrf
+                               <button type="submit" class="btn btn-success text-dark"
+                              style="background-color: #04D9D9; border-color: #04D9D9;">
+                               <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                             actualizar :o
+                                </button>
+                                </form>
+
+                                <form action="{{ route('solicitudes-vendedores.destroy', 5) }}" method="POST">
+                             @method('DELETE')
+                                 @csrf
+                               <button type="submit" class="btn btn-success text-dark"
+                              style="background-color: #04D9D9; border-color: #04D9D9;">
+                               <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                             eliminar :c
+                                </button>
+                                </form>
                             
 
                             <!-- tab-Aprobados -->
