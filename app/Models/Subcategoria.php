@@ -11,4 +11,14 @@ class Subcategoria extends Model
     protected $table ='subcategorias';
     protected $primaryKey='id_subcategoria';
     public $timestamps=false;
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class, 'id_categoria');
+    }
+
+    public function estado()
+    {
+        return $this->belongsTo(Estado::class, 'id_estado');
+    }
 }
