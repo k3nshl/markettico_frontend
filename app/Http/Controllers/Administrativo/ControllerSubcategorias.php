@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subcategoria;
 use Illuminate\Http\Request;
 
 class ControllerSubcategorias extends Controller
@@ -28,7 +29,15 @@ class ControllerSubcategorias extends Controller
      */
     public function store(Request $request)
     {
-        return "Store Subcategorias";
+        $subcategoria = new Subcategoria();
+        $subcategoria->id_plan = $request->id_plan;
+        $subcategoria->id_vendedor = $request->id_vendedor;
+        $subcategoria->id_estado = $request->id_estado;
+        $subcategoria->fecha_vencimiento = $request->fecha_vencimiento;
+        $subcategoria->periodo_gracia = $request->periodo_gracia;
+        $subcategoria->fecha_adquisicion = $request->fecha_adquisicion;
+        $subcategoria->costo = $request->costo;
+        $subcategoria->save(); 
     }
 
     /**
@@ -52,7 +61,14 @@ class ControllerSubcategorias extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "Update Subcategorias";
+        $subcategoria = Subcategoria::find($id);
+        $subcategoria->id_categoria = $request->id_categoria;
+        $subcategoria->nombre = $request->nombre;
+        $subcategoria->descripcion = $request->descripcion;
+        $subcategoria->id_estado = $request->id_estado;
+        $subcategoria->save();
+
+        //return redirect()->back();
     }
 
     /**
@@ -60,6 +76,8 @@ class ControllerSubcategorias extends Controller
      */
     public function destroy(string $id)
     {
-        return "Destroy Subcategorias";
+        $subcategoria = Subcategoria::find($id);
+        $subcategoria->delete();
+        return redirect()->back();
     }
 }
