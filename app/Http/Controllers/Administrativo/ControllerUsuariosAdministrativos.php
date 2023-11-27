@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\HistorialGestionCuentas;
 use App\Models\UsuarioAdministrativo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +38,7 @@ class ControllerUsuariosAdministrativos extends Controller
     public function store(Request $request)
     {
         $item = new UsuarioAdministrativo();
+        
         $item->id_rol = $request->id_rol;
         $item->id_estado = $request->id_estado;
         $item->nombre_completo = $request->nombre_completo;
@@ -45,6 +47,12 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->numero_telefonico = $request->numero_telefonico;
         $item->fecha_hora = date(Date::now());
         $item->save();
+
+        $historial = new HistorialGestionCuentas();
+        $historial->fecha_hora =  date(Date::now());
+        $historial->accion =  'Inserccion de nuevo usuario';
+        $historial->id_usuario =  Auth::auth()->user()->id_usuario;
+        $historial->save();
         return redirect()->back();
     }
 
@@ -78,6 +86,12 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->correo_empresarial = $request->correo_empresarial;
         $item->numero_telefonico = $request->numero_telefonico;
         $item->update();
+        
+        $historial = new HistorialGestionCuentas();
+        $historial->fecha_hora =  date(Date::now());
+        $historial->accion =  'Actualizacion  de un usuario';
+        $historial->id_usuario =  Auth::auth()->user()->id_usuario;
+        $historial->save();
         return redirect()->back();
     }
 
@@ -88,6 +102,12 @@ class ControllerUsuariosAdministrativos extends Controller
     {
         $item = UsuarioAdministrativo::find($id);
         $item->delete();
+
+        $historial = new HistorialGestionCuentas();
+        $historial->fecha_hora =  date(Date::now());
+        $historial->accion =  'Eliminacion de nuevo usuario';
+        $historial->id_usuario =  Auth::auth()->user()->id_usuario;
+        $historial->save();
         return redirect()->back();
     }
     public function validarPassword(Request $request)
