@@ -4,6 +4,9 @@
 @section('gestion_nombre', 'Páginas estáticas')
 
 @section('contenido')
+
+{{-- {{$data_paginas}} --}}
+
     <section class="content">
 
         <div class="container">
@@ -23,8 +26,10 @@
 
                             <form action="{{ route('paginasInformacion.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-
                                 @method('POST')
+
+                                <input type="hidden">
+
                                 <div class="mb-3">
                                     <label for="titulo" class="form-label">Título:</label>
                                     <input type="text" name="titulo" class="form-control" id="titulo"
@@ -183,10 +188,9 @@
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
                                                                     data-bs-dismiss="modal">Cancelar</button>
-                                                                <form action="{{ route('paginasInformacion.destroy', 1) }}"
-                                                                    method="post">
+                                                                <form action="{{route('paginasInformacion.destroy', 1)}}" method="post">
+                                                                    @method('delete')
                                                                     @csrf
-                                                                    @method('DELETE')
                                                                     <button type="submit" class="btn btn-danger"
                                                                         data-bs-dismiss="modal" data-bs-toggle="modal"
                                                                         data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
