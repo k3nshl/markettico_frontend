@@ -4,12 +4,22 @@ namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
 use App\Models\Articulo;
+use App\Models\HistorialGestionPaginas;
 use App\Models\PaginaInformacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ControllerPaginasInformacion extends Controller
 {
+
+    public function guardarHistorial($item)
+    {   
+        $paginaHistorial = new HistorialGestionPaginas();
+        $fecha_actual = date('Y-m-d H:i:s');
+        $paginaHistorial->id_pagina_informacion  = $item->id_pagina_informacion;
+        $paginaHistorial->fecha_hora = $fecha_actual;
+        $paginaHistorial->save();
+    }
     /**
      * Display a listing of the resource.
      */
@@ -32,8 +42,9 @@ class ControllerPaginasInformacion extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $item = new PaginaInformacion();
+
         $item->titulo = $request->titulo;
         $item->descripcion = $request->descripcion;
 
@@ -47,6 +58,8 @@ class ControllerPaginasInformacion extends Controller
         }
 
         $item->save();
+        $this->guardarHistorial($item);
+        //return $this->index();
         return redirect()->back();
     }
 
@@ -86,6 +99,7 @@ class ControllerPaginasInformacion extends Controller
             $item->icono = $filename;
         }
         $item->update();
+        $this->guardarHistorial($item);
         return redirect()->back();
     }
 
@@ -96,7 +110,7 @@ class ControllerPaginasInformacion extends Controller
     {
         $item = PaginaInformacion::find($id);
         $item->delete();
-
+        $this->guardarHistorial($item);
         return redirect()->back();
     }
 }
