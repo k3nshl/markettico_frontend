@@ -120,11 +120,13 @@
                                                                             <div class="col-sm-8">
                                                                                 <select class="form-select" id="id_rol"
                                                                                     name="id_rol">
-                                                                                    <option value="1">Superadmin
+                                                                                    <option value="18">Superadmin
                                                                                     </option>
-                                                                                    <option value="2">
+                                                                                    <option value="19">
                                                                                         Administrador</option>
-                                                                                    <option value="3">Moderador
+                                                                                    <option value="20">Moderador
+                                                                                    </option>
+                                                                                    <option value="21">Moderador
                                                                                     </option>
                                                                                 </select>
                                                                             </div>
@@ -194,7 +196,7 @@
                                                                 <td>{{$item->nombre_completo}}</td>
                                                                 <td>
 
-                                                                    <p class="">Administrador</p>
+                                                                    <p class="">{{$item->roles->nombre}}</p>
 
                                                                 </td>
                                                                 <td>
