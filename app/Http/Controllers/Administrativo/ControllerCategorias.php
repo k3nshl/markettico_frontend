@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Categoria;
 
 class ControllerCategorias extends Controller
 {
@@ -12,7 +13,10 @@ class ControllerCategorias extends Controller
      */
     public function index()
     {
-        return view('categorias.index');
+        $categorias = Categoria::all();
+        
+        return view('categorias.index', compact('categorias'));
+
     }
 
 
@@ -21,7 +25,7 @@ class ControllerCategorias extends Controller
      */
     public function create()
     {
-        //
+        return view('categorias.index');
     }
 
     /**
@@ -29,7 +33,14 @@ class ControllerCategorias extends Controller
      */
     public function store(Request $request)
     {
-       
+     
+        $item = new Categoria();
+        $item->nombre = $request->nombre;
+        $item->descripcion = $request->descripcion;
+        $item->id_estado = $request->id_estado;
+        $item->save();
+        return redirect()->back();
+
     }
 
     /**
@@ -38,7 +49,8 @@ class ControllerCategorias extends Controller
     public function show($id)
     {
        
-        return view('categorias.show');
+        $itemCategoria = Categoria::find($id);
+        return view('categorias.index',compact('itemCategoria'));
     }
 
     /**
@@ -46,7 +58,9 @@ class ControllerCategorias extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $itemCategoria = Categoria::find($id); 
+        $itemCategoria->update();
+        return view('categorias.index');
     }
 
     /**
@@ -54,7 +68,13 @@ class ControllerCategorias extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
+
+        $itemCategoria= Categoria::find($id);
+        $itemCategoria->nombre = $request->nombre;
+        $itemCategoria->descripcion = $request->descripcion;
+        $itemCategoria ->update();
+        return redirect()->back();
+
     }
 
     /**
@@ -62,6 +82,15 @@ class ControllerCategorias extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        
+            // Encuentra el modelo por su ID
+            $item = Categoria::find($id);
+    
+            // Elimina el modelo
+            $item->delete();
+
+    
+            // Redirige a la página de índice con un mensaje de éxito
+            return redirect()->back();
     }
 }

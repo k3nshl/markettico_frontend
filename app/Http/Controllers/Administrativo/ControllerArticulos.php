@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\Articulo;
+use App\Models\PaginaInformacion;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\New_;
 
 class ControllerArticulos extends Controller
 {
@@ -12,7 +15,9 @@ class ControllerArticulos extends Controller
      */
     public function index()
     {
-        //
+        $articulos = PaginaInformacion::all();
+
+        return view('paginasInformacion.articulos', compact('articulos'));
     }
 
     /**
@@ -28,7 +33,17 @@ class ControllerArticulos extends Controller
      */
     public function store(Request $request)
     {
-        return "Store de articulos";
+        $articulo = new Articulo();
+        $articulo->id_estado = $request->id_estado;
+        $articulo->id_pagina_informacion = $request->id_pagina;
+
+        $articulo->titulo = $request->titulo;
+        $articulo->contenido = $request->contenido;
+        $articulo->fecha = $request->fecha;
+
+        $articulo->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -36,7 +51,8 @@ class ControllerArticulos extends Controller
      */
     public function show(string $id)
     {
-        //
+        $articulo = Articulo::find($id);
+        return view('articulos.show', compact('articulo'));
     }
 
     /**
@@ -44,7 +60,8 @@ class ControllerArticulos extends Controller
      */
     public function edit(string $id)
     {
-        return view('paginasInformacion.editArticulo');
+        $articulo = articulo::find($id);
+        return view('articulos.editArticulo', compact('articulo'));
     }
 
     /**
@@ -52,7 +69,18 @@ class ControllerArticulos extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "Update de artículos";
+
+        $articulo = Articulo::find($id);
+        $articulo->id_estado = $request->id_estado;
+        $articulo->id_pagina_informacion = $request->id_pagina;
+
+        $articulo->titulo = $request->titulo;
+        $articulo->contenido = $request->contenido;
+        $articulo->fecha = $request->fecha;
+
+        $articulo->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -60,6 +88,8 @@ class ControllerArticulos extends Controller
      */
     public function destroy(string $id)
     {
-        return "Destroy de artículos";
+        $articulo = Articulo::find($id);
+        $articulo->delete();
+        return redirect()->back();
     }
 }

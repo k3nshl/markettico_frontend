@@ -261,6 +261,8 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+
+                                                {{session('error')}}
                                             </div>
                                         </div>
                                     </div>

@@ -101,7 +101,7 @@ class ControllerPlanes extends Controller
 
         $item->multitienda = $multitienda;
         $item->duracion = $request->duracion;
-      
+
         $item->descripcion = $item->descripcion;
         //$item->descripcion = $request->textareaEditarAnuncio;
         //estado no existe en front se hace prueba con id directo
