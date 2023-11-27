@@ -13,7 +13,7 @@
 
                         <ul class="nav nav-pills mb-3" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link active" data-bs-toggle="pill" href="#success-pills-profile"
+                                <a class="nav-link active" data-bs-toggle="pill" href="#tab-estados"
                                     role="tab" aria-selected="true">
                                     <div class="d-flex align-items-center">
                                         <div class="tab-icon"><i class="bx bx-home font-18 me-1"></i>
@@ -23,7 +23,7 @@
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" data-bs-toggle="pill" href="#pills-home" role="tab"
+                                <a class="nav-link" data-bs-toggle="pill" href="#tab-roles" role="tab"
                                     aria-selected="false">
                                     <div class="d-flex align-items-center">
                                         <div class="tab-icon"><i class="bx bx-user-pin font-18 me-1"></i>
@@ -36,7 +36,7 @@
 
                         <div class="tab-content">
                             {{-- Inicio estados --}}
-                            <div class="tab-pane show active fade" id="success-pills-profile" role="tabpanel">
+                            <div class="tab-pane show active fade" id="tab-estados" role="tabpanel">
 
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
@@ -91,6 +91,7 @@
                                                                                 </div>
                                                                             </div>
 
+
                                                                             <div class="modal-footer">
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
@@ -139,10 +140,11 @@
                                                                     <div class="text-center">
                                                                     
 
+                                                                    <div class="text-center">
                                                                         <!-- Botón de editar con modal -->
                                                                         <button class="btn btn-warning btn-sm"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#editarEstadoModal"
+                                                                            data-bs-target="#modalEditarEstado{{ $item->id_estado }}"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top" title="Editar Estado">
                                                                             <div class="text-center">
@@ -161,7 +163,8 @@
                                                                     </div>
 
                                                                     <!-- Modal de edición -->
-                                                                    <div class="modal fade" id="editarEstadoModal"
+                                                                    <div class="modal fade"
+                                                                        id="modalEditarEstado{{ $item->id_estado }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="editarEstadoModalLabel"
                                                                         aria-hidden="true">
@@ -195,6 +198,7 @@
                                                                                                     class="form-control"
                                                                                                     id="nombre"
                                                                                                     name="nombre"
+                                                                                                    value="{{ $item->nombre }}"
                                                                                                     placeholder="Ingrese el nombre del Estado">
                                                                                             </div>
                                                                                         </div>
@@ -211,7 +215,6 @@
                                                                                                 Guardar 
                                                                                             </button>
                                                                                         </div>
-
                                                                                     </form>
                                                                                 </div>
 
@@ -251,10 +254,7 @@
                                                                                         @csrf
                                                                                         @method('delete')
                                                                                         <button type="submit"
-                                                                                            class="btn btn-danger"
-                                                                                            data-bs-dismiss="modal"
-                                                                                            data-bs-toggle="modal"
-                                                                                            data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                                            class="btn btn-danger">Eliminar</button>
                                                                                     </form>
                                                                                 </div>
                                                                             </div>
@@ -266,6 +266,8 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+
+                                                {{session('error')}}
                                             </div>
                                         </div>
                                     </div>
@@ -275,7 +277,7 @@
                             {{-- Fin estados --}}
 
                             {{-- Inicio roles --}}
-                            <div class="tab-pane fade" id="pills-home" role="tabpanel">
+                            <div class="tab-pane fade" id="tab-roles" role="tabpanel">
 
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
@@ -330,6 +332,22 @@
                                                                             </div>
                                                                         </div>
 
+                                                                        
+                                                                        <div class="row mb-3">
+                                                                            <label for="id_estado"
+                                                                                class="col-sm-4 col-form-label">Estado:
+                                                                                </label>
+                                                                            <div class="col-sm-8">
+
+                                                                                <select class="form-select" id="id_estado"
+                                                                                    name="id_estado">
+                                                                                    <option value="1">Activo</option>
+                                                                                    <option value="0">Inactivo
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+
                                                                         <div class="modal-footer">
                                                                             <button type="button"
                                                                                 class="btn btn-secondary"
@@ -374,8 +392,6 @@
                                                     <tbody>
 
                                                         @if ($roles)
-
-
                                                             @foreach ($roles as $item)
                                                                 <tr>
                                                                     <td>{{ $item->id_rol }}</td>
@@ -385,7 +401,7 @@
                                                                             <!-- Botón de editar con modal -->
                                                                             <button class="btn btn-warning btn-sm"
                                                                                 data-bs-toggle="modal"
-                                                                                data-bs-target="#editarRolModal"
+                                                                                data-bs-target="#modalEditarRol{{ $item->id_rol }}"
                                                                                 data-bs-toggle="tooltip"
                                                                                 data-bs-placement="top"
                                                                                 title="Editar Rol">
@@ -407,7 +423,8 @@
 
 
                                                                         <!-- Modal de edición -->
-                                                                        <div class="modal fade" id="editarRolModal"
+                                                                        <div class="modal fade"
+                                                                            id="modalEditarRol{{ $item->id_rol }}"
                                                                             tabindex="-1"
                                                                             aria-labelledby="editarRolModalLabel"
                                                                             aria-hidden="true">
@@ -428,8 +445,6 @@
                                                                                     </div>
 
                                                                                     <div class="modal-body">
-                                                                                        {{-- 2 --}}
-                                                                                        {{-- + id_rol a editar --}}
                                                                                         <form
                                                                                             action="{{ route('roles.update', $item->id_rol) }}"
                                                                                             method="POST">
@@ -444,9 +459,26 @@
                                                                                                         class="form-control"
                                                                                                         id="nombre"
                                                                                                         name="nombre"
+                                                                                                        value="{{ $item->nombre }}"
                                                                                                         placeholder="Ingrese el nombre del Rol">
                                                                                                 </div>
                                                                                             </div>
+
+                                                                                            
+                                                                            <div class="row mb-3">
+                                                                                <label for="id_estado"
+                                                                                    class="col-sm-4 col-form-label">Estado:
+                                                                                    </label>
+                                                                                <div class="col-sm-8">
+    
+                                                                                    <select class="form-select" id="id_estado"
+                                                                                        name="id_estado">
+                                                                                        <option value="1">Activo</option>
+                                                                                        <option value="0">Inactivo
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
 
                                                                                             <div class="modal-footer">
                                                                                                 <button type="button"
@@ -502,10 +534,7 @@
                                                                                             @csrf
                                                                                             @method('DELETE')
                                                                                             <button type="submit"
-                                                                                                class="btn btn-danger"
-                                                                                                {{--  data-bs-dismiss="modal"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#eliminacionCorrectaModal" --}}>Eliminar
+                                                                                                class="btn btn-danger">Eliminar
                                                                                             </button>
                                                                                         </form>
                                                                                         <!-- Fin Form de eliminar -->

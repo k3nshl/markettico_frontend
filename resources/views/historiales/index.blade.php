@@ -3,6 +3,13 @@
 @section('gestion_nombre', 'Historiales')
 
 @section('contenido')
+
+{{$historial_roles}}
+{{$historial_cuentas}}
+{{$historial_acciones}}
+{{$historial_suspenciones}}
+{{$historial_paginas}}
+
     <section class="content">
         <div class="row">
             <div class="col-xl-10 mx-auto">
@@ -21,7 +28,6 @@
                                 <button class="nav-link custom-bg-color" data-bs-toggle="tab"
                                     data-bs-target="#tab-gestionCuentas">
                                     <i class="bx bx-notepad me-2"></i> Cuentas
-
                                 </button>
                             </li>
 

@@ -59,14 +59,12 @@ Route::resource('solicitudes-productos', ControllerSolicitudesProductos::class);
 Route::resource('planes', ControllerPlanes::class);
 
 // Rutas para historiales
-Route::resource('historiales', ControllerHistoriales::class);
+Route::resource('/historiales', ControllerHistoriales::class);
 
 // Rutas para estadisticas
 Route::resource('estadisticas', ControllerEstadisticas::class);
 
 //Rutas para login y verificacion
-Route::get('/login', [ControllerLogin::class, 'index'])->name('login');
-Route::post('/validarLogin', [ControllerLogin::class, 'login'])->name('validarLogin');
 
 // Rutas para moderar contenido
 Route::resource('moderarContenido', ControllerModerarContenido::class);
@@ -91,4 +89,12 @@ Route::get('/pruebastore', [ControllerUsuariosAdministrativos::class, 'store']);
 
 
 // Inicio de sesion
-Route::post('/iniciando-sesion',  [ControllerUsuario::class, 'login'])->name('usuarios.login');
+Route::get('/login', [ControllerLogin::class, 'index'])->name('login');
+
+Route::post('/validarLogin', [ControllerLogin::class, 'login'])->name('validarLogin');
+Route::get('/cerrar-sesion',  [ControllerLogin::class, 'logout'])->name('usuarios.logout');
+
+
+// Cambio de contraseña
+Route::post('/contrasena_actual', [ControllerUsuariosAdministrativos::class, 'validar_password'])->name('contrasena.actual');
+Route::post('/actualizar_password', [ControllerUsuariosAdministrativos::class, 'actualizar_password'])->name('actualizar.password');

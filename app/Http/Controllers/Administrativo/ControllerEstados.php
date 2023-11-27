@@ -14,11 +14,14 @@ class ControllerEstados extends Controller
      */
     public function index()
     {
-        // Este si sirve
+        // Este si sirve yeaaah
         $estados = Estado::all();
+
         $roles = Rol::all();
+
         return view('estadosRoles.index', compact('estados', 'roles'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -69,6 +72,7 @@ class ControllerEstados extends Controller
         $estado->nombre = $request->nombre;
         $estado->save();
         return redirect()->back();
+              
     }
 
     /**
@@ -80,13 +84,20 @@ class ControllerEstados extends Controller
             // Encuentra el modelo por su ID
             $id=20;
             $item = Estado::find($id);
+        try {
+             // Encuentra el modelo por su ID
+             $item = Estado::find($id);
     
-            // Elimina el modelo
-            $item->delete();
+             // Elimina el modelo
+             $item->delete();
+ 
+     
+             // Redirige a la página de índice con un mensaje de éxito
+             return redirect()->back();
+        } catch (\Throwable $th) {
 
-    
-            // Redirige a la página de índice con un mensaje de éxito
-            return redirect()->back();
+            return redirect()->back()->with('error','Este estado no puede ser eliminado ya que esta vinculado con otros registros');
+        }
             
     }
 }

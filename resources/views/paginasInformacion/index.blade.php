@@ -21,8 +21,9 @@
 
                             <hr>
 
-                            <form action="{{ route('paginasInformacion.store') }}" method="POST">
+                            <form action="{{ route('paginasInformacion.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
+
                                 @method('POST')
                                 <div class="mb-3">
                                     <label for="titulo" class="form-label">Título:</label>

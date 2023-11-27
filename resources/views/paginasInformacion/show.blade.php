@@ -14,6 +14,7 @@
 
                     <div class="card-body">
 
+
                         <div class="row justify-content-center align-items-center">
                             <div class="col">
                                 <div class="border p-3 rounded">
@@ -38,6 +39,8 @@
                                         </div>
                                     </div>
                                     <hr />
+
+                                    <h1 class="bg-red"> {{ $id_pagina }}</h1>
 
                                     <div class="text-center">
                                         <h6 class="mb-0 text-dark">Lista de artículos de Colección <span>X</span></h6>
