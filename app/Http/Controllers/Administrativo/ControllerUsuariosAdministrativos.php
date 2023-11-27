@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
 use App\Models\UsuarioAdministrativo;
+use App\Models\CodigoVerificacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
@@ -110,4 +111,13 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->update();
         return redirect()->back();
     }
+
+    
 }
+
+
+
+
+
+
+

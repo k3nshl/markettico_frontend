@@ -42,9 +42,11 @@ class ControllerArticulos extends Controller
         $articulo->fecha = $request->fecha;
 
         $articulo->save();
-
         return redirect()->back();
     }
+
+    
+
 
     /**
      * Display the specified resource.
