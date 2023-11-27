@@ -122,10 +122,7 @@
                                                                             method="POST">
                                                                             @csrf
                                                                             @method('DELETE')
-                                                                            <button type="submit" class="btn btn-danger"
-                                                                                data-bs-dismiss="modal"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                            <button type="submit" class="btn btn-danger">Eliminar</button>
                                                                         </form>
                                                                     </div>
                                                                 </div>

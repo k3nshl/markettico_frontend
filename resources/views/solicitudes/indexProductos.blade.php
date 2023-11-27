@@ -186,17 +186,13 @@
                                                                                 <form action="" method="POST">
                                                                                     @csrf
                                                                                     <button type="submit"
-                                                                                        class="btn btn-success"
-                                                                                        data-bs-dismiss="modal">Aprobar
+                                                                                        class="btn btn-success">Aprobar
                                                                                     </button>
                                                                                 </form>
                                                                                 <form action="" method="POST">
                                                                                     @csrf
                                                                                     <button type="submit"
-                                                                                        class="btn btn-danger"
-                                                                                        data-bs-dismiss="modal"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#showAfirmacionModal">Rechazar
+                                                                                        class="btn btn-danger">Rechazar
                                                                                     </button>
                                                                                 </form>
                                                                             </div>
@@ -224,20 +220,22 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form>
+                                                                                <form action="" method="POST">
+                                                                                    @csrf
+                                                                                    @method('POST')
 
 
                                                                                     <div class="mb-3 ">
-                                                                                        <label for="nombre_completo"
+                                                                                        <label for="contenido"
                                                                                             class="col-sm-4 col-form-label">Motivo
                                                                                             de rechazo del producto:</label>
 
-                                                                                        <form method="post">
-                                                                                            <textarea class="form-control" name="mytextarea" rows="5">Hello, World!</textarea>
-                                                                                        </form>
+
+                                                                                        <textarea class="form-control" name="contenido" rows="5" placeholder="Ingrese el motivo aqui"></textarea>
+
                                                                                     </div>
 
-                                                                                </form>
+
                                                                             </div>
 
                                                                             <div class="modal-footer">
@@ -246,11 +244,12 @@
                                                                                     data-bs-dismiss="modal"
                                                                                     data-bs-toggle="modal"
                                                                                     data-bs-target="#showEsperaModal">Regresar</button>
-                                                                                <button type="button"
+                                                                                <button type="submit"
                                                                                     class="btn btn-success"
                                                                                     data-bs-dismiss="modal">Confirmar</button>
 
                                                                             </div>
+                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
