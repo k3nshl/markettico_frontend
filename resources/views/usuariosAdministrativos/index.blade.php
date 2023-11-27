@@ -120,11 +120,13 @@
                                                                             <div class="col-sm-8">
                                                                                 <select class="form-select" id="id_rol"
                                                                                     name="id_rol">
-                                                                                    <option value="1">Superadmin
+                                                                                    <option value="18">Superadmin
                                                                                     </option>
-                                                                                    <option value="2">
+                                                                                    <option value="19">
                                                                                         Administrador</option>
-                                                                                    <option value="3">Moderador
+                                                                                    <option value="20">Moderador
+                                                                                    </option>
+                                                                                    <option value="21">Moderador
                                                                                     </option>
                                                                                 </select>
                                                                             </div>
@@ -194,7 +196,7 @@
                                                                 <td>{{$item->nombre_completo}}</td>
                                                                 <td>
 
-                                                                    <p class="">Administrador</p>
+                                                                    <p class="">{{$item->roles->nombre}}</p>
 
                                                                 </td>
                                                                 <td>
@@ -479,15 +481,12 @@
                                                                                         class="btn btn-secondary"
                                                                                         data-bs-dismiss="modal">Cancelar</button>
                                                                                     <form
-                                                                                        action="{{ route('usuariosAdministrativos.destroy', 1) }}"
+                                                                                        action="{{ route('usuariosAdministrativos.destroy', $item) }}"
                                                                                         method="POST">
                                                                                         @method('DELETE')
                                                                                         @csrf
                                                                                         <button type="sumit"
-                                                                                            class="btn btn-danger"
-                                                                                            data-bs-dismiss="modal"
-                                                                                            data-bs-toggle="modal"
-                                                                                            data-bs-target="#eliminacionCorrectaModal">Eliminar
+                                                                                            class="btn btn-danger">Eliminar
                                                                                         </button>
                                                                                     </form>
                                                                                 </div>
@@ -521,11 +520,9 @@
                                                                                     <button type="button"
                                                                                         class="btn btn-secondary"
                                                                                         data-bs-dismiss="modal">Cancelar</button>
-                                                                                    <button type="button"
-                                                                                        class="btn btn-danger"
-                                                                                        data-bs-dismiss="modal"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#bloqueoCorrectoModal">Bloquear</button>
+                                                                                        <form action=""></form>
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-danger">Bloquear</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -757,7 +754,9 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form>
+                                                                                <form action="" method="POST">
+                                                                                    @method('PUT')
+                                                                                    @csrf
                                                                                     <div class="row mb-3">
                                                                                         <div class="col-sm">
                                                                                             <label for="id_usuario"
@@ -774,7 +773,7 @@
                                                                                                 class="form-label">Descripción:</label>
                                                                                             <input type="text"
                                                                                                 class="form-control"
-                                                                                                id="descripcion"
+                                                                                                id="descripcion" name="descripcion"
                                                                                                 placeholder="Descripción">
                                                                                         </div>
                                                                                     </div>
@@ -785,7 +784,7 @@
                                                                                                 usuario:</label>
                                                                                             <input type="text"
                                                                                                 class="form-control"
-                                                                                                id="tipo_usuario"
+                                                                                                id="tipo_usuario" name="tipo_usuario"
                                                                                                 placeholder="Tipo de usuario">
                                                                                         </div>
                                                                                     </div>
@@ -795,7 +794,7 @@
                                                                                                 class="form-label">Vendedor:</label>
                                                                                             <input type="text"
                                                                                                 class="form-control"
-                                                                                                id="id_vendedor"
+                                                                                                id="id_vendedor" name="id_vendedor"
                                                                                                 placeholder="Nombre del Vendedor">
                                                                                         </div>
                                                                                     </div>

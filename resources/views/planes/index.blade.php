@@ -350,7 +350,7 @@
                                                     <label for="nombre" class="col-sm-4 col-form-label">Nombre del
                                                         plan:</label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="nombre"
+                                                        <input type="text" class="form-control" id="nombre" name="nombre"
                                                             placeholder="Nombre del plan">
                                                     </div>
                                                 </div>
@@ -358,11 +358,11 @@
                                                 <div class="row mb-3">
                                                     <label for="tipo" class="col-sm-4 col-form-label">Tipo:</label>
                                                     <div class="col-sm-8">
-                                                        <select class="form-select" id="nombre">
-                                                            <option value="opcion1">Plan básico</option>
-                                                            <option value="opcion2">Plan empresarial</option>
-                                                            <option value="opcion3">Plan premium</option>
-                                                            <option value="opcion3">Plan deluxe</option>
+                                                        <select class="form-select" id="tipo" name="tipo">
+                                                            <option value="Plan básico">Plan básico</option>
+                                                            <option value="Plan empresarial">Plan empresarial</option>
+                                                            <option value="Plan premium">Plan premium</option>
+                                                            <option value="Plan deluxe">Plan deluxe</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -372,7 +372,7 @@
                                                 <div class="row mb-3">
                                                     <label for="costo" class="col-sm-4 col-form-label">Costo:</label>
                                                     <div class="col-sm-8">
-                                                        <input type="number" class="form-control" id="costo"
+                                                        <input type="number" class="form-control" id="costo" name="costo"
                                                             placeholder="Costo">
                                                     </div>
                                                 </div>
@@ -382,7 +382,7 @@
                                                         máximo de venta de productos:</label>
                                                     <div class="col-sm-8">
                                                         <input type="number" class="form-control"
-                                                            id="cantidad_productos"
+                                                            id="cantidad_productos" name="cantidad_productos"
                                                             placeholder="Límite máximo de venta de productos">
                                                     </div>
                                                 </div>
@@ -409,14 +409,14 @@
                                                     <label for="duracion" class="col-sm-4 col-form-label">Duración del
                                                         plan (en meses):</label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="duracion"
+                                                        <input type="text" class="form-control" id="duracion" name="duracion"
                                                             placeholder="Duración del plan">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <label for="contenido"
                                                         class="col-sm-4 col-form-label">Características:</label>
-                                                    <textarea id="mytextarea" name="textareaEditarAnuncio" rows="3" placeholder="Escribe las características"></textarea>
+                                                    <textarea id="mytextarea" name="descripcion" rows="3" placeholder="Escribe las características del plan"></textarea>
 
                                                 </div>
 
