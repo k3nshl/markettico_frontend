@@ -5,7 +5,7 @@
 
 @section('contenido')
 
-{{-- {{$data_paginas}} --}}
+{{-- {{$data_paginas}} ---}}
 
     <section class="content">
 
