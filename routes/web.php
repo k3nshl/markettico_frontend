@@ -104,3 +104,10 @@ Route::get('/cerrar-sesion',  [ControllerLogin::class, 'logout'])->name('usuario
 // Cambio de contraseña
 Route::post('/contrasena_actual', [ControllerUsuariosAdministrativos::class, 'validar_password'])->name('contrasena.actual');
 Route::post('/actualizar_password', [ControllerUsuariosAdministrativos::class, 'actualizar_password'])->name('actualizar.password');
+
+
+
+//Rutas de envio de correos
+Route::post('/emails-send-user', [ControllerPlantillasCorreos::class, 'email_user'])->name('send.email.user');
+Route::post('/emails-send-seller', [ControllerPlantillasCorreos::class, 'email_seller'])->name('send.email.seller');
+
