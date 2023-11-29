@@ -6,7 +6,6 @@
 
 {{$historial_roles}}
 {{$historial_cuentas}}
-{{$historial_acciones}}
 {{$historial_suspenciones}}
 {{$historial_paginas}}
 
