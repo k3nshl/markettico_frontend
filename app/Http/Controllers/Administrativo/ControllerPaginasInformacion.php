@@ -14,7 +14,6 @@ class ControllerPaginasInformacion extends Controller
 
     public function guardarHistorial($item)
     {   
-        //no deja hacer pull request
         $paginaHistorial = new HistorialGestionPaginas();
         $fecha_actual = date('Y-m-d H:i:s');
         $paginaHistorial->id_pagina_informacion  = $item->id_pagina_informacion;
