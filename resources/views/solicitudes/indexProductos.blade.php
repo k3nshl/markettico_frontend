@@ -264,6 +264,48 @@
                                 </div>
                             </div>
 
+
+                             <!-- BOTONES DE PRUEBA ELIMINAR DESPUES -->
+                              <!-- BOTONES DE PRUEBA ELIMINAR DESPUES -->
+                               <!-- BOTONES DE PRUEBA ELIMINAR DESPUES -->
+                                <!-- BOTONES DE PRUEBA ELIMINAR DESPUES -->
+                                 <!-- BOTONES DE PRUEBA ELIMINAR DESPUES -->
+                                  <!-- BOTONES DE PRUEBA ELIMINAR DESPUES -->
+                            
+                            <form action="{{ route('solicitudes-productos.store') }}" method="POST">
+                                 @method('POST')
+                                 @csrf
+                               <button type="submit" class="btn btn-warning text-dark"
+                              style="background-color: #04D9D9; border-color: #04D9D9;">
+                               <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                             crear +
+                                </button>
+                                </form>
+
+
+                                <form action="{{ route('solicitudes-productos.update', 4) }}" method="POST">
+                             @method('PUT')
+                                 @csrf
+                               <button type="submit" class="btn btn-success text-dark"
+                              style="background-color: #04D9D9; border-color: #04D9D9;">
+                               <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                             ACEPTAR:D
+                                </button>
+                                </form>
+
+                                <form action="{{ route('solicitudes-productos.destroy', 6) }}" method="POST">
+                             @method('DELETE')
+                                 @csrf
+                               <button type="submit" class="btn btn-success text-dark"
+                              style="background-color: #04D9D9; border-color: #04D9D9;">
+                               <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                             RECHAZAR :c
+                                </button>
+                                </form>
+                                 <!-- FIN BOTONES DE PUEBA -->
+
+
+
                             <!-- tab-Aprobados -->
 
                             <div class="tab-pane fade" id="tab-aprobados">

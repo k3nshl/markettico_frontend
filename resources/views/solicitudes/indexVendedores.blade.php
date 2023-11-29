@@ -240,7 +240,6 @@
                                 </form>
 
 
-
                                 <form action="{{ route('solicitudes-vendedores.update', 2) }}" method="POST">
                              @method('PUT')
                                  @csrf
@@ -251,7 +250,7 @@
                                 </button>
                                 </form>
 
-                                <form action="{{ route('solicitudes-vendedores.destroy', 5) }}" method="POST">
+                                <form action="{{ route('solicitudes-vendedores.destroy', 6) }}" method="POST">
                              @method('DELETE')
                                  @csrf
                                <button type="submit" class="btn btn-success text-dark"
