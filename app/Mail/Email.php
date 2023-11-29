@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class Mail extends Mailable
+class Email extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -32,9 +32,11 @@ class Mail extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(
-            subject: 'Mail',
-        );
+        if ($this->type == 1) {
+            return new Envelope(
+                subject: 'Prueba 1',
+            );
+        } 
     }
 
     /**
@@ -43,7 +45,7 @@ class Mail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'plantillasCorreos.correoAutenticacion',
         );
     }
 

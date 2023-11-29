@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Administrativo;
 
-use App\Http\Controllers\Controller;
-use App\Mail\Mail;
+use App\Mail\Email;
+use App\Models\UsuarioAdministrativo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use PharIo\Manifest\Email;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Controller;
 
 class ControllerPlantillasCorreos extends Controller
 {
@@ -104,27 +105,17 @@ class ControllerPlantillasCorreos extends Controller
 
     public function email_seller(Request $request)
     {
-        // if ($request->type == 4) {
-            // $item = Usuario::where('cedula', $request->nombre_usuario)->first();
+        $item = UsuarioAdministrativo::where('correo_empresarial', $request->correo_empresarial)->first();
 
-            // if ($item) {
-                // $request->password =  Crypt::decryptString($item->password);
-                $solicitante = Auth::user();
-                $email = new Email($request, $request->emisor, $request->type);
-                Mail::to($request->destinatario)->send($email);
-                return redirect()->back()->with('success', 'Sus datos de ingreso se han enviado correctamente al correo: ' . $request->destinatario . ", desde ahí podra iniciar sesion");;
-            // } else {
-                // return redirect()->back()->withErrors(
-                    // ['error' => 'No se ha encontrado ningun usuarion con el nombre de usuario: ' . $request->nombre_usuario]
-                // );
-            // }
-        // }
-
-        // if ($request->type != 4) {
+        if ($item) {
             $solicitante = Auth::user();
             $email = new Email($request, $request->emisor, $request->type);
-            Mail::to($request->destinatario)->send($email);
-            return redirect()->back();
-        // }
+            Mail::to($request->correo_empresarial)->send($email);
+            return redirect()->back()->with('success', 'Sus datos de ingreso se han enviado correctamente al correo: ' . $request->destinatario . ", desde ahí podra iniciar sesion");;
+        } else {
+            return redirect()->back()->withErrors(
+                ['error' => 'No se ha encontrado ningun usuarion con el nombre de usuario: ' . $request->nombre_usuario]
+            );
+        }
     }
 }

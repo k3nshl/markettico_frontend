@@ -4,17 +4,23 @@ namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
 use App\Models\CodigoVerificacion;
-use App\Http\Controllers\Administrativo\ControllerPlantillasCorreos;
 use App\Models\UsuarioAdministrativo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redis;
 
+
 use function Ramsey\Uuid\v1;
 
 class ControllerLogin extends Controller
 {
+    protected $controllerCorreos;
+
+    public function __construct(ControllerPlantillasCorreos $controllerCorreos)
+    {
+        $this->controllerCorreos = $controllerCorreos;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -84,15 +90,12 @@ class ControllerLogin extends Controller
         $password_login = sha1($request->password);
 
         if ($user->id_estado == 1 && $user->correo_empresarial == $request->correo_empresarial && $user->password == $password_login) {
-            auth::login($user);
-          //email_seller($request);
-            return view('login.codigoVerificacion');
-            // return redirect()->route('perfil.show', Auth::user()->id_usuario_administrativo);
+            $this->controllerCorreos->email_seller($request);
+            return view('login.codigoVerificacion', compact('user'));
         } else {
             return redirect()->route('login')->with('error', 'Contraseña o usuario incorrectas');
         }
     }
-
 
     function logout()
     {
@@ -101,41 +104,37 @@ class ControllerLogin extends Controller
     }
 
 
-    public function codigoAleatorio() 
+    public function getcodigoAleatorio()
     {
         $codigo = rand(000000, 999999);
-        $codigDb = CodigoVerificacion::find($codigo);
-        while ($codigDb) {
+        $codigoDb = CodigoVerificacion::where('codigo', $codigo)->first();
+
+        while ($codigoDb) {
             $codigo = rand(000000, 999999);
-            $codigDb = CodigoVerificacion::find($codigo);
+            $codigoDb = CodigoVerificacion::where('codigo', $codigo)->first();
         }
-        $redis = Redis::connection();
-        $redis->set('codigo', $codigo);
-        $redis->expire('codigo', 60);
-
-                $item = new CodigoVerificacion();
-                $item->codigo = $codigo;
-                $item->id_usuario = Auth::user()->id_usuario_administrativo;
-                $item->tipo_usuario = Auth::user()->rol;
-                $item->estado = 23;
-                $item->save();
+        $item = new CodigoVerificacion();
+        $item->codigo = $codigo;
+        $item->id_usuario = 26; //Auth::user()->id_usuario_administrativo;
+        $item->tipo_usuario = "admin"; //Auth::user()->rol;
+        $item->id_estado = 2;
+        $item->save();
     }
 
-    public function validarCodigo(Request $request)
+    public function verificarCodigo(Request $request)
     {
-        $redis = Redis::connection();
-
-        $codigo = $redis->get('codigo');
-
-        if ($codigo == $request->codigo) {
-
-            //si codigo existe guardar en db id_usuario id tipo de usuario y codigo activo
-
-            
+        $codigo = CodigoVerificacion::where('codigo', $request->codigo)->first();
+        if ($codigo) {
+            $codigo->id_estado = 1;
+            $codigo->save();
+            return redirect()->route('estados.index');
         } else {
-            return redirect()->back()->with('success', 'false');
-
+            return redirect()->route('login')->with('error', 'Codigo incorrecto');
         }
     }
+
+
+    
+
 
 }

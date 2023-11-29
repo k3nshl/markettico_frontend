@@ -19,9 +19,10 @@ class ControllerUsuariosAdministrativos extends Controller
 
     public function index()
     {
-        $data = UsuarioAdministrativo::all();
-        $roles = Rol::all();
-        return view('usuariosAdministrativos.index', compact('data','roles'));
+        $data = UsuarioAdministrativo::where('id_estado', 1)->get();
+        $data_bloqueados = UsuarioAdministrativo::where('id_estado', 24)->get();
+        $roles = Rol::all();     
+        return view('usuariosAdministrativos.index', compact('data','data_bloqueados','roles'));
     }
 
     /**
@@ -59,6 +60,7 @@ class ControllerUsuariosAdministrativos extends Controller
     /**
      * Display the specified resource.
      */
+    
     public function show(string $id)
     {
         $item = UsuarioAdministrativo::find($id);
@@ -131,7 +133,13 @@ class ControllerUsuariosAdministrativos extends Controller
         return redirect()->back();
     }
 
-    
+    public function bloquear_usuario(Request $request)
+    {
+        $item = UsuarioAdministrativo::find($request->id_usuario);
+        $item->id_estado = $request->id_estado;
+        $item->update();
+        return redirect()->back();
+    }
 }
 
 

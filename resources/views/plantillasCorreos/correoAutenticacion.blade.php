@@ -53,7 +53,7 @@
                                         </div>
                                         
                                         <div class="d-grid gap-2 my-5">
-                                            <a type="button" class="btn btn-primary" href="{{route("verif")}}">Ir a Verificar</a>
+                                            <a type="button" class="btn btn-primary" href="{{route("login")}}">Ir a Verificar</a>
                                         </div>
                                     </div>
                                 </div>

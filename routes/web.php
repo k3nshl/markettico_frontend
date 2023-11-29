@@ -37,7 +37,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[ControllerUsuariosAdministrativos::class, 'index']);
 // Rutas para usuarios administrativos
 Route::resource('/usuariosAdministrativos', ControllerUsuariosAdministrativos::class);
-
+Route::post('/bloquear_usuario', [ControllerUsuariosAdministrativos::class, 'bloquear_usuario'])->name('bloquear_usuario');
 //Rutas estados y roles
 
 Route::resource('estados', ControllerEstados::class);
@@ -72,6 +72,8 @@ Route::resource('estadisticas', ControllerEstadisticas::class);
 
 //Rutas para login y verificacion
 
+Route::post('/verificar_codigo', [ControllerLogin::class, 'verificarCodigo'])->name('verificar_codigo');
+
 // Rutas para moderar contenido
 Route::resource('moderarContenido', ControllerModerarContenido::class);
 
@@ -96,7 +98,6 @@ Route::get('/pruebastore', [ControllerUsuariosAdministrativos::class, 'store']);
 
 // Inicio de sesion
 Route::get('/login', [ControllerLogin::class, 'index'])->name('login');
-
 Route::post('/validarLogin', [ControllerLogin::class, 'login'])->name('validarLogin');
 Route::get('/cerrar-sesion',  [ControllerLogin::class, 'logout'])->name('usuarios.logout');
 
@@ -111,3 +112,4 @@ Route::post('/actualizar_password', [ControllerUsuariosAdministrativos::class, '
 Route::post('/emails-send-user', [ControllerPlantillasCorreos::class, 'email_user'])->name('send.email.user');
 Route::post('/emails-send-seller', [ControllerPlantillasCorreos::class, 'email_seller'])->name('send.email.seller');
 
+Route::get('/codigo',  [ControllerLogin::class, 'getcodigoAleatorio']);
