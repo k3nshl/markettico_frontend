@@ -1,6 +1,6 @@
 @extends('plantilla')
 
-@section('gestion_nombre', 'Revisiones de Productos')
+@section('gestion_nombre', 'Revisiones de Servicios')
 
 @section('contenido')
 

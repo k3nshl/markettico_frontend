@@ -1,6 +1,6 @@
 @extends('plantilla')
 
-@section('gestion_nombre', 'Solicitud/Vendedor')
+@section('gestion_nombre', 'Solicitudes: Vendedores Individuales')
 
 @section('contenido')
 
