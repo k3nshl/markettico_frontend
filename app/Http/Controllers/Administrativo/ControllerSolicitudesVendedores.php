@@ -12,7 +12,6 @@ class ControllerSolicitudesVendedores extends Controller
      */
     public function index()
     {
-        return view('solicitudes.indexVendedores');
     }
 
     /**
@@ -61,5 +60,15 @@ class ControllerSolicitudesVendedores extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function vendedoresIndividuales()
+    {
+        return view('solicitudes.indexVendedoresIndividuales');
+    }
+
+    public function vendedoresEmpresariales()
+    {
+        return view('solicitudes.indexVendedoresEmpresariales');
     }
 }

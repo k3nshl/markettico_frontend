@@ -12,7 +12,6 @@ class ControllerSolicitudesProductos extends Controller
      */
     public function index()
     {
-        return view('solicitudes.indexProductos');
     }
 
     /**
@@ -61,5 +60,15 @@ class ControllerSolicitudesProductos extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function solicitudesProductos()
+    {
+        return view('solicitudes.indexProductos');
+    }
+
+    public function solicitudesServicios()
+    {
+        return view('solicitudes.indexServicios');
     }
 }
