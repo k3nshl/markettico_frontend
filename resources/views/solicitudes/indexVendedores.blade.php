@@ -142,25 +142,34 @@
 
                                                                             <div class="modal-footer">
 
-                                                                                <button type="button"
+                                                                                <button type="submit"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Regresar
                                                                                 </button>
                                                                                 </form>
-                                                                                <form action="" method="POST">
-                                                                                    <button type="button"
-                                                                                        class="btn btn-success"
-                                                                                        data-bs-dismiss="modal">Aprobar
+
+
+                                                                                <form action="{{ route('solicitudes-vendedores.update', 2)}}" method="POST">
+                                                                                @csrf
+                                                                                @method('Put')
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-success">Aprobar
                                                                                     </button>
+                                                                                    <input type="hidden" name="revision" value="1">
                                                                                 </form>
-                                                                                <form action="" method="POST">
+
+
+
+                                                                                <form action="{{ route('solicitudes-vendedores.update', 2)}}" method="POST">
                                                                                     @csrf
+                                                                                    @method('Put')
                                                                                     <button type="button"
                                                                                         class="btn btn-danger"
                                                                                         data-bs-dismiss="modal"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#showAfirmacionModal">Rechazar
                                                                                     </button>
+                                                                                   
                                                                                 </form>
                                                                             </div>
                                                                         </div>
@@ -187,8 +196,8 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form action="" method="POST">
-                                                                                    @method('POST')
+                                                                                <form action="{{ route('solicitudes-vendedores.update', 2)}}" method="POST">
+                                                                                    @method('Put')
                                                                                     @csrf
 
 
@@ -197,9 +206,9 @@
                                                                                             class="col-sm-4 col-form-label">Motivo
                                                                                             de rechazo:</label>
 
-                                                                                        <form method="post">
+                                                                                        
                                                                                             <textarea class="form-control" name="cotenido" rows="5" placeholder="Ingrese el motivo aqui"></textarea>
-                                                                                        </form>
+                                                                                        
                                                                                     </div>
 
 
@@ -213,7 +222,7 @@
                                                                                     data-bs-target="#showEsperaModal">Regresar</button>
                                                                                 <button type="submit"
                                                                                     class="btn btn-success">Confirmar</button>
-
+                                                                                    <input type="hidden" name="revision" value="2">
                                                                             </div>
                                                                             </form>
                                                                         </div>
@@ -228,39 +237,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-                            <form action="{{ route('solicitudes-vendedores.store') }}" method="POST">
-                                 @method('POST')
-                                 @csrf
-                               <button type="submit" class="btn btn-warning text-dark"
-                              style="background-color: #04D9D9; border-color: #04D9D9;">
-                               <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                             Guardar:D
-                                </button>
-                                </form>
-
-
-                                <form action="{{ route('solicitudes-vendedores.update', 2) }}" method="POST">
-                             @method('PUT')
-                                 @csrf
-                               <button type="submit" class="btn btn-success text-dark"
-                              style="background-color: #04D9D9; border-color: #04D9D9;">
-                               <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                             actualizar :o
-                                </button>
-                                </form>
-
-                                <form action="{{ route('solicitudes-vendedores.destroy', 6) }}" method="POST">
-                             @method('DELETE')
-                                 @csrf
-                               <button type="submit" class="btn btn-success text-dark"
-                              style="background-color: #04D9D9; border-color: #04D9D9;">
-                               <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                             eliminar :c
-                                </button>
-                                </form>
                             
 
                             <!-- tab-Aprobados -->

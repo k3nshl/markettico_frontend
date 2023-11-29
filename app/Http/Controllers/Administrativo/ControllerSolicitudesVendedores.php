@@ -32,29 +32,7 @@ class ControllerSolicitudesVendedores extends Controller
      */
     public function store(Request $request)
     {
-        
-        $item = new Vendedor();
-
-       // $item->id_vendedor_propietario = 2;
-        $item->nombre_empresa = "artesanias belen";
-        $item->telefono_empresarial = "66634342";
-        $item->correo_empresarial = "maxipali@gmail.com";
-        $item->cedula_juridica = "34343434";
-        $item->password = "1234";
-        $item->ubicacion = "Guacimo";
-        $item->foto_perfil ="fotoperfil";
-        $item->foto_portada ="belenPortada";
-        $item->nombre_completo ="maria belen xd";
-        $item->correo_electronico ="mb@gmail.com";
-        $item->telefono ="12354";
-        $item->id_estado =1;
-        $item->tipo_identificacion ="cedula";
-        $item->numero_identificacion = "208250640";
-        $item->tipo_vendedor = 1;
-        
-        $item->save();
-
-        return redirect()->back();
+        //
     }
 
     /**
@@ -80,9 +58,26 @@ class ControllerSolicitudesVendedores extends Controller
     public function update(Request $request, string $id)
     {
         $item = Vendedor::find($id);
-        $item->nombre_empresa = "EDITADOOOO";
+        $estado = 0;
+        
+
+        if($request->revision == "1"){
+
+            $estado = 8;
+        }
+
+        if($request->revision == "2"){
+
+            $estado = 10;
+        }
+
+        $item->id_estado = $estado;
+
+        
         $item->update();
-        return Redirect()->back();
+
+
+        return redirect()->back();
     }
 
     /**
@@ -90,9 +85,6 @@ class ControllerSolicitudesVendedores extends Controller
      */
     public function destroy(string $id)
     {
-        
-        $item = Vendedor::find($id);
-        $item->delete();
-        return redirect()->back();
+
     }
 }

@@ -183,17 +183,32 @@
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Regresar</button>
-                                                                                <form action="" method="POST">
+
+                                                                                 
+                                                                                <form action="{{ route('solicitudes-productos.update', 5)}}" method="POST">
                                                                                     @csrf
+                                                                                    @method('Put')
+                                                                                    
                                                                                     <button type="submit"
                                                                                         class="btn btn-success">Aprobar
                                                                                     </button>
+                                                                                    <input type="hidden" name="revision" value="1">
+
                                                                                 </form>
-                                                                                <form action="" method="POST">
+
+
+                                                                                
+                                                                                <form action=" {{ route('solicitudes-productos.update', 5)}}" method="POST">
                                                                                     @csrf
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-danger">Rechazar
+                                                                                    @method('Put')
+                                                                                    
+                                                                                    <button type="submit" 
+                                                                                    class="btn btn-danger"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#showAfirmacionModal">Rechazar
                                                                                     </button>
+                                                                                    <input type="hidden" name="revision" value="2">
                                                                                 </form>
                                                                             </div>
                                                                         </div>
@@ -220,9 +235,9 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form action="" method="POST">
+                                                                                <form action="{{ route('solicitudes-productos.update', 5)}}" method="POST">
                                                                                     @csrf
-                                                                                    @method('POST')
+                                                                                    @method('Put')
 
 
                                                                                     <div class="mb-3 ">
@@ -244,10 +259,10 @@
                                                                                     data-bs-dismiss="modal"
                                                                                     data-bs-toggle="modal"
                                                                                     data-bs-target="#showEsperaModal">Regresar</button>
-                                                                                <button type="submit"
-                                                                                    class="btn btn-success"
-                                                                                    data-bs-dismiss="modal">Confirmar</button>
 
+                                                                                <button type="submit"
+                                                                                    class="btn btn-success">Confirmar</button>
+                                                                                    <input type="hidden" name="revision" value="2">
                                                                             </div>
                                                                             </form>
                                                                         </div>
@@ -262,47 +277,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-                             <!-- BOTONES DE PRUEBA ELIMINAR DESPUES -->
-                              <!-- BOTONES DE PRUEBA ELIMINAR DESPUES -->
-                               <!-- BOTONES DE PRUEBA ELIMINAR DESPUES -->
-                                <!-- BOTONES DE PRUEBA ELIMINAR DESPUES -->
-                                 <!-- BOTONES DE PRUEBA ELIMINAR DESPUES -->
-                                  <!-- BOTONES DE PRUEBA ELIMINAR DESPUES -->
-                            
-                            <form action="{{ route('solicitudes-productos.store') }}" method="POST">
-                                 @method('POST')
-                                 @csrf
-                               <button type="submit" class="btn btn-warning text-dark"
-                              style="background-color: #04D9D9; border-color: #04D9D9;">
-                               <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                             crear +
-                                </button>
-                                </form>
-
-
-                                <form action="{{ route('solicitudes-productos.update', 4) }}" method="POST">
-                             @method('PUT')
-                                 @csrf
-                               <button type="submit" class="btn btn-success text-dark"
-                              style="background-color: #04D9D9; border-color: #04D9D9;">
-                               <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                             ACEPTAR:D
-                                </button>
-                                </form>
-
-                                <form action="{{ route('solicitudes-productos.destroy', 6) }}" method="POST">
-                             @method('DELETE')
-                                 @csrf
-                               <button type="submit" class="btn btn-success text-dark"
-                              style="background-color: #04D9D9; border-color: #04D9D9;">
-                               <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                             RECHAZAR :c
-                                </button>
-                                </form>
-                                 <!-- FIN BOTONES DE PUEBA -->
-
 
 
                             <!-- tab-Aprobados -->
