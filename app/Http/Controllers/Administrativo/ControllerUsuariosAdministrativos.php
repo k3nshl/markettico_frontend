@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\Rol;
 use App\Models\UsuarioAdministrativo;
+use App\Models\CodigoVerificacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
@@ -20,7 +22,8 @@ class ControllerUsuariosAdministrativos extends Controller
     public function index()
     {
         $data = UsuarioAdministrativo::all();
-        return view('usuariosAdministrativos.index', compact('data'));
+        $roles = Rol::all();
+        return view('usuariosAdministrativos.index', compact('data','roles'));
     }
 
     /**
@@ -110,4 +113,13 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->update();
         return redirect()->back();
     }
+
+    
 }
+
+
+
+
+
+
+
