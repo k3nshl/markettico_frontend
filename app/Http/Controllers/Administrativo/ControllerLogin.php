@@ -85,7 +85,7 @@ class ControllerLogin extends Controller
 
         if ($user->id_estado == 1 && $user->correo_empresarial == $request->correo_empresarial && $user->password == $password_login) {
             auth::login($user);
-          //  email_seller($request);
+          //email_seller($request);
             return view('login.codigoVerificacion');
             // return redirect()->route('perfil.show', Auth::user()->id_usuario_administrativo);
         } else {
