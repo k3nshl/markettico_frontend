@@ -113,3 +113,4 @@ Route::post('/emails-send-seller', [ControllerPlantillasCorreos::class, 'email_s
 
 
 Route::view('/recuperarContrasena', 'login.recuperacionContrasena');
+Route::view('/correoContrasena', 'login.correoContrasena');
