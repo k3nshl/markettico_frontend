@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Alerta;
 class ControllerAlertas extends Controller
 {
     /**
@@ -60,6 +60,8 @@ class ControllerAlertas extends Controller
      */
     public function destroy(string $id)
     {
-        return "Destroy de alertas";
+        // $alerta =  Alerta::find($id);
+        // $alerta->delete();
+        // return redirect()->back();
     }
 }
