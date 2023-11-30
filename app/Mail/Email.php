@@ -16,15 +16,17 @@ class Email extends Mailable
     var $data;
     var $user;
     var $type;
+    var $codigo;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($data, $user, $type)
+    public function __construct($data, $user, $type, $codigo)
     {
         $this->data = $data;
         $this->user = $user;
         $this->type = $type;
+        $this->codigo = $codigo;
     }
 
     /**
@@ -34,7 +36,7 @@ class Email extends Mailable
     {
         if ($this->type == 1) {
             return new Envelope(
-                subject: 'Prueba 1',
+                subject: 'Prueba 1' ,
             );
         } 
     }

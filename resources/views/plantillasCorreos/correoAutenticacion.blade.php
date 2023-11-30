@@ -46,7 +46,7 @@
 
                                                 <p style="font-size:23px;line-height:20px;color:#001435;margin:0;word-break:break-word"
                                                     dir="ltr">
-                                                    <b>365315</b>
+                                                    <b>{{$codigo}}</b>
                                                 </p>
 
                                             </td>

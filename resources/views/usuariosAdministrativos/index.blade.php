@@ -120,7 +120,7 @@
                                                                             <div class="col-sm-8">
                                                                                 <select class="form-select" id="id_rol"
                                                                                     name="id_rol">
-                                                                                    <option value="18">Superadmin
+                                                                                    <option value="1">Superadmin
                                                                                     </option>
                                                                                     <option value="19">
                                                                                         Administrador</option>

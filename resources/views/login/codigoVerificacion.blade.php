@@ -46,7 +46,7 @@
 												<label class="form-label">Código</label>
 												<input type="text" name="codigo" class="form-control" placeholder="Ingresar Código de Verificación" />
 											</div>
-											<input type="hidden" value="{{$user->id_usuario_administrativo}}">  
+											<input type="hidden" name="id_usuario" value="{{$user->id_usuario_administrativo}}">  
 											<div class="d-grid gap-2">
 												<button type="submit" class="btn btn-primary">Verificar</button> 
 												<a href="{{route("login")}}" class="btn btn-light"><i class='bx bx-arrow-back mr-1'></i>Regresar al Login</a>

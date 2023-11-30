@@ -98,18 +98,18 @@ class ControllerPlantillasCorreos extends Controller
     public function email_user()
     {
         $new_user = Auth::user();
-        $email = new Email("", $new_user, 1);
+        $email = new Email("", $new_user, 1,"");
         Mail::to($new_user->email)->send($email);
     }
 
 
-    public function email_seller(Request $request)
+    public function email_seller(Request $request, $codigo)
     {
         $item = UsuarioAdministrativo::where('correo_empresarial', $request->correo_empresarial)->first();
 
         if ($item) {
             $solicitante = Auth::user();
-            $email = new Email($request, $request->emisor, $request->type);
+            $email = new Email($request, $request->emisor, $request->type, $codigo);
             Mail::to($request->correo_empresarial)->send($email);
             return redirect()->back()->with('success', 'Sus datos de ingreso se han enviado correctamente al correo: ' . $request->destinatario . ", desde ahí podra iniciar sesion");;
         } else {
