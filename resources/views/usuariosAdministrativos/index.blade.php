@@ -208,7 +208,7 @@
                                                                         <!-- Botón de visualizar -->
                                                                         <button class="btn btn-primary btn-sm btn-block"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#showUserModal"
+                                                                            data-bs-target="#showUserModal{{$item->id_usuario_administrativo}}"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="Visualizar Estado">
@@ -221,7 +221,7 @@
                                                                         <!-- Botón de editar con modal -->
                                                                         <button class="btn btn-warning btn-sm btn-block"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#editarUsuarioModal"
+                                                                            data-bs-target="#editarUsuarioModal{{$item->id_usuario_administrativo}}"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="Editar Usuario Administrativo">
@@ -257,7 +257,7 @@
                                                                     </div>
 
                                                                     <!-- Modal de visaualizacion -->
-                                                                    <div class="modal fade" id="showUserModal"
+                                                                    <div class="modal fade" id="showUserModal{{$item->id_usuario_administrativo}}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="showUserModalLabel"
                                                                         aria-hidden="true">
@@ -337,7 +337,7 @@
 
 
                                                                     <!-- Modal de edición -->
-                                                                    <div class="modal fade" id="editarUsuarioModal"
+                                                                    <div class="modal fade" id="editarUsuarioModal{{$item->id_usuario_administrativo}}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="editarUsuarioModalLabel"
                                                                         aria-hidden="true">
@@ -423,15 +423,11 @@
                                                                                             </label>
                                                                                             <select class="form-select"
                                                                                                 id="editRolUsuario">
-                                                                                                <option value="superadmin">
-                                                                                                    Superadmin
+                                                                                                @foreach ($roles as $rol)
+                                                                                                <option value="{{$rol->nombre}}" {{$rol->id_rol==$item->id_rol ? 'selected':''}}>
+                                                                                                    {{$rol->nombre}}
                                                                                                 </option>
-                                                                                                <option
-                                                                                                    value="administrador">
-                                                                                                    Administrador
-                                                                                                </option>
-                                                                                                <option value="moderador">
-                                                                                                    Moderador</option>
+                                                                                                @endforeach
                                                                                             </select>
                                                                                         </div>
                                                                                 </div>
@@ -481,7 +477,7 @@
                                                                                         class="btn btn-secondary"
                                                                                         data-bs-dismiss="modal">Cancelar</button>
                                                                                     <form
-                                                                                        action="{{ route('usuariosAdministrativos.destroy', $item) }}"
+                                                                                        action="{{ route('usuariosAdministrativos.destroy', $item->id_usuario_administrativo) }}"
                                                                                         method="POST">
                                                                                         @method('DELETE')
                                                                                         @csrf
