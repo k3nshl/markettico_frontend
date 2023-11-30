@@ -90,9 +90,11 @@ class ControllerLogin extends Controller
         $password_login = sha1($request->password);
 
         if ($user->id_estado == 1 && $user->correo_empresarial == $request->correo_empresarial && $user->password == $password_login) {
-            $codigo = $this->getcodigoAleatorio();
-            $this->controllerCorreos->email_seller($request, $codigo);
-            return view('login.codigoVerificacion', compact('user', 'codigo'));
+            // $codigo = $this->getcodigoAleatorio();
+            // $this->controllerCorreos->email_seller($request, $codigo);
+            // return view('login.codigoVerificacion', compact('user', 'codigo'));
+            auth::login($user);
+            return redirect()->route('home');
         } else {
             return redirect()->route('login')->with('error', 'Contraseña o usuario incorrectas');
         }

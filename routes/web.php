@@ -33,8 +33,8 @@ use Illuminate\Support\Facades\Route;
 
 // Ruta para la pagina de inicio
 // Route::view('/', 'usuariosAdministrativos.index');
+Route::get('/',[ControllerUsuariosAdministrativos::class, 'index'])->name('home');
 
-Route::get('/',[ControllerUsuariosAdministrativos::class, 'index']);
 // Rutas para usuarios administrativos
 Route::resource('/usuariosAdministrativos', ControllerUsuariosAdministrativos::class);
 Route::post('/bloquear_usuario', [ControllerUsuariosAdministrativos::class, 'bloquear_usuario'])->name('bloquear_usuario');
