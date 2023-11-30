@@ -19,9 +19,10 @@ class ControllerUsuariosAdministrativos extends Controller
 
     public function index()
     {
-        $data = UsuarioAdministrativo::all();
-        $roles = Rol::all();
-        return view('usuariosAdministrativos.index', compact('data','roles'));
+        $data = UsuarioAdministrativo::where('id_estado', 1)->get();
+        $data_bloqueados = UsuarioAdministrativo::where('id_estado', 24)->get();
+        $roles = Rol::all();     
+        return view('usuariosAdministrativos.index', compact('data','data_bloqueados','roles'));
     }
 
     /**
@@ -48,17 +49,19 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->fecha_hora = date(Date::now());
         $item->save();
 
-        //$historial = new HistorialGestionCuentas();
-       // $historial->fecha_hora =  date(Date::now());
-        //$historial->accion =  'Inserccion de nuevo usuario';
-       // $historial->id_usuario =  Auth::auth()->user()->id_usuario;
-        //$historial->save();
+        // $historial = new HistorialGestionCuentas();
+        // $historial->fecha_hora =  date(Date::now());
+        // $historial->accion =  'Inserccion de nuevo usuario';
+        // $historial->id_usuario =  Auth::auth()->user()->id_usuario;
+        // $historial->save();
+        
         return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      */
+    
     public function show(string $id)
     {
         $item = UsuarioAdministrativo::find($id);
@@ -131,7 +134,13 @@ class ControllerUsuariosAdministrativos extends Controller
         return redirect()->back();
     }
 
-    
+    public function bloquear_usuario(Request $request)
+    {
+        $item = UsuarioAdministrativo::find($request->id_usuario);
+        $item->id_estado = $request->id_estado;
+        $item->update();
+        return redirect()->back();
+    }
 }
 
 

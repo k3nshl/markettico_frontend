@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
@@ -13,9 +14,9 @@ class UsuarioAdministrativo extends Model implements Authenticatable
 
     use HasFactory;
 
-    protected $table ='usuarios_administrativos';
-    protected $primaryKey='id_usuario_administrativo';
-    public $timestamps=false;
+    protected $table = 'usuarios_administrativos';
+    protected $primaryKey = 'id_usuario_administrativo';
+    public $timestamps = false;
 
     public function roles()
     {
@@ -27,4 +28,9 @@ class UsuarioAdministrativo extends Model implements Authenticatable
         return $this->belongsTo(Estado::class, 'id_estado');
     }
 
+
+    public function codigo_verificacion()
+    {
+        return $this->hasMany(CodigoVerificacion::class, 'id_codigo');
+    }
 }
