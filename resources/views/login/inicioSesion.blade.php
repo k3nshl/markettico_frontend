@@ -54,6 +54,7 @@
                                     <div class="form-body">
                                         <form action="{{ route('validarLogin') }}" class="row g-3" method="POST">
                                             @csrf
+                                            @method("POST")
                                             <div class="col-12">
                                                 <label for="inputEmailAddress" class="form-label">Correo Empresarial</label>
                                                 <input type="user" name="correo_empresarial" class="form-control" id="inputUser"
