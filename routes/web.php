@@ -112,4 +112,10 @@ Route::post('/actualizar_password', [ControllerUsuariosAdministrativos::class, '
 Route::post('/emails-send-user', [ControllerPlantillasCorreos::class, 'email_user'])->name('send.email.user');
 Route::post('/emails-send-seller', [ControllerPlantillasCorreos::class, 'email_seller'])->name('send.email.seller');
 
+
+
+Route::view('/recuperarContrasena', 'login.recuperacionContrasena');
+Route::view('/correoContrasena', 'login.correoContrasena');
+
 // Route::get('/codigo',  [ControllerLogin::class, 'getcodigoAleatorio'])->name('codigo');
+
