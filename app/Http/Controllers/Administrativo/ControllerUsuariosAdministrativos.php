@@ -48,11 +48,11 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->fecha_hora = date(Date::now());
         $item->save();
 
-        $historial = new HistorialGestionCuentas();
-        $historial->fecha_hora =  date(Date::now());
-        $historial->accion =  'Inserccion de nuevo usuario';
-        $historial->id_usuario =  Auth::auth()->user()->id_usuario;
-        $historial->save();
+        //$historial = new HistorialGestionCuentas();
+       // $historial->fecha_hora =  date(Date::now());
+        //$historial->accion =  'Inserccion de nuevo usuario';
+       // $historial->id_usuario =  Auth::auth()->user()->id_usuario;
+        //$historial->save();
         return redirect()->back();
     }
 
@@ -87,11 +87,11 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->numero_telefonico = $request->numero_telefonico;
         $item->update();
         
-        $historial = new HistorialGestionCuentas();
-        $historial->fecha_hora =  date(Date::now());
-        $historial->accion =  'Actualizacion  de un usuario';
-        $historial->id_usuario =  Auth::auth()->user()->id_usuario;
-        $historial->save();
+        //$historial = new HistorialGestionCuentas();
+        //$historial->fecha_hora =  date(Date::now());
+       // $historial->accion =  'Actualizacion  de un usuario';
+      //  $historial->id_usuario =  Auth::auth()->user()->id_usuario;
+        //$historial->save();
         return redirect()->back();
     }
 
@@ -103,11 +103,11 @@ class ControllerUsuariosAdministrativos extends Controller
         $item = UsuarioAdministrativo::find($id);
         $item->delete();
 
-        $historial = new HistorialGestionCuentas();
-        $historial->fecha_hora =  date(Date::now());
-        $historial->accion =  'Eliminacion de nuevo usuario';
-        $historial->id_usuario =  Auth::auth()->user()->id_usuario;
-        $historial->save();
+        //$historial = new HistorialGestionCuentas();
+        //$historial->fecha_hora =  date(Date::now());
+       // $historial->accion =  'Eliminacion de nuevo usuario';
+       // $historial->id_usuario =  Auth::auth()->user()->id_usuario;
+       // $historial->save();
         return redirect()->back();
     }
     public function validarPassword(Request $request)

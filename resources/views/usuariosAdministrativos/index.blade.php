@@ -118,17 +118,14 @@
                                                                                 class="col-sm-4 col-form-label">Rol del
                                                                                 Usuario:</label>
                                                                             <div class="col-sm-8">
+                                                                                @foreach ($roles as $rol)
                                                                                 <select class="form-select" id="id_rol"
                                                                                     name="id_rol">
-                                                                                    <option value="18">Superadmin
-                                                                                    </option>
-                                                                                    <option value="19">
-                                                                                        Administrador</option>
-                                                                                    <option value="20">Moderador
-                                                                                    </option>
-                                                                                    <option value="21">Moderador
+                                                                                    <option value="{{$rol->id_rol}}">{{$rol->nombre}}
                                                                                     </option>
                                                                                 </select>
+                                                                                    
+                                                                                @endforeach
                                                                             </div>
                                                                         </div>
                                                                         <div class="row mb-3">
@@ -137,13 +134,13 @@
                                                                                 del
                                                                                 Usuario:</label>
                                                                             <div class="col-sm-8">
-
-                                                                                <select class="form-select" id="id_estado"
-                                                                                    name="id_estado">
-                                                                                    <option value="1">Activo</option>
-                                                                                    <option value="0">Inactivo
+                                                                                {{-- @foreach ($roles as $rol) --}}
+                                                                                <select class="form-select" id="id_rol"
+                                                                                    name="id_rol">
+                                                                                    <option value="">
                                                                                     </option>
                                                                                 </select>
+                                                                                {{-- @endforeach --}}
                                                                             </div>
                                                                         </div>
 
