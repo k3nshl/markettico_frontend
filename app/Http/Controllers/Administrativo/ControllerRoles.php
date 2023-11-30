@@ -71,13 +71,15 @@ class ControllerRoles extends Controller
     {
         $rol = Rol::find($id);
         $rol->nombre = $request->nombre;
-        $rol->save(); 
+        $rol->save();
+
         $historial = new HistorialGestionRoles();
         $historial->id_rol =  $rol->id_rol;
         $historial->id_usuario =  Auth::auth()->user()->id_usuario;
         $historial->fecha_hora =  date(Date::now());
         $historial->accion =  'Actualizacion de un rol';
         $historial->save();
+        
         return redirect()->back();
     }
 

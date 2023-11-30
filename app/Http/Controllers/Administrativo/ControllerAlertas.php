@@ -52,7 +52,16 @@ class ControllerAlertas extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "Update de alertas";
+        $alerta = Alerta::find($id);
+        $alerta->id_usuario_remitente = $request->id_usuario_remitente;
+        $alerta->titulo = $request->id_usuario_remitente;
+        $alerta->descripcion = $request->id_usuario_remitente;
+        $alerta->tipo_destinatario = $request->id_usuario_remitente;
+        $alerta->fecha_inicio = $request->id_usuario_remitente;
+        $alerta->fecha_final = $request->fecha_final;
+        $alerta->id_estado = $request->id_estado;
+        $alerta->save();    
+        return redirect()->back();
     }
 
     /**

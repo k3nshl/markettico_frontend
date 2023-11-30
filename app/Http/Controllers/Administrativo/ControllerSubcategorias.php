@@ -30,13 +30,20 @@ class ControllerSubcategorias extends Controller
      */
     public function store(Request $request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required||unique:alertas',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back();
+        }
         $subcategoria = new Subcategoria();
         $subcategoria->id_categoria = $request->id_categoria;
         $subcategoria->nombre = $request->nombre;
         $subcategoria->descripcion = $request->descripcion;
         $subcategoria->id_estado = $request->id_estado;
         $subcategoria->save();
-        //return redirect()->route("");
     }
 
     /**
