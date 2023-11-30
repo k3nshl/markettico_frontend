@@ -118,20 +118,15 @@
                                                                                 class="col-sm-4 col-form-label">Rol del
                                                                                 Usuario:</label>
                                                                             <div class="col-sm-8">
-                                                                                @foreach ($roles as $rol)
                                                                                 <select class="form-select" id="id_rol"
                                                                                     name="id_rol">
-                                                                                    <option value="18">Superadmin
-                                                                                    </option>
-                                                                                    <option value="19">
-                                                                                        Administrador</option>
-                                                                                    <option value="20">Moderador
-                                                                                    </option>
-                                                                                    <option value="21">Moderador
-                                                                                    </option>
+                                                                                    @foreach ($roles as $rol)
+                                                                                        <option
+                                                                                            value="{{ $rol->id_rol }}">
+                                                                                            {{ $rol->nombre }}
+                                                                                        </option>
+                                                                                    @endforeach 
                                                                                 </select>
-                                                                                    
-                                                                                @endforeach
                                                                             </div>
                                                                         </div>
                                                                         <div class="row mb-3">
@@ -211,7 +206,7 @@
                                                                         <!-- Botón de visualizar -->
                                                                         <button class="btn btn-primary btn-sm btn-block"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#showUserModal{{$item->id_usuario_administrativo}}"
+                                                                            data-bs-target="#showUserModal{{ $item->id_usuario_administrativo }}"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="Visualizar Estado">
@@ -224,7 +219,7 @@
                                                                         <!-- Botón de editar con modal -->
                                                                         <button class="btn btn-warning btn-sm btn-block"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#editarUsuarioModal{{$item->id_usuario_administrativo}}"
+                                                                            data-bs-target="#editarUsuarioModal{{ $item->id_usuario_administrativo }}"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="Editar Usuario Administrativo">
@@ -260,7 +255,8 @@
                                                                     </div>
 
                                                                     <!-- Modal de visaualizacion -->
-                                                                    <div class="modal fade" id="showUserModal{{$item->id_usuario_administrativo}}"
+                                                                    <div class="modal fade"
+                                                                        id="showUserModal{{ $item->id_usuario_administrativo }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="showUserModalLabel"
                                                                         aria-hidden="true">
@@ -341,7 +337,8 @@
 
 
                                                                     <!-- Modal de edición -->
-                                                                    <div class="modal fade" id="editarUsuarioModal{{$item->id_usuario_administrativo}}"
+                                                                    <div class="modal fade"
+                                                                        id="editarUsuarioModal{{ $item->id_usuario_administrativo }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="editarUsuarioModalLabel"
                                                                         aria-hidden="true">
@@ -428,9 +425,11 @@
                                                                                             <select class="form-select"
                                                                                                 id="editRolUsuario">
                                                                                                 @foreach ($roles as $rol)
-                                                                                                <option value="{{$rol->nombre}}" {{$rol->id_rol==$item->id_rol ? 'selected':''}}>
-                                                                                                    {{$rol->nombre}}
-                                                                                                </option>
+                                                                                                    <option
+                                                                                                        value="{{ $rol->nombre }}"
+                                                                                                        {{ $rol->id_rol == $item->id_rol ? 'selected' : '' }}>
+                                                                                                        {{ $rol->nombre }}
+                                                                                                    </option>
                                                                                                 @endforeach
                                                                                             </select>
                                                                                         </div>
@@ -527,7 +526,9 @@
                                                                                         method="POST">
                                                                                         @csrf
                                                                                         @method('POST')
-                                                                                        <input type="hidden" name="id_usuario" value="{{$item->id_usuario_administrativo}}">
+                                                                                        <input type="hidden"
+                                                                                            name="id_usuario"
+                                                                                            value="{{ $item->id_usuario_administrativo }}">
                                                                                         <input type="hidden"
                                                                                             name="id_estado"
                                                                                             value="24">
@@ -595,12 +596,14 @@
 
                                                     </thead>
                                                     <tbody>
+
+                                                        @foreach ($data_bloqueados as $user_bloqueado)
+                                                            
                                                         <tr>
-                                                            <td>1</td>
-                                                            <td>Juanito Perez</td>
-                                                            <td>Bloqueado por falta de datos</td>
-                                                            <td>Un usuario</td>
-                                                            <td>Nanami Kento</td>
+                                                            <td>{{$user_bloqueado->id_usuario_bloqueado}}</td>
+                                                            <td>{{$user_bloqueado->id_usuario_bloqueado->nombre}}</td>
+                                                            <td>{{$user_bloqueado->descripcion}}</td>
+                                                            <td>{{$user_bloqueado->tipo_usuario}}</td>
                                                             <td>
 
                                                                 <div class="text-center">
@@ -870,6 +873,8 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
+                                                        
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
