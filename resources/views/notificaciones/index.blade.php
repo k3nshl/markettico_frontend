@@ -455,6 +455,9 @@
                                 </div>
                             </div>
 
+
+
+
                             {{-- Alertas --}}
                             <div class="tab-pane fade" id="tab-alertas">
                                 <div class="row justify-content-center align-items-center">
@@ -507,12 +510,12 @@
                                                                         </div>
 
                                                                         <div class="mb-3">
-                                                                            <label for="descripción"
+                                                                            <label for="descripcion"
                                                                                 class="col-sm-4 col-form-label">Descripción:</label>
 
                                                                             <input type="text" name="descripcion"
-                                                                                class="form-control" id="descripción"
-                                                                                placeholder="Escribe una pequeña descripción">
+                                                                                class="form-control" id="descripcion"
+                                                                                placeholder="Escribe una pequeña descripcion">
 
                                                                         </div>
 

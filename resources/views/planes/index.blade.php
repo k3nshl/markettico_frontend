@@ -365,6 +365,10 @@
                                                             <option value="opcion2">Plan empresarial</option>
                                                             <option value="opcion3">Plan premium</option>
                                                             <option value="opcion3">Plan deluxe</option>
+                                                            <option value="Plan básico">Plan básico</option>
+                                                            <option value="Plan empresarial">Plan empresarial</option>
+                                                            <option value="Plan premium">Plan premium</option>
+                                                            <option value="Plan deluxe">Plan deluxe</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -375,6 +379,7 @@
                                                     <label for="costo" class="col-sm-4 col-form-label">Costo:</label>
                                                     <div class="col-sm-8">
                                                         <input type="number" class="form-control" id="costo " name="costo"
+                                                        <input type="number" class="form-control" id="costo" name="costo"
                                                             placeholder="Costo">
                                                     </div>
                                                 </div>
@@ -386,6 +391,8 @@
                                                         <input type="number" class="form-control"
                                                             id="cantidad_productos"
                                                             placeholder="Límite máximo de venta de productos" name="cantidad_productos">
+                                                            id="cantidad_productos" name="cantidad_productos"
+                                                            placeholder="Límite máximo de venta de productos">
                                                     </div>
                                                 </div>
 
@@ -419,13 +426,14 @@
                                                         plan (en meses):</label>
                                                     <div class="col-sm-8">
                                                         <input type="text" class="form-control" id="duracion"  name="duracion"
+                                                        <input type="text" class="form-control" id="duracion" name="duracion"
                                                             placeholder="Duración del plan">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <label for="contenido"
                                                         class="col-sm-4 col-form-label">Características:</label>
-                                                    <textarea id="mytextarea" name="textareaEditarAnuncio" rows="3" placeholder="Escribe las características"></textarea>
+                                                    <textarea id="mytextarea" name="descripcion" rows="3" placeholder="Escribe las características del plan"></textarea>
 
                                                 </div>
 
@@ -434,11 +442,7 @@
                                                 <div class="row">
                                                     <label class="col-sm-3 col-form-label"></label>
                                                     <div class="col-sm-9 text-end">
-                                                        <button type="submit" class="btn btn-info text-white"
-                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                            <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                            Guardar
-                                                        </button>
+                                                        
                                                     </div>
                                                 </div>
                                             </form>

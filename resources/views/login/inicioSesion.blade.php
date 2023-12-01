@@ -47,26 +47,29 @@
                                     <div class="text-center">
                                         <h3 class="">Inicia sesión</h3>
                                     </div>
-                                    <div class="login-separater text-center mb-4"> <span>INICA SESIÓN CON TU CORREO EMPRESARIAL Y
+                                    <div class="login-separater text-center mb-4"> <span>INICA SESIÓN CON TU CORREO
+                                            EMPRESARIAL Y
                                             CONTRASEÑA</span>
                                         <hr />
                                     </div>
                                     <div class="form-body">
                                         <form action="{{ route('validarLogin') }}" class="row g-3" method="POST">
                                             @csrf
-                                            @method("POST")
+                                            <input type="hidden" name="emisor" value="markettico23@gmail.com">
+                                            <input type="hidden" name="type" value="1">
                                             <div class="col-12">
-                                                <label for="inputEmailAddress" class="form-label">Correo Empresarial</label>
-                                                <input type="user" name="correo_empresarial" class="form-control" id="inputUser"
-                                                    placeholder="Correo Empresarial">
+                                                <label for="inputEmailAddress" class="form-label">Correo
+                                                    Empresarial</label>
+                                                <input type="user" name="correo_empresarial" class="form-control"
+                                                    id="inputUser" placeholder="Correo Empresarial">
                                             </div>
                                             <div class="col-12">
                                                 <label for="inputChoosePassword" class="form-label">Contraseña</label>
                                                 <div class="input-group" id="show_hide_password">
-                                                    <input type="password" name="password" class="form-control border-end-0"
-                                                        id="inputPassword" value=""
-                                                        placeholder="Ingresa Contraseña"> <a href="javascript:;"
-                                                        class="input-group-text bg-transparent"></a>
+                                                    <input type="password" name="password"
+                                                        class="form-control border-end-0" id="inputPassword"
+                                                        value="" placeholder="Ingresa Contraseña"> <a
+                                                        href="javascript:;" class="input-group-text bg-transparent"></a>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">

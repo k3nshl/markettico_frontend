@@ -1,6 +1,6 @@
 @extends('plantilla')
 
-@section('gestion_nombre', 'Revisiones de Productos')
+@section('gestion_nombre', 'Solicitudes: Vendedores Individuales')
 
 @section('contenido')
 
@@ -43,27 +43,27 @@
 
                                             <div class="d-flex justify-content-between align-items-end mb-3">
                                                 <h5 class="text-dark"><i
-                                                        class="lni lni-alarm-clock me-2 font-22 text-info"></i>Productos
+                                                        class="lni lni-alarm-clock me-2 font-22 text-info"></i>Solicitudes
                                                     en Espera
                                                 </h5>
                                             </div>
 
                                             <hr />
                                             <div class="table-responsive">
-                                                <table id="tablaProductosEspera" class="table table-bordered">
-                                                    <thead class="theadProductosEspera">
+                                                <table id="tablaSolicitudEspera" class="table table-bordered">
+                                                    <thead class="theadSolicitudEspera">
                                                         <tr>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">ID</th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Nombre del
-                                                                producto</th>
+                                                                usuario</th>
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Precio
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Correo
                                                             </th>
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Telefono
-                                                            </th>
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Fecha de
+                                                                solicitud</th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Ver</th>
                                                         </tr>
@@ -71,9 +71,9 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>1</td>
-                                                            <td>EjemploProducto</td>
-                                                            <td>500.000</td>
-                                                            <td>8932-9735</td>
+                                                            <td>EjemploUsuario</td>
+                                                            <td>ejemplo@empresa.com</td>
+                                                            <td>08/11/2023</td>
                                                             <td>
                                                                 <div class="text-center">
 
@@ -101,7 +101,7 @@
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
                                                                                     id="showPlanModalLabel">
-                                                                                    Visualizar producto en espera</h5>
+                                                                                    Visualizar solicitud en espera</h5>
                                                                                 <button type="button" class="btn-close"
                                                                                     data-bs-dismiss="modal"
                                                                                     aria-label="Close"
@@ -115,100 +115,61 @@
                                                                                     <div class="row mb-3">
                                                                                         <label for="nombre"
                                                                                             class="col-sm-4 col-form-label">Nombre
-                                                                                            del producto:
-                                                                                        </label>
+                                                                                            completo
+                                                                                            :</label>
                                                                                     </div>
 
                                                                                     <div class="row mb-3">
                                                                                         <label for="tipo"
-                                                                                            class="col-sm-4 col-form-label">Descripción:</label>
+                                                                                            class="col-sm-4 col-form-label">Cedula:</label>
                                                                                     </div>
 
 
                                                                                     <div class="row mb-3">
                                                                                         <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Precio:</label>
+                                                                                            class="col-sm-4 col-form-label">Correo
+                                                                                            electrónico:</label>
                                                                                     </div>
 
                                                                                     <div class="row mb-3">
                                                                                         <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Estado:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Vendedor:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Categoria:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Subcategoria:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Experiencia:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Titulo
-                                                                                            profesional:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Teléfono:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Dirección:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Email:</label>
+                                                                                            class="col-sm-4 col-form-label">Número
+                                                                                            telefónico:</label>
                                                                                     </div>
 
                                                                                 </form>
                                                                             </div>
 
                                                                             <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Regresar</button>
 
-                                                                                 
-                                                                                <form action="{{ route('solicitudes-productos.update', 5)}}" method="POST">
-                                                                                    @csrf
-                                                                                    @method('Put')
-                                                                                    
+                                                                                <button type="submit"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-bs-dismiss="modal">Regresar
+                                                                                </button>
+                                                                                </form>
+
+
+                                                                                <form action="{{ route('solicitudes-vendedores.update', 2)}}" method="POST">
+                                                                                @csrf
+                                                                                @method('Put')
                                                                                     <button type="submit"
                                                                                         class="btn btn-success">Aprobar
                                                                                     </button>
                                                                                     <input type="hidden" name="revision" value="1">
-
                                                                                 </form>
 
 
-                                                                                
-                                                                                <form action=" {{ route('solicitudes-productos.update', 5)}}" method="POST">
+
+                                                                                <form action="{{ route('solicitudes-vendedores.update', 2)}}" method="POST">
                                                                                     @csrf
                                                                                     @method('Put')
-                                                                                    
-                                                                                    <button type="submit" 
-                                                                                    class="btn btn-danger"
+                                                                                    <button type="button"
+                                                                                        class="btn btn-danger"
                                                                                         data-bs-dismiss="modal"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#showAfirmacionModal">Rechazar
                                                                                     </button>
-                                                                                    <input type="hidden" name="revision" value="2">
+                                                                                   
                                                                                 </form>
                                                                             </div>
                                                                         </div>
@@ -235,19 +196,19 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form action="{{ route('solicitudes-productos.update', 5)}}" method="POST">
-                                                                                    @csrf
+                                                                                <form action="{{ route('solicitudes-vendedores.update', 2)}}" method="POST">
                                                                                     @method('Put')
+                                                                                    @csrf
 
 
                                                                                     <div class="mb-3 ">
-                                                                                        <label for="contenido"
+                                                                                        <label for="nombre_completo"
                                                                                             class="col-sm-4 col-form-label">Motivo
-                                                                                            de rechazo del producto:</label>
+                                                                                            de rechazo:</label>
 
-
-                                                                                        <textarea class="form-control" name="contenido" rows="5" placeholder="Ingrese el motivo aqui"></textarea>
-
+                                                                                        
+                                                                                            <textarea class="form-control" name="cotenido" rows="5" placeholder="Ingrese el motivo aqui"></textarea>
+                                                                                        
                                                                                     </div>
 
 
@@ -259,7 +220,6 @@
                                                                                     data-bs-dismiss="modal"
                                                                                     data-bs-toggle="modal"
                                                                                     data-bs-target="#showEsperaModal">Regresar</button>
-
                                                                                 <button type="submit"
                                                                                     class="btn btn-success">Confirmar</button>
                                                                                     <input type="hidden" name="revision" value="2">
@@ -277,7 +237,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
 
                             <!-- tab-Aprobados -->
 
@@ -288,28 +248,28 @@
 
                                             <div class="d-flex justify-content-between align-items-end mb-3">
                                                 <h5 class="text-dark"><i
-                                                        class="fadeIn animated bx bx-check-double me-2 font-22 text-info"></i>Productos
-                                                    Aprobados
+                                                        class="fadeIn animated bx bx-check-double me-2 font-22 text-info"></i>Solicitudes
+                                                    Aprobadas
                                                 </h5>
                                             </div>
 
                                             <hr />
                                             <div class="table-responsive">
-                                                <table id="tablaProductosAprobados" class="table table-bordered">
-                                                    <thead class="theadProductosAprobados">
+                                                <table id="tablaSolicitudAprobados" class="table table-bordered">
+                                                    <thead class="theadSolicitudAprobados">
                                                         <tr>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">ID</th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Nombre
                                                                 del
-                                                                producto</th>
+                                                                usuario</th>
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Precio
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Correo
                                                             </th>
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Telefono
-                                                            </th>
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Fecha de
+                                                                solicitud</th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Ver</th>
                                                         </tr>
@@ -317,9 +277,9 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>1</td>
-                                                            <td>EjemploProducto</td>
-                                                            <td>500.000</td>
-                                                            <td>8932-9735</td>
+                                                            <td>EjemploUsuario</td>
+                                                            <td>ejemplo@empresa.com</td>
+                                                            <td>08/11/2023</td>
                                                             <td>
                                                                 <div class="text-center">
 
@@ -347,7 +307,7 @@
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
                                                                                     id="showPlanModalLabel">
-                                                                                    Visualizar producto aprobado</h5>
+                                                                                    Visualizar solicitud aprobada</h5>
                                                                                 <button type="button" class="btn-close"
                                                                                     data-bs-dismiss="modal"
                                                                                     aria-label="Close"
@@ -361,65 +321,26 @@
                                                                                     <div class="row mb-3">
                                                                                         <label for="nombre"
                                                                                             class="col-sm-4 col-form-label">Nombre
-                                                                                            del producto:
-                                                                                        </label>
+                                                                                            completo
+                                                                                            :</label>
                                                                                     </div>
 
                                                                                     <div class="row mb-3">
                                                                                         <label for="tipo"
-                                                                                            class="col-sm-4 col-form-label">Descripción:</label>
+                                                                                            class="col-sm-4 col-form-label">Cedula:</label>
                                                                                     </div>
 
 
                                                                                     <div class="row mb-3">
                                                                                         <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Precio:</label>
+                                                                                            class="col-sm-4 col-form-label">Correo
+                                                                                            electrónico:</label>
                                                                                     </div>
 
                                                                                     <div class="row mb-3">
                                                                                         <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Estado:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Vendedor:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Categoria:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Subcategoria:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Experiencia:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Titulo
-                                                                                            profesional:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Teléfono:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Dirección:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Email:</label>
+                                                                                            class="col-sm-4 col-form-label">Número
+                                                                                            telefónico:</label>
                                                                                     </div>
 
                                                                                 </form>
@@ -455,28 +376,28 @@
 
                                             <div class="d-flex justify-content-between align-items-end mb-3">
                                                 <h5 class="text-dark"><i
-                                                        class="fadeIn animated bx bx-message-alt-x me-2 font-22 text-info"></i>Productos
-                                                    Rechazados
+                                                        class="fadeIn animated bx bx-message-alt-x me-2 font-22 text-info"></i>Solicitudes
+                                                    Rechazadas
                                                 </h5>
                                             </div>
 
                                             <hr />
                                             <div class="table-responsive">
-                                                <table id="tablaProductosRechazados" class="table table-bordered">
-                                                    <thead class="theadProductosRechazados">
+                                                <table id="tablaSolicitudRechazados" class="table table-bordered">
+                                                    <thead class="theadSolicitudRechazados">
                                                         <tr>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">ID</th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Nombre
                                                                 del
-                                                                producto</th>
+                                                                usuario</th>
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Precio
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Correo
                                                             </th>
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Telefono
-                                                            </th>
+                                                                style="background-color: #05C7F2; color: #F2F2F2">Fecha de
+                                                                solicitud</th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Ver</th>
                                                         </tr>
@@ -484,9 +405,9 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>1</td>
-                                                            <td>EjemploProducto</td>
-                                                            <td>500.000</td>
-                                                            <td>8932-9735</td>
+                                                            <td>EjemploUsuario</td>
+                                                            <td>ejemplo@empresa.com</td>
+                                                            <td>08/11/2023</td>
                                                             <td>
                                                                 <div class="text-center">
 
@@ -514,7 +435,7 @@
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
                                                                                     id="showPlanModalLabel">
-                                                                                    Visualizar producto rechazado</h5>
+                                                                                    Visualizar solicitud rechazada</h5>
                                                                                 <button type="button" class="btn-close"
                                                                                     data-bs-dismiss="modal"
                                                                                     aria-label="Close"
@@ -528,65 +449,26 @@
                                                                                     <div class="row mb-3">
                                                                                         <label for="nombre"
                                                                                             class="col-sm-4 col-form-label">Nombre
-                                                                                            del producto:
-                                                                                        </label>
+                                                                                            completo
+                                                                                            :</label>
                                                                                     </div>
 
                                                                                     <div class="row mb-3">
                                                                                         <label for="tipo"
-                                                                                            class="col-sm-4 col-form-label">Descripción:</label>
+                                                                                            class="col-sm-4 col-form-label">Cedula:</label>
                                                                                     </div>
 
 
                                                                                     <div class="row mb-3">
                                                                                         <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Precio:</label>
+                                                                                            class="col-sm-4 col-form-label">Correo
+                                                                                            electrónico:</label>
                                                                                     </div>
 
                                                                                     <div class="row mb-3">
                                                                                         <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Estado:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Vendedor:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Categoria:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Subcategoria:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Experiencia:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Titulo
-                                                                                            profesional:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Teléfono:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Dirección:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Email:</label>
+                                                                                            class="col-sm-4 col-form-label">Número
+                                                                                            telefónico:</label>
                                                                                     </div>
 
                                                                                 </form>
@@ -602,6 +484,8 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
+                                                        
+
                                                     </tbody>
                                                 </table>
                                             </div>
