@@ -98,7 +98,7 @@ class ControllerEstados extends Controller
     public function destroy($id)
     {
 
-        // try {
+        try {
              // Encuentra el modelo por su ID
              $item = Estado::find($id);
     
@@ -114,10 +114,10 @@ class ControllerEstados extends Controller
      
              // Redirige a la página de índice con un mensaje de éxito
              return redirect()->back();
-        // } catch (\Throwable $th) {
+        } catch (\Throwable $th) {
 
-        //     return redirect()->back()->with('error','Este estado no puede ser eliminado ya que esta vinculado con otros registros');
-        // }
+            return redirect()->back()->with('error','Este estado no puede ser eliminado ya que esta vinculado con otros registros');
+        }
             
     }
 }
