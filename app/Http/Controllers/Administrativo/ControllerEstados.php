@@ -50,7 +50,7 @@ class ControllerEstados extends Controller
         $historial->fecha_hora =  date(Date::now());
         $historial->accion =  'Inserccion de un nuveo estado';
         $historial->save();
-        return redirect()->back();
+        return redirect()->back(); 
     }
 
     /**
@@ -68,8 +68,8 @@ class ControllerEstados extends Controller
      */
     public function edit($id)
     {
-        $itemEs = Estado::find($id); 
-        $itemEs->update();
+        $item = Estado::find($id); 
+        $item->update();
         return view('estadosRoles.index');
     }
 
@@ -77,8 +77,10 @@ class ControllerEstados extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-
     {
+        $estado = Estado::find($id);
+        $estado->nombre = $request->nombre;
+        $estado->save();
         //$id=4;
         $itemEstado= Estado::find($id);
         $itemEstado->nombre = $request->nombre;
@@ -97,9 +99,12 @@ class ControllerEstados extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(string $id)
     {
 
+            // Encuentra el modelo por su ID
+            $id=20;
+            $item = Estado::find($id);
         try {
              // Encuentra el modelo por su ID
              $item = Estado::find($id);
