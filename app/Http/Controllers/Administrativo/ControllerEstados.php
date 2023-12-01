@@ -50,7 +50,7 @@ class ControllerEstados extends Controller
         $historial->fecha_hora =  date(Date::now());
         $historial->accion =  'Inserccion de un nuveo estado';
         $historial->save();
-        return redirect()->back();
+        return redirect()->back(); 
     }
 
     /**
