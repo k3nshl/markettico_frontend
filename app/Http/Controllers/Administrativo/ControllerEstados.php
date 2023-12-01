@@ -44,13 +44,23 @@ class ControllerEstados extends Controller
         $item->nombre = $request->nombre;
         $item->save();
 
+
+        // $historial = new HistorialGestionEstados();
+        // $historial->id_estado =  $item->id_estado;
+        // $historial->id_usuario =  Auth::user()->id_usuario_administrativo;
+        // $historial->fecha_hora =  date(Date::now());
+        // $historial->accion =  'Inserccion de un nuveo estado';
+        // $historial->save();
+        return redirect()->back();
+
         $historial = new HistorialGestionEstados();
         $historial->id_estado =  $item->id_estado;
         $historial->id_usuario =  Auth::auth()->user()->id_usuario;
         $historial->fecha_hora =  date(Date::now());
         $historial->accion =  'Inserccion de un nuveo estado';
         $historial->save();
-        return redirect()->back();
+        return redirect()->back(); 
+
     }
 
     /**
@@ -68,8 +78,8 @@ class ControllerEstados extends Controller
      */
     public function edit($id)
     {
-        $itemEs = Estado::find($id); 
-        $itemEs->update();
+        $item = Estado::find($id); 
+        $item->update();
         return view('estadosRoles.index');
     }
 
@@ -77,29 +87,35 @@ class ControllerEstados extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-
     {
+
+        $estado = Estado::find($id);
+        $estado->nombre = $request->nombre;
+        $estado->save();
         //$id=4;
         $itemEstado= Estado::find($id);
         $itemEstado->nombre = $request->nombre;
         $itemEstado->update();
 
-        $historial = new HistorialGestionEstados();
-        $historial->id_estado =  $itemEstado->id_estado;
-        $historial->id_usuario =  Auth::auth()->user()->id_usuario;
-        $historial->fecha_hora =  date(Date::now());
-        $historial->accion =  'Actualizacion de un estado';
-        $historial->save();
+        // $historial = new HistorialGestionEstados();
+        // $historial->id_estado =  $itemEstado->id_estado;
+        // $historial->id_usuario = Auth::user()->id_usuario_administrativo;
+        // $historial->fecha_hora =  date(Date::now());
+        // $historial->accion = 'Actualizacion de un estado';
+        // $historial->save();
+
         return redirect()->back();
-              
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(string $id)
     {
 
+            // Encuentra el modelo por su ID
+            $id=20;
+            $item = Estado::find($id);
         try {
              // Encuentra el modelo por su ID
              $item = Estado::find($id);
@@ -107,18 +123,18 @@ class ControllerEstados extends Controller
              // Elimina el modelo
              $item->delete();
  
-            $historial = new HistorialGestionEstados();
-            $historial->id_estado =  $item->id_estado;
-            $historial->id_usuario =  Auth::auth()->user()->id_usuario;
-            $historial->fecha_hora =  date(Date::now());
-            $historial->accion =  'Eliminacion de un estado';
-            $historial->save();
+            // $historial = new HistorialGestionEstados();
+            // $historial->id_estado =  $item->id_estado;
+            // $historial->id_usuario = Auth::user()->id_usuario_administrativo;
+            // $historial->fecha_hora =  date(Date::now());
+            // $historial->accion =  'Eliminacion de un estado';
+            // $historial->save();
      
              // Redirige a la página de índice con un mensaje de éxito
              return redirect()->back();
         } catch (\Throwable $th) {
 
-            return redirect()->back()->with('error','Este estado no puede ser eliminado ya que esta vinculado con otros registros');
+            return redirect()->back()->with('error','El estado "'.$item->nombre.'" no puede ser eliminado, ya que esta vinculado con otros registros.');
         }
             
     }
