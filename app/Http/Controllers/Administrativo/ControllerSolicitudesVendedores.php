@@ -87,4 +87,14 @@ class ControllerSolicitudesVendedores extends Controller
     {
 
     }
+
+    public function vendedoresIndividuales()
+    {
+        return view('solicitudes.indexVendedoresIndividuales');
+    }
+
+    public function vendedoresEmpresariales()
+    {
+        return view('solicitudes.indexVendedoresEmpresariales');
+    }
 }

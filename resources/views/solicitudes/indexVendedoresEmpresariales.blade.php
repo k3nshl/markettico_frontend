@@ -1,6 +1,6 @@
 @extends('plantilla')
 
-@section('gestion_nombre', 'Solicitud/Vendedor')
+@section('gestion_nombre', 'Solicitudes: Vendedores Empresariales')
 
 @section('contenido')
 
@@ -142,34 +142,25 @@
 
                                                                             <div class="modal-footer">
 
-                                                                                <button type="submit"
+                                                                                <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Regresar
                                                                                 </button>
                                                                                 </form>
-
-
-                                                                                <form action="{{ route('solicitudes-vendedores.update', 2)}}" method="POST">
-                                                                                @csrf
-                                                                                @method('Put')
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-success">Aprobar
+                                                                                <form action="" method="POST">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-success"
+                                                                                        data-bs-dismiss="modal">Aprobar
                                                                                     </button>
-                                                                                    <input type="hidden" name="revision" value="1">
                                                                                 </form>
-
-
-
-                                                                                <form action="{{ route('solicitudes-vendedores.update', 2)}}" method="POST">
+                                                                                <form action="" method="POST">
                                                                                     @csrf
-                                                                                    @method('Put')
                                                                                     <button type="button"
                                                                                         class="btn btn-danger"
                                                                                         data-bs-dismiss="modal"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#showAfirmacionModal">Rechazar
                                                                                     </button>
-                                                                                   
                                                                                 </form>
                                                                             </div>
                                                                         </div>
@@ -196,8 +187,8 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form action="{{ route('solicitudes-vendedores.update', 2)}}" method="POST">
-                                                                                    @method('Put')
+                                                                                <form action="" method="POST">
+                                                                                    @method('POST')
                                                                                     @csrf
 
 
@@ -206,9 +197,9 @@
                                                                                             class="col-sm-4 col-form-label">Motivo
                                                                                             de rechazo:</label>
 
-                                                                                        
+                                                                                        <form method="post">
                                                                                             <textarea class="form-control" name="cotenido" rows="5" placeholder="Ingrese el motivo aqui"></textarea>
-                                                                                        
+                                                                                        </form>
                                                                                     </div>
 
 
@@ -222,7 +213,7 @@
                                                                                     data-bs-target="#showEsperaModal">Regresar</button>
                                                                                 <button type="submit"
                                                                                     class="btn btn-success">Confirmar</button>
-                                                                                    <input type="hidden" name="revision" value="2">
+
                                                                             </div>
                                                                             </form>
                                                                         </div>
@@ -237,7 +228,6 @@
                                     </div>
                                 </div>
                             </div>
-                            
 
                             <!-- tab-Aprobados -->
 
@@ -484,8 +474,6 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                        
-
                                                     </tbody>
                                                 </table>
                                             </div>

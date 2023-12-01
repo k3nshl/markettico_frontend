@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\HistorialGestionCuentas;
 use App\Models\Rol;
 use App\Models\UsuarioAdministrativo;
-use App\Models\CodigoVerificacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redis;
 
 class ControllerUsuariosAdministrativos extends Controller
 {
@@ -21,9 +19,10 @@ class ControllerUsuariosAdministrativos extends Controller
 
     public function index()
     {
-        $data = UsuarioAdministrativo::all();
-        $roles = Rol::all();
-        return view('usuariosAdministrativos.index', compact('data','roles'));
+        $data = UsuarioAdministrativo::where('id_estado', 1)->get();
+        $data_bloqueados = UsuarioAdministrativo::where('id_estado', 24)->get();
+        $roles = Rol::all();     
+        return view('usuariosAdministrativos.index', compact('data','data_bloqueados','roles'));
     }
 
     /**
@@ -40,6 +39,7 @@ class ControllerUsuariosAdministrativos extends Controller
     public function store(Request $request)
     {
         $item = new UsuarioAdministrativo();
+        
         $item->id_rol = $request->id_rol;
         $item->id_estado = $request->id_estado;
         $item->nombre_completo = $request->nombre_completo;
@@ -48,12 +48,19 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->numero_telefonico = $request->numero_telefonico;
         $item->fecha_hora = date(Date::now());
         $item->save();
+
+        // $historial = new HistorialGestionCuentas();
+        // $historial->fecha_hora =  date(Date::now());
+        // $historial->accion =  'Inserccion de nuevo usuario';
+        // $historial->id_usuario =  Auth::auth()->user()->id_usuario;
+        // $historial->save();
         return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      */
+    
     public function show(string $id)
     {
         $item = UsuarioAdministrativo::find($id);
@@ -81,6 +88,12 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->correo_empresarial = $request->correo_empresarial;
         $item->numero_telefonico = $request->numero_telefonico;
         $item->update();
+        
+        $historial = new HistorialGestionCuentas();
+        $historial->fecha_hora =  date(Date::now());
+        $historial->accion =  'Actualizacion  de un usuario';
+        $historial->id_usuario =  Auth::auth()->user()->id_usuario;
+        $historial->save();
         return redirect()->back();
     }
 
@@ -91,6 +104,12 @@ class ControllerUsuariosAdministrativos extends Controller
     {
         $item = UsuarioAdministrativo::find($id);
         $item->delete();
+
+        $historial = new HistorialGestionCuentas();
+        $historial->fecha_hora =  date(Date::now());
+        $historial->accion =  'Eliminacion de nuevo usuario';
+        $historial->id_usuario =  Auth::auth()->user()->id_usuario;
+        $historial->save();
         return redirect()->back();
     }
     public function validarPassword(Request $request)
@@ -114,7 +133,13 @@ class ControllerUsuariosAdministrativos extends Controller
         return redirect()->back();
     }
 
-    
+    public function bloquear_usuario(Request $request)
+    {
+        $item = UsuarioAdministrativo::find($request->id_usuario);
+        $item->id_estado = $request->id_estado;
+        $item->update();
+        return redirect()->back();
+    }
 }
 
 

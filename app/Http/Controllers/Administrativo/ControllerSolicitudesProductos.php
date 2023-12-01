@@ -88,4 +88,14 @@ class ControllerSolicitudesProductos extends Controller
     {
         //
     }
+
+    public function solicitudesProductos()
+    {
+        return view('solicitudes.indexProductos');
+    }
+
+    public function solicitudesServicios()
+    {
+        return view('solicitudes.indexServicios');
+    }
 }

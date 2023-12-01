@@ -9,22 +9,24 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class Mail extends Mailable
+class Email extends Mailable
 {
     use Queueable, SerializesModels;
 
     var $data;
     var $user;
     var $type;
+    var $codigo;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($data, $user, $type)
+    public function __construct($data, $user, $type, $codigo)
     {
         $this->data = $data;
         $this->user = $user;
         $this->type = $type;
+        $this->codigo = $codigo;
     }
 
     /**
@@ -32,9 +34,11 @@ class Mail extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(
-            subject: 'Mail',
-        );
+        if ($this->type == 1) {
+            return new Envelope(
+                subject: 'Prueba 1' ,
+            );
+        } 
     }
 
     /**
@@ -43,7 +47,7 @@ class Mail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'plantillasCorreos.correoAutenticacion',
         );
     }
 

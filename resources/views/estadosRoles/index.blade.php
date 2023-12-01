@@ -45,6 +45,7 @@
                                                 <div class="d-flex align-items-center">
                                                     <div><i class="lni lni-clipboard me-1 font-22 text-info"></i>
                                                     </div>
+                                                    <p>{{Auth::user()->nombre}}</p>
                                                     <h5 class="mb-0 text-dark" title="Agregar Usuario">
                                                         Lista de
                                                         Estados</h5>
