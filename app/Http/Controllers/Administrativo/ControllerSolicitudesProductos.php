@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductoServicio;
 use Illuminate\Http\Request;
 
 class ControllerSolicitudesProductos extends Controller
@@ -12,7 +13,9 @@ class ControllerSolicitudesProductos extends Controller
      */
     public function index()
     {
-        return view('solicitudes.indexProductos');
+        $productos = ProductoServicio::all();
+        return view('solicitudes.indexProductos',compact('productos'));
+
     }
 
     /**
@@ -36,7 +39,8 @@ class ControllerSolicitudesProductos extends Controller
      */
     public function show(string $id)
     {
-        //
+        $item = ProductoServicio::find($id);
+        return view('solicitudes.indexVendedores', compact('item'));
     }
 
     /**
@@ -52,7 +56,29 @@ class ControllerSolicitudesProductos extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $item = ProductoServicio::find($id);
+        $estado = 0;
+        
+
+        if($request->revision == "1"){
+
+            $estado = 8;
+        }
+
+        if($request->revision == "2"){
+
+            $estado = 10;
+        }
+
+
+  
+        $item->id_estado = $estado;
+        
+        $item->update();
+
+
+        return redirect()->back();
     }
 
     /**
@@ -61,5 +87,15 @@ class ControllerSolicitudesProductos extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function solicitudesProductos()
+    {
+        return view('solicitudes.indexProductos');
+    }
+
+    public function solicitudesServicios()
+    {
+        return view('solicitudes.indexServicios');
     }
 }

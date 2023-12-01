@@ -94,6 +94,8 @@ class ControllerAnuncios extends Controller
      */
     public function destroy(string $id)
     {
-        return "Destroy de anuncios";
+        // $anuncio =  Anuncio::find($id);
+        // $anuncio->delete();
+        // return redirect()->back();
     }
 }

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\Vendedor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Redirect;
 
 class ControllerSolicitudesVendedores extends Controller
 {
@@ -12,7 +15,8 @@ class ControllerSolicitudesVendedores extends Controller
      */
     public function index()
     {
-        return view('solicitudes.indexVendedores');
+        $vendedores = Vendedor::all();
+        return view('solicitudes.indexVendedores',compact('vendedores'));
     }
 
     /**
@@ -36,7 +40,8 @@ class ControllerSolicitudesVendedores extends Controller
      */
     public function show(string $id)
     {
-        //
+        $item = Vendedor::find($id);
+        return view('solicitudes.indexVendedores', compact('item'));
     }
 
     /**
@@ -52,7 +57,27 @@ class ControllerSolicitudesVendedores extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = Vendedor::find($id);
+        $estado = 0;
+        
+
+        if($request->revision == "1"){
+
+            $estado = 8;
+        }
+
+        if($request->revision == "2"){
+
+            $estado = 10;
+        }
+
+        $item->id_estado = $estado;
+
+        
+        $item->update();
+
+
+        return redirect()->back();
     }
 
     /**
@@ -60,6 +85,16 @@ class ControllerSolicitudesVendedores extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+    }
+
+    public function vendedoresIndividuales()
+    {
+        return view('solicitudes.indexVendedoresIndividuales');
+    }
+
+    public function vendedoresEmpresariales()
+    {
+        return view('solicitudes.indexVendedoresEmpresariales');
     }
 }
