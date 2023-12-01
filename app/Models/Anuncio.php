@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Alerta extends Model
+class Anuncio extends Model
 {
     use HasFactory;
-    protected $table ='alertas';
-    protected $primaryKey='id_alerta';
+    protected $table ='anuncios';
+    protected $primaryKey='id_anuncio';
     public $timestamps=false;
 
     public function usuario()
@@ -21,11 +21,4 @@ class Alerta extends Model
     {
         return $this->belongsTo(Estado::class, 'id_estado');
     }
-
-    protected $table ='alertas';
-    protected $primaryKey = "id_alerta";
-    
-    public $timestamps=false;
-
-
 }

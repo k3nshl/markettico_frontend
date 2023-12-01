@@ -35,6 +35,9 @@ use Illuminate\Support\Facades\Route;
 // Route::view('/', 'usuariosAdministrativos.index');
 Route::get('/',[ControllerUsuariosAdministrativos::class, 'index'])->name('home');
 
+Route::get('/',[ControllerUsuariosAdministrativos::class, 'index'])->name('inicio');
+Route::get('/st',[ControllerAlertas::class, 'index']);
+
 // Rutas para usuarios administrativos
 Route::resource('/usuariosAdministrativos', ControllerUsuariosAdministrativos::class);
 Route::post('/bloquear_usuario', [ControllerUsuariosAdministrativos::class, 'bloquear_usuario'])->name('bloquear_usuario');
@@ -42,6 +45,7 @@ Route::post('/bloquear_usuario', [ControllerUsuariosAdministrativos::class, 'blo
 
 Route::resource('estados', ControllerEstados::class);
 Route::resource('roles', ControllerRoles::class);
+Route::get('/pr',[ControllerRoles::class, 'store']);
 
 // Rutas para paginas de informacion y articulos
 Route::resource('paginasInformacion', ControllerPaginasInformacion::class);
