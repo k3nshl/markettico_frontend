@@ -4,6 +4,9 @@
 @section('gestion_nombre', 'Páginas estáticas')
 
 @section('contenido')
+
+{{-- {{$data_paginas}} --}}
+
     <section class="content">
 
         <div class="container">
@@ -24,8 +27,10 @@
                             <form action="{{ route('paginasInformacion.store') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
-
                                 @method('POST')
+
+                                <input type="hidden">
+
                                 <div class="mb-3">
                                     <label for="titulo" class="form-label">Título:</label>
                                     <input type="text" name="titulo" class="form-control" id="titulo"

@@ -86,7 +86,17 @@ class ControllerAnuncios extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "Update de anuncios";
+        $anuncio = Anuncio::find($id);
+        $anuncio->id_usuario_remitente = $request->id_usuario_remitente;
+        $anuncio->id_estado = $request->id_estado;
+        $anuncio->titulo = $request->id_usuario_remitente;
+        $anuncio->contenido = $request->contenido;
+        $anuncio->img_portada = $request->img_portada;
+        $anuncio->fecha_inicio = $request->id_usuario_remitente;
+        $anuncio->fecha_final = $request->fecha_final;
+        $anuncio->etiqueta = $request->etiqueta;
+        $anuncio->save();    
+        return redirect()->back();
     }
 
     /**
