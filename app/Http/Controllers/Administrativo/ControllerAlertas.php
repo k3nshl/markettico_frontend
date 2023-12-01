@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use App\Models\Alerta;
 use Illuminate\Http\Request;
-
+use App\Models\Alerta;
 class ControllerAlertas extends Controller
 {
     /**
@@ -136,6 +136,11 @@ class ControllerAlertas extends Controller
      */
     public function destroy(string $id)
     {
+
+        // $alerta =  Alerta::find($id);
+        // $alerta->delete();
+        // return redirect()->back();
+
         
         $item = Alerta::find($id);
         $item->delete($id);
