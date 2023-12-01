@@ -1,6 +1,6 @@
 @extends('plantilla')
 
-@section('gestion_nombre', 'Solicitud/Vendedor')
+@section('gestion_nombre', 'Solicitudes: Vendedores Empresariales')
 
 @section('contenido')
 
@@ -187,7 +187,9 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form>
+                                                                                <form action="" method="POST">
+                                                                                    @method('POST')
+                                                                                    @csrf
 
 
                                                                                     <div class="mb-3 ">
@@ -196,11 +198,11 @@
                                                                                             de rechazo:</label>
 
                                                                                         <form method="post">
-                                                                                            <textarea class="form-control" name="mytextarea" rows="5">Hello, World!</textarea>
+                                                                                            <textarea class="form-control" name="cotenido" rows="5" placeholder="Ingrese el motivo aqui"></textarea>
                                                                                         </form>
                                                                                     </div>
 
-                                                                                </form>
+
                                                                             </div>
 
                                                                             <div class="modal-footer">
@@ -209,11 +211,11 @@
                                                                                     data-bs-dismiss="modal"
                                                                                     data-bs-toggle="modal"
                                                                                     data-bs-target="#showEsperaModal">Regresar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-success"
-                                                                                    data-bs-dismiss="modal">Confirmar</button>
+                                                                                <button type="submit"
+                                                                                    class="btn btn-success">Confirmar</button>
 
                                                                             </div>
+                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>

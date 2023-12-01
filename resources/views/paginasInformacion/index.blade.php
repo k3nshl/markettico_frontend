@@ -4,6 +4,9 @@
 @section('gestion_nombre', 'Páginas estáticas')
 
 @section('contenido')
+
+{{-- {{$data_paginas}} --}}
+
     <section class="content">
 
         <div class="container">
@@ -21,10 +24,13 @@
 
                             <hr>
 
-                            <form action="{{ route('paginasInformacion.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('paginasInformacion.store') }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
-
                                 @method('POST')
+
+                                <input type="hidden">
+
                                 <div class="mb-3">
                                     <label for="titulo" class="form-label">Título:</label>
                                     <input type="text" name="titulo" class="form-control" id="titulo"
@@ -74,129 +80,144 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Politicas</td>
-                                            <td>Descripcion aqui</td>
-                                            <td>
-                                                <div class="text-center">
+                                        @php
+                                            $i = 0;
+                                        @endphp
 
-                                                    <a href="{{ route('paginasInformacion.show', 1) }}"
-                                                        class="btn btn-primary btn-sm" data-bs-toggle="tooltip"
-                                                        data-bs-placement="top" title="Visualizar Artículo">
-                                                        <div class="text-center">
-                                                            <i class="lni lni-eye"
-                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                        </div>
-                                                    </a>
+                                        @foreach ($data_paginas as $item)
+                                            <tr>
+                                                <td>{{ $i++ }}</td>
+                                                <td>{{ $item->nombre }}</td>
+                                                <td>{{ $item->descripcion }}</td>
+                                                <td>
+                                                    <div class="text-center">
 
-                                                    <!-- Botón de editar con modal -->
-                                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#editarColeccionModal" data-bs-toggle="tooltip"
-                                                        data-bs-placement="top" title="Editar Colección">
-                                                        <div class="text-center">
-                                                            <i class="lni lni-pencil-alt"
+                                                        <a href="{{ route('paginasInformacion.show', $item->id_pagina_informacion) }}"
+                                                            class="btn btn-primary btn-sm" data-bs-toggle="tooltip"
+                                                            data-bs-placement="top" title="Visualizar Artículo">
+                                                            <div class="text-center">
+                                                                <i class="lni lni-eye"
+                                                                    style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
+                                                            </div>
+                                                        </a>
+
+                                                        <!-- Botón de editar con modal -->
+                                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                                            data-bs-target="#editarColeccionModal{{$item->id_pagina_informacion}}" data-bs-toggle="tooltip"
+                                                            data-bs-placement="top" title="Editar Colección">
+                                                            <div class="text-center">
+                                                                <i class="lni lni-pencil-alt"
+                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                            </div>
+                                                        </button>
+
+                                                        {{-- Botón eliminar --}}
+                                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                            data-bs-target="#eliminarPaginaModal{{$item->id_pagina_informacion}}">
+                                                            <i class="lni lni-trash"
                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                        </div>
-                                                    </button>
-
-                                                    {{-- Botón eliminar --}}
-                                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#eliminarPaginaModal">
-                                                        <i class="lni lni-trash"
-                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                    </button>
-                                                </div>
-
-                                                <!-- Modal de edición -->
-                                                <div class="modal fade" id="editarColeccionModal" tabindex="-1"
-                                                    aria-labelledby="editarColeccionModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="editarColeccionModalLabel">
-                                                                    Editar Colección</h5>
-                                                                <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal" aria-label="Close"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                    title="Cerrar"></button>
-                                                            </div>
-
-                                                            <div class="modal-body">
-                                                                <form action="{{ route('paginasInformacion.update', 1) }}"
-                                                                    method="POST">
-                                                                    @csrf
-                                                                    @method('PUT')
-                                                                    <div class="mb-3">
-                                                                        <label for="titulo"
-                                                                            class="form-label">Título:</label>
-                                                                        <input type="text" name="titulo"
-                                                                            class="form-control" id="titulo"
-                                                                            placeholder="Título de página">
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label for="descripcion"
-                                                                            class="form-label">Descripción:</label>
-                                                                        <input type="text" name="descripcion"
-                                                                            class="form-control" id="descripcion"
-                                                                            placeholder="Descripción">
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label for="icono"
-                                                                            class="form-label">Icono:</label>
-                                                                        <input type="file" class="form-control"
-                                                                            id="icono" name="icono">
-                                                                    </div>
-
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Cerrar</button>
-                                                                        <button type="submit" class="btn btn-info text-white"
-                                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                            <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                                            Guardar
-                                                                        </button>
-                                                                    </div>
-                                                                    
-                                                                </form>
-                                                            </div>
-
-                                                        </div>
+                                                        </button>
                                                     </div>
-                                                </div>
 
-                                                {{-- Modal eliminar --}}
-                                                <div class="modal fade" id="eliminarPaginaModal" tabindex="-1"
-                                                    aria-labelledby="eliminarPaginaModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="eliminarPaginaModalLabel">
-                                                                    Confirmar
-                                                                    eliminación</h5>
-                                                                <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                ¿Estás seguro de que deseas eliminar esta colección?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                                <form action="{{ route('paginasInformacion.destroy', 1) }}"
-                                                                    method="post">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger"
-                                                                        data-bs-dismiss="modal" data-bs-toggle="modal"
-                                                                        data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
-                                                                </form>
+                                                    <!-- Modal de edición -->
+                                                    <div class="modal fade" id="editarColeccionModal{{$item->id_pagina_informacion}}" tabindex="-1"
+                                                        aria-labelledby="editarColeccionModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="editarColeccionModalLabel">
+                                                                        Editar Colección</h5>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal" aria-label="Close"
+                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                        title="Cerrar"></button>
+                                                                </div>
+
+                                                                <div class="modal-body">
+                                                                    <form
+                                                                        action="{{ route('paginasInformacion.update', 1) }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        @method('PUT')
+                                                                        <div class="mb-3">
+                                                                            <label for="titulo"
+                                                                                class="form-label">Título:</label>
+                                                                            <input type="text" name="titulo"
+                                                                                class="form-control" id="titulo"
+                                                                                placeholder="Título de página" value="{{$item->titulo}}">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="descripcion"
+                                                                                class="form-label">Descripción:</label>
+                                                                            <input type="text" name="descripcion"
+                                                                                class="form-control" id="descripcion"
+                                                                                placeholder="Descripción" value="{{$item->descripcion}}">
+                                                                        </div>
+                                                                        
+                                                                        <div class="mb-3">
+                                                                            <h3>FALTA JALAR EL ICONO</h3>
+                                                                            <label for="icono"
+                                                                                class="form-label">Icono:</label>
+                                                                            <input type="file" class="form-control"
+                                                                                id="icono" name="icono">
+                                                                        </div>
+
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-info text-white"
+                                                                                style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                <i class="bx bx-save"
+                                                                                    style="color: #F2F2F2;"></i>
+                                                                                Guardar
+                                                                            </button>
+                                                                        </div>
+
+                                                                    </form>
+                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+
+                                                    {{-- Modal eliminar --}}
+                                                    <div class="modal fade" id="eliminarPaginaModal{{$item->id_pagina_informacion}}" tabindex="-1"
+                                                        aria-labelledby="eliminarPaginaModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="eliminarPaginaModalLabel">
+                                                                        Confirmar
+                                                                        eliminación</h5>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    ¿Estás seguro de que deseas eliminar esta colección?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Cancelar</button>
+                                                                    <form
+                                                                        action="{{ route('paginasInformacion.destroy', $item->id_pagina_informacion) }}"
+                                                                        method="post">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit" class="btn btn-danger"
+                                                                            data-bs-dismiss="modal" data-bs-toggle="modal"
+                                                                            data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
                                     </tbody>
                                 </table>
                             </div>

@@ -122,9 +122,11 @@
                                                                                     name="id_rol">
                                                                                     <option value="1">Superadmin
                                                                                     </option>
-                                                                                    <option value="2">
+                                                                                    <option value="19">
                                                                                         Administrador</option>
-                                                                                    <option value="3">Moderador
+                                                                                    <option value="20">Moderador
+                                                                                    </option>
+                                                                                    <option value="21">Moderador
                                                                                     </option>
                                                                                 </select>
                                                                             </div>
@@ -190,11 +192,11 @@
                                                     <tbody>
                                                         @foreach ($data as $item)
                                                             <tr>
-                                                                <td>{{$item->id_usuario_administrativo}}</td>
-                                                                <td>{{$item->nombre_completo}}</td>
+                                                                <td>{{ $item->id_usuario_administrativo }}</td>
+                                                                <td>{{ $item->nombre_completo }}</td>
                                                                 <td>
 
-                                                                    <p class="">Administrador</p>
+                                                                    <p class="">{{ $item->roles->nombre }}</p>
 
                                                                 </td>
                                                                 <td>
@@ -280,7 +282,7 @@
                                                                                         <div class="mb-3">
                                                                                             <label for="showNombreUsuario"
                                                                                                 class="form-label">Nombre:
-                                                                                                <span>{{$item->nombre_completo}}</span>
+                                                                                                <span>{{ $item->nombre_completo }}</span>
                                                                                             </label>
 
                                                                                         </div>
@@ -290,7 +292,7 @@
                                                                                                 for="showCorreoEmpresarial"
                                                                                                 class="form-label">Correo
                                                                                                 Empresarial:
-                                                                                                <span>{{$item->correo_empresarial}}</span></label>
+                                                                                                <span>{{ $item->correo_empresarial }}</span></label>
                                                                                         </div>
 
                                                                                         <div class="mb-3">
@@ -298,24 +300,25 @@
                                                                                                 for="showNumeroTelefonico"
                                                                                                 class="form-label">Número
                                                                                                 Telefónico:
-                                                                                                <span>{{$item->numero_telefonico}}</span></label>
+                                                                                                <span>{{ $item->numero_telefonico }}</span></label>
                                                                                         </div>
 
                                                                                         <div class="mb-3">
                                                                                             <label for="showRolUsuario"
                                                                                                 class="form-label">Rol:
-                                                                                                <span>{{$item->roles->nombre}}</span></label>
+                                                                                                <span>{{ $item->roles->nombre }}</span></label>
                                                                                         </div>
 
                                                                                         <div class="mb-3">
                                                                                             <label for="showEstadoUsuario"
                                                                                                 class="form-label">Estado:
-                                                                                                <span>{{$item->estados->nombre}}</span></label>
+                                                                                                <span>{{ $item->estados->nombre }}</span></label>
                                                                                         </div>
                                                                                         <div class="mb-3">
                                                                                             <label for="showEstadoUsuario"
                                                                                                 class="form-label">Fecha de
-                                                                                                registro: <span>{{$item->fecha_hora}}</span>
+                                                                                                registro:
+                                                                                                <span>{{ $item->fecha_hora }}</span>
                                                                                             </label>
                                                                                         </div>
 
@@ -367,7 +370,7 @@
                                                                                                 class="form-control"
                                                                                                 id="editNombreUsuario"
                                                                                                 name="nombre_completo"
-                                                                                                value="{{$item->nombre_completo}}"
+                                                                                                value="{{ $item->nombre_completo }}"
                                                                                                 placeholder="Nombre de usuario">
                                                                                         </div>
 
@@ -380,7 +383,7 @@
                                                                                                 class="form-control"
                                                                                                 id="editCorreoEmpresarial"
                                                                                                 name="correo_empresarial"
-                                                                                                value="{{$item->correo_empresarial}}"
+                                                                                                value="{{ $item->correo_empresarial }}"
                                                                                                 placeholder="Correo empresarial">
                                                                                         </div>
 
@@ -393,7 +396,7 @@
                                                                                                 class="form-control"
                                                                                                 id="editNumeroTelefonico"
                                                                                                 name="numero_telefonico"
-                                                                                                value="{{$item->numero_telefonico}}"
+                                                                                                value="{{ $item->numero_telefonico }}"
                                                                                                 placeholder="Número telefónico">
                                                                                         </div>
 
@@ -402,7 +405,7 @@
                                                                                                 class="form-control"
                                                                                                 id="editIdUsuario"
                                                                                                 name="id_usuario_administrativo"
-                                                                                                value="{{$item->id_usuario_administrativo}}"
+                                                                                                value="{{ $item->id_usuario_administrativo }}"
                                                                                                 hidden>
                                                                                         </div>
 
@@ -411,7 +414,7 @@
                                                                                                 class="form-control"
                                                                                                 id="editIdUsuario"
                                                                                                 name="id_estado"
-                                                                                                value="{{$item->id_estado}}"
+                                                                                                value="{{ $item->id_estado }}"
                                                                                                 hidden>
                                                                                         </div>
 
@@ -479,15 +482,12 @@
                                                                                         class="btn btn-secondary"
                                                                                         data-bs-dismiss="modal">Cancelar</button>
                                                                                     <form
-                                                                                        action="{{ route('usuariosAdministrativos.destroy', 1) }}"
+                                                                                        action="{{ route('usuariosAdministrativos.destroy', $item) }}"
                                                                                         method="POST">
                                                                                         @method('DELETE')
                                                                                         @csrf
                                                                                         <button type="sumit"
-                                                                                            class="btn btn-danger"
-                                                                                            data-bs-dismiss="modal"
-                                                                                            data-bs-toggle="modal"
-                                                                                            data-bs-target="#eliminacionCorrectaModal">Eliminar
+                                                                                            class="btn btn-danger">Eliminar
                                                                                         </button>
                                                                                     </form>
                                                                                 </div>
@@ -517,15 +517,27 @@
                                                                                     este
                                                                                     usuario?
                                                                                 </div>
+
                                                                                 <div class="modal-footer">
                                                                                     <button type="button"
                                                                                         class="btn btn-secondary"
                                                                                         data-bs-dismiss="modal">Cancelar</button>
-                                                                                    <button type="button"
-                                                                                        class="btn btn-danger"
-                                                                                        data-bs-dismiss="modal"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#bloqueoCorrectoModal">Bloquear</button>
+
+                                                                                    <form
+                                                                                        action="{{ route('bloquear_usuario') }}"
+                                                                                        method="POST">
+                                                                                        @csrf
+                                                                                        @method('POST')
+                                                                                        <input type="hidden" name="id_usuario" value="{{$item->id_usuario_administrativo}}">
+                                                                                        <input type="hidden"
+                                                                                            name="id_estado"
+                                                                                            value="24">
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-danger">Bloquear</button>
+
+                                                                                    </form>
+
+
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -757,7 +769,9 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form>
+                                                                                <form action="" method="POST">
+                                                                                    @method('PUT')
+                                                                                    @csrf
                                                                                     <div class="row mb-3">
                                                                                         <div class="col-sm">
                                                                                             <label for="id_usuario"
@@ -775,6 +789,7 @@
                                                                                             <input type="text"
                                                                                                 class="form-control"
                                                                                                 id="descripcion"
+                                                                                                name="descripcion"
                                                                                                 placeholder="Descripción">
                                                                                         </div>
                                                                                     </div>
@@ -786,6 +801,7 @@
                                                                                             <input type="text"
                                                                                                 class="form-control"
                                                                                                 id="tipo_usuario"
+                                                                                                name="tipo_usuario"
                                                                                                 placeholder="Tipo de usuario">
                                                                                         </div>
                                                                                     </div>
@@ -796,6 +812,7 @@
                                                                                             <input type="text"
                                                                                                 class="form-control"
                                                                                                 id="id_vendedor"
+                                                                                                name="id_vendedor"
                                                                                                 placeholder="Nombre del Vendedor">
                                                                                         </div>
                                                                                     </div>

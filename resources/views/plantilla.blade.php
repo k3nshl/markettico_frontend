@@ -82,9 +82,18 @@
                         <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
                         </li>
-                        <li> <a href="{{ route('solicitudes-vendedores.index') }}"><i
-                                    class="bx bx-right-arrow-alt"></i>Gestionar
+                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Solicitudes
                                 Vendedores</a>
+                            <ul>
+                                <li>
+                                    <a href="{{ route('vendedoresIndividuales') }}"><i
+                                            class="bx bx-right-arrow-alt"></i>Vendedores Individuales</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('vendedoresEmpresariales') }}"><i
+                                            class="bx bx-right-arrow-alt"></i>Vendedores Empresariales</a>
+                                </li>
+                            </ul>
                         </li>
                         <li> <a href="{{ route('estadisticas.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                 Estadisticas</a>
@@ -135,9 +144,17 @@
                                 Categorias</a>
                         </li>
 
-                        <li> <a href="{{ route('solicitudes-productos.index') }}"><i
-                                    class="bx bx-right-arrow-alt"></i>Gestionar
-                                Productos</a>
+                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Ver Solicitudes</a>
+                            <ul>
+                                <li>
+                                    <a href="{{ route('solicitudesProductos') }}"><i
+                                            class="bx bx-right-arrow-alt"></i>Solicitudes Productos</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('solicitudesServicios') }}"><i
+                                            class="bx bx-right-arrow-alt"></i>Solicitudes Servicios</a>
+                                </li>
+                            </ul>
                         </li>
                         <li> <a href="{{ route('moderarContenido.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>Gestionar
@@ -253,7 +270,7 @@
                             <img src="{{ asset('../assets/images/avatars/avatar-2.png') }}" class="user-img"
                                 alt="user avatar">
                             <div class="user-info ps-3">
-                                <p class="user-name mb-0">Delia Smith</p>
+                                <p class="user-name mb-0">{{Auth::user()->nombre_completo}}</p>
                                 <p class="designattion mb-0">Project Manager</p>
                             </div>
                         </a>
@@ -272,9 +289,8 @@
                             <li>
                                 <div class="dropdown-divider mb-0"></div>
                             </li>
-                            <li><a class="dropdown-item" href="{{Route("usuarios.logout")}}">
-                                <i
-                                        class='bx bx-log-out-circle'>
+                            <li><a class="dropdown-item" href="{{ Route('usuarios.logout') }}">
+                                    <i class='bx bx-log-out-circle'>
                                     </i><span>Cerrar sesion</span></a>
                             </li>
                         </ul>
