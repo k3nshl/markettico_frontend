@@ -44,6 +44,7 @@ class ControllerEstados extends Controller
         $item->nombre = $request->nombre;
         $item->save();
 
+
         // $historial = new HistorialGestionEstados();
         // $historial->id_estado =  $item->id_estado;
         // $historial->id_usuario =  Auth::user()->id_usuario_administrativo;
@@ -51,6 +52,15 @@ class ControllerEstados extends Controller
         // $historial->accion =  'Inserccion de un nuveo estado';
         // $historial->save();
         return redirect()->back();
+
+        $historial = new HistorialGestionEstados();
+        $historial->id_estado =  $item->id_estado;
+        $historial->id_usuario =  Auth::auth()->user()->id_usuario;
+        $historial->fecha_hora =  date(Date::now());
+        $historial->accion =  'Inserccion de un nuveo estado';
+        $historial->save();
+        return redirect()->back(); 
+
     }
 
     /**
@@ -68,8 +78,8 @@ class ControllerEstados extends Controller
      */
     public function edit($id)
     {
-        $itemEs = Estado::find($id); 
-        $itemEs->update();
+        $item = Estado::find($id); 
+        $item->update();
         return view('estadosRoles.index');
     }
 
@@ -78,6 +88,11 @@ class ControllerEstados extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+        $estado = Estado::find($id);
+        $estado->nombre = $request->nombre;
+        $estado->save();
+        //$id=4;
         $itemEstado= Estado::find($id);
         $itemEstado->nombre = $request->nombre;
         $itemEstado->update();
@@ -95,9 +110,12 @@ class ControllerEstados extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(string $id)
     {
 
+            // Encuentra el modelo por su ID
+            $id=20;
+            $item = Estado::find($id);
         try {
              // Encuentra el modelo por su ID
              $item = Estado::find($id);
