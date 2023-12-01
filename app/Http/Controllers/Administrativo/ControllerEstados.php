@@ -116,7 +116,7 @@ class ControllerEstados extends Controller
              return redirect()->back();
         } catch (\Throwable $th) {
 
-            return redirect()->back()->with('error','Este estado no puede ser eliminado ya que esta vinculado con otros registros');
+            return redirect()->back()->with('error','El estado "'.$item->nombre.'" no puede ser eliminado, ya que esta vinculado con otros registros.');
         }
             
     }

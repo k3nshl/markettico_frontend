@@ -114,6 +114,14 @@
                                             </div>
                                             <hr />
                                             {{-- Listado de estados --}}
+                                            @if (session('error'))
+                                                <div
+                                                    class="alert alert-danger border-0 bg-danger alert-dismissible fade show">
+                                                    <div class="text-white">{{ session('error') }}</div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                            @endif
                                             <div class="table-responsive">
                                                 <table id="tablaEstados" class="table table-bordered">
                                                     <thead class="theadEstados">
@@ -261,7 +269,6 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
-                                                {{ session('error') }}
                                             </div>
                                         </div>
                                     </div>
