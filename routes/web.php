@@ -53,9 +53,15 @@ Route::resource('articulos', ControllerArticulos::class);
 Route::resource('categorias', ControllerCategorias::class);
 Route::resource('subcategorias', ControllerSubcategorias::class);
 
-// Rutas para solicitudes
+// Rutas rsource para solicitudes
 Route::resource('solicitudes-vendedores', ControllerSolicitudesVendedores::class);
 Route::resource('solicitudes-productos', ControllerSolicitudesProductos::class);
+// Rutas para cada vendedor
+Route::get('/solicitudesVendedoresIndividuales', [ControllerSolicitudesVendedores::class, 'vendedoresIndividuales'])->name('vendedoresIndividuales');
+Route::get('/solicitudesVendedoresEmpresariales', [ControllerSolicitudesVendedores::class, 'vendedoresEmpresariales'])->name('vendedoresEmpresariales');
+//Rutas para productos y servicios
+Route::get('/solicitudesProductos', [ControllerSolicitudesProductos::class, 'solicitudesProductos'])->name('solicitudesProductos');
+Route::get('/solicitudesServicios', [ControllerSolicitudesProductos::class, 'solicitudesServicios'])->name('solicitudesServicios');
 
 // Rutas para planes
 Route::resource('planes', ControllerPlanes::class);
