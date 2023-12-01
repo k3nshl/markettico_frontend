@@ -49,12 +49,12 @@ class ControllerRoles extends Controller
         $rol->save();
 
         //Este metodo se tiene que completar hasta que se termine el logueo con auth 
-        $historial = new HistorialGestionRoles();
-        $historial->id_rol =  $rol->id_rol;
-        $historial->id_usuario =  Auth::auth()->user()->id_usuario;
-        $historial->fecha_hora =  date(Date::now());
-        $historial->accion =  'Inserccion de un nuveo rol';
-        $historial->save();
+        // $historial = new HistorialGestionRoles();
+        // $historial->id_rol =  $rol->id_rol;
+        // $historial->id_usuario =  Auth::user()->id_usuario_administrativo;
+        // $historial->fecha_hora =  date(Date::now());
+        // $historial->accion =  'Inserccion de un nuveo rol';
+        // $historial->save();
         return redirect()->back();
     }
 
@@ -91,12 +91,12 @@ class ControllerRoles extends Controller
         $rol = Rol::find($id);
         $rol->nombre = $request->nombre;
         $rol->save(); 
-        $historial = new HistorialGestionRoles();
-        $historial->id_rol =  $rol->id_rol;
-        $historial->id_usuario =  Auth::auth()->user()->id_usuario;
-        $historial->fecha_hora =  date(Date::now());
-        $historial->accion =  'Actualizacion de un rol';
-        $historial->save();
+        // $historial = new HistorialGestionRoles();
+        // $historial->id_rol =  $rol->id_rol;
+        // $historial->id_usuario =  Auth::user()->id_usuario_administrativo;
+        // $historial->fecha_hora =  date(Date::now());
+        // $historial->accion =  'Actualizacion de un rol';
+        // $historial->save();
         return redirect()->back();
     }
 
@@ -108,12 +108,12 @@ class ControllerRoles extends Controller
         $rol =  Rol::find($id);
         $rol->delete();
 
-        $historial = new HistorialGestionRoles();
-        $historial->id_rol =  $id;
-        $historial->id_usuario =  Auth::auth()->user()->id_usuario;
-        $historial->fecha_hora =  date(Date::now());
-        $historial->accion =  'Eliminacion de un rol';
-        $historial->save();
+        // $historial = new HistorialGestionRoles();
+        // $historial->id_rol =  $id;
+        // $historial->id_usuario =  Auth::user()->id_usuario_administrativo;
+        // $historial->fecha_hora =  date(Date::now());
+        // $historial->accion =  'Eliminacion de un rol';
+        // $historial->save();
         return redirect()->back();
     }
 }
