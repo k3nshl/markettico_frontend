@@ -5,12 +5,8 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use App\Models\Alerta;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-
-
-use App\Models\Alerta;
 
 class ControllerAlertas extends Controller
 {
@@ -40,7 +36,7 @@ class ControllerAlertas extends Controller
     public function store(Request $request)
     {
 
-<
+
         $validator = Validator::make($request->all(), [
             'titulo' => 'required||unique:alertas',
             'id_estado' => 'required',
@@ -69,17 +65,17 @@ class ControllerAlertas extends Controller
 
         if ($request->tipo_destinatario == 1) {
 
-            $tipo_destinatario = "compradores";
+            $tipo_destinatario = "Compradores";
         } 
 
         if ($request->tipo_destinatario == 2) {
 
-            $tipo_destinatario = "vendedores";
+            $tipo_destinatario = "Vendedores";
         } 
 
         if ($request->tipo_destinatario == 3) {
 
-            $tipo_destinatario = "todos";
+            $tipo_destinatario = "Todos";
         } 
         
 
@@ -143,17 +139,17 @@ class ControllerAlertas extends Controller
 
         if ($request->tipo_destinatario == 1) {
 
-            $tipo_destinatario = "compradores";
+            $tipo_destinatario = "Compradores";
         } 
 
         if ($request->tipo_destinatario == 2) {
 
-            $tipo_destinatario = "vendedores";
+            $tipo_destinatario = "Vendedores";
         } 
 
         if ($request->tipo_destinatario == 3) {
 
-            $tipo_destinatario = "todos";
+            $tipo_destinatario = "Todos";
         } 
         
 
@@ -187,12 +183,10 @@ class ControllerAlertas extends Controller
         // $alerta =  Alerta::find($id);
         // $alerta->delete();
         // return redirect()->back();
-
         
         $item = Alerta::find($id);
         $item->delete($id);
         return redirect()->back();
-
 
     }
 }

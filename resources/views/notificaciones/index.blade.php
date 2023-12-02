@@ -99,15 +99,15 @@
                                                                         <div class="row mb-3">
                                                                             <label for="etiqueta"
                                                                                 class="col-sm-4 col-form-label">Etiqueta:
-                                                                                </label>
+                                                                            </label>
                                                                             <div class="col-sm-8">
 
                                                                                 <select class="form-select" id="etiqueta"
                                                                                     name="etiqueta">
-                                                                                    <option value="1">Nuevo</option>
-                                                                                    <option value="2">Mejora
+                                                                                    <option value="Nuevo">Nuevo</option>
+                                                                                    <option value="Mejora">Mejora
                                                                                     </option>
-                                                                                    <option value="3">Beta</option>
+                                                                                    <option value="Beta">Beta</option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
@@ -135,7 +135,8 @@
                                                                         </div>
 
                                                                         <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary"
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
                                                                                 data-bs-dismiss="modal">Cerrar</button>
                                                                             <button type="submit"
                                                                                 class="btn btn-info text-white"
@@ -182,160 +183,81 @@
 
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>Iphone gratis para el que se coma un moco</td>
-                                                            <td>11/11/2023</td>
-                                                            <td>11/11/2024</td>
-                                                            <td>
-                                                                <div class="text-center">
+                                                        @foreach ($anuncios as $item)
+                                                            <tr>
+                                                                <td>{{ $item->id_anuncio }}</td>
+                                                                <td>{{ $item->titulo }}</td>
+                                                                <td>{{ $item->fecha_inicio }}</td>
+                                                                <td>{{ $item->fecha_final }}</td>
+                                                                <td>
+                                                                    <div class="text-center">
 
-                                                                    {{-- Botón de visualizar --}}
-                                                                    <button class="btn btn-primary btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#showUserAnuncioModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Ver Anuncios">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-eye"
-                                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
+                                                                        {{-- Botón de visualizar --}}
+                                                                        <button class="btn btn-primary btn-sm"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#showUserAnuncioModal{{ $item->id_anuncio }}"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top" title="Ver Anuncios">
+                                                                            <div class="text-center">
+                                                                                <i class="lni lni-eye"
+                                                                                    style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
+                                                                            </div>
+                                                                        </button>
 
-                                                                    <!-- Botón de editar con modal -->
-                                                                    <button class="btn btn-warning btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#editarAnuncios"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Editar Anuncio">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-pencil-alt"
+                                                                        <!-- Botón de editar con modal -->
+                                                                        <button class="btn btn-warning btn-sm"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#editarAnuncios{{ $item->id_anuncio }}"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            title="Editar Anuncio">
+                                                                            <div class="text-center">
+                                                                                <i class="lni lni-pencil-alt"
+                                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                            </div>
+                                                                        </button>
+
+                                                                        {{-- Botón de eliminar --}}
+                                                                        <button class="btn btn-danger btn-sm"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#eliminarAnuncio{{ $item->id_anuncio }}">
+                                                                            <i class="lni lni-trash"
                                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-                                                                    {{-- Botón de eliminar --}}
-                                                                    <button class="btn btn-danger btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#eliminarAnuncio">
-                                                                        <i class="lni lni-trash"
-                                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                    </button>
-                                                                </div>
-
-                                                                <!-- Modal de visualizacion -->
-                                                                <div class="modal fade" id="showUserAnuncioModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="showUserAnuncioModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="showUserAnuncioModal">
-                                                                                    Visualizar anuncios</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                <div class="row mb-3">
-                                                                                    <label for="id_vendedor"
-                                                                                        class="col-sm-4 col-form-label">Titulo:
-                                                                                        <span>Acá</span></label>
-
-                                                                                </div>
-                                                                                <div class="row mb-3">
-                                                                                    <label for="id_vendedor"
-                                                                                        class="col-sm-4 col-form-label">Imagen
-                                                                                        de portada:
-                                                                                        <span>Acá</span></label>
-                                                                                </div>
-
-                                                            
-
-                                                                                <div class="row mb-3">
-                                                                                    <div class="col-sm">
-                                                                                        <label for="fecha"
-                                                                                            class="form-label">Fecha inicio: <span>Acá</span></label>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="row mb-3">
-                                                                                    <div class="col-sm">
-                                                                                        <label for="fecha"
-                                                                                            class="form-label">Fecha final: <span>Acá</span></label>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="row mb-3">
-                                                                                    <label for="id_vendedor"
-                                                                                        class="col-sm-4 col-form-label">Contenido:
-                                                                                        <span>Acá</span></label>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Regresar</button>
-
-                                                                            </div>
-
-                                                                        </div>
+                                                                        </button>
                                                                     </div>
-                                                                </div>
 
-                                                                <!-- Modal de edición -->
-                                                                <div class="modal fade" id="editarAnuncios"
-                                                                    tabindex="-1" aria-labelledby="editarAnuncioLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="editarAnuncioLabel">
-                                                                                    Editar Anuncio</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
+                                                                    <!-- Modal de visualizacion -->
+                                                                    <div class="modal fade"
+                                                                        id="showUserAnuncioModal{{ $item->id_anuncio }}"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="showUserAnuncioModalLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="showUserAnuncioModal">
+                                                                                        Visualizar anuncios</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"
+                                                                                        data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Cerrar"></button>
+                                                                                </div>
 
-                                                                            <div class="modal-body">
-                                                                                <form
-                                                                                    action="{{ route('anuncios.update', 1) }}"
-                                                                                    method="POST">
-                                                                                    @csrf
-                                                                                    @method('PUT')
-
-                                                                                    <div class="mb-3">
-                                                                                        <label for="titulo"
-                                                                                            class="col-sm-4 col-form-label">Titulo:</label>
-
-                                                                                        <input type="titulo"
-                                                                                            name="titulo"
-                                                                                            class="form-control"
-                                                                                            id="titulo"
-                                                                                            placeholder="Titulo">
+                                                                                <div class="modal-body">
+                                                                                    <div class="row mb-3">
+                                                                                        <label for="id_vendedor"
+                                                                                            class="col-sm-4 col-form-label">Titulo:
+                                                                                            <span>{{ $item->id_anuncio }}</span></label>
 
                                                                                     </div>
-
-                                                                                    <div class="mb-3">
-                                                                                        <label for="otroInput"
+                                                                                    <div class="row mb-3">
+                                                                                        <label for="id_vendedor"
                                                                                             class="col-sm-4 col-form-label">Imagen
-                                                                                            de
-                                                                                            portada:</label>
-                                                                                        <input type="file"
-                                                                                            class="form-control input-imagen"
-                                                                                            id="portada"
-                                                                                            name="img_portada">
+                                                                                            de portada:</label>
                                                                                         <div class="text-center p-3">
                                                                                             <img src="#"
                                                                                                 id="imagen-preview-portada"
@@ -345,108 +267,217 @@
                                                                                         </div>
                                                                                     </div>
 
+
+
                                                                                     <div class="row mb-3">
-                                                                                        <label for="etiqueta"
-                                                                                            class="col-sm-4 col-form-label">Etiqueta:
-                                                                                            </label>
-                                                                                        <div class="col-sm-8">
-            
-                                                                                            <select class="form-select" id="etiqueta"
-                                                                                                name="etiqueta">
-                                                                                                <option value="1">Nuevo</option>
-                                                                                                <option value="2">Mejora
-                                                                                                </option>
-                                                                                                <option value="3">Beta</option>
-                                                                                            </select>
+                                                                                        <div class="col-sm">
+                                                                                            <label for="fecha"
+                                                                                                class="form-label">Fecha
+                                                                                                inicio:
+                                                                                                <span>{{ $item->fecha_inicio }}</span></label>
                                                                                         </div>
                                                                                     </div>
 
-                                                                                    <div class="mb-3 row">
-                                                                                        <div class="col">
-                                                                                            <label>Fecha incio:</label>
-                                                                                            <input type="date"
-                                                                                                class="form-control"
-                                                                                                name="fecha_inicio">
+                                                                                    <div class="row mb-3">
+                                                                                        <div class="col-sm">
+                                                                                            <label for="fecha"
+                                                                                                class="form-label">Fecha
+                                                                                                final:
+                                                                                                <span>{{ $item->fecha_final }}</span></label>
                                                                                         </div>
-
-                                                                                        <div class="col">
-                                                                                            <label>Fecha final:</label>
-                                                                                            <input type="date"
-                                                                                                class="form-control"
-                                                                                                name="fecha_final">
-                                                                                        </div>
-
                                                                                     </div>
 
-                                                                                    <div class="mb-3">
-                                                                                        <label for="contenido"
-                                                                                            class="col-sm-4 col-form-label">Contenido:</label>
-
-                                                                                        <textarea id="mytextarea" name="contenido" rows="3" placeholder="Contenido"></textarea>
+                                                                                    <div class="row mb-3">
+                                                                                        <label for="id_vendedor"
+                                                                                            class="col-sm-4 col-form-label">Contenido:
+                                                                                            <span>{{ $item->contenido }}</span></label>
                                                                                     </div>
+                                                                                </div>
 
-                                                                                    <div class="modal-footer">
-                                                                                        <button type="button"
-                                                                                            class="btn btn-secondary"
-                                                                                            data-bs-dismiss="modal">Cerrar</button>
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-info text-white"
-                                                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                            <i class="bx bx-save"
-                                                                                                style="color: #F2F2F2;"></i>
-                                                                                            Guardar
-                                                                                        </button>
-                                                                                    </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-bs-dismiss="modal">Regresar</button>
 
-                                                                                </form>
+                                                                                </div>
+
                                                                             </div>
-
                                                                         </div>
                                                                     </div>
-                                                                </div>
 
-                                                                {{-- Modal de eliminar --}}
-                                                                <div class="modal fade" id="eliminarAnuncio"
-                                                                    tabindex="-1" aria-labelledby="eliminarAnuncioLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="eliminarAnuncioLabel">
-                                                                                    Confirmar eliminación</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                ¿Estás seguro de que deseas eliminar este
-                                                                                anuncio?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                                                {{-- Form de eliminar --}}
-                                                                                <form
-                                                                                    action="{{ route('anuncios.destroy', 1) }}"
-                                                                                    method="POST">
-                                                                                    @csrf
-                                                                                    @method('DELETE')
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-danger"
+                                                                    <!-- Modal de edición -->
+                                                                    <div class="modal fade"
+                                                                        id="editarAnuncios{{ $item->id_anuncio }}"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="editarAnuncioLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="editarAnuncioLabel">
+                                                                                        Editar Anuncio</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
                                                                                         data-bs-dismiss="modal"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#eliminacionCorrectaModal">Eliminar
-                                                                                    </button>
-                                                                                </form>
-                                                                                {{-- Fin form de eliminar --}}
+                                                                                        aria-label="Close"
+                                                                                        data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Cerrar"></button>
+                                                                                </div>
+
+                                                                                <div class="modal-body">
+                                                                                    <form
+                                                                                        action="{{ route('anuncios.update', $item->id_anuncio) }}"
+                                                                                        method="POST">
+                                                                                        @csrf
+                                                                                        @method('PUT')
+
+                                                                                        <div class="mb-3">
+                                                                                            <label for="titulo"
+                                                                                                class="col-sm-4 col-form-label">Titulo:</label>
+
+                                                                                            <input type="titulo"
+                                                                                                name="titulo"
+                                                                                                class="form-control"
+                                                                                                id="titulo"
+                                                                                                placeholder="Titulo"
+                                                                                                value="{{ $item->titulo }}">
+
+                                                                                        </div>
+
+                                                                                        <div class="mb-3">
+                                                                                            <label for="otroInput"
+                                                                                                class="col-sm-4 col-form-label">Imagen
+                                                                                                de
+                                                                                                portada:</label>
+                                                                                            <input type="file"
+                                                                                                class="form-control input-imagen"
+                                                                                                id="portada"
+                                                                                                name="img_portada">
+                                                                                            <div class="text-center p-3">
+                                                                                                <img src="#"
+                                                                                                    id="imagen-preview-portada"
+                                                                                                    alt="Vista previa de la imagen"
+                                                                                                    class="rounded-3 imagen-preview"
+                                                                                                    style="width:300px; height: 200px; object-fit: cover; display: none;">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="row mb-3">
+                                                                                            <label for="etiqueta"
+                                                                                                class="col-sm-4 col-form-label">Etiqueta:
+                                                                                            </label>
+                                                                                            <div class="col-sm-8">
+
+                                                                                                <select class="form-select"
+                                                                                                    id="etiqueta"
+                                                                                                    name="etiqueta">
+                                                                                                    <option value="Nuevo"
+                                                                                                        {{ $item->etiqueta == 'Nuevo' ? 'selected' : '' }}>
+                                                                                                        Nuevo</option>
+                                                                                                    <option value="Mejora"
+                                                                                                        {{ $item->etiqueta == 'Mejora' ? 'selected' : '' }}>
+                                                                                                        Mejora
+                                                                                                    </option>
+                                                                                                    <option value="Beta"
+                                                                                                        {{ $item->etiqueta == 'Beta' ? 'selected' : '' }}>
+                                                                                                        Beta</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="mb-3 row">
+                                                                                            <div class="col">
+                                                                                                <label>Fecha incio:</label>
+                                                                                                <input type="date"
+                                                                                                    class="form-control"
+                                                                                                    name="fecha_inicio"
+                                                                                                    value="{{ $item->fecha_inicio }}">
+                                                                                            </div>
+
+                                                                                            <div class="col">
+                                                                                                <label>Fecha final:</label>
+                                                                                                <input type="date"
+                                                                                                    class="form-control"
+                                                                                                    name="fecha_final"
+                                                                                                    value="{{ $item->fecha_final }}">
+                                                                                            </div>
+
+                                                                                        </div>
+
+                                                                                        <div class="mb-3">
+                                                                                            <label for="contenido"
+                                                                                                class="col-sm-4 col-form-label">Contenido:</label>
+
+                                                                                            <textarea id="mytextarea" name="contenido" rows="3" placeholder="Contenido">{{ $item->contenido }}</textarea>
+                                                                                        </div>
+
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button"
+                                                                                                class="btn btn-secondary"
+                                                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                                                            <button type="submit"
+                                                                                                class="btn btn-info text-white"
+                                                                                                style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                                <i class="bx bx-save"
+                                                                                                    style="color: #F2F2F2;"></i>
+                                                                                                Guardar
+                                                                                            </button>
+                                                                                        </div>
+
+                                                                                    </form>
+                                                                                </div>
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+
+                                                                    {{-- Modal de eliminar --}}
+                                                                    <div class="modal fade"
+                                                                        id="eliminarAnuncio{{ $item->id_anuncio }}"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="eliminarAnuncioLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="eliminarAnuncioLabel">
+                                                                                        Confirmar eliminación</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"></button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    ¿Estás seguro de que deseas eliminar
+                                                                                    este
+                                                                                    anuncio?
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-bs-dismiss="modal">Cancelar</button>
+                                                                                    {{-- Form de eliminar --}}
+                                                                                    <form
+                                                                                        action="{{ route('anuncios.destroy', $item->id_anuncio) }}"
+                                                                                        method="POST">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-danger">
+                                                                                            Eliminar
+                                                                                        </button>
+                                                                                    </form>
+                                                                                    {{-- Fin form de eliminar --}}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -454,9 +485,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
 
                             {{-- Alertas --}}
                             <div class="tab-pane fade" id="tab-alertas">
@@ -519,19 +547,21 @@
 
                                                                         </div>
 
-                                                                        
                                                                         <div class="row mb-3">
                                                                             <label for="tipo_destinatario"
-                                                                                class="col-sm-4 col-form-label">Tipo de destinatario:
-                                                                                </label>
+                                                                                class="col-sm-4 col-form-label">Tipo de
+                                                                                destinatario:
+                                                                            </label>
                                                                             <div class="col-sm-8">
 
-                                                                                <select class="form-select" id="tipo_destinatario"
+                                                                                <select class="form-select"
+                                                                                    id="tipo_destinatario"
                                                                                     name="tipo_destinatario">
-                                                                                    <option value="1">Compradores</option>
-                                                                                    <option value="2">Vendedores
+                                                                                    <option value="Todos">Todos</option>
+                                                                                    <option value="Compradores">Compradores
                                                                                     </option>
-                                                                                    <option value="3">Todos</option>
+                                                                                    <option value="Vendedores">Vendedores
+                                                                                    </option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
@@ -600,248 +630,273 @@
 
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>Iphone gratis para el que se coma un moco</td>
-                                                            <td>11/11/2023</td>
-                                                            <td>11/11/2024</td>
+                                                        @foreach ($alertas as $item)
+                                                            <tr>
+                                                                <td>{{ $item->id_alerta }}</td>
+                                                                <td>{{ $item->titulo }}</td>
+                                                                <td>{{ $item->fecha_inicio }}</td>
+                                                                <td>{{ $item->fecha_final }}</td>
 
-                                                            <td>
-                                                                <div class="text-center">
+                                                                <td>
+                                                                    <div class="text-center">
 
-                                                                    {{-- Botón de visualizar --}}
-                                                                    <button class="btn btn-primary btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#showUserAlertaModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Ver alertas">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-eye"
-                                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
+                                                                        {{-- Botón de visualizar --}}
+                                                                        <button class="btn btn-primary btn-sm"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#showUserAlertaModal{{ $item->id_alerta }}"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top" title="Ver alertas">
+                                                                            <div class="text-center">
+                                                                                <i class="lni lni-eye"
+                                                                                    style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
+                                                                            </div>
+                                                                        </button>
 
-                                                                    <!-- Botón de editar con modal -->
-                                                                    <button class="btn btn-warning btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#editarAlerta"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Editar Alerta">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-pencil-alt"
+                                                                        <!-- Botón de editar con modal -->
+                                                                        <button class="btn btn-warning btn-sm"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#editarAlerta{{ $item->id_alerta }}"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top" title="Editar Alerta">
+                                                                            <div class="text-center">
+                                                                                <i class="lni lni-pencil-alt"
+                                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                            </div>
+                                                                        </button>
+
+                                                                        {{-- Botón de eliminar --}}
+                                                                        <button class="btn btn-danger btn-sm"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#eliminarAlerta{{ $item->id_alerta }}">
+                                                                            <i class="lni lni-trash"
                                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-                                                                    {{-- Botón de eliminar --}}
-                                                                    <button class="btn btn-danger btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#eliminarAlerta">
-                                                                        <i class="lni lni-trash"
-                                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                    </button>
-                                                                </div>
-
-                                                                <!-- Modal de visualizacion -->
-                                                                <div class="modal fade" id="showUserAlertaModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="showUserAlertaModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="showUserAlertaModal">
-                                                                                    Visualizar alertas</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                <div class="row mb-3">
-                                                                                    <label for="id_vendedor"
-                                                                                        class="col-sm-4 col-form-label">Titulo:
-                                                                                        <span>Acá</span></label>
-
-                                                                                </div>
-
-                                                                                <div class="row mb-3">
-                                                                                    <label for="id_vendedor"
-                                                                                        class="col-sm-4 col-form-label">Descripción:
-                                                                                        <span>Acá</span></label>
-                                                                                </div>
-
-                                                                                <div class="row mb-3">
-                                                                                    <div class="col-sm">
-                                                                                        <label for="fecha"
-                                                                                            class="form-label">Fecha incio: <span>Acá</span></label>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="row mb-3">
-                                                                                    <div class="col-sm">
-                                                                                        <label for="fecha"
-                                                                                            class="form-label">Fecha final: <span>Acá</span></label>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Regresar</button>
-
-                                                                            </div>
-
-                                                                        </div>
+                                                                        </button>
                                                                     </div>
-                                                                </div>
 
-                                                                <!-- Modal de edición -->
-                                                                <div class="modal fade" id="editarAlerta" tabindex="-1"
-                                                                    aria-labelledby="editarAlertaLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="editarAlertaLabel">
-                                                                                    Editar Alerta</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
+                                                                    <!-- Modal de visualizacion -->
+                                                                    <div class="modal fade"
+                                                                        id="showUserAlertaModal{{ $item->id_alerta }}"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="showUserAlertaModalLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="showUserAlertaModal">
+                                                                                        Visualizar alertas</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"
+                                                                                        data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Cerrar"></button>
+                                                                                </div>
 
-                                                                            <div class="modal-body">
-                                                                                <form
-                                                                                    action="{{ route('alertas.update', 1) }}"
-                                                                                    method="POST">
-                                                                                    @csrf
-                                                                                    @method('PUT')
-
-                                                                                    <div class="mb-3">
-                                                                                        <label for="titulo"
-                                                                                            class="col-sm-4 col-form-label">Titulo:</label>
-
-                                                                                        <input type="text"
-                                                                                            name="titulo"
-                                                                                            class="form-control"
-                                                                                            id="titulo"
-                                                                                            placeholder="Titulo">
-
-                                                                                    </div>
-
-                                                                                    <div class="mb-3">
-                                                                                        <label for="descripción"
-                                                                                            class="col-sm-4 col-form-label">Descripción:</label>
-
-                                                                                        <input type="text"
-                                                                                            name="descripcion"
-                                                                                            class="form-control"
-                                                                                            id="descripción"
-                                                                                            placeholder="Escribe una pequeña descripción">
+                                                                                <div class="modal-body">
+                                                                                    <div class="row mb-3">
+                                                                                        <label for="id_vendedor"
+                                                                                            class="col-sm-4 col-form-label">Titulo:
+                                                                                            <span>{{ $item->titulo }}</span></label>
 
                                                                                     </div>
 
                                                                                     <div class="row mb-3">
-                                                                                        <label for="tipo_destinatario"
-                                                                                            class="col-sm-4 col-form-label">Tipo de destinatario:
-                                                                                            </label>
-                                                                                        <div class="col-sm-8">
-            
-                                                                                            <select class="form-select" id="tipo_destinatario"
-                                                                                                name="tipo_destinatario">
-                                                                                                <option value="1">Compradores</option>
-                                                                                                <option value="2">Vendedores
-                                                                                                </option>
-                                                                                                <option value="3">Todos</option>
-                                                                                            </select>
+                                                                                        <label for="id_vendedor"
+                                                                                            class="col-sm-4 col-form-label">Descripción:
+                                                                                            <span>{{ $item->descripcion }}</span></label>
+                                                                                    </div>
+
+                                                                                    <div class="row mb-3">
+                                                                                        <div class="col-sm">
+                                                                                            <label for="fecha"
+                                                                                                class="form-label">Fecha
+                                                                                                incio:
+                                                                                                <span>{{ $item->fecha_inicio }}</span></label>
                                                                                         </div>
                                                                                     </div>
 
-                                                                                    <div class="mb-3 row">
-                                                                                        <div class="col">
-                                                                                            <label>Fecha incio:</label>
-                                                                                            <input type="date"
-                                                                                                class="form-control"
-                                                                                                name="fecha_inicio">
+                                                                                    <div class="row mb-3">
+                                                                                        <div class="col-sm">
+                                                                                            <label for="fecha"
+                                                                                                class="form-label">Fecha
+                                                                                                final:
+                                                                                                <span>{{ $item->fecha_final }}</span></label>
                                                                                         </div>
-
-                                                                                        <div class="col">
-                                                                                            <label>Fecha final:</label>
-                                                                                            <input type="date"
-                                                                                                class="form-control"
-                                                                                                name="fecha_final">
-                                                                                        </div>
-
                                                                                     </div>
 
-                                                                                    <div class="modal-footer">
-                                                                                        <button type="button"
-                                                                                            class="btn btn-secondary"
-                                                                                            data-bs-dismiss="modal">Cerrar</button>
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-info text-white"
-                                                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                            <i class="bx bx-save"
-                                                                                                style="color: #F2F2F2;"></i>
-                                                                                            Guardar
-                                                                                        </button>
-                                                                                    </div>
+                                                                                </div>
 
-                                                                                </form>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                {{-- Modal de eliminar --}}
-                                                                <div class="modal fade" id="eliminarAlerta"
-                                                                    tabindex="-1" aria-labelledby="eliminarAlertaLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="eliminarAlertaLabel">
-                                                                                    Confirmar eliminación</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                ¿Estás seguro de que deseas eliminar esta
-                                                                                alerta?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                                                <form action="{{ route('alertas.destroy', 1) }}"
-                                                                                    method="POST">
-                                                                                    @csrf
-                                                                                    @method('DELETE')
+                                                                                <div class="modal-footer">
                                                                                     <button type="button"
-                                                                                        class="btn btn-danger"
-                                                                                        data-bs-dismiss="modal"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
-                                                                                </form>
+                                                                                        class="btn btn-secondary"
+                                                                                        data-bs-dismiss="modal">Regresar</button>
+                                                                                </div>
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+
+                                                                    <!-- Modal de edición -->
+                                                                    <div class="modal fade"
+                                                                        id="editarAlerta{{ $item->id_alerta }}"
+                                                                        tabindex="-1" aria-labelledby="editarAlertaLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="editarAlertaLabel">
+                                                                                        Editar Alerta</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"
+                                                                                        data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Cerrar"></button>
+                                                                                </div>
+
+                                                                                <div class="modal-body">
+                                                                                    <form
+                                                                                        action="{{ route('alertas.update', $item->id_alerta) }}"
+                                                                                        method="POST">
+                                                                                        @csrf
+                                                                                        @method('PUT')
+
+                                                                                        <div class="mb-3">
+                                                                                            <label for="titulo"
+                                                                                                class="col-sm-4 col-form-label">Titulo:</label>
+
+                                                                                            <input type="text"
+                                                                                                name="titulo"
+                                                                                                class="form-control"
+                                                                                                id="titulo"
+                                                                                                placeholder="Titulo"
+                                                                                                value="{{ $item->titulo }}">
+
+                                                                                        </div>
+
+                                                                                        <div class="mb-3">
+                                                                                            <label for="descripción"
+                                                                                                class="col-sm-4 col-form-label">Descripción:</label>
+
+                                                                                            <input type="text"
+                                                                                                name="descripcion"
+                                                                                                class="form-control"
+                                                                                                id="descripción"
+                                                                                                placeholder="Escribe una pequeña descripción"
+                                                                                                value="{{ $item->descripcion }}">
+
+                                                                                        </div>
+
+                                                                                        <div class="row mb-3">
+                                                                                            <label for="tipo_destinatario"
+                                                                                                class="col-sm-4 col-form-label">Tipo
+                                                                                                de destinatario:
+                                                                                            </label>
+                                                                                            <div class="col-sm-8">
+
+                                                                                                <select class="form-select"
+                                                                                                    id="tipo_destinatario"
+                                                                                                    name="tipo_destinatario">
+                                                                                                    <option value="Todos"
+                                                                                                        {{ $item->tipo_destinatario == 'Todos' ? 'selected' : '' }}>
+                                                                                                        Todos</option>
+                                                                                                    <option
+                                                                                                        value="Compradores"
+                                                                                                        {{ $item->tipo_destinatario == 'Compradores' ? 'selected' : '' }}>
+                                                                                                        Compradores</option>
+                                                                                                    <option
+                                                                                                        value="Vendedores"
+                                                                                                        {{ $item->tipo_destinatario == 'Vendedores' ? 'selected' : '' }}>
+                                                                                                        Vendedores
+                                                                                                    </option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="mb-3 row">
+                                                                                            <div class="col">
+                                                                                                <label>Fecha incio:</label>
+                                                                                                <input type="date"
+                                                                                                    class="form-control"
+                                                                                                    name="fecha_inicio"
+                                                                                                    value="{{ $item->fecha_inicio }}">
+                                                                                            </div>
+
+                                                                                            <div class="col">
+                                                                                                <label>Fecha final:</label>
+                                                                                                <input type="date"
+                                                                                                    class="form-control"
+                                                                                                    name="fecha_final"
+                                                                                                    value="{{ $item->fecha_final }}">
+                                                                                            </div>
+
+                                                                                        </div>
+
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button"
+                                                                                                class="btn btn-secondary"
+                                                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                                                            <button type="submit"
+                                                                                                class="btn btn-info text-white"
+                                                                                                style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                                <i class="bx bx-save"
+                                                                                                    style="color: #F2F2F2;"></i>
+                                                                                                Guardar
+                                                                                            </button>
+                                                                                        </div>
+
+                                                                                    </form>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    {{-- Modal de eliminar --}}
+                                                                    <div class="modal fade"
+                                                                        id="eliminarAlerta{{ $item->id_alerta }}"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="eliminarAlertaLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="eliminarAlertaLabel">
+                                                                                        Confirmar eliminación</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"></button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    ¿Estás seguro de que deseas eliminar
+                                                                                    esta
+                                                                                    alerta?
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-bs-dismiss="modal">Cancelar</button>
+                                                                                    <form
+                                                                                        action="{{ route('alertas.destroy', $item->id_alerta) }}"
+                                                                                        method="POST">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-danger">Eliminar</button>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
