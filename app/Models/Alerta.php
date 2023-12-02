@@ -22,10 +22,4 @@ class Alerta extends Model
         return $this->belongsTo(Estado::class, 'id_estado');
     }
 
-    protected $table ='alertas';
-    protected $primaryKey = "id_alerta";
-    
-    public $timestamps=false;
-
-
 }
