@@ -135,13 +135,18 @@
                                                                                 del
                                                                                 Usuario:</label>
                                                                             <div class="col-sm-8">
-                                                                                {{-- @foreach ($roles as $rol) --}}
-                                                                                <select class="form-select" id="id_rol"
-                                                                                    name="id_rol">
-                                                                                    <option value="">
+                                                                                <select class="form-select" id="id_estado"
+                                                                                    name="id_estado">
+                                                                                    <option value="1">
+                                                                                        Activo
+                                                                                    </option>
+                                                                                    <option value="2">
+                                                                                        Inactivo
+                                                                                    </option>
+                                                                                    <option value="3">
+                                                                                        Bloqueado
                                                                                     </option>
                                                                                 </select>
-                                                                                {{-- @endforeach --}}
                                                                             </div>
                                                                         </div>
 
@@ -232,7 +237,7 @@
                                                                         <!-- Botón de eliminar -->
                                                                         <button class="btn btn-danger btn-sm btn-block"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#eliminarUsuarioModal">
+                                                                            data-bs-target="#eliminarUsuarioModal{{$item->id_usuario_administrativo}}">
                                                                             <i class="lni lni-trash"
                                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                                         </button>
@@ -242,7 +247,7 @@
                                                                         <button class="btn btn-sm btn-block"
                                                                             style="background-color: #05f29d"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#bloquearUsuarioModal"
+                                                                            data-bs-target="#bloquearUsuarioModal{{$item->id_usuario_administrativo}}"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="Bloquear Usuario Administrativo">
@@ -422,11 +427,11 @@
                                                                                             <label for="editRolUsuario"
                                                                                                 class="form-label">Rol
                                                                                             </label>
-                                                                                            <select class="form-select"
+                                                                                            <select name="id_rol" class="form-select"
                                                                                                 id="editRolUsuario">
                                                                                                 @foreach ($roles as $rol)
                                                                                                     <option
-                                                                                                        value="{{ $rol->nombre }}"
+                                                                                                        value="{{ $rol->id_rol }}"
                                                                                                         {{ $rol->id_rol == $item->id_rol ? 'selected' : '' }}>
                                                                                                         {{ $rol->nombre }}
                                                                                                     </option>
@@ -453,7 +458,7 @@
                                                                     </div>
 
                                                                     {{-- Modal de eliminar --}}
-                                                                    <div class="modal fade" id="eliminarUsuarioModal"
+                                                                    <div class="modal fade" id="eliminarUsuarioModal{{ $item->id_usuario_administrativo }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="eliminarUsuarioModalLabel"
                                                                         aria-hidden="true">
@@ -484,7 +489,7 @@
                                                                                         method="POST">
                                                                                         @method('DELETE')
                                                                                         @csrf
-                                                                                        <button type="sumit"
+                                                                                        <button type="submit"
                                                                                             class="btn btn-danger">Eliminar
                                                                                         </button>
                                                                                     </form>
@@ -494,7 +499,7 @@
                                                                     </div>
 
                                                                     <!-- Modal de bloquear  -->
-                                                                    <div class="modal fade" id="bloquearUsuarioModal"
+                                                                    <div class="modal fade" id="bloquearUsuarioModal{{ $item->id_usuario_administrativo }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="bloquearUsuarioModalLabel"
                                                                         aria-hidden="true">
@@ -522,7 +527,7 @@
                                                                                         data-bs-dismiss="modal">Cancelar</button>
 
                                                                                     <form
-                                                                                        action="{{ route('bloquear_usuario') }}"
+                                                                                        action="{{ route('bloquear_usuario', $item->id_usuario_administrativo) }}"
                                                                                         method="POST">
                                                                                         @csrf
                                                                                         @method('POST')
@@ -531,7 +536,7 @@
                                                                                             value="{{ $item->id_usuario_administrativo }}">
                                                                                         <input type="hidden"
                                                                                             name="id_estado"
-                                                                                            value="24">
+                                                                                            value="3">
                                                                                         <button type="submit"
                                                                                             class="btn btn-danger">Bloquear</button>
 
