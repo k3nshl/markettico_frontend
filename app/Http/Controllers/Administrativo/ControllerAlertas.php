@@ -37,35 +37,49 @@ class ControllerAlertas extends Controller
         if ($request->tipo_destinatario == 1) {
 
             $tipo_destinatario = "compradores";
-        } 
+        }
 
         if ($request->tipo_destinatario == 2) {
 
             $tipo_destinatario = "vendedores";
-        } 
+        }
 
         if ($request->tipo_destinatario == 3) {
 
             $tipo_destinatario = "todos";
-        } 
-        
+        }
+
 
         $item = new Alerta();
 
-        $item->id_usuario_remitente = 8 ;
+        $request->validate([
+            'titulo' => 'required|string|max:50'
+        ]);
+        // Validacion de que no se repita el nombre del estado
 
-        $item->titulo = $request->titulo;
-        $item->descripcion = $request->descripcion;
+        $validacion = Alerta::where('titulo', $request->titulo)->first();
 
-        $item->tipo_destinatario = $tipo_destinatario;
+        if ($validacion) {
+            return back()->with('error', 'Ya existe un registro con este nombre');
+        } else {
 
-        $item->fecha_inicio = $request->fecha_inicio;
-        $item->fecha_final = $request->fecha_final;
 
-        $item->id_estado = 2;
 
-        $item->save();
-        return redirect()->back();
+            $item->id_usuario_remitente = 8;
+
+            $item->titulo = $request->titulo;
+            $item->descripcion = $request->descripcion;
+
+            $item->tipo_destinatario = $tipo_destinatario;
+
+            $item->fecha_inicio = $request->fecha_inicio;
+            $item->fecha_final = $request->fecha_final;
+
+            $item->id_estado = 2;
+
+            $item->save();
+            return back()->with('success', 'La alerta se ha registrado correctamente');
+        }
     }
 
     /**
@@ -91,44 +105,57 @@ class ControllerAlertas extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $id = 4;
+        $id = 1;
 
         $tipo_destinatario = "";
 
         if ($request->tipo_destinatario == 1) {
 
             $tipo_destinatario = "compradores";
-        } 
+        }
 
         if ($request->tipo_destinatario == 2) {
 
             $tipo_destinatario = "vendedores";
-        } 
+        }
 
         if ($request->tipo_destinatario == 3) {
 
             $tipo_destinatario = "todos";
-        } 
-        
+        }
 
-         $item = Alerta::find($id);
 
-        $item->id_usuario_remitente = 8 ;
+        $item = Alerta::find($id);
 
-        $item->titulo = $request->titulo;
-        $item->descripcion = $request->descripcion;
+        $request->validate([
+            'titulo' => 'required|string|max:50'
+        ]);
+        // Validacion de que no se repita el nombre del estado
 
-        $item->tipo_destinatario = $tipo_destinatario;
+        $validacion = Alerta::where('titulo', $request->titulo)->first();
 
-        $item->fecha_inicio = $request->fecha_inicio;
-        $item->fecha_final = $request->fecha_final;
+        if ($validacion) {
+            return back()->with('error', 'Ya existe un registro con este nombre');
+        } else {
 
-        $item->id_estado = 2;
 
-        $item->update();
-        return redirect()->back();
 
-       
+
+            //$item->id_usuario_remitente = 8;
+
+            $item->titulo = $request->titulo;
+            $item->descripcion = $request->descripcion;
+
+            $item->tipo_destinatario = $tipo_destinatario;
+
+            $item->fecha_inicio = $request->fecha_inicio;
+            $item->fecha_final = $request->fecha_final;
+
+            $item->id_estado = 2;
+
+            $item->update();
+            return back()->with('success', 'La alerta se ha actualizado correctamente');
+        }
     }
 
     /**
@@ -136,11 +163,9 @@ class ControllerAlertas extends Controller
      */
     public function destroy(string $id)
     {
-        
+
         $item = Alerta::find($id);
         $item->delete($id);
         return redirect()->back();
-
-
     }
 }

@@ -555,7 +555,7 @@
                                                                             <button type="button"
                                                                                 class="btn btn-secondary"
                                                                                 data-bs-dismiss="modal">Cerrar</button>
-                                                                            <button type="submit"
+                                                                            <button type="submit" 
                                                                                 class="btn btn-info text-white"
                                                                                 style="background-color: #04D9D9; border-color: #04D9D9;">
                                                                                 <i class="bx bx-save"
