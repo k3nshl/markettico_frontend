@@ -3,7 +3,6 @@
 @section('gestion_nombre', 'Estados/Roles')
 
 @section('contenido')
-    {{-- {{$roles}} --}}
 
    
   @if(session('error'))
@@ -26,8 +25,13 @@
 
                         <ul class="nav nav-pills mb-3" role="tablist">
                             <li class="nav-item" role="presentation">
+
+                                <a class="nav-link active" data-bs-toggle="pill" href="#tab-estados" role="tab"
+                                    aria-selected="true">
+
                                 <a class="nav-link active" data-bs-toggle="pill" href="#success-pills-profile"
                                     role="tab" aria-selected="true">
+
                                     <div class="d-flex align-items-center">
                                         <div class="tab-icon"><i class="bx bx-home font-18 me-1"></i>
                                         </div>
@@ -132,6 +136,14 @@
                                             </div>
                                             <hr />
                                             {{-- Listado de estados --}}
+                                            @if (session('error'))
+                                                <div
+                                                    class="alert alert-danger border-0 bg-danger alert-dismissible fade show">
+                                                    <div class="text-white">{{ session('error') }}</div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                            @endif
                                             <div class="table-responsive">
                                                 <table id="tablaEstados" class="table table-bordered">
                                                     <thead class="theadEstados">
@@ -172,7 +184,7 @@
                                                                         {{-- Botón de eliminar --}}
                                                                         <button class="btn btn-danger btn-sm"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#eliminarEstadoModal">
+                                                                            data-bs-target="#eliminarEstadoModal{{ $item->id_estado }}">
                                                                             <i class="lni lni-trash"
                                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                                         </button>
@@ -238,7 +250,8 @@
                                                                     </div>
 
                                                                     <!-- Modal de eliminar -->
-                                                                    <div class="modal fade" id="eliminarEstadoModal"
+                                                                    <div class="modal fade"
+                                                                        id="eliminarEstadoModal{{ $item->id_estado }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="eliminarEstadoModalLabel"
                                                                         aria-hidden="true">
@@ -346,6 +359,24 @@
 
                                                                             </div>
                                                                         </div>
+
+
+                                                                        <div class="row mb-3">
+                                                                            <label for="id_estado"
+                                                                                class="col-sm-4 col-form-label">Estado:
+                                                                            </label>
+                                                                            <div class="col-sm-8">
+
+                                                                                <select class="form-select" id="id_estado"
+                                                                                    name="id_estado">
+                                                                                    <option value="1">Activo</option>
+                                                                                    <option value="0">Inactivo
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+
+
 
                                                                         <div class="modal-footer">
                                                                             <button type="button"
@@ -462,6 +493,27 @@
                                                                                                         id="nombre"
                                                                                                         name="nombre"
                                                                                                         placeholder="Ingrese el nombre del Rol">
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div class="row mb-3">
+                                                                                                <label for="id_estado"
+                                                                                                    class="col-sm-4 col-form-label">Estado:
+                                                                                                </label>
+                                                                                                <div class="col-sm-8">
+
+                                                                                                    <select
+                                                                                                        class="form-select"
+                                                                                                        id="id_estado"
+                                                                                                        name="id_estado">
+                                                                                                        <option
+                                                                                                            value="1">
+                                                                                                            Activo</option>
+                                                                                                        <option
+                                                                                                            value="0">
+                                                                                                            Inactivo
+                                                                                                        </option>
+                                                                                                    </select>
                                                                                                 </div>
                                                                                             </div>
 

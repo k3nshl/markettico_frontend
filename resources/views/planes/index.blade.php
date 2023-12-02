@@ -390,10 +390,8 @@
                                                             <option value="opcion2">Plan empresarial</option>
                                                             <option value="opcion3">Plan premium</option>
                                                             <option value="opcion3">Plan deluxe</option>
-                                                            <option value="Plan básico">Plan básico</option>
-                                                            <option value="Plan empresarial">Plan empresarial</option>
-                                                            <option value="Plan premium">Plan premium</option>
-                                                            <option value="Plan deluxe">Plan deluxe</option>
+
+
                                                         </select>
                                                     </div>
                                                 </div>

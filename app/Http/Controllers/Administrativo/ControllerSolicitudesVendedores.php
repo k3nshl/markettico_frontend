@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
-use Spatie\Ignition\Contracts\Solution;
 use App\Models\Vendedor;
-use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\Redirect;
+
 
 class ControllerSolicitudesVendedores extends Controller
 {
