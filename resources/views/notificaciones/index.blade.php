@@ -68,16 +68,28 @@
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <form action="{{ route('anuncios.store') }}"
-                                                                        method="POST">
+                                                                        method="POST" enctype="multipart/form-data">
                                                                         @csrf
-                                                                        <div class="mb-3">
-                                                                            <label for="titulo"
-                                                                                class="col-sm-4 col-form-label">Titulo:</label>
+                                                                        <div class="row mb-3">
+                                                                            <div class="col-md-9">
+                                                                                <label for="titulo">Titulo:</label>
+                                                                                <input type="text" name="titulo"
+                                                                                    class="form-control" id="titulo"
+                                                                                    placeholder="Titulo">
+                                                                            </div>
 
-                                                                            <input type="titulo" name="titulo"
-                                                                                class="form-control" id="titulo"
-                                                                                placeholder="Titulo">
-
+                                                                            <div class="col-md-3">
+                                                                                <label for="etiqueta">
+                                                                                    Etiqueta:
+                                                                                </label>
+                                                                                <select class="form-select w-auto"
+                                                                                    id="etiqueta" name="etiqueta">
+                                                                                    <option value="Nuevo">Nuevo</option>
+                                                                                    <option value="Mejora">Mejora
+                                                                                    </option>
+                                                                                    <option value="Beta">Beta</option>
+                                                                                </select>
+                                                                            </div>
                                                                         </div>
 
                                                                         <div class="mb-3">
@@ -86,29 +98,13 @@
                                                                                 portada:</label>
                                                                             <input type="file"
                                                                                 class="form-control input-imagen"
-                                                                                id="portada" name="img_portada">
+                                                                                name="img_portada" id="portada">
                                                                             <div class="text-center p-3">
                                                                                 <img src="#"
                                                                                     id="imagen-preview-portada"
                                                                                     alt="Vista previa de la imagen"
                                                                                     class="rounded-3 imagen-preview"
                                                                                     style="width:300px; height: 200px; object-fit: cover; display: none;">
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="row mb-3">
-                                                                            <label for="etiqueta"
-                                                                                class="col-sm-4 col-form-label">Etiqueta:
-                                                                            </label>
-                                                                            <div class="col-sm-8">
-
-                                                                                <select class="form-select" id="etiqueta"
-                                                                                    name="etiqueta">
-                                                                                    <option value="Nuevo">Nuevo</option>
-                                                                                    <option value="Mejora">Mejora
-                                                                                    </option>
-                                                                                    <option value="Beta">Beta</option>
-                                                                                </select>
                                                                             </div>
                                                                         </div>
 
@@ -227,7 +223,7 @@
                                                                     </div>
 
                                                                     <!-- Modal de visualizacion -->
-                                                                    <div class="modal fade"
+                                                                    <div class="modal fade" style="overflow-y: scroll;"
                                                                         id="showUserAnuncioModal{{ $item->id_anuncio }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="showUserAnuncioModalLabel"
@@ -248,38 +244,37 @@
                                                                                 </div>
 
                                                                                 <div class="modal-body">
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="id_vendedor"
-                                                                                            class="col-sm-4 col-form-label">Titulo:
-                                                                                            <span>{{ $item->id_anuncio }}</span></label>
+                                                                                    <div
+                                                                                        class="mb-3 d-flex align-items-center justify-content-between">
+                                                                                        <div
+                                                                                            style="white-space: pre-line;">
+                                                                                            <label>Titulo:</label>
+                                                                                            <span>{{ $item->titulo }}</span>
+                                                                                        </div>
 
+                                                                                        <span
+                                                                                            class="badge bg-info ms-3">{{ $item->etiqueta }}</span>
                                                                                     </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="id_vendedor"
-                                                                                            class="col-sm-4 col-form-label">Imagen
-                                                                                            de portada:</label>
+
+                                                                                    <div class="mb-3">
+                                                                                        <label>Portada:</label>
                                                                                         <div class="text-center p-3">
-                                                                                            <img src="#"
-                                                                                                id="imagen-preview-portada"
+                                                                                            <img src="/img/anuncios/{{ $item->img_portada }}"
                                                                                                 alt="Vista previa de la imagen"
-                                                                                                class="rounded-3 imagen-preview"
-                                                                                                style="width:300px; height: 200px; object-fit: cover; display: none;">
+                                                                                                class="rounded-3"
+                                                                                                style="width:300px; height: 200px; object-fit: cover;">
                                                                                         </div>
                                                                                     </div>
 
-
-
-                                                                                    <div class="row mb-3">
-                                                                                        <div class="col-sm">
+                                                                                    <div
+                                                                                        class="mb-3 d-flex justify-content-between">
+                                                                                        <div>
                                                                                             <label for="fecha"
                                                                                                 class="form-label">Fecha
                                                                                                 inicio:
                                                                                                 <span>{{ $item->fecha_inicio }}</span></label>
                                                                                         </div>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <div class="col-sm">
+                                                                                        <div>
                                                                                             <label for="fecha"
                                                                                                 class="form-label">Fecha
                                                                                                 final:
@@ -287,10 +282,10 @@
                                                                                         </div>
                                                                                     </div>
 
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="id_vendedor"
-                                                                                            class="col-sm-4 col-form-label">Contenido:
-                                                                                            <span>{{ $item->contenido }}</span></label>
+                                                                                    <div class="mb-3">
+                                                                                        <label>Contenido:</label>
+                                                                                        <span
+                                                                                            style="white-space: pre-line;">{!! $item->contenido !!}</span>
                                                                                     </div>
                                                                                 </div>
 
@@ -329,48 +324,30 @@
                                                                                 <div class="modal-body">
                                                                                     <form
                                                                                         action="{{ route('anuncios.update', $item->id_anuncio) }}"
-                                                                                        method="POST">
+                                                                                        method="POST" enctype="multipart/form-data">
                                                                                         @csrf
                                                                                         @method('PUT')
 
-                                                                                        <div class="mb-3">
-                                                                                            <label for="titulo"
-                                                                                                class="col-sm-4 col-form-label">Titulo:</label>
-
-                                                                                            <input type="titulo"
-                                                                                                name="titulo"
-                                                                                                class="form-control"
-                                                                                                id="titulo"
-                                                                                                placeholder="Titulo"
-                                                                                                value="{{ $item->titulo }}">
-
-                                                                                        </div>
-
-                                                                                        <div class="mb-3">
-                                                                                            <label for="otroInput"
-                                                                                                class="col-sm-4 col-form-label">Imagen
-                                                                                                de
-                                                                                                portada:</label>
-                                                                                            <input type="file"
-                                                                                                class="form-control input-imagen"
-                                                                                                id="portada"
-                                                                                                name="img_portada">
-                                                                                            <div class="text-center p-3">
-                                                                                                <img src="#"
-                                                                                                    id="imagen-preview-portada"
-                                                                                                    alt="Vista previa de la imagen"
-                                                                                                    class="rounded-3 imagen-preview"
-                                                                                                    style="width:300px; height: 200px; object-fit: cover; display: none;">
-                                                                                            </div>
-                                                                                        </div>
+                                                                                        <input type="hidden" name="id_estado" value="{{ $item->id_estado }}">
 
                                                                                         <div class="row mb-3">
-                                                                                            <label for="etiqueta"
-                                                                                                class="col-sm-4 col-form-label">Etiqueta:
-                                                                                            </label>
-                                                                                            <div class="col-sm-8">
+                                                                                            <div class="col-md-9">
+                                                                                                <label
+                                                                                                    for="titulo">Titulo:</label>
+                                                                                                <input type="text"
+                                                                                                    name="titulo"
+                                                                                                    class="form-control"
+                                                                                                    id="titulo"
+                                                                                                    placeholder="Titulo"
+                                                                                                    value="{{ $item->titulo }}">
+                                                                                            </div>
 
-                                                                                                <select class="form-select"
+                                                                                            <div class="col-md-3">
+                                                                                                <label for="etiqueta">
+                                                                                                    Etiqueta:
+                                                                                                </label>
+                                                                                                <select
+                                                                                                    class="form-select w-auto"
                                                                                                     id="etiqueta"
                                                                                                     name="etiqueta">
                                                                                                     <option value="Nuevo"
@@ -387,8 +364,24 @@
                                                                                             </div>
                                                                                         </div>
 
+                                                                                        <div class="mb-3">
+                                                                                            <label>Imagen de
+                                                                                                portada:</label>
+                                                                                            <input type="file"
+                                                                                                class="form-control input-imagen"
+                                                                                                id="portada-edit"
+                                                                                                name="img_portada">
+                                                                                            <div class="text-center p-3">
+                                                                                                <img src="/img/anuncios/{{ $item->img_portada }}"
+                                                                                                    id="imagen-preview-portada-edit"
+                                                                                                    alt="Vista previa de la imagen"
+                                                                                                    class="rounded-3 imagen-preview"
+                                                                                                    style="width:300px; height: 200px; object-fit: cover;">
+                                                                                            </div>
+                                                                                        </div>
+
                                                                                         <div class="mb-3 row">
-                                                                                            <div class="col">
+                                                                                            <div class="col-md">
                                                                                                 <label>Fecha incio:</label>
                                                                                                 <input type="date"
                                                                                                     class="form-control"
@@ -396,7 +389,7 @@
                                                                                                     value="{{ $item->fecha_inicio }}">
                                                                                             </div>
 
-                                                                                            <div class="col">
+                                                                                            <div class="col-md">
                                                                                                 <label>Fecha final:</label>
                                                                                                 <input type="date"
                                                                                                     class="form-control"

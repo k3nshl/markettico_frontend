@@ -490,6 +490,10 @@
                 readURL(this, "#imagen-preview-portada");
             });
 
+            $("#portada-edit").change(function() {
+                readURL(this, "#imagen-preview-portada-edit");
+            });
+
             $("#otroInput").change(function() {
                 readURL(this, "#imagen-preview-otroInput");
             });
