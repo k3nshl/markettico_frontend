@@ -246,7 +246,7 @@
                                                                                 <div class="modal-body">
                                                                                     <div
                                                                                         class="mb-3 d-flex align-items-center justify-content-between">
-                                                                                        <div
+                                                                                        <div class="me-2"
                                                                                             style="white-space: pre-line;">
                                                                                             <label>Titulo:</label>
                                                                                             <span>{{ $item->titulo }}</span>
@@ -266,15 +266,14 @@
                                                                                         </div>
                                                                                     </div>
 
-                                                                                    <div
-                                                                                        class="mb-3 d-flex justify-content-between">
-                                                                                        <div>
+                                                                                    <div class="mb-3 row">
+                                                                                        <div class="col-md">
                                                                                             <label for="fecha"
                                                                                                 class="form-label">Fecha
                                                                                                 inicio:
                                                                                                 <span>{{ $item->fecha_inicio }}</span></label>
                                                                                         </div>
-                                                                                        <div>
+                                                                                        <div class="col-md">
                                                                                             <label for="fecha"
                                                                                                 class="form-label">Fecha
                                                                                                 final:
@@ -324,11 +323,14 @@
                                                                                 <div class="modal-body">
                                                                                     <form
                                                                                         action="{{ route('anuncios.update', $item->id_anuncio) }}"
-                                                                                        method="POST" enctype="multipart/form-data">
+                                                                                        method="POST"
+                                                                                        enctype="multipart/form-data">
                                                                                         @csrf
                                                                                         @method('PUT')
 
-                                                                                        <input type="hidden" name="id_estado" value="{{ $item->id_estado }}">
+                                                                                        <input type="hidden"
+                                                                                            name="id_estado"
+                                                                                            value="{{ $item->id_estado }}">
 
                                                                                         <div class="row mb-3">
                                                                                             <div class="col-md-9">
@@ -520,33 +522,19 @@
                                                                     <form action="{{ route('alertas.store') }}"
                                                                         method="POST">
                                                                         @csrf
-                                                                        <div class="mb-3">
-                                                                            <label for="titulo"
-                                                                                class="col-sm-4 col-form-label">Titulo:</label>
-
-                                                                            <input type="text" name="titulo"
-                                                                                class="form-control" id="titulo"
-                                                                                placeholder="Titulo">
-
-                                                                        </div>
-
-                                                                        <div class="mb-3">
-                                                                            <label for="descripcion"
-                                                                                class="col-sm-4 col-form-label">Descripción:</label>
-
-                                                                            <input type="text" name="descripcion"
-                                                                                class="form-control" id="descripcion"
-                                                                                placeholder="Escribe una pequeña descripcion">
-
-                                                                        </div>
-
                                                                         <div class="row mb-3">
-                                                                            <label for="tipo_destinatario"
-                                                                                class="col-sm-4 col-form-label">Tipo de
-                                                                                destinatario:
-                                                                            </label>
-                                                                            <div class="col-sm-8">
+                                                                            <div class="col-md-8">
+                                                                                <label for="titulo">Título:</label>
 
+                                                                                <input type="text" name="titulo"
+                                                                                    class="form-control" id="titulo"
+                                                                                    placeholder="Titulo">
+                                                                            </div>
+
+                                                                            <div class="col-md-4">
+                                                                                <label
+                                                                                    for="tipo_destinatario">Destinatarios:
+                                                                                </label>
                                                                                 <select class="form-select"
                                                                                     id="tipo_destinatario"
                                                                                     name="tipo_destinatario">
@@ -559,14 +547,21 @@
                                                                             </div>
                                                                         </div>
 
+                                                                        <div class="mb-3">
+                                                                            <label for="descripcion"
+                                                                                class="col-sm-4 col-form-label">Descripción:</label>
+                                                                            <input type="text" name="descripcion"
+                                                                                class="form-control" id="descripcion"
+                                                                                placeholder="Escribe una pequeña descripcion">
+                                                                        </div>
+
                                                                         <div class="mb-3 row">
-                                                                            <div class="col">
+                                                                            <div class="col-md">
                                                                                 <label>Fecha incio:</label>
                                                                                 <input type="date" class="form-control"
                                                                                     name="fecha_inicio">
                                                                             </div>
-
-                                                                            <div class="col">
+                                                                            <div class="col-md">
                                                                                 <label>Fecha final:</label>
                                                                                 <input type="date" class="form-control"
                                                                                     name="fecha_final">
@@ -688,17 +683,22 @@
                                                                                 </div>
 
                                                                                 <div class="modal-body">
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="id_vendedor"
-                                                                                            class="col-sm-4 col-form-label">Titulo:
-                                                                                            <span>{{ $item->titulo }}</span></label>
 
+                                                                                    <div class="mb-3">
+                                                                                        <label>Titulo:</label>
+                                                                                        <span
+                                                                                            style="white-space: pre-line;">{{ $item->titulo }}</span>
                                                                                     </div>
 
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="id_vendedor"
-                                                                                            class="col-sm-4 col-form-label">Descripción:
-                                                                                            <span>{{ $item->descripcion }}</span></label>
+                                                                                    <div class="mb-3">
+                                                                                        <label>Descripción:</label>
+                                                                                        <span
+                                                                                            style="white-space: pre-line;">{{ $item->descripcion }}</span>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3">
+                                                                                        <label>Destinatarios:</label>
+                                                                                        <span>{{ $item->tipo_destinatario }}</span>
                                                                                     </div>
 
                                                                                     <div class="row mb-3">
@@ -708,9 +708,6 @@
                                                                                                 incio:
                                                                                                 <span>{{ $item->fecha_inicio }}</span></label>
                                                                                         </div>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
                                                                                         <div class="col-sm">
                                                                                             <label for="fecha"
                                                                                                 class="form-label">Fecha
@@ -718,7 +715,6 @@
                                                                                                 <span>{{ $item->fecha_final }}</span></label>
                                                                                         </div>
                                                                                     </div>
-
                                                                                 </div>
 
                                                                                 <div class="modal-footer">
@@ -758,39 +754,27 @@
                                                                                         @csrf
                                                                                         @method('PUT')
 
-                                                                                        <div class="mb-3">
-                                                                                            <label for="titulo"
-                                                                                                class="col-sm-4 col-form-label">Titulo:</label>
-
-                                                                                            <input type="text"
-                                                                                                name="titulo"
-                                                                                                class="form-control"
-                                                                                                id="titulo"
-                                                                                                placeholder="Titulo"
-                                                                                                value="{{ $item->titulo }}">
-
-                                                                                        </div>
-
-                                                                                        <div class="mb-3">
-                                                                                            <label for="descripción"
-                                                                                                class="col-sm-4 col-form-label">Descripción:</label>
-
-                                                                                            <input type="text"
-                                                                                                name="descripcion"
-                                                                                                class="form-control"
-                                                                                                id="descripción"
-                                                                                                placeholder="Escribe una pequeña descripción"
-                                                                                                value="{{ $item->descripcion }}">
-
-                                                                                        </div>
+                                                                                        <input type="hidden"
+                                                                                            value="{{ $item->id_estado }}"
+                                                                                            name="id_estado">
 
                                                                                         <div class="row mb-3">
-                                                                                            <label for="tipo_destinatario"
-                                                                                                class="col-sm-4 col-form-label">Tipo
-                                                                                                de destinatario:
-                                                                                            </label>
-                                                                                            <div class="col-sm-8">
+                                                                                            <div class="col-md-8">
+                                                                                                <label
+                                                                                                    for="titulo">Titulo:</label>
 
+                                                                                                <input type="text"
+                                                                                                    name="titulo"
+                                                                                                    class="form-control"
+                                                                                                    id="titulo"
+                                                                                                    placeholder="Titulo"
+                                                                                                    value="{{ $item->titulo }}">
+                                                                                            </div>
+
+                                                                                            <div class="col-md-4">
+                                                                                                <label
+                                                                                                    for="tipo_destinatario">Destinatarios:
+                                                                                                </label>
                                                                                                 <select class="form-select"
                                                                                                     id="tipo_destinatario"
                                                                                                     name="tipo_destinatario">
@@ -810,8 +794,19 @@
                                                                                             </div>
                                                                                         </div>
 
+                                                                                        <div class="mb-3">
+                                                                                            <label
+                                                                                                for="descripción">Descripción:</label>
+                                                                                            <input type="text"
+                                                                                                name="descripcion"
+                                                                                                class="form-control"
+                                                                                                id="descripción"
+                                                                                                placeholder="Escribe una pequeña descripción"
+                                                                                                value="{{ $item->descripcion }}">
+                                                                                        </div>
+
                                                                                         <div class="mb-3 row">
-                                                                                            <div class="col">
+                                                                                            <div class="col-md">
                                                                                                 <label>Fecha incio:</label>
                                                                                                 <input type="date"
                                                                                                     class="form-control"
@@ -819,7 +814,7 @@
                                                                                                     value="{{ $item->fecha_inicio }}">
                                                                                             </div>
 
-                                                                                            <div class="col">
+                                                                                            <div class="col-md">
                                                                                                 <label>Fecha final:</label>
                                                                                                 <input type="date"
                                                                                                     class="form-control"

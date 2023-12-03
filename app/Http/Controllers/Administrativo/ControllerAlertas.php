@@ -16,10 +16,6 @@ class ControllerAlertas extends Controller
     public function index()
     {
 
-        
-        $alerta = Alerta::all();
-
-        return view('notificaciones.index', compact('alerta'));
     }
 
     /**
@@ -27,7 +23,7 @@ class ControllerAlertas extends Controller
      */
     public function create()
     {
-        return view('notificaciones.index');
+
     }
 
     /**
@@ -36,10 +32,9 @@ class ControllerAlertas extends Controller
     public function store(Request $request)
     {
 
-
+        // Validar campos
         $validator = Validator::make($request->all(), [
             'titulo' => 'required||unique:alertas',
-            'id_estado' => 'required',
             'descripcion' => 'required',
             'tipo_destinatario' => 'required',
             'fecha_inicio' => 'required',
@@ -49,9 +44,10 @@ class ControllerAlertas extends Controller
         if ($validator->fails()) {
             return redirect()->back();
         }
-        $alerta = new Alerta();
 
-        $alerta->id_usuario_remitente = Auth::auth()->user()->id_usuario;
+        // Creando alerta
+        $alerta = new Alerta();
+        $alerta->id_usuario_remitente = Auth::user()->id_usuario_administrativo;
         $alerta->titulo = $request->titulo;
         $alerta->descripcion = $request->descripcion;
         $alerta->tipo_destinatario = $request->tipo_destinatario;
@@ -59,41 +55,6 @@ class ControllerAlertas extends Controller
         $alerta->fecha_final = $request->fecha_final;
         $alerta->id_estado = 1;
         $alerta->save();
-
-
-        $tipo_destinatario = "";
-
-        if ($request->tipo_destinatario == 1) {
-
-            $tipo_destinatario = "Compradores";
-        } 
-
-        if ($request->tipo_destinatario == 2) {
-
-            $tipo_destinatario = "Vendedores";
-        } 
-
-        if ($request->tipo_destinatario == 3) {
-
-            $tipo_destinatario = "Todos";
-        } 
-        
-
-        $item = new Alerta();
-
-        $item->id_usuario_remitente = 8 ;
-
-        $item->titulo = $request->titulo;
-        $item->descripcion = $request->descripcion;
-
-        $item->tipo_destinatario = $tipo_destinatario;
-
-        $item->fecha_inicio = $request->fecha_inicio;
-        $item->fecha_final = $request->fecha_final;
-
-        $item->id_estado = 2;
-
-        $item->save();
 
         return redirect()->back();
     }
@@ -123,55 +84,15 @@ class ControllerAlertas extends Controller
     {
 
         $alerta = Alerta::find($id);
-        $alerta->id_usuario_remitente = $request->id_usuario_remitente;
-        $alerta->titulo = $request->id_usuario_remitente;
-        $alerta->descripcion = $request->id_usuario_remitente;
-        $alerta->tipo_destinatario = $request->id_usuario_remitente;
-        $alerta->fecha_inicio = $request->id_usuario_remitente;
+        $alerta->id_usuario_remitente = Auth::user()->id_usuario_administrativo;
+        $alerta->titulo = $request->titulo;
+        $alerta->descripcion = $request->descripcion;
+        $alerta->tipo_destinatario = $request->tipo_destinatario;
+        $alerta->fecha_inicio = $request->fecha_inicio;
         $alerta->fecha_final = $request->fecha_final;
         $alerta->id_estado = $request->id_estado;
-        $alerta->save();    
+        $alerta->save();
         return redirect()->back();
-
-        $id = 4;
-
-        $tipo_destinatario = "";
-
-        if ($request->tipo_destinatario == 1) {
-
-            $tipo_destinatario = "Compradores";
-        } 
-
-        if ($request->tipo_destinatario == 2) {
-
-            $tipo_destinatario = "Vendedores";
-        } 
-
-        if ($request->tipo_destinatario == 3) {
-
-            $tipo_destinatario = "Todos";
-        } 
-        
-
-         $item = Alerta::find($id);
-
-        $item->id_usuario_remitente = 8 ;
-
-        $item->titulo = $request->titulo;
-        $item->descripcion = $request->descripcion;
-
-        $item->tipo_destinatario = $tipo_destinatario;
-
-        $item->fecha_inicio = $request->fecha_inicio;
-        $item->fecha_final = $request->fecha_final;
-
-        $item->id_estado = 2;
-
-        $item->update();
-        return redirect()->back();
-
-       
-
     }
 
     /**
@@ -179,14 +100,9 @@ class ControllerAlertas extends Controller
      */
     public function destroy(string $id)
     {
+        $alerta =  Alerta::find($id);
+        $alerta->delete();
 
-        // $alerta =  Alerta::find($id);
-        // $alerta->delete();
-        // return redirect()->back();
-        
-        $item = Alerta::find($id);
-        $item->delete($id);
         return redirect()->back();
-
     }
 }
