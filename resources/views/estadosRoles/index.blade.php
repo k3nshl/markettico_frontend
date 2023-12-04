@@ -28,10 +28,6 @@
 
                                 <a class="nav-link active" data-bs-toggle="pill" href="#tab-estados" role="tab"
                                     aria-selected="true">
-
-                                <a class="nav-link active" data-bs-toggle="pill" href="#success-pills-profile"
-                                    role="tab" aria-selected="true">
-
                                     <div class="d-flex align-items-center">
                                         <div class="tab-icon"><i class="bx bx-home font-18 me-1"></i>
                                         </div>
@@ -40,7 +36,7 @@
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" data-bs-toggle="pill" href="#pills-home" role="tab"
+                                <a class="nav-link" data-bs-toggle="pill" href="#tab-roles" role="tab"
                                     aria-selected="false">
                                     <div class="d-flex align-items-center">
                                         <div class="tab-icon"><i class="bx bx-user-pin font-18 me-1"></i>
@@ -53,7 +49,7 @@
 
                         <div class="tab-content">
                             {{-- Inicio estados --}}
-                            <div class="tab-pane show active fade" id="success-pills-profile" role="tabpanel">
+                            <div class="tab-pane show active fade" id="tab-estados" role="tabpanel">
 
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
@@ -305,7 +301,7 @@
                             {{-- Fin estados --}}
 
                             {{-- Inicio roles --}}
-                            <div class="tab-pane fade" id="pills-home" role="tabpanel">
+                            <div class="tab-pane fade" id="tab-roles" role="tabpanel">
 
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
