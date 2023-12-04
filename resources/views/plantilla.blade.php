@@ -279,10 +279,12 @@
                             <img src="{{ asset('../assets/images/avatars/logo-marketitco-avatar-adminuser.png') }}"
                                 class="user-img" alt="user avatar">
                             <div class="user-info ps-3">
+                            
                                 @if (Auth::check())
                                     <p class="user-name mb-0">{{ Auth::user()->nombre_completo }}</p>
                                     <p class="designattion mb-0">{{ Auth::user()->roles->nombre }}</p>
                                 @endif
+
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
@@ -447,6 +449,10 @@
         });
 
         $(document).ready(function() {
+            $('#tablaHistorialEstados').DataTable();
+        });
+
+        $(document).ready(function() {
             $('#tablaHistorialRoles').DataTable();
         });
 
@@ -503,6 +509,10 @@
         $(document).ready(function() {
             $("#portada").change(function() {
                 readURL(this, "#imagen-preview-portada");
+            });
+
+            $("#portada-edit").change(function() {
+                readURL(this, "#imagen-preview-portada-edit");
             });
 
             $("#otroInput").change(function() {
