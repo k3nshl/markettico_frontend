@@ -87,6 +87,7 @@ class ControllerLogin extends Controller
     function login(Request $request)
     {
         $user = UsuarioAdministrativo::where('correo_empresarial', $request->correo_empresarial)->first();
+
         $password_login = sha1($request->password);
 
         if ($user->id_estado == 1 && $user->correo_empresarial == $request->correo_empresarial && $user->password == $password_login) {
@@ -94,6 +95,7 @@ class ControllerLogin extends Controller
             // $this->controllerCorreos->email_seller($request, $codigo);
             // return view('login.codigoVerificacion', compact('user', 'codigo'));
             auth::login($user);
+            //return $user;
             return redirect()->route('home');
         } else {
             return redirect()->route('login')->with('error', 'Contraseña o usuario incorrectas');
@@ -103,31 +105,31 @@ class ControllerLogin extends Controller
     function logout()
     {
         Auth::logout();
-        return redirect()->route('estados.index');
+        return redirect()->route('login')->with('error', 'Haz cerrado sesión');;
     }
 
     public function getcodigoAleatorio()
-{
-    $codigo = rand(000000, 999999);
-    $codigos_registrados = CodigoVerificacion::all();
+    {
+        $codigo = rand(000000, 999999);
+        $codigos_registrados = CodigoVerificacion::all();
 
-    foreach ($codigos_registrados as $item) {
-        if ($codigo == $item->codigo) {
-            return $this->getcodigoAleatorio();
+        foreach ($codigos_registrados as $item) {
+            if ($codigo == $item->codigo) {
+                return $this->getcodigoAleatorio();
+            }
         }
+        $nuevoCodigo = new CodigoVerificacion();
+        $nuevoCodigo->codigo = $codigo;
+        $nuevoCodigo->id_usuario = 2; // Aquí puedes establecer el valor correcto
+        $nuevoCodigo->tipo_usuario = "admin"; // Aquí puedes establecer el valor correcto
+        $nuevoCodigo->id_estado = 1;
+        $nuevoCodigo->save();
+
+        return $codigo;
     }
-    $nuevoCodigo = new CodigoVerificacion();
-    $nuevoCodigo->codigo = $codigo;
-    $nuevoCodigo->id_usuario = 2; // Aquí puedes establecer el valor correcto
-    $nuevoCodigo->tipo_usuario = "admin"; // Aquí puedes establecer el valor correcto
-    $nuevoCodigo->id_estado = 1;
-    $nuevoCodigo->save();
-
-    return $codigo;
-}
 
 
- 
+
 
     public function verificarCodigo(Request $request)
     {
@@ -136,8 +138,8 @@ class ControllerLogin extends Controller
             $codigo->id_estado = 2;
             $codigo->update();
             $user = UsuarioAdministrativo::find($request->id_usuario);
-            auth::login($user); 
-            
+            auth::login($user);
+
             return redirect()->route('estados.index');
         } else {
             return redirect()->route('login')->with('error', 'Codigo incorrecto');

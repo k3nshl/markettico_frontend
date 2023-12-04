@@ -54,115 +54,124 @@
             <!--navigation-->
             <ul class="metismenu" id="menu">
                 <li class="menu-label">Administrativo</li>
-                <li>
-                    <a href="javascript:;" class="has-arrow">
-                        <div class="parent-icon"><i class='lni lni-crown'></i>
-                        </div>
-                        <div class="menu-title">Superadmin</div>
-                    </a>
-                    <ul>
-                        <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
-                                    class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
-                        </li>
-                        <li> <a href="{{ route('estados.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
-                                Estados/Roles</a>
-                        </li>
-                        <li> <a href="{{ route('historiales.index') }}"><i class="bx bx-right-arrow-alt"></i>Visualizar
-                                Historiales</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:;" class="has-arrow">
-                        <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
-                        </div>
-                        <div class="menu-title">Administrador</div>
-                    </a>
-                    <ul>
-                        <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
-                                    class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
-                        </li>
-                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Solicitudes
-                                Vendedores</a>
-                            <ul>
-                                <li>
-                                    <a href="{{ route('vendedoresIndividuales') }}"><i
-                                            class="bx bx-right-arrow-alt"></i>Vendedores Individuales</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('vendedoresEmpresariales') }}"><i
-                                            class="bx bx-right-arrow-alt"></i>Vendedores Empresariales</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li> <a href="{{ route('estadisticas.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
-                                Estadisticas</a>
 
-                        </li>
-                        <li> <a href="{{ route('notificaciones') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
-                                Notificaciones</a>
-                        </li>
-                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Plantillas
-                                para Correos</a>
-                            <ul>
-                                <li> <a href="{{ route('correoAutenticacion') }}"><i
-                                            class="bx bx-right-arrow-alt"></i>Correo Autenticacion</a>
-                                </li>
-                                <li> <a href="{{ route('correoCambiosPoliticas') }}"><i
-                                            class="bx bx-right-arrow-alt"></i>Correo cambios en politicas</a>
-                                </li>
-                                <li> <a href="{{ route('correoExpiracionSuspension') }}"><i
-                                            class="bx bx-right-arrow-alt"></i>Correo expiracion y suspencion</a>
-                                </li>
-                                <li> <a href="{{ route('correoRegistro') }}"><i
-                                            class="bx bx-right-arrow-alt"></i>Correo registro</a>
-                                </li>
-                                <li> <a href="{{ route('correoSolicitud') }}"><i
-                                            class="bx bx-right-arrow-alt"></i>Correo solicitud</a>
-                                </li>
-                            </ul>
+                @if (Auth::user()->roles->nombre == 'Superadmin')
+                    <li>
+                        <a href="javascript:;" class="has-arrow">
+                            <div class="parent-icon"><i class='lni lni-crown'></i>
+                            </div>
+                            <div class="menu-title">Superadmin</div>
+                        </a>
+                        <ul>
+                            <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
+                                        class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
+                            </li>
+                            <li> <a href="{{ route('estados.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                    Estados/Roles</a>
+                            </li>
+                            <li> <a href="{{ route('historiales.index') }}"><i
+                                        class="bx bx-right-arrow-alt"></i>Visualizar
+                                    Historiales</a>
+                            </li>
+                        </ul>
+                    </li>
+                    @endif
+                    @if (Auth::user()->roles->nombre == 'Administrador' || Auth::user()->roles->nombre == 'Superadmin')
+                    <li>
+                        <a href="javascript:;" class="has-arrow">
+                            <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
+                            </div>
+                            <div class="menu-title">Administrador</div>
+                        </a>
+                        <ul>
+                            <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
+                                        class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
+                            </li>
+                            <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Solicitudes
+                                    Vendedores</a>
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('vendedoresIndividuales') }}"><i
+                                                class="bx bx-right-arrow-alt"></i>Vendedores Individuales</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('vendedoresEmpresariales') }}"><i
+                                                class="bx bx-right-arrow-alt"></i>Vendedores Empresariales</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li> <a href="{{ route('estadisticas.index') }}"><i
+                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                    Estadisticas</a>
 
-                        </li>
-                    </ul>
-                </li>
+                            </li>
+                            <li> <a href="{{ route('notificaciones') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                    Notificaciones</a>
+                            </li>
+                            <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Plantillas
+                                    para Correos</a>
+                                <ul>
+                                    <li> <a href="{{ route('correoAutenticacion') }}"><i
+                                                class="bx bx-right-arrow-alt"></i>Correo Autenticacion</a>
+                                    </li>
+                                    <li> <a href="{{ route('correoCambiosPoliticas') }}"><i
+                                                class="bx bx-right-arrow-alt"></i>Correo cambios en politicas</a>
+                                    </li>
+                                    <li> <a href="{{ route('correoExpiracionSuspension') }}"><i
+                                                class="bx bx-right-arrow-alt"></i>Correo expiracion y suspencion</a>
+                                    </li>
+                                    <li> <a href="{{ route('correoRegistro') }}"><i
+                                                class="bx bx-right-arrow-alt"></i>Correo registro</a>
+                                    </li>
+                                    <li> <a href="{{ route('correoSolicitud') }}"><i
+                                                class="bx bx-right-arrow-alt"></i>Correo solicitud</a>
+                                    </li>
+                                </ul>
 
-                <li>
-                    <a href="javascript:;" class="has-arrow">
-                        <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
-                        </div>
-                        <div class="menu-title">Moderador</div>
-                    </a>
-                    <ul>
-                        <li> <a href="{{ route('paginasInformacion.index') }}"><i
-                                    class="bx bx-right-arrow-alt"></i>Gestionar
-                                Paginas</a>
-                        </li>
-                        <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
-                                Planes</a>
-                        </li>
-                        <li> <a href="{{ route('categorias.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
-                                Categorias</a>
-                        </li>
+                            </li>
+                        </ul>
+                    </li>
+                    @endif
+                    @if (Auth::user()->roles->nombre == 'Moderador' || Auth::user()->roles->nombre == 'Superadmin')
+                    <li>
+                        <a href="javascript:;" class="has-arrow">
+                            <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
+                            </div>
+                            <div class="menu-title">Moderador</div>
+                        </a>
+                        <ul>
+                            <li> <a href="{{ route('paginasInformacion.index') }}"><i
+                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                    Paginas</a>
+                            </li>
+                            <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                    Planes</a>
+                            </li>
+                            <li> <a href="{{ route('categorias.index') }}"><i
+                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                    Categorias</a>
+                            </li>
 
-                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Ver Solicitudes</a>
-                            <ul>
-                                <li>
-                                    <a href="{{ route('solicitudesProductos') }}"><i
-                                            class="bx bx-right-arrow-alt"></i>Solicitudes Productos</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('solicitudesServicios') }}"><i
-                                            class="bx bx-right-arrow-alt"></i>Solicitudes Servicios</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li> <a href="{{ route('moderarContenido.index') }}"><i
-                                    class="bx bx-right-arrow-alt"></i>Gestionar
-                                Contenido</a>
+                            <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Ver Solicitudes</a>
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('solicitudesProductos') }}"><i
+                                                class="bx bx-right-arrow-alt"></i>Solicitudes Productos</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('solicitudesServicios') }}"><i
+                                                class="bx bx-right-arrow-alt"></i>Solicitudes Servicios</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li> <a href="{{ route('moderarContenido.index') }}"><i
+                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                    Contenido</a>
 
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
 
+                    @endif
 
 
             </ul>
@@ -196,7 +205,7 @@
                             <li class="nav-item dropdown dropdown-large">
                                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative"
                                     href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="alert-count">7</span>
+                                    <span class="alert-count">0</span>
                                     <i class='bx bx-bell'></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
@@ -230,7 +239,7 @@
                             <li class="nav-item dropdown dropdown-large">
                                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative"
                                     href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="alert-count">8</span>
+                                    <span class="alert-count">0</span>
                                     <i class='bx bx-comment'></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
@@ -267,30 +276,40 @@
                     <div class="user-box dropdown">
                         <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret"
                             href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ asset('../assets/images/avatars/avatar-2.png') }}" class="user-img"
-                                alt="user avatar">
+                            <img src="{{ asset('../assets/images/avatars/logo-marketitco-avatar-adminuser.png') }}"
+                                class="user-img" alt="user avatar">
                             <div class="user-info ps-3">
-                                <p class="user-name mb-0">{{Auth::user()->nombre_completo}}</p>
-                                <p class="designattion mb-0">Project Manager</p>
+                                @if (Auth::check())
+                                    <p class="user-name mb-0">{{ Auth::user()->nombre_completo }}</p>
+                                    <p class="designattion mb-0">{{ Auth::user()->roles->nombre }}</p>
+                                @endif
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href="{{ route('perfil.show', ['id' => 1]) }}">
+                                <a class="dropdown-item"
+                                    href="{{ route('perfil.show', ['id' => auth()->user()->id_usuario_administrativo]) }}">
                                     <i class="bx bx-user"></i><span>Perfil</span>
                                 </a>
                             </li>
-                            <li><a class="dropdown-item" href="javascript:;"><i
-                                        class="bx bx-cog"></i><span>Configuracion</span></a>
+
+                            <li>
+                                @if (optional(Auth::user()->roles)->nombre == 'Superadmin' || optional(Auth::user()->roles)->nombre == 'Administrador')
+                                    <a class="dropdown-item" href="{{ route('home') }}">
+                                        <i class='bx bx-home-circle'></i><span>Dashboard</span>
+                                    </a>
+                                @elseif (optional(Auth::user()->roles)->nombre == 'Moderador')
+                                    <a class="dropdown-item" href="{{ route('paginasInformacion.index') }}">
+                                        <i class='bx bx-home-circle'></i><span>Dashboard</span>
+                                    </a>
+                                @endif
                             </li>
-                            <li><a class="dropdown-item" href="javascript:;"><i
-                                        class='bx bx-home-circle'></i><span>Dashboard</span></a>
-                            </li>
+
                             <li>
                                 <div class="dropdown-divider mb-0"></div>
                             </li>
                             <li><a class="dropdown-item" href="{{ Route('usuarios.logout') }}">
-                                    <i class='bx bx-log-out-circle'>
+                                    <i class='bx bx-log-out-circle text-danger'>
                                     </i><span>Cerrar sesion</span></a>
                             </li>
                         </ul>
