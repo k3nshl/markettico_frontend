@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HistorialGestionCuentas;
 use App\Models\Rol;
 use App\Models\UsuarioAdministrativo;
+use App\Models\UsuarioBloqueado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
@@ -20,7 +21,7 @@ class ControllerUsuariosAdministrativos extends Controller
     public function index()
     {
         $data = UsuarioAdministrativo::where('id_estado', 1)->get();
-        $data_bloqueados = UsuarioAdministrativo::where('id_estado', 24)->get();
+        $data_bloqueados = UsuarioBloqueado::where('tipo_usuario', 'Administrativo')->get();
         $roles = Rol::all();     
         return view('usuariosAdministrativos.index', compact('data','data_bloqueados','roles'));
     }
@@ -136,11 +137,31 @@ class ControllerUsuariosAdministrativos extends Controller
 
     public function bloquear_usuario(Request $request)
     {
-        $item = UsuarioAdministrativo::find($request->id_usuario);
-        $item->id_estado = $request->id_estado;
+        $item = UsuarioAdministrativo::find($request->id_usuario_administrativo);
+        $item->id_estado = 3;
         $item->update();
+        
+        $itemBloqueado = new UsuarioBloqueado();
+        $itemBloqueado->id_usuario_administrativo = $request->id_usuario_administrativo;
+        $itemBloqueado->descripcion = $request->descripcion;
+        $itemBloqueado->tipo_usuario = 'Administrativo';
+        $itemBloqueado->save();
+
         return redirect()->back();
     }
+
+    public function desbloquearUsuario(Request $request)
+    {
+        $item = UsuarioAdministrativo::find($request->id_usuario_administrativo);
+        $item->id_estado = 1;
+        $item->update();
+
+        $itemBloqueado = UsuarioBloqueado::where('id_usuario_bloqueado', $request->id_usuario_bloqueado)->first();
+        $itemBloqueado->delete();
+
+        return redirect()->back();
+    }
+
 }
 
 
