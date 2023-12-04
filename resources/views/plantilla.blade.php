@@ -428,6 +428,10 @@
         });
 
         $(document).ready(function() {
+            $('#tablaHistorialEstados').DataTable();
+        });
+
+        $(document).ready(function() {
             $('#tablaHistorialRoles').DataTable();
         });
 
@@ -484,6 +488,10 @@
         $(document).ready(function() {
             $("#portada").change(function() {
                 readURL(this, "#imagen-preview-portada");
+            });
+
+            $("#portada-edit").change(function() {
+                readURL(this, "#imagen-preview-portada-edit");
             });
 
             $("#otroInput").change(function() {
