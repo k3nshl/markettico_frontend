@@ -17,6 +17,13 @@ class ControllerUsuariosAdministrativos extends Controller
      * Display a listing of the resource.
      */
 
+     protected $controllerHistorial;
+
+    public function __construct(ControllerHistoriales $historiales)
+    {
+        $this->controllerHistorial = $historiales;
+    }
+
     public function index()
     {
         $data = UsuarioAdministrativo::where('id_estado', 1)->get();
@@ -49,11 +56,7 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->fecha_hora = date(Date::now());
         $item->save();
 
-        // $historial = new HistorialGestionCuentas();
-        // $historial->fecha_hora =  date(Date::now());
-        // $historial->accion =  'Inserccion de nuevo usuario';
-        // $historial->id_usuario =  Auth::auth()->user()->id_usuario;
-        // $historial->save();
+        $this->controllerHistorial->store_usuario($request,'Creacion del usuario ');
         
         return redirect()->back();
     }
@@ -90,11 +93,7 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->numero_telefonico = $request->numero_telefonico;
         $item->update();
         
-        //$historial = new HistorialGestionCuentas();
-        //$historial->fecha_hora =  date(Date::now());
-       // $historial->accion =  'Actualizacion  de un usuario';
-      //  $historial->id_usuario =  Auth::auth()->user()->id_usuario;
-        //$historial->save();
+        $this->controllerHistorial->store_usuario($request,'Actulaización del usuario ');
         return redirect()->back();
     }
 
@@ -106,13 +105,18 @@ class ControllerUsuariosAdministrativos extends Controller
         $item = UsuarioAdministrativo::find($id);
         $item->delete();
 
-        //$historial = new HistorialGestionCuentas();
-        //$historial->fecha_hora =  date(Date::now());
-       // $historial->accion =  'Eliminacion de nuevo usuario';
-       // $historial->id_usuario =  Auth::auth()->user()->id_usuario;
-       // $historial->save();
+        $request = new Request();
+
+        $request->merge([
+            'nombre_completo' => $item->nombre_completo,
+            'correo_empresarial' => $item->correo_empresarial,
+        ]);
+
+        $this->controllerHistorial->store_usuario($request,'Eliminación del usuario ');
         return redirect()->back();
     }
+
+
     public function validarPassword(Request $request)
     {
         $pass = Auth::user()->password;

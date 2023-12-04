@@ -429,7 +429,7 @@
                                                                             <!-- Botón de editar con modal -->
                                                                             <button class="btn btn-warning btn-sm"
                                                                                 data-bs-toggle="modal"
-                                                                                data-bs-target="#editarRolModal"
+                                                                                data-bs-target="#editarRolModal{{ $item->id_rol }}"
                                                                                 data-bs-toggle="tooltip"
                                                                                 data-bs-placement="top"
                                                                                 title="Editar Rol">
@@ -451,7 +451,7 @@
 
 
                                                                         <!-- Modal de edición -->
-                                                                        <div class="modal fade" id="editarRolModal"
+                                                                        <div class="modal fade" id="editarRolModal{{ $item->id_rol }}"
                                                                             tabindex="-1"
                                                                             aria-labelledby="editarRolModalLabel"
                                                                             aria-hidden="true">
@@ -460,7 +460,7 @@
                                                                                 <div class="modal-content">
                                                                                     <div class="modal-header">
                                                                                         <h5 class="modal-title"
-                                                                                            id="editarUsuarioModalLabel">
+                                                                                            id="editarUsuarioModalLabel{{ $item->id_rol }}">
                                                                                             Editar Rol</h5>
                                                                                         <button type="button"
                                                                                             class="btn-close"
@@ -488,7 +488,7 @@
                                                                                                         class="form-control"
                                                                                                         id="nombre"
                                                                                                         name="nombre"
-                                                                                                        placeholder="Ingrese el nombre del Rol">
+                                                                                                        placeholder="Ingrese el nombre del Rol" value="{{ $item->nombre }}">
                                                                                                 </div>
                                                                                             </div>
 
@@ -506,7 +506,7 @@
                                                                                                             value="1">
                                                                                                             Activo</option>
                                                                                                         <option
-                                                                                                            value="0">
+                                                                                                            value="2">
                                                                                                             Inactivo
                                                                                                         </option>
                                                                                                     </select>
