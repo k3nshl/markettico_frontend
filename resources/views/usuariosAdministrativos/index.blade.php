@@ -125,7 +125,7 @@
                                                                                             value="{{ $rol->id_rol }}">
                                                                                             {{ $rol->nombre }}
                                                                                         </option>
-                                                                                    @endforeach 
+                                                                                    @endforeach
                                                                                 </select>
                                                                             </div>
                                                                         </div>
@@ -237,7 +237,7 @@
                                                                         <!-- Botón de eliminar -->
                                                                         <button class="btn btn-danger btn-sm btn-block"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#eliminarUsuarioModal{{$item->id_usuario_administrativo}}">
+                                                                            data-bs-target="#eliminarUsuarioModal{{ $item->id_usuario_administrativo }}">
                                                                             <i class="lni lni-trash"
                                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                                         </button>
@@ -247,7 +247,7 @@
                                                                         <button class="btn btn-sm btn-block"
                                                                             style="background-color: #05f29d"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#bloquearUsuarioModal{{$item->id_usuario_administrativo}}"
+                                                                            data-bs-target="#bloquearUsuarioModal{{ $item->id_usuario_administrativo }}"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="Bloquear Usuario Administrativo">
@@ -427,7 +427,8 @@
                                                                                             <label for="editRolUsuario"
                                                                                                 class="form-label">Rol
                                                                                             </label>
-                                                                                            <select name="id_rol" class="form-select"
+                                                                                            <select name="id_rol"
+                                                                                                class="form-select"
                                                                                                 id="editRolUsuario">
                                                                                                 @foreach ($roles as $rol)
                                                                                                     <option
@@ -458,7 +459,8 @@
                                                                     </div>
 
                                                                     {{-- Modal de eliminar --}}
-                                                                    <div class="modal fade" id="eliminarUsuarioModal{{ $item->id_usuario_administrativo }}"
+                                                                    <div class="modal fade"
+                                                                        id="eliminarUsuarioModal{{ $item->id_usuario_administrativo }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="eliminarUsuarioModalLabel"
                                                                         aria-hidden="true">
@@ -499,7 +501,8 @@
                                                                     </div>
 
                                                                     <!-- Modal de bloquear  -->
-                                                                    <div class="modal fade" id="bloquearUsuarioModal{{ $item->id_usuario_administrativo }}"
+                                                                    <div class="modal fade"
+                                                                        id="bloquearUsuarioModal{{ $item->id_usuario_administrativo }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="bloquearUsuarioModalLabel"
                                                                         aria-hidden="true">
@@ -515,35 +518,34 @@
                                                                                         data-bs-dismiss="modal"
                                                                                         aria-label="Close"></button>
                                                                                 </div>
-                                                                                <div class="modal-body">
-                                                                                    ¿Estás seguro de que deseas bloquear
-                                                                                    este
-                                                                                    usuario?
-                                                                                </div>
+                                                                                <form
+                                                                                    action="{{ route('bloquear_usuario', $item->id_usuario_administrativo) }}"
+                                                                                    method="POST">
+                                                                                    @csrf
 
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button"
-                                                                                        class="btn btn-secondary"
-                                                                                        data-bs-dismiss="modal">Cancelar</button>
-
-                                                                                    <form
-                                                                                        action="{{ route('bloquear_usuario', $item->id_usuario_administrativo) }}"
-                                                                                        method="POST">
-                                                                                        @csrf
-                                                                                        @method('POST')
+                                                                                    <div class="modal-body">
+                                                                                        <p>¿Estás seguro de que deseas
+                                                                                            bloquear
+                                                                                            este
+                                                                                            usuario?</p>
                                                                                         <input type="hidden"
-                                                                                            name="id_usuario"
+                                                                                            name="id_usuario_administrativo"
                                                                                             value="{{ $item->id_usuario_administrativo }}">
-                                                                                        <input type="hidden"
-                                                                                            name="id_estado"
-                                                                                            value="3">
+                                                                                        <div class="my-3">
+                                                                                            <label>Descripción
+                                                                                                del bloqueo</label>
+                                                                                            <textarea class="form-control" name="descripcion" rows="5" placeholder="Ingrese la descripción del bloqueo"></textarea>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-bs-dismiss="modal">Cancelar</button>
                                                                                         <button type="submit"
                                                                                             class="btn btn-danger">Bloquear</button>
-
-                                                                                    </form>
-
-
-                                                                                </div>
+                                                                                    </div>
+                                                                                </form>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -558,6 +560,7 @@
                                 </div>
                             </div>
 
+                            {{-- Usuarios Bloqueados --}}
                             <div class="tab-pane fade" id="tab-bloqueados">
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
@@ -579,20 +582,16 @@
                                                         <tr class="text-center">
 
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">ID</th>
+                                                                style="background-color: #05C7F2; color: #F2F2F2">
+                                                                ID
+                                                            </th>
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Usuario
+                                                                style="background-color: #05C7F2; color: #F2F2F2">
+                                                                Usuario
                                                             </th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">
                                                                 Descripción
-                                                            </th>
-                                                            <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Tipo
-                                                                Usuario
-                                                            </th>
-                                                            <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Vendedor
                                                             </th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Acciones
@@ -602,283 +601,130 @@
                                                     </thead>
                                                     <tbody>
 
-                                                        @foreach ($data_bloqueados as $user_bloqueado)
-                                                            
-                                                        <tr>
-                                                            <td>{{$user_bloqueado->id_usuario_bloqueado}}</td>
-                                                            <td>{{$user_bloqueado->id_usuario_bloqueado->nombre}}</td>
-                                                            <td>{{$user_bloqueado->descripcion}}</td>
-                                                            <td>{{$user_bloqueado->tipo_usuario}}</td>
-                                                            <td>
-
-                                                                <div class="text-center">
-
-                                                                    {{-- Botón de visualizar --}}
-                                                                    <button class="btn btn-primary btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#showUserBloqueadoModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Ver Bloqueados">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-eye"
-                                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-                                                                    <!-- Botón de editar con modal -->
-                                                                    <button class="btn btn-warning btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#editarUsuarioBloqueadoModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Editar Usuario Bloqueados">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-pencil-alt"
-                                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-                                                                    {{-- Botón de eliminar --}}
-                                                                    <button class="btn btn-danger btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#eliminarUsuarioBloqueadoModal">
-                                                                        <i class="lni lni-trash"
-                                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                    </button>
-
-                                                                    <!-- Botón de bloquear -->
-                                                                    <button class="btn btn-sm btn-block"
-                                                                        style="background-color: #05f29d"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#DesbloquearUsuarioModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Desbloquear Usuario Administrativo">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-unlock"
-                                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-                                                                </div>
-
-
-                                                                <!-- Modal de bloquear  -->
-                                                                <div class="modal fade" id="DesbloquearUsuarioModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="DesbloquearUsuarioModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="DesbloquearUsuarioModalLabel">
-                                                                                    Confirmar
-                                                                                    desbloqueo</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
+                                                        @foreach ($data_bloqueados as $item)
+                                                            <tr>
+                                                                <td>{{ $item->id_usuario_administrativo }}</td>
+                                                                <td>{{ $item->usuarioAdministrativo->correo_empresarial }}</td>
+                                                                <td>{{ $item->descripcion }}</td>
+                                                                <td>
+                                                                    <div class="text-center">
+                                                                        {{-- Botón de visualizar --}}
+                                                                        <button class="btn btn-primary btn-sm"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#showUserBloqueadoModal{{ $item->id_usuario_bloqueado }}"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            title="Ver Bloqueados">
+                                                                            <div class="text-center">
+                                                                                <i class="lni lni-eye"
+                                                                                    style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
                                                                             </div>
-                                                                            <div class="modal-body">
-                                                                                ¿Estás seguro de que deseas desbloquear este
-                                                                                usuario?
+                                                                        </button>
+
+                                                                        <!-- Botón de desbloquear -->
+                                                                        <button class="btn btn-sm btn-block"
+                                                                            style="background-color: #05f29d"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#DesbloquearUsuarioModal{{ $item->id_usuario_bloqueado }}"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            title="Desbloquear Usuario Administrativo">
+                                                                            <div class="text-center">
+                                                                                <i class="lni lni-unlock"
+                                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                                             </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-danger"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#bloqueoCorrectoModal">Bloquear</button>
+                                                                        </button>
+                                                                    </div>
+
+                                                                    <!-- Modal de visualizacion -->
+                                                                    <div class="modal fade"
+                                                                        id="showUserBloqueadoModal{{ $item->id_usuario_bloqueado }}"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="showUserBloqueadoModalLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="showUserBloqueadoModalLabel">
+                                                                                        Visualizar usuarios bloqueados</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"
+                                                                                        data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Cerrar"></button>
+                                                                                </div>
+
+                                                                                <div class="modal-body">
+                                                                                    <div class="mb-3">
+                                                                                        <label>Usuario:</label>
+                                                                                        <span>{{ $item->usuarioAdministrativo->correo_empresarial }}</span>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3">
+                                                                                        <label>Descripción:</label>
+                                                                                        <span
+                                                                                            style="white-space: pre-line;">{{ $item->descripcion }}</span>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-bs-dismiss="modal">Regresar</button>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
 
-
-                                                                <!-- Modal de visaualizacion -->
-                                                                <div class="modal fade" id="showUserBloqueadoModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="showUserBloqueadoModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="showUserBloqueadoModalLabel">
-                                                                                    Visualizar usuarios bloqueados</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="id_usuario"
-                                                                                            class="col-sm-4 col-form-label">Usuario:
-                                                                                            <span>Acá</span></label>
-
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="descripcion"
-                                                                                            class="col-sm-4 col-form-label">Descripción:
-                                                                                            <span>Acá</span></label>
-
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="tipo_usuario"
-                                                                                            class="col-sm-4 col-form-label">Tipo
-                                                                                            de usuario:
-                                                                                            <span>Acá</span></label>
-
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="id_vendedor"
-                                                                                            class="col-sm-4 col-form-label">Vendedor:
-                                                                                            <span>Acá</span></label>
-
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Regresar</button>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                <!-- Modal de edición -->
-                                                                <div class="modal fade" id="editarUsuarioBloqueadoModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="editarUsuarioBloqueadoModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="editarUsuarioBloqueadoModalLabel">
-                                                                                    Editar usuario bloqueado</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                <form action="" method="POST">
-                                                                                    @method('PUT')
+                                                                    <!-- Modal de desbloquear -->
+                                                                    <div class="modal fade"
+                                                                        id="DesbloquearUsuarioModal{{ $item->id_usuario_bloqueado }}"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="DesbloquearUsuarioModalLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="DesbloquearUsuarioModalLabel">
+                                                                                        Confirmar
+                                                                                        desbloqueo</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"></button>
+                                                                                </div>
+                                                                                <form action="{{ route('desbloquearUsuario') }}"
+                                                                                    method="POST">
                                                                                     @csrf
-                                                                                    <div class="row mb-3">
-                                                                                        <div class="col-sm">
-                                                                                            <label for="id_usuario"
-                                                                                                class="form-label">Usuario:</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="id_usuario"
-                                                                                                placeholder="Nombre de Usuario">
-                                                                                        </div>
+                                                                                    <div class="modal-body">
+                                                                                        <input type="hidden"
+                                                                                            value="{{ $item->id_usuario_bloqueado }}"
+                                                                                            name="id_usuario_bloqueado">
+                                                                                        <input type="hidden"
+                                                                                            value="{{ $item->id_usuario_administrativo }}"
+                                                                                            name="id_usuario_administrativo">
+                                                                                        ¿Estás seguro de que deseas
+                                                                                        desbloquear
+                                                                                        este
+                                                                                        usuario?
                                                                                     </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <div class="col-sm">
-                                                                                            <label for="descripcion"
-                                                                                                class="form-label">Descripción:</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="descripcion"
-                                                                                                name="descripcion"
-                                                                                                placeholder="Descripción">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <div class="col-sm">
-                                                                                            <label for="tipo_usuario"
-                                                                                                class="form-label">Tipo de
-                                                                                                usuario:</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="tipo_usuario"
-                                                                                                name="tipo_usuario"
-                                                                                                placeholder="Tipo de usuario">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <div class="col-sm">
-                                                                                            <label for="id_vendedor"
-                                                                                                class="form-label">Vendedor:</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="id_vendedor"
-                                                                                                name="id_vendedor"
-                                                                                                placeholder="Nombre del Vendedor">
-                                                                                        </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-bs-dismiss="modal">Cancelar</button>
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-danger">Desbloquear</button>
                                                                                     </div>
                                                                                 </form>
                                                                             </div>
-
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cerrar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-info text-white"
-                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                    <i class="bx bx-save"
-                                                                                        style="color: #F2F2F2;"></i>
-                                                                                    Guardar
-                                                                                </button>
-                                                                            </div>
-
                                                                         </div>
                                                                     </div>
-                                                                </div>
-
-                                                                {{-- Modal de eliminar --}}
-                                                                <div class="modal fade" id="eliminarUsuarioBloqueadoModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="eliminarUsuarioBloqueadoModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="eliminarUsuarioBloqueadoModalLabel">
-                                                                                    Confirmar eliminación</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                ¿Estás seguro de que deseas eliminar este
-                                                                                usuario bloqueado?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-danger"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        
+                                                                </td>
+                                                            </tr>
                                                         @endforeach
                                                     </tbody>
                                                 </table>
@@ -887,11 +733,9 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

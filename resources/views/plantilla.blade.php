@@ -412,6 +412,9 @@
         // Datatables
         $(document).ready(function() {
             $('#tablaUsuariosAdmin').DataTable();
+        }); 
+        $(document).ready(function() {
+            $('#tablaUsuariosBloqueados').DataTable();
         });
         $(document).ready(function() {
             $('#tablaRoles').DataTable();
