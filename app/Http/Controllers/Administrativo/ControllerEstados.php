@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\Date;
 
 class ControllerEstados extends Controller
 {
+ 
+ protected $controllerHitoriales;
+
+  public function __construct(ControllerHistoriales $controllerHistoriales) {
+    $this->controllerHitoriales = $controllerHistoriales;
+ }
+ 
     /**
      * Display a listing of the resource.
      */
@@ -48,24 +55,18 @@ class ControllerEstados extends Controller
             'nombre' => 'required|string|max:50'
         ]);
         // Validacion de que no se repita el nombre del estado
-
-
         $validacion = Estado::where('nombre', $request->nombre)->first();
 
         if ($validacion) {
             return back()->with('error', 'Ya existe un registro con este nombre');
         } else {
-            $item->save();
-            $historial = new HistorialGestionEstados();
-            $historial->id_estado =  $item->id_estado;
-            $historial->nombre_estado =  $item->nombred;
+             $item->save();
 
 
-            $historial->id_usuario = 13; //Auth::auth()->user()->id_usuario;
-
-            $historial->fecha_hora =  date(Date::now());
-            $historial->accion =  'Inserccion de un nuveo estado';
-            $historial->save();
+             $request->merge([
+                'id_estado' => $item->id_estado,
+            ]);
+            $this->controllerHitoriales->store_estados($request, 'Creacion del estado ');
 
             return back()->with('success', 'El estado se ha creado correctamente');
         }
@@ -103,26 +104,20 @@ class ControllerEstados extends Controller
             'nombre' => 'required|string|max:50'
         ]);
         // Validacion de que no se repita el nombre del estado
-
-
         $validacion = Estado::where('nombre', $request->nombre)->first();
 
         if ($validacion) {
             return back()->with('error', 'Ya existe un registro con este nombre');
         } else {
-            $item->update();
-            $historial = new HistorialGestionEstados();
-            $historial->id_estado =  $item->id_estado;
-            $historial->nombre_estado =  $item->nombred;
+             $item->update();
 
+            $request->merge([
+                'id_estado' => $item->id_estado,
+            ]);
+            $this->controllerHitoriales->store_estados($request, 'Actualización del estado ');
 
-            $historial->id_usuario = 13; //Auth::auth()->user()->id_usuario;
-
-            $historial->fecha_hora =  date(Date::now());
-            $historial->accion =  'Edición de un nuveo estado';
-            $historial->save();
-
-            return back()->with('success', 'El estado se ha editado correctamente');
+             return back()->with('success', 'El estado se ha editado correctamente');
+    
         }
     }
 
@@ -131,23 +126,19 @@ class ControllerEstados extends Controller
      */
     public function destroy(string $id)
     {
-
         // Encuentra el modelo por su ID
-        $id = 20;
-        $item = Estado::find($id);
         try {
             // Encuentra el modelo por su ID
             $item = Estado::find($id);
-
             // Elimina el modelo
             $item->delete();
-
-            $historial = new HistorialGestionEstados();
-            $historial->id_estado =  $item->id_estado;
-            $historial->id_usuario =  Auth::auth()->user()->id_usuario;
-            $historial->fecha_hora =  date(Date::now());
-            $historial->accion =  'Eliminacion de un estado';
-            $historial->save();
+            
+            $request= new Request();
+            $request->merge([
+                'id_estado' => $item->id_estado,
+                'nombre' => $item->nombre,
+            ]);
+            $this->controllerHitoriales->store_estados($request, 'Eliminación del estado ');
 
             // Redirige a la página de índice con un mensaje de éxito
             return redirect()->back();

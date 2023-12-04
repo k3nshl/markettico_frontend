@@ -168,7 +168,7 @@
                                                                         <!-- Botón de editar con modal -->
                                                                         <button class="btn btn-warning btn-sm"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#editarEstadoModal"
+                                                                            data-bs-target="#editarEstadoModal{{ $item->id_estado }}"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top" title="Editar Estado">
                                                                             <div class="text-center">
@@ -187,7 +187,7 @@
                                                                     </div>
 
                                                                     <!-- Modal de edición -->
-                                                                    <div class="modal fade" id="editarEstadoModal"
+                                                                    <div class="modal fade" id="editarEstadoModal{{ $item->id_estado }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="editarEstadoModalLabel"
                                                                         aria-hidden="true">
@@ -195,7 +195,7 @@
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
                                                                                     <h5 class="modal-title"
-                                                                                        id="editarUsuarioModalLabel">
+                                                                                        id="editarUsuarioModalLabel{{ $item->id_estado }}">
                                                                                         Editar Estado</h5>
                                                                                     <button type="button"
                                                                                         class="btn-close"
@@ -221,7 +221,8 @@
                                                                                                     class="form-control"
                                                                                                     id="nombre"
                                                                                                     name="nombre"
-                                                                                                    placeholder="Ingrese el nombre del Estado">
+                                                                                                    placeholder="Ingrese el nombre del Estado"
+                                                                                                    value="{{$item->nombre }}">
                                                                                             </div>
                                                                                         </div>
 
@@ -255,7 +256,7 @@
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
                                                                                     <h5 class="modal-title"
-                                                                                        id="eliminarEstadoModalLabel">
+                                                                                        id="eliminarEstadoModalLabel{{ $item->id_estado }}">
                                                                                         Confirmar
                                                                                         eliminación</h5>
                                                                                     <button type="button"
@@ -273,7 +274,7 @@
                                                                                         class="btn btn-secondary"
                                                                                         data-bs-dismiss="modal">Cancelar</button>
                                                                                     <form
-                                                                                        action="{{ route('estados.destroy', 20) }}"
+                                                                                        action="{{ route('estados.destroy', $item->id_estado) }}"
                                                                                         method="POST">
                                                                                         @csrf
                                                                                         @method('delete')
