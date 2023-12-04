@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use App\Models\HistorialAcciones;
 use App\Models\HistorialGestionCuentas;
+use App\Models\HistorialGestionEstados;
 use App\Models\HistorialGestionPaginas;
 use App\Models\HistorialGestionRoles;
 use App\Models\HistorialSuspenciones;
@@ -17,14 +18,13 @@ class ControllerHistoriales extends Controller
      */
     public function index()
     {
-        //$Historial_roles = "zzzzzzzzzz";
+        $historial_estados = HistorialGestionEstados::all();
         $historial_roles = HistorialGestionRoles::all(); 
         $historial_cuentas = HistorialGestionCuentas::all();
         $historial_suspenciones = HistorialSuspenciones::all(); 
         $historial_paginas = HistorialGestionPaginas::all(); 
 
-        return view('/historiales/index', compact('historial_roles','historial_cuentas','historial_suspenciones','historial_paginas'));
-        //return view('/historiales/index');
+        return view('/historiales/index', compact('historial_estados','historial_roles','historial_cuentas','historial_suspenciones','historial_paginas'));
     }
 
     /**

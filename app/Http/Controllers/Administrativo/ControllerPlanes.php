@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\Plan;
 use Illuminate\Http\Request;
 
 class ControllerPlanes extends Controller
@@ -12,7 +13,9 @@ class ControllerPlanes extends Controller
      */
     public function index()
     {
-        return view('planes.index');
+        $planes = Plan::all();
+        return view('planes.index', compact('planes'));
+        //return view('planes.index');
     }
 
     /**
@@ -21,6 +24,7 @@ class ControllerPlanes extends Controller
     public function create()
     {
         //
+        return view('planes.index');
     }
 
     /**
@@ -28,7 +32,40 @@ class ControllerPlanes extends Controller
      */
     public function store(Request $request)
     {
-        return "store planes";
+        $multitienda = 0;
+        if ($request->multitienda == "si") {
+            $multitienda = 1;
+        } else {
+            $multitienda = 0;
+        };
+
+
+        $item = new Plan();
+
+        $request->validate([
+            'nombre' => 'required|string|max:50'
+        ]);
+        // Validacion de que no se repita el nombre del estado
+
+        $validacion = Plan::where('nombre', $request->nombre)->first();
+
+        if ($validacion) {
+            return back()->with('error', 'Ya existe un registro con este nombre');
+        } else {
+            $item->nombre = $request->nombre;
+            $item->tipo = $request->tipo;
+            $item->costo = $request->costo;
+
+            $item->cantidad_Productos = $request->cantidad_productos;
+
+            $item->multitienda = $multitienda;
+            $item->duracion = $request->duracion;
+            $item->descripcion = $request->descripcion;
+            //estado no existe en front se hace prueba con id directo
+            $item->id_estado = 1;
+            $item->save();
+            return redirect()->back();
+        }
     }
 
     /**
@@ -37,6 +74,8 @@ class ControllerPlanes extends Controller
     public function show(string $id)
     {
         //
+        $itemPlan = Plan::find($id);
+        return view('planes.index', compact('itemPlan'));
     }
 
     /**
@@ -44,7 +83,9 @@ class ControllerPlanes extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $itemPlan = Plan::find($id);
+        $itemPlan->update();
+        return view('planes.index');
     }
 
     /**
@@ -52,7 +93,41 @@ class ControllerPlanes extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
+
+        $multitienda = 0;
+        if ($request->multitienda == "si") {
+            $multitienda = 1;
+        } else {
+            $multitienda = 0;
+        };
+
+
+        $item =  Plan::find($id);
+
+        $request->validate([
+            'nombre' => 'required|string|max:50'
+        ]);
+        // Validacion de que no se repita el nombre del estado
+
+        $validacion = Plan::where('nombre', $request->nombre)->first();
+
+        if ($validacion) {
+            return back()->with('error', 'Ya existe un registro con este nombre');
+        } else {
+            $item->nombre = $request->nombre;
+            $item->tipo = $request->tipo;
+            $item->costo = $request->costo;
+
+            $item->cantidad_Productos = $request->cantidad_productos;
+
+            $item->multitienda = $multitienda;
+            $item->duracion = $request->duracion;
+            //$item->descripcion = $request->descripcion;
+            //estado no existe en front se hace prueba con id directo
+            $item->id_estado = 1;
+            $item->update();
+            return back()->with('success', 'El plan se ha actualizado correctamente');
+        }
     }
 
     /**
@@ -60,6 +135,9 @@ class ControllerPlanes extends Controller
      */
     public function destroy(string $id)
     {
-        return "destroy planes";
+
+        $plan = Plan::find($id);
+        $plan->delete();
+        return redirect()->back();
     }
 }
