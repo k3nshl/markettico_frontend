@@ -4,6 +4,20 @@
 
 @section('contenido')
 
+
+
+@if(session('error'))
+<div class="alert alert-danger" role="alert">
+    <h3>{{session('error')}}  </h3>
+</div>
+@endif
+
+@if(session('success'))
+<div class="alert alert-success" role="alert">
+ <h3>{{session('success')}}  </h3>
+</div>
+@endif
+
     <section class="content">
         <div class="row">
             <div class="col-xl-12 mx-auto">
@@ -573,7 +587,7 @@
                                                                             <button type="button"
                                                                                 class="btn btn-secondary"
                                                                                 data-bs-dismiss="modal">Cerrar</button>
-                                                                            <button type="submit"
+                                                                            <button type="submit" 
                                                                                 class="btn btn-info text-white"
                                                                                 style="background-color: #04D9D9; border-color: #04D9D9;">
                                                                                 <i class="bx bx-save"

@@ -4,6 +4,19 @@
 
 @section('contenido')
 
+   
+  @if(session('error'))
+    <div class="alert alert-danger" role="alert">
+        <h1>{{session('error')}}  </h1>
+    </div>
+ @endif
+
+ @if(session('success'))
+ <div class="alert alert-success" role="alert">
+     <h1>{{session('success')}}  </h1>
+ </div>
+@endif
+
     <section class="content">
         <div class="row">
             <div class="col-xl-12 mx-auto">
@@ -45,6 +58,7 @@
                                                 <div class="d-flex align-items-center">
                                                     <div><i class="lni lni-clipboard me-1 font-22 text-info"></i>
                                                     </div>
+                                                    
                                                     <h5 class="mb-0 text-dark" title="Agregar Usuario">
                                                         Lista de
                                                         Estados</h5>
@@ -53,6 +67,10 @@
                                                     <div class="me-2">
                                                         <h5 class="m-0">Registrar</h5>
                                                     </div>
+                                                     
+                                           
+
+
                                                     <div class="me-2">
                                                         <button type="button" class="btn btn-info text-white"
                                                             data-bs-toggle="modal" data-bs-target="#modalAgregarEstado"
@@ -260,8 +278,7 @@
                                                                                         @csrf
                                                                                         @method('delete')
                                                                                         <button type="submit"
-                                                                                            class="btn btn-danger"
-                                                                                            data-bs-dismiss="modal"
+                                                                                            class="btn btn-danger" 
                                                                                             data-bs-toggle="modal"
                                                                                             data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
                                                                                     </form>
