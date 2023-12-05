@@ -4,6 +4,19 @@
 
 @section('contenido')
 
+   
+  @if(session('error'))
+    <div class="alert alert-danger" role="alert">
+        <h1>{{session('error')}}  </h1>
+    </div>
+ @endif
+
+ @if(session('success'))
+ <div class="alert alert-success" role="alert">
+     <h1>{{session('success')}}  </h1>
+ </div>
+@endif
+
     <section class="content">
         <div class="row">
             <div class="col-xl-12 mx-auto">
@@ -15,10 +28,6 @@
 
                                 <a class="nav-link active" data-bs-toggle="pill" href="#tab-estados" role="tab"
                                     aria-selected="true">
-
-                                <a class="nav-link active" data-bs-toggle="pill" href="#success-pills-profile"
-                                    role="tab" aria-selected="true">
-
                                     <div class="d-flex align-items-center">
                                         <div class="tab-icon"><i class="bx bx-home font-18 me-1"></i>
                                         </div>
@@ -27,7 +36,7 @@
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" data-bs-toggle="pill" href="#pills-home" role="tab"
+                                <a class="nav-link" data-bs-toggle="pill" href="#tab-roles" role="tab"
                                     aria-selected="false">
                                     <div class="d-flex align-items-center">
                                         <div class="tab-icon"><i class="bx bx-user-pin font-18 me-1"></i>
@@ -40,7 +49,7 @@
 
                         <div class="tab-content">
                             {{-- Inicio estados --}}
-                            <div class="tab-pane show active fade" id="success-pills-profile" role="tabpanel">
+                            <div class="tab-pane show active fade" id="tab-estados" role="tabpanel">
 
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
@@ -49,6 +58,7 @@
                                                 <div class="d-flex align-items-center">
                                                     <div><i class="lni lni-clipboard me-1 font-22 text-info"></i>
                                                     </div>
+                                                    
                                                     <h5 class="mb-0 text-dark" title="Agregar Usuario">
                                                         Lista de
                                                         Estados</h5>
@@ -57,6 +67,10 @@
                                                     <div class="me-2">
                                                         <h5 class="m-0">Registrar</h5>
                                                     </div>
+                                                     
+                                           
+
+
                                                     <div class="me-2">
                                                         <button type="button" class="btn btn-info text-white"
                                                             data-bs-toggle="modal" data-bs-target="#modalAgregarEstado"
@@ -154,7 +168,7 @@
                                                                         <!-- Botón de editar con modal -->
                                                                         <button class="btn btn-warning btn-sm"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#editarEstadoModal"
+                                                                            data-bs-target="#editarEstadoModal{{ $item->id_estado }}"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top" title="Editar Estado">
                                                                             <div class="text-center">
@@ -173,7 +187,7 @@
                                                                     </div>
 
                                                                     <!-- Modal de edición -->
-                                                                    <div class="modal fade" id="editarEstadoModal"
+                                                                    <div class="modal fade" id="editarEstadoModal{{ $item->id_estado }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="editarEstadoModalLabel"
                                                                         aria-hidden="true">
@@ -181,7 +195,7 @@
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
                                                                                     <h5 class="modal-title"
-                                                                                        id="editarUsuarioModalLabel">
+                                                                                        id="editarUsuarioModalLabel{{ $item->id_estado }}">
                                                                                         Editar Estado</h5>
                                                                                     <button type="button"
                                                                                         class="btn-close"
@@ -207,7 +221,8 @@
                                                                                                     class="form-control"
                                                                                                     id="nombre"
                                                                                                     name="nombre"
-                                                                                                    placeholder="Ingrese el nombre del Estado">
+                                                                                                    placeholder="Ingrese el nombre del Estado"
+                                                                                                    value="{{$item->nombre }}">
                                                                                             </div>
                                                                                         </div>
 
@@ -241,7 +256,7 @@
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
                                                                                     <h5 class="modal-title"
-                                                                                        id="eliminarEstadoModalLabel">
+                                                                                        id="eliminarEstadoModalLabel{{ $item->id_estado }}">
                                                                                         Confirmar
                                                                                         eliminación</h5>
                                                                                     <button type="button"
@@ -259,13 +274,12 @@
                                                                                         class="btn btn-secondary"
                                                                                         data-bs-dismiss="modal">Cancelar</button>
                                                                                     <form
-                                                                                        action="{{ route('estados.destroy', 20) }}"
+                                                                                        action="{{ route('estados.destroy', $item->id_estado) }}"
                                                                                         method="POST">
                                                                                         @csrf
                                                                                         @method('delete')
                                                                                         <button type="submit"
-                                                                                            class="btn btn-danger"
-                                                                                            data-bs-dismiss="modal"
+                                                                                            class="btn btn-danger" 
                                                                                             data-bs-toggle="modal"
                                                                                             data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
                                                                                     </form>
@@ -288,7 +302,7 @@
                             {{-- Fin estados --}}
 
                             {{-- Inicio roles --}}
-                            <div class="tab-pane fade" id="pills-home" role="tabpanel">
+                            <div class="tab-pane fade" id="tab-roles" role="tabpanel">
 
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
@@ -416,7 +430,7 @@
                                                                             <!-- Botón de editar con modal -->
                                                                             <button class="btn btn-warning btn-sm"
                                                                                 data-bs-toggle="modal"
-                                                                                data-bs-target="#editarRolModal"
+                                                                                data-bs-target="#editarRolModal{{ $item->id_rol }}"
                                                                                 data-bs-toggle="tooltip"
                                                                                 data-bs-placement="top"
                                                                                 title="Editar Rol">
@@ -438,7 +452,7 @@
 
 
                                                                         <!-- Modal de edición -->
-                                                                        <div class="modal fade" id="editarRolModal"
+                                                                        <div class="modal fade" id="editarRolModal{{ $item->id_rol }}"
                                                                             tabindex="-1"
                                                                             aria-labelledby="editarRolModalLabel"
                                                                             aria-hidden="true">
@@ -447,7 +461,7 @@
                                                                                 <div class="modal-content">
                                                                                     <div class="modal-header">
                                                                                         <h5 class="modal-title"
-                                                                                            id="editarUsuarioModalLabel">
+                                                                                            id="editarUsuarioModalLabel{{ $item->id_rol }}">
                                                                                             Editar Rol</h5>
                                                                                         <button type="button"
                                                                                             class="btn-close"
@@ -475,7 +489,7 @@
                                                                                                         class="form-control"
                                                                                                         id="nombre"
                                                                                                         name="nombre"
-                                                                                                        placeholder="Ingrese el nombre del Rol">
+                                                                                                        placeholder="Ingrese el nombre del Rol" value="{{ $item->nombre }}">
                                                                                                 </div>
                                                                                             </div>
 
@@ -493,7 +507,7 @@
                                                                                                             value="1">
                                                                                                             Activo</option>
                                                                                                         <option
-                                                                                                            value="0">
+                                                                                                            value="2">
                                                                                                             Inactivo
                                                                                                         </option>
                                                                                                     </select>

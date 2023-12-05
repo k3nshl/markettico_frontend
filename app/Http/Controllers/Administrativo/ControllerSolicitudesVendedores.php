@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
-
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
-use Spatie\Ignition\Contracts\Solution;
-
 use App\Models\Vendedor;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Redirect;
+
 
 
 class ControllerSolicitudesVendedores extends Controller
@@ -21,7 +19,7 @@ class ControllerSolicitudesVendedores extends Controller
     public function index()
     {
         $vendedores = Vendedor::all();
-        return view('solicitudes.indexVendedores',compact('vendedores'));
+        return view('solicitudes.indexVendedores', compact('vendedores'));
     }
 
     /**
@@ -79,21 +77,21 @@ class ControllerSolicitudesVendedores extends Controller
     {
         $item = Vendedor::find($id);
         $estado = 0;
-        
 
-        if($request->revision == "1"){
+
+        if ($request->revision == "1") {
 
             $estado = 8;
         }
 
-        if($request->revision == "2"){
+        if ($request->revision == "2") {
 
             $estado = 10;
         }
 
         $item->id_estado = $estado;
 
-        
+
         $item->update();
 
 
@@ -105,7 +103,6 @@ class ControllerSolicitudesVendedores extends Controller
      */
     public function destroy(string $id)
     {
-
     }
 
     public function vendedoresIndividuales()

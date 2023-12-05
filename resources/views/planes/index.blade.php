@@ -2,6 +2,9 @@
 
 @section('gestion_nombre', 'Gestión de Planes')
 
+
+
+
 @section('contenido')
     <section class="content">
         <div class="row">
@@ -24,6 +27,19 @@
                                 </button>
                             </li>
                         </ul>
+
+
+                        @if(session('error'))
+    <div class="alert alert-danger" role="alert">
+        <h3>{{session('error')}}  </h3>
+    </div>
+ @endif
+
+ @if(session('success'))
+ <div class="alert alert-success" role="alert">
+     <h3>{{session('success')}}  </h3>
+ </div>
+@endif
 
                         <div class="tab-content">
                             <div class="tab-pane  show active fade" id="tab-info">
@@ -269,13 +285,22 @@
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Cerrar</button>
-                                                                                <button type="submit"
-                                                                                    class="btn btn-info text-white"
-                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                    <i class="bx bx-save"
-                                                                                        style="color: #F2F2F2;"></i>
-                                                                                    Guardar
-                                                                                </button>
+
+                                                                                    <form action="{{ route ('planes.update',1) }}" method="POST">
+                                                                                        @csrf
+                                                                                        @method('PUT')
+
+                                                                                        <button type="submit"
+                                                                                        class="btn btn-info text-white"
+                                                                                        style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                        <i class="bx bx-save"
+                                                                                            style="color: #F2F2F2;"></i>
+                                                                                        Guardar
+                                                                                    </button>
+
+
+                                                                                    </form>
+                                                                               
                                                                             </div>
                                                                             </form>
                                                                         </div>
@@ -361,16 +386,11 @@
                                                     <label for="tipo" class="col-sm-4 col-form-label">Tipo:</label>
                                                     <div class="col-sm-8">
                                                         <select class="form-select" id="tipo" name="tipo">
-
                                                             <option value="opcion1">Plan básico</option>
                                                             <option value="opcion2">Plan empresarial</option>
                                                             <option value="opcion3">Plan premium</option>
                                                             <option value="opcion3">Plan deluxe</option>
 
-                                                            <option value="Plan básico">Plan básico</option>
-                                                            <option value="Plan empresarial">Plan empresarial</option>
-                                                            <option value="Plan premium">Plan premium</option>
-                                                            <option value="Plan deluxe">Plan deluxe</option>
 
                                                         </select>
                                                     </div>
@@ -381,10 +401,7 @@
                                                 <div class="row mb-3">
                                                     <label for="costo" class="col-sm-4 col-form-label">Costo:</label>
                                                     <div class="col-sm-8">
-                                                        <input type="number" class="form-control" id="costo " name="costo"
-                                                        <input type="number" class="form-control" id="costo" name="costo"
-
-                                                            placeholder="Costo">
+                                                        <input type="number" class="form-control" id="costo " name="costo"  placeholder="Costo">
                                                     </div>
                                                 </div>
 
@@ -393,13 +410,8 @@
                                                         máximo de venta de productos:</label>
                                                     <div class="col-sm-8">
                                                         <input type="number" class="form-control"
-
                                                             id="cantidad_productos"
                                                             placeholder="Límite máximo de venta de productos" name="cantidad_productos">
-
-                                                            id="cantidad_productos" name="cantidad_productos"
-                                                            placeholder="Límite máximo de venta de productos">
-
                                                     </div>
                                                 </div>
 
@@ -429,15 +441,9 @@
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="duracion" class="col-sm-4 col-form-label">Duración del
-                                                        plan (en meses):</label>
+                                                    <label for="duracion" class="col-sm-4 col-form-label">Duración delplan (en meses):</label>
                                                     <div class="col-sm-8">
-
-                                                        <input type="text" class="form-control" id="duracion"  name="duracion"
-
-                                                        <input type="text" class="form-control" id="duracion" name="duracion"
-
-                                                            placeholder="Duración del plan">
+                                                        <input type="text" class="form-control" id="duracion"  name="duracion" placeholder="Duración del plan">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
@@ -448,6 +454,13 @@
                                                 </div>
 
                                                 <hr>
+
+                                                <form action="{{ route('planes.store') }}" method="POST">
+                                                    @method('POST')
+                                                    @csrf 
+                                                    <button type="submite" > Registrar
+                                                    </button>
+                                                </form>
 
                                                 <div class="row">
                                                     <label class="col-sm-3 col-form-label"></label>

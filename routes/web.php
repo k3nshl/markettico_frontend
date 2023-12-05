@@ -35,12 +35,13 @@ use Illuminate\Support\Facades\Route;
 // Route::view('/', 'usuariosAdministrativos.index');
 Route::get('/',[ControllerUsuariosAdministrativos::class, 'index'])->name('home');
 
-Route::get('/',[ControllerUsuariosAdministrativos::class, 'index'])->name('inicio');
+
 Route::get('/st',[ControllerAlertas::class, 'index']);
 
 // Rutas para usuarios administrativos
 Route::resource('/usuariosAdministrativos', ControllerUsuariosAdministrativos::class);
 Route::post('/bloquear_usuario', [ControllerUsuariosAdministrativos::class, 'bloquear_usuario'])->name('bloquear_usuario');
+Route::post('/desbloquear_usuario', [ControllerUsuariosAdministrativos::class, 'desbloquearUsuario'])->name('desbloquearUsuario');
 //Rutas estados y roles
 
 Route::resource('estados', ControllerEstados::class);
