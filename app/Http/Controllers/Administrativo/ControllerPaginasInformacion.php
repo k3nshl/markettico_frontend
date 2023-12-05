@@ -42,21 +42,45 @@ class ControllerPaginasInformacion extends Controller
      */
     public function store(Request $request)
     {
+
+        $errors = [
+            'titulo' => 'required|string|max:100|min:2',
+            'descripcion' => 'required|string|max:100|min:5',
+            'icono' => 'required',
+        ];
+    
+        // Mensajes de error personalizados
+        $messages = [
+            'titulo.required' => 'Se requiere un titulo',
+            'titulo.min' => 'El titulo debe contener al menos 2 caracteres',
+            'titulo.max' => 'El titulo no puede exeder los 100 caracteres',
+            'descripcion.min' => 'La descripcion debe contener al menos 5 caracteres',
+            'descripcion.max' => 'La descripcion no puede exeder los 100 caracteres',
+            'icono.required' => 'Se requiere un icono',
+        ];
+    
+        // Validar los datos
+        $validator = Validator::make($request->all(), $errors, $messages);
+    
+        // Si la validación falla, redirigir con mensajes de error
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+    
+        // Crear y guardar Pagina de Informacion
         
         $item = new PaginaInformacion();
-
         $item->titulo = $request->titulo;
         $item->descripcion = $request->descripcion;
-
         $imagen = $request->icono;
-
         if ($imagen) {
             $filename = $imagen->getClientOriginalName();
 
             $imagen->move(public_path('img/fotografias'), $filename);
             $item->icono = $filename;
         }
-
         $item->save();
         $this->guardarHistorial($item);
         //return $this->index();

@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 
-use App\Models\Alerta;
-
 class ControllerAlertas extends Controller
 {
     /**

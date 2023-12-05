@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Spatie\Ignition\Contracts\Solution;
 
 use App\Models\Vendedor;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Redirect;
 
