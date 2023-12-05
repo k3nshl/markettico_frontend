@@ -60,58 +60,7 @@ class ControllerAlertas extends Controller
         $alerta->id_estado = 1;
         $alerta->save();
 
-
-
-        $tipo_destinatario = "";
-
-        if ($request->tipo_destinatario == 1) {
-
-            $tipo_destinatario = "compradores";
-        }
-
-        if ($request->tipo_destinatario == 2) {
-
-            $tipo_destinatario = "vendedores";
-        }
-
-        if ($request->tipo_destinatario == 3) {
-
-            $tipo_destinatario = "todos";
-        }
-
-
-        $item = new Alerta();
-
-        $request->validate([
-            'titulo' => 'required|string|max:50'
-        ]);
-        // Validacion de que no se repita el nombre del estado
-
-        $validacion = Alerta::where('titulo', $request->titulo)->first();
-
-        if ($validacion) {
-            return back()->with('error', 'Ya existe un registro con este nombre');
-        } else {
-
-
-
-            $item->id_usuario_remitente = 8;
-
-            $item->titulo = $request->titulo;
-            $item->descripcion = $request->descripcion;
-
-            $item->tipo_destinatario = $tipo_destinatario;
-
-            $item->fecha_inicio = $request->fecha_inicio;
-            $item->fecha_final = $request->fecha_final;
-
-            $item->id_estado = 2;
-
-            $item->save();
-            return back()->with('success', 'La alerta se ha registrado correctamente');
-        }
         return redirect()->back();
-
     }
 
     /**
@@ -135,62 +84,8 @@ class ControllerAlertas extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-
-        $id = 1;
-
-        $tipo_destinatario = "";
-
-        if ($request->tipo_destinatario == 1) {
-
-            $tipo_destinatario = "compradores";
-        }
-
-        if ($request->tipo_destinatario == 2) {
-
-            $tipo_destinatario = "vendedores";
-        }
-
-        if ($request->tipo_destinatario == 3) {
-
-            $tipo_destinatario = "todos";
-        }
-
-
-        $item = Alerta::find($id);
-
-        $request->validate([
-            'titulo' => 'required|string|max:50'
-        ]);
-        // Validacion de que no se repita el nombre del estado
-
-        $validacion = Alerta::where('titulo', $request->titulo)->first();
-
-        if ($validacion) {
-            return back()->with('error', 'Ya existe un registro con este nombre');
-        } else {
-
-
-
-
-            //$item->id_usuario_remitente = 8;
-
-            $item->titulo = $request->titulo;
-            $item->descripcion = $request->descripcion;
-
-            $item->tipo_destinatario = $tipo_destinatario;
-
-            $item->fecha_inicio = $request->fecha_inicio;
-            $item->fecha_final = $request->fecha_final;
-
-            $item->id_estado = 2;
-
-            $item->update();
-            return back()->with('success', 'La alerta se ha actualizado correctamente');
-        }
-
-
         $alerta = Alerta::find($id);
         $alerta->id_usuario_remitente = Auth::user()->id_usuario_administrativo;
         $alerta->titulo = $request->titulo;
