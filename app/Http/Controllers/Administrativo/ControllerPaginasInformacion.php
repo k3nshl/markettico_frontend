@@ -11,15 +11,12 @@ use Illuminate\Support\Facades\Storage;
 
 class ControllerPaginasInformacion extends Controller
 {
+    protected $controllerHitoriales;
 
-    public function guardarHistorial($item)
-    {   
-        $paginaHistorial = new HistorialGestionPaginas();
-        $fecha_actual = date('Y-m-d H:i:s');
-        $paginaHistorial->id_pagina_informacion  = $item->id_pagina_informacion;
-        $paginaHistorial->fecha_hora = $fecha_actual;
-        $paginaHistorial->save();
-    }
+    public function __construct(ControllerHistoriales $controllerHistoriales) {
+      $this->controllerHitoriales = $controllerHistoriales;
+   }
+
     /**
      * Display a listing of the resource.
      */
@@ -58,8 +55,13 @@ class ControllerPaginasInformacion extends Controller
         }
 
         $item->save();
-        $this->guardarHistorial($item);
-        //return $this->index();
+
+        $request->merge([
+            'id_pagina_informacion' => $item->id_pagina_informacion,
+        ]);
+         $this->controllerHitoriales->store_paginasInfo($request, 'Creación de la pagina ');
+
+
         return redirect()->back();
     }
 
@@ -90,6 +92,7 @@ class ControllerPaginasInformacion extends Controller
         $item->titulo = $request->titulo;
         $item->descripcion = $request->descripcion;
 
+
         $imagen = $request->icono;
 
         if ($imagen) {
@@ -99,7 +102,12 @@ class ControllerPaginasInformacion extends Controller
             $item->icono = $filename;
         }
         $item->update();
-        $this->guardarHistorial($item);
+
+        $request->merge([
+            'id_pagina_informacion' => $item->id_pagina_informacion,
+        ]);
+         $this->controllerHitoriales->store_paginasInfo($request, 'Actualización de la pagina ');
+
         return redirect()->back();
     }
 
@@ -110,7 +118,15 @@ class ControllerPaginasInformacion extends Controller
     {
         $item = PaginaInformacion::find($id);
         $item->delete();
-        $this->guardarHistorial($item);
+       
+        $request = new Request();
+        $request->merge([
+            'id_pagina_informacion' => $item->id_pagina_informacion,
+            'titulo' => $item->titulo,
+        ]);
+         $this->controllerHitoriales->store_paginasInfo($request, 'Eliminación de la pagina ');
+
+
         return redirect()->back();
     }
 }

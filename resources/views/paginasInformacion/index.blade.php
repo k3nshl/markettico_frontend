@@ -125,7 +125,7 @@
                                                         <div class="modal-dialog modal-dialog-scrollable">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="editarColeccionModalLabel">
+                                                                    <h5 class="modal-title" id="editarColeccionModalLabel{{$item->id_pagina_informacion}}">
                                                                         Editar Colección</h5>
                                                                     <button type="button" class="btn-close"
                                                                         data-bs-dismiss="modal" aria-label="Close"
@@ -135,7 +135,7 @@
 
                                                                 <div class="modal-body">
                                                                     <form
-                                                                        action="{{ route('paginasInformacion.update', 1) }}"
+                                                                        action="{{ route('paginasInformacion.update', $item->id_pagina_informacion) }}"
                                                                         method="POST">
                                                                         @csrf
                                                                         @method('PUT')
@@ -188,7 +188,7 @@
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="eliminarPaginaModalLabel">
+                                                                    <h5 class="modal-title" id="eliminarPaginaModalLabel{{$item->id_pagina_informacion}}">
                                                                         Confirmar
                                                                         eliminación</h5>
                                                                     <button type="button" class="btn-close"
@@ -207,8 +207,9 @@
                                                                         @csrf
                                                                         @method('DELETE')
                                                                         <button type="submit" class="btn btn-danger"
-                                                                            data-bs-dismiss="modal" data-bs-toggle="modal"
-                                                                            data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
+                                                                            {{-- data-bs-dismiss="modal" data-bs-toggle="modal"
+                                                                            data-bs-target="#eliminacionCorrectaModal" --}}
+                                                                            >Eliminar</button>
                                                                     </form>
                                                                 </div>
                                                             </div>
