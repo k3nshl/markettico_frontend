@@ -16,6 +16,15 @@ class ControllerRoles extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    protected $controllerHistorial;
+
+    public function __construct(ControllerHistoriales $historial)
+    {
+        $this->controllerHistorial = $historial;
+    }
+
+    
     public function index()
     {
         
@@ -34,13 +43,20 @@ class ControllerRoles extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $errors = [
             'nombre' => 'required||unique:roles',
             'id_estado' => 'required',
-        ]);
+        ];
+        $messages = [
+            'nombre.unique' => 'El nombre ya está en uso.',
+            'id_estado.required' => 'El id estado esta vacio.',
+        ]; 
+        $validator = Validator::make($request->all(),$errors, $messages);
     
         if ($validator->fails()) {
-            return redirect()->back();
+            return redirect()->back()
+            ->withErrors($validator)
+            ->withInput();
         }
         
         $rol = new Rol();
@@ -48,13 +64,11 @@ class ControllerRoles extends Controller
         $rol->id_estado= $request->id_estado;
         $rol->save();
 
-        //Este metodo se tiene que completar hasta que se termine el logueo con auth 
-        // $historial = new HistorialGestionRoles();
-        // $historial->id_rol =  $rol->id_rol;
-        // $historial->id_usuario =  Auth::user()->id_usuario_administrativo;
-        // $historial->fecha_hora =  date(Date::now());
-        // $historial->accion =  'Inserccion de un nuveo rol';
-        // $historial->save();
+        $request->merge([
+            'id_rol' => $rol->id_rol,
+        ]);
+
+        $this->controllerHistorial->store_rol($request,'Creacion del rol ');
         return redirect()->back();
     }
 
@@ -79,35 +93,33 @@ class ControllerRoles extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $validator = Validator::make($request->all(), [
+
+        $errors = [
             'nombre' => 'required||unique:roles',
             'id_estado' => 'required',
-        ]);
+        ];
+        $messages = [
+            'nombre.unique' => 'El nombre ya está en uso.',
+            'id_estado.required' => 'El id estado esta vacio.',
+        ]; 
+        $validator = Validator::make($request->all(),$errors, $messages);
     
         if ($validator->fails()) {
-            return redirect()->back();
+            return redirect()->back()
+            ->withErrors($validator)
+            ->withInput();
         }
 
         $rol = Rol::find($id);
         $rol->nombre = $request->nombre;
-
+        $rol->id_estado= $request->id_estado;
         $rol->save();
 
-        $historial = new HistorialGestionRoles();
-        $historial->id_rol =  $rol->id_rol;
-        $historial->id_usuario =  Auth::auth()->user()->id_usuario;
-        $historial->fecha_hora =  date(Date::now());
-        $historial->accion =  'Actualizacion de un rol';
-        $historial->save();
-        
+        $request->merge([
+            'id_rol' => $rol->id_rol,
+        ]);
 
-        $rol->save(); 
-        // $historial = new HistorialGestionRoles();
-        // $historial->id_rol =  $rol->id_rol;
-        // $historial->id_usuario =  Auth::user()->id_usuario_administrativo;
-        // $historial->fecha_hora =  date(Date::now());
-        // $historial->accion =  'Actualizacion de un rol';
-        // $historial->save();
+        $this->controllerHistorial->store_rol($request,'Actualización del rol ');
 
         return redirect()->back();
     }
@@ -120,12 +132,13 @@ class ControllerRoles extends Controller
         $rol =  Rol::find($id);
         $rol->delete();
 
-        // $historial = new HistorialGestionRoles();
-        // $historial->id_rol =  $id;
-        // $historial->id_usuario =  Auth::user()->id_usuario_administrativo;
-        // $historial->fecha_hora =  date(Date::now());
-        // $historial->accion =  'Eliminacion de un rol';
-        // $historial->save();
+        $request = new Request();
+
+        $request->merge([
+            'id_rol' => $rol->id_rol,
+            'nombre' => $rol->nombre,
+        ]);
+        $this->controllerHistorial->store_rol($request,'Eliminación del rol ');
         return redirect()->back();
     }
 }

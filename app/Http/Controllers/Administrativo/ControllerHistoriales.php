@@ -45,6 +45,7 @@ class ControllerHistoriales extends Controller
         //
     }
 
+
     public function store_estados(Request $request,$accion)
     {
         $historial = new HistorialGestionEstados();
@@ -64,6 +65,7 @@ class ControllerHistoriales extends Controller
         $historial->save();
        
     }
+  
     /**
      * Display the specified resource.
      */
