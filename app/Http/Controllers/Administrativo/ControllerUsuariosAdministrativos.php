@@ -9,6 +9,7 @@ use App\Models\UsuarioAdministrativo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Validator;
 
 class ControllerUsuariosAdministrativos extends Controller
 {
@@ -16,13 +17,19 @@ class ControllerUsuariosAdministrativos extends Controller
     /**
      * Display a listing of the resource.
      */
+    protected $controllerHistorial;
+
+    public function __construct(ControllerHistoriales $controllerHistorial)
+    {
+        $this->controllerHistorial = $controllerHistorial;
+    }
 
     public function index()
     {
         $data = UsuarioAdministrativo::where('id_estado', 1)->get();
         $data_bloqueados = UsuarioAdministrativo::where('id_estado', 24)->get();
-        $roles = Rol::all();     
-        return view('usuariosAdministrativos.index', compact('data','data_bloqueados','roles'));
+        $roles = Rol::all();
+        return view('usuariosAdministrativos.index', compact('data', 'data_bloqueados', 'roles'));
     }
 
     /**
@@ -37,9 +44,10 @@ class ControllerUsuariosAdministrativos extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
+
     {
         $item = new UsuarioAdministrativo();
-        
+
         $item->id_rol = $request->id_rol;
         $item->id_estado = $request->id_estado;
         $item->nombre_completo = $request->nombre_completo;
@@ -49,18 +57,14 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->fecha_hora = date(Date::now());
         $item->save();
 
-        // $historial = new HistorialGestionCuentas();
-        // $historial->fecha_hora =  date(Date::now());
-        // $historial->accion =  'Inserccion de nuevo usuario';
-        // $historial->id_usuario =  Auth::auth()->user()->id_usuario;
-        // $historial->save();
+
         return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      */
-    
+
     public function show(string $id)
     {
         $item = UsuarioAdministrativo::find($id);
@@ -88,7 +92,7 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->correo_empresarial = $request->correo_empresarial;
         $item->numero_telefonico = $request->numero_telefonico;
         $item->update();
-        
+
         $historial = new HistorialGestionCuentas();
         $historial->fecha_hora =  date(Date::now());
         $historial->accion =  'Actualizacion  de un usuario';
@@ -141,10 +145,3 @@ class ControllerUsuariosAdministrativos extends Controller
         return redirect()->back();
     }
 }
-
-
-
-
-
-
-
