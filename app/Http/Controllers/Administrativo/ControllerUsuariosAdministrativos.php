@@ -46,6 +46,30 @@ class ControllerUsuariosAdministrativos extends Controller
     public function store(Request $request)
 
     {
+        $rules = [
+            'titulo' => 'required|unique:alertas',
+            'descripcion' => 'required',
+            'tipo_destinatario' => 'required',
+            'fecha_inicio' => 'required',
+            'fecha_final' => 'required',
+        ];
+
+        $messages = [
+            'titulo.required' => 'El campo título es obligatorio.',
+            'titulo.unique' => 'El título ya está en uso.',
+            'descripcion.required' => 'La descripción está vacía.',
+            'tipo_destinatario.required' => 'El destinatario está vacío.',
+            'fecha_inicio.required' => 'La fecha de inicio no se ha seleccionado.',
+            'fecha_final.required' => 'La fecha de finalización no se ha seleccionado.',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
         $item = new UsuarioAdministrativo();
 
         $item->id_rol = $request->id_rol;
@@ -86,6 +110,35 @@ class ControllerUsuariosAdministrativos extends Controller
     public function update(Request $request, string $id)
     {
         $item = UsuarioAdministrativo::find($id);
+
+        // Verifica si el usuario no existe
+        if (!$item) {
+            return redirect()->back()->with('error', 'El usuario no fue encontrado.');
+        }
+
+        // Definir reglas de validación
+        $rules = [
+            'id_rol' => 'required',
+            'id_estado' => 'required',
+            'nombre_completo' => 'required',
+            'correo_empresarial' => 'required|email',
+            'numero_telefonico' => 'required',
+        ];
+
+        // Definir mensajes de error
+        $messages = [
+            'correo_empresarial.email' => 'El correo empresarial debe ser una dirección de correo válida.',
+        ];
+
+        // Crear el validador
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        // Verificar si la validación falla
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
         $item->id_rol = $request->id_rol;
         $item->id_estado = $request->id_estado;
         $item->nombre_completo = $request->nombre_completo;
