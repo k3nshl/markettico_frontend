@@ -85,6 +85,15 @@
                                                 </div>
                                             </div>
                                         </form>
+
+                                        @if (session('error'))
+                                            <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                                <div class="text-dark">{{ session('error') }}</div>
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        @endif
+
+
                                     </div>
                                 </div>
                             </div>

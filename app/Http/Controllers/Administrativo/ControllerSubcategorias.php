@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subcategoria;
 use Illuminate\Http\Request;
 
 class ControllerSubcategorias extends Controller
@@ -12,7 +13,8 @@ class ControllerSubcategorias extends Controller
      */
     public function index()
     {
-        //
+        $subcategorias = Subcategoria::all();
+        //return view("", compact(""));
     }
 
     /**
@@ -28,7 +30,20 @@ class ControllerSubcategorias extends Controller
      */
     public function store(Request $request)
     {
-        return "Store Subcategorias";
+
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required||unique:alertas',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back();
+        }
+        $subcategoria = new Subcategoria();
+        $subcategoria->id_categoria = $request->id_categoria;
+        $subcategoria->nombre = $request->nombre;
+        $subcategoria->descripcion = $request->descripcion;
+        $subcategoria->id_estado = $request->id_estado;
+        $subcategoria->save();
     }
 
     /**
@@ -52,7 +67,13 @@ class ControllerSubcategorias extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "Update Subcategorias";
+        $subcategoria = Subcategoria::find($id);
+        $subcategoria->id_categoria = $request->id_categoria;
+        $subcategoria->nombre = $request->nombre;
+        $subcategoria->descripcion = $request->descripcion;
+        $subcategoria->id_estado = $request->id_estado;
+        $subcategoria->save();
+        //return redirect()->route("");
     }
 
     /**
@@ -60,6 +81,8 @@ class ControllerSubcategorias extends Controller
      */
     public function destroy(string $id)
     {
-        return "Destroy Subcategorias";
+        $subcategoria = Subcategoria::find($id);
+        $subcategoria->delete();
+        return redirect()->back();
     }
 }

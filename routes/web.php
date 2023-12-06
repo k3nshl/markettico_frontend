@@ -33,15 +33,20 @@ use Illuminate\Support\Facades\Route;
 
 // Ruta para la pagina de inicio
 // Route::view('/', 'usuariosAdministrativos.index');
+Route::get('/',[ControllerUsuariosAdministrativos::class, 'index'])->name('home');
 
-Route::get('/',[ControllerUsuariosAdministrativos::class, 'index']);
+
+Route::get('/st',[ControllerAlertas::class, 'index']);
+
 // Rutas para usuarios administrativos
 Route::resource('/usuariosAdministrativos', ControllerUsuariosAdministrativos::class);
 Route::post('/bloquear_usuario', [ControllerUsuariosAdministrativos::class, 'bloquear_usuario'])->name('bloquear_usuario');
+Route::post('/desbloquear_usuario', [ControllerUsuariosAdministrativos::class, 'desbloquearUsuario'])->name('desbloquearUsuario');
 //Rutas estados y roles
 
 Route::resource('estados', ControllerEstados::class);
 Route::resource('roles', ControllerRoles::class);
+Route::get('/pr',[ControllerRoles::class, 'store']);
 
 // Rutas para paginas de informacion y articulos
 Route::resource('paginasInformacion', ControllerPaginasInformacion::class);
@@ -112,4 +117,10 @@ Route::post('/actualizar_password', [ControllerUsuariosAdministrativos::class, '
 Route::post('/emails-send-user', [ControllerPlantillasCorreos::class, 'email_user'])->name('send.email.user');
 Route::post('/emails-send-seller', [ControllerPlantillasCorreos::class, 'email_seller'])->name('send.email.seller');
 
+
+
+Route::view('/recuperarContrasena', 'login.recuperacionContrasena');
+Route::view('/correoContrasena', 'login.correoContrasena');
+
 // Route::get('/codigo',  [ControllerLogin::class, 'getcodigoAleatorio'])->name('codigo');
+
