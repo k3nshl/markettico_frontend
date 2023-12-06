@@ -141,7 +141,7 @@
                                                                             <label for="contenido"
                                                                                 class="col-sm-4 col-form-label">Contenido:</label>
 
-                                                                            <textarea id="mytextarea" name="contenido" rows="3" placeholder="Contenido"></textarea>
+                                                                            <textarea id="summernoteTextareaRegistrar" name="contenido" rows="3" placeholder="Contenido"></textarea>
                                                                         </div>
 
                                                                         <div class="modal-footer">
@@ -169,7 +169,7 @@
                                             <hr />
 
                                             {{-- Listado de anuncios --}}
-                                            <div class="table-responsive">
+                                            <div class="">
                                                 <table id="tablaAnuncios" class="table table-bordered">
                                                     <thead class="theadAnuncios">
                                                         <tr class="text-center">
@@ -419,7 +419,7 @@
                                                                                             <label for="contenido"
                                                                                                 class="col-sm-4 col-form-label">Contenido:</label>
 
-                                                                                            <textarea id="mytextarea" name="contenido" rows="3" placeholder="Contenido">{{ $item->contenido }}</textarea>
+                                                                                            <textarea id="summernoteTextareaEditar" name="contenido" rows="3" placeholder="Contenido">{{ $item->contenido }}</textarea>
                                                                                         </div>
 
                                                                                         <div class="modal-footer">
