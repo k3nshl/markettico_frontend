@@ -300,11 +300,15 @@
                             </li>
 
                             <li>
-                                @if (optional(Auth::user()->roles)->nombre == 'Superadmin' || optional(Auth::user()->roles)->nombre == 'Administrador')
-                                    <a class="dropdown-item" href="{{ route('home') }}">
+                                @if (optional(Auth::user()->roles)->id_rol == 1)
+                                    <a class="dropdown-item" href="{{ route('homeSuperadmin') }}">
                                         <i class='bx bx-home-circle'></i><span>Dashboard</span>
                                     </a>
-                                @elseif (optional(Auth::user()->roles)->nombre == 'Moderador')
+                                @elseif (optional(Auth::user()->roles)->id_rol == 2)
+                                    <a class="dropdown-item" href="{{ route('homeAdministrador') }}">
+                                        <i class='bx bx-home-circle'></i><span>Dashboard</span>
+                                    </a>
+                                @elseif (optional(Auth::user()->roles)->id_rol == 3)
                                     <a class="dropdown-item" href="{{ route('paginasInformacion.index') }}">
                                         <i class='bx bx-home-circle'></i><span>Dashboard</span>
                                     </a>
