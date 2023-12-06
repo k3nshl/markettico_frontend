@@ -37,30 +37,18 @@ class ControllerAnuncios extends Controller
     public function store(Request $request)
     {
 
-        $errors = [
+        // Validar campos
+        $validator = Validator::make($request->all(), [
             'titulo' => 'required||unique:anuncios',
             'contenido' => 'required',
             'img_portada' => 'required',
             'fecha_inicio' => 'required',
             'fecha_final' => 'required',
             'etiqueta' => 'required',
-        ];
-        $messages = [
-            'titulo.unique' => 'El titulo ya está en uso.',
-            'contenido.required' => 'El contenido esta vacio.',
-            'img_portada.required' => 'La imgagen de portada esta vacia.',
-            'fecha_inicio.required' => 'La fecha de inicio no se a seleecionado.',
-            'fecha_final.required' => 'La fecha de finalización no se a seleecionado.',
-            'etiqueta.required' => 'La etiqueta esta vacia.',
-        ]; 
-       
-        // Validar campos
-        $validator = Validator::make($request->all(), $errors, $messages);
+        ]);
     
         if ($validator->fails()) {
-            return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
+            return redirect()->back();
         }
 
         // Cargar imagen
@@ -106,31 +94,18 @@ class ControllerAnuncios extends Controller
      */
     public function update(Request $request, string $id)
     {
-
-        $errors = [
+        // Validar campos
+        $validator = Validator::make($request->all(), [
             'titulo' => 'required||unique:anuncios',
             'contenido' => 'required',
             'img_portada' => 'required',
             'fecha_inicio' => 'required',
             'fecha_final' => 'required',
             'etiqueta' => 'required',
-        ];
-        $messages = [
-            'titulo.unique' => 'El titulo ya está en uso.',
-            'contenido.required' => 'El contenido esta vacio.',
-            'img_portada.required' => 'La imgagen de portada esta vacia.',
-            'fecha_inicio.required' => 'La fecha de inicio no se a seleecionado.',
-            'fecha_final.required' => 'La fecha de finalización no se a seleecionado.',
-            'etiqueta.required' => 'La etiqueta esta vacia.',
-        ];
-
-        // Validar campos
-        $validator = Validator::make($request->all(), $errors, $messages);
+        ]);
 
         if ($validator->fails()) {
-            return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
+            return redirect()->back();
         }
 
         // Cargar imagen

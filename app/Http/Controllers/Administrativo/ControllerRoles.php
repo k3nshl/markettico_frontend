@@ -43,20 +43,13 @@ class ControllerRoles extends Controller
      */
     public function store(Request $request)
     {
-        $errors = [
+        $validator = Validator::make($request->all(), [
             'nombre' => 'required||unique:roles',
             'id_estado' => 'required',
-        ];
-        $messages = [
-            'nombre.unique' => 'El nombre ya está en uso.',
-            'id_estado.required' => 'El id estado esta vacio.',
-        ]; 
-        $validator = Validator::make($request->all(),$errors, $messages);
+        ]);
     
         if ($validator->fails()) {
-            return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
+            return redirect()->back();
         }
         
         $rol = new Rol();
@@ -93,21 +86,13 @@ class ControllerRoles extends Controller
      */
     public function update(Request $request, string $id)
     {
-
-        $errors = [
+        $validator = Validator::make($request->all(), [
             'nombre' => 'required||unique:roles',
             'id_estado' => 'required',
-        ];
-        $messages = [
-            'nombre.unique' => 'El nombre ya está en uso.',
-            'id_estado.required' => 'El id estado esta vacio.',
-        ]; 
-        $validator = Validator::make($request->all(),$errors, $messages);
+        ]);
     
         if ($validator->fails()) {
-            return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
+            return redirect()->back();
         }
 
         $rol = Rol::find($id);
