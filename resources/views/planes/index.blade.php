@@ -446,12 +446,12 @@
                                                         <input type="text" class="form-control" id="duracion"  name="duracion" placeholder="Duración del plan">
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="row mb-3">
-                                                    <label for="contenido"
-                                                        class="col-sm-4 col-form-label">Características:</label>
-                                                    <textarea id="mytextarea" name="descripcion" rows="3" placeholder="Escribe las características del plan"></textarea>
-
+                                                    <label for="contenido" class="col-sm-4 col-form-label">Características:</label>
+                                                    <textarea id="summernoteTextareaPlanes" name="descripcion" rows="3" data-placeholder="Escribe las características del plan"></textarea>
                                                 </div>
+                                                
 
                                                 <hr>
 

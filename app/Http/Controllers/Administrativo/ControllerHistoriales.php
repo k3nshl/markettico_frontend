@@ -42,9 +42,8 @@ class ControllerHistoriales extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
 
+    }
     public function store_usuario(Request $request, string $accion)
     {
         $historial = new HistorialGestionCuentas();
@@ -67,16 +66,16 @@ class ControllerHistoriales extends Controller
     }
 
 
-    public function store_estados(Request $request,$accion)
+    public function store_usuario(Request $request, string $accion)
     {
-        $historial = new HistorialGestionEstados();
-        $historial->id_estado =  $request->id_estado;
-        $historial->nombre_estado =  $request->nombre;
-        $historial->id_usuario =Auth::user()->id_usuario_administrativo;
+        $historial = new HistorialGestionCuentas();
         $historial->fecha_hora =  date(Date::now());
-        $historial->accion = $accion.$request->nombre;
+        $historial->accion =  $accion.$request->nombre_completo;
+        $historial->id_usuario = Auth::user()->id_usuario_administrativo;
+        $historial->email_usuario =  $request->correo_empresarial;
         $historial->save();
     }
+
 
     public function store_paginasInfo(Request $request){
         $historial = new HistorialGestionPaginas();
@@ -84,9 +83,8 @@ class ControllerHistoriales extends Controller
         $historial->titulo_pagina_informacion = $request->titulo;
         $historial->fecha_hora= date('Y-m-d H:i:s');
         $historial->save();
-       
     }
-  
+
     /**
      * Display the specified resource.
      */

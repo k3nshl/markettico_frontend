@@ -12,12 +12,15 @@ use Illuminate\Support\Facades\Validator;
 
 class ControllerPaginasInformacion extends Controller
 {
-    protected $controllerHitoriales;
 
-    public function __construct(ControllerHistoriales $controllerHistoriales) {
-      $this->controllerHitoriales = $controllerHistoriales;
-   }
-
+    public function guardarHistorial($item)
+    {   
+        $paginaHistorial = new HistorialGestionPaginas();
+        $fecha_actual = date('Y-m-d H:i:s');
+        $paginaHistorial->id_pagina_informacion  = $item->id_pagina_informacion;
+        $paginaHistorial->fecha_hora = $fecha_actual;
+        $paginaHistorial->save();
+    }
     /**
      * Display a listing of the resource.
      */
@@ -40,39 +43,14 @@ class ControllerPaginasInformacion extends Controller
      */
     public function store(Request $request)
     {
-
-        $errors = [
-            'titulo' => 'required|string|max:100|min:2',
-            'descripcion' => 'required|string|max:100|min:5',
-            'icono' => 'required',
-        ];
-    
-        // Mensajes de error personalizados
-        $messages = [
-            'titulo.required' => 'Se requiere un titulo',
-            'titulo.min' => 'El titulo debe contener al menos 2 caracteres',
-            'titulo.max' => 'El titulo no puede exeder los 100 caracteres',
-            'descripcion.min' => 'La descripcion debe contener al menos 5 caracteres',
-            'descripcion.max' => 'La descripcion no puede exeder los 100 caracteres',
-            'icono.required' => 'Se requiere un icono',
-        ];
-    
-        // Validar los datos
-        $validator = Validator::make($request->all(), $errors, $messages);
-    
-        // Si la validación falla, redirigir con mensajes de error
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-    
-        // Crear y guardar Pagina de Informacion
         
         $item = new PaginaInformacion();
+
         $item->titulo = $request->titulo;
         $item->descripcion = $request->descripcion;
+
         $imagen = $request->icono;
+
         if ($imagen) {
             $filename = $imagen->getClientOriginalName();
 
@@ -87,6 +65,9 @@ class ControllerPaginasInformacion extends Controller
          $this->controllerHitoriales->store_paginasInfo($request);
 
 
+        $item->save();
+        $this->guardarHistorial($item);
+        //return $this->index();
         return redirect()->back();
     }
 
@@ -117,7 +98,6 @@ class ControllerPaginasInformacion extends Controller
         $item->titulo = $request->titulo;
         $item->descripcion = $request->descripcion;
 
-
         $imagen = $request->icono;
 
         if ($imagen) {
@@ -127,7 +107,7 @@ class ControllerPaginasInformacion extends Controller
             $item->icono = $filename;
         }
         $item->update();
-
+        $this->guardarHistorial($item);
         return redirect()->back();
     }
 
@@ -138,7 +118,7 @@ class ControllerPaginasInformacion extends Controller
     {
         $item = PaginaInformacion::find($id);
         $item->delete();
-
+        $this->guardarHistorial($item);
         return redirect()->back();
     }
 }

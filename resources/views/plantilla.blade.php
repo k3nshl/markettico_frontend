@@ -31,6 +31,11 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('../assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}">
 
+    <!--plugins editor de texto mejorado-->
+    <link rel="stylesheet" href="{{ asset('../assets/plugins/textarea-definitive/summernote-lite.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('../assets/plugins/textarea-definitive/summernote-bs5.min.css') }}">
+
 
     <title>MarketTico Admin</title>
 </head>
@@ -407,6 +412,9 @@
     <script src="https://cdn.tiny.cloud/1/ridcfj86k1i5y88uy1n1vznbruw2zv4icacguzwpjgeoum26/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
 
+    <!--Editor de texto mejorado-->
+    <script src="{{ asset('../assets/plugins/textarea-definitive/summernote-lite.js') }}"></script>
+
     <script>
         $(function() {
             $(".knob").knob();
@@ -543,6 +551,51 @@
             $('#password').val('');
         });
     </script>
+
+
+    {{-- editor de texto mejorado --}}
+    <script>
+        $(document).ready(function() {
+            $('#summernoteTextareaRegistrar').summernote({
+                height: 150,
+                placeholder: 'Escribe el contenido del anuncio',
+            });
+
+            $('span.note-icon-caret').remove();
+
+            $('.note-editable').css('background', '#fff');
+        });
+    </script>
+
+    {{-- editor de texto mejorado --}}
+    <script>
+        $(document).ready(function() {
+            $('#summernoteTextareaEditar').summernote({
+                height: 150,
+                placeholder: 'Escribe el contenido del anuncio',
+            });
+
+            $('span.note-icon-caret').remove();
+
+            $('.note-editable').css('background', '#fff');
+        });
+    </script>
+
+      {{-- editor de texto mejorado --}}
+      <script>
+        $(document).ready(function() {
+            $('#summernoteTextareaPlanes').summernote({
+                height: 150,
+                placeholder: 'Escribe las características del plan',
+            });
+    
+            $('span.note-icon-caret').remove();
+    
+            $('.note-editable').css('background', '#fff');
+        });
+    </script>
+    
+
 </body>
 
 </html>
