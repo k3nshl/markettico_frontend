@@ -93,10 +93,15 @@ class ControllerLogin extends Controller
         if ($user->id_estado == 1 && $user->correo_empresarial == $request->correo_empresarial && $user->password == $password_login) {
             // $codigo = $this->getcodigoAleatorio();
             // $this->controllerCorreos->email_seller($request, $codigo);
-            // return view('login.codigoVerificacion', compact('user', 'codigo'));
+            // return view('login.codigoVerificacion', compact('user', 'codigo')); 
             auth::login($user);
-            //return $user;
-            return redirect()->route('home');
+            if ($user->id_rol == 1) {
+                return redirect()->route('homeSuperadmin');
+            } else if ($user->id_rol == 2) {
+                return redirect()->route('homeAdministrador');
+            } else if ($user->id_rol == 3) {
+                return redirect()->route('homeModerador');
+            }
         } else {
             return redirect()->route('login')->with('error', 'Contraseña o usuario incorrectas');
         }
@@ -128,9 +133,6 @@ class ControllerLogin extends Controller
         return $codigo;
     }
 
-
-
-
     public function verificarCodigo(Request $request)
     {
         $codigo = CodigoVerificacion::where('codigo', $request->codigo)->first();
@@ -140,7 +142,13 @@ class ControllerLogin extends Controller
             $user = UsuarioAdministrativo::find($request->id_usuario);
             auth::login($user);
 
-            return redirect()->route('estados.index');
+            if ($user->id_rol == 1) {
+                return redirect()->route('homeSuperadmin');
+            } else if ($user->id_rol == 2) {
+                return redirect()->route('homeAdministrador');
+            } else if ($user->id_rol == 3) {
+                return redirect()->route('homeModerador');
+            }
         } else {
             return redirect()->route('login')->with('error', 'Codigo incorrecto');
         }
