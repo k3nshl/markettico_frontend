@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
 use App\Models\Vendedor;
-
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Redirect;
 

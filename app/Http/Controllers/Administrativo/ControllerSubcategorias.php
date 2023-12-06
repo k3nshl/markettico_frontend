@@ -31,19 +31,43 @@ class ControllerSubcategorias extends Controller
     public function store(Request $request)
     {
 
-        $validator = Validator::make($request->all(), [
-            'nombre' => 'required||unique:alertas',
-        ]);
-
+        $errors = [
+            'id_categoria' => 'required|numeric',
+            'nombre' => 'required|string|max:100|min:2|unique:nombre',
+            'descripcion' => 'required|string|max:255|min:5',
+            'id_estado' => 'required|numeric',
+        ];
+    
+        // Mensajes de error personalizados
+        $messages = [
+            'id_categoria.required' => 'Se requeire id categoria',
+            'nombre.unique' => 'Este nombre ya existe.',
+            'nombre.min' => 'El nombre debe contener al menos 2 caracteres',
+            'nombre.max' => 'El nombre no puede exeder los 100 caracteres',
+            'descripcion.min' => 'La descripcion debe contener al menos 5 caracteres',
+            'descripcion.max' => 'La descripcion no puede exeder los 255 caracteres',
+            'id_estado.required' => 'Se requeire id estado',
+        ];
+    
+        // Validar los datos
+        $validator = Validator::make($request->all(), $errors, $messages);
+    
+        // Si la validación falla, redirigir con mensajes de error
         if ($validator->fails()) {
-            return redirect()->back();
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
         }
+    
+        // Crear y guardar subcategoria
         $subcategoria = new Subcategoria();
         $subcategoria->id_categoria = $request->id_categoria;
         $subcategoria->nombre = $request->nombre;
         $subcategoria->descripcion = $request->descripcion;
         $subcategoria->id_estado = $request->id_estado;
         $subcategoria->save();
+    
+        //return redirect()->back();   
     }
 
     /**
