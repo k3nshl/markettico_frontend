@@ -8,6 +8,7 @@ use App\Models\HistorialGestionPaginas;
 use App\Models\PaginaInformacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ControllerPaginasInformacion extends Controller
 {
@@ -83,7 +84,7 @@ class ControllerPaginasInformacion extends Controller
         $request->merge([
             'id_pagina_informacion' => $item->id_pagina_informacion,
         ]);
-         $this->controllerHitoriales->store_paginasInfo($request, 'Creación de la pagina ');
+         $this->controllerHitoriales->store_paginasInfo($request);
 
 
         return redirect()->back();
@@ -127,11 +128,6 @@ class ControllerPaginasInformacion extends Controller
         }
         $item->update();
 
-        $request->merge([
-            'id_pagina_informacion' => $item->id_pagina_informacion,
-        ]);
-         $this->controllerHitoriales->store_paginasInfo($request, 'Actualización de la pagina ');
-
         return redirect()->back();
     }
 
@@ -142,14 +138,6 @@ class ControllerPaginasInformacion extends Controller
     {
         $item = PaginaInformacion::find($id);
         $item->delete();
-       
-        $request = new Request();
-        $request->merge([
-            'id_pagina_informacion' => $item->id_pagina_informacion,
-            'titulo' => $item->titulo,
-        ]);
-         $this->controllerHitoriales->store_paginasInfo($request, 'Eliminación de la pagina ');
-
 
         return redirect()->back();
     }
