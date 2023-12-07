@@ -138,23 +138,10 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="row mb-3">
-                                                                            <label for="id_estado"
-                                                                                class="col-sm-4 col-form-label">Estado
-                                                                                del
-                                                                                Usuario:</label>
                                                                             <div class="col-sm-8">
-                                                                                <select class="form-select" id="id_estado"
-                                                                                    name="id_estado">
-                                                                                    <option value="1">
-                                                                                        Activo
-                                                                                    </option>
-                                                                                    <option value="2">
-                                                                                        Inactivo
-                                                                                    </option>
-                                                                                    <option value="3">
-                                                                                        Bloqueado
-                                                                                    </option>
-                                                                                </select>
+                                                                            <input type="text" class="form-control"
+                                                                                    id="id_estado"
+                                                                                    name="id_estado" value="1" min=0 hidden>
                                                                             </div>
                                                                         </div>
 
@@ -178,6 +165,18 @@
 
 
                                             <hr />
+
+                                            
+                                            @if($errors->any())
+                                            <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        @endif
 
                                             <div class="table-responsive">
                                                 <table id="tablaUsuariosAdmin" class="table table-bordered">
@@ -391,7 +390,6 @@
                                                                                         method="POST">
                                                                                         @method('PUT')
                                                                                         @csrf
-
 
                                                                                         @if (Auth::user()->roles->nombre == 'Superadmin')
                                                                                             <div class="mb-3">

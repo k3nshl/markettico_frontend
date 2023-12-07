@@ -342,10 +342,6 @@
                                                                                         @csrf
                                                                                         @method('PUT')
 
-                                                                                        <input type="hidden"
-                                                                                            name="id_estado"
-                                                                                            value="{{ $item->id_estado }}">
-
                                                                                         <div class="row mb-3">
                                                                                             <div class="col-md-9">
                                                                                                 <label
@@ -420,6 +416,25 @@
                                                                                                 class="col-sm-4 col-form-label">Contenido:</label>
 
                                                                                             <textarea id="summernoteTextareaEditar" name="contenido" rows="3" placeholder="Contenido">{{ $item->contenido }}</textarea>
+                                                                                        </div>
+
+                                                                                        <div class="mb-3">
+                                                                                            <label for="estado"
+                                                                                                class="col-sm-4 col-form-label">Estado:</label>
+                                                                                                <select class="form-select"
+                                                                                                id="id_estado"
+                                                                                                name="id_estado">
+                                                                                                
+                                                                                                <option value="1"
+                                                                                                    {{ $item->id_estado == 1 ? 'selected' : '' }}>
+                                                                                                    Activo
+                                                                                                </option>
+                                                                                                <option value="2"
+                                                                                                    {{ $item->id_estado == 2 ? 'selected' : '' }}>
+                                                                                                    Inactivo
+                                                                                                </option>
+                                                                                                
+                                                                                            </select>
                                                                                         </div>
 
                                                                                         <div class="modal-footer">
@@ -835,6 +850,26 @@
                                                                                                     name="fecha_final"
                                                                                                     value="{{ $item->fecha_final }}">
                                                                                             </div>
+                                                                                            
+                                                                                            </div>
+
+                                                                                            <div class="mb-3 ">
+                                                                                                <label for="estado"
+                                                                                                class="col-sm-4 col-form-label">Estado:</label>
+                                                                                                <select class="form-select"
+                                                                                                id="id_estado"
+                                                                                                name="id_estado">
+                                                                                                
+                                                                                                <option value="1"
+                                                                                                    {{ $item->id_estado == 1 ? 'selected' : '' }}>
+                                                                                                    Activo
+                                                                                                </option>
+                                                                                                <option value="2"
+                                                                                                    {{ $item->id_estado == 2 ? 'selected' : '' }}>
+                                                                                                    Inactivo
+                                                                                                </option>
+                                                                                                
+                                                                                            </select>
 
                                                                                         </div>
 
