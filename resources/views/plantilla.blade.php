@@ -31,6 +31,11 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('../assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}">
 
+    <!--plugins editor de texto mejorado-->
+    <link rel="stylesheet" href="{{ asset('../assets/plugins/textarea-definitive/summernote-lite.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('../assets/plugins/textarea-definitive/summernote-bs5.min.css') }}">
+
 
     <title>MarketTico Admin</title>
 </head>
@@ -75,8 +80,8 @@
                             </li>
                         </ul>
                     </li>
-                    @endif
-                    @if (Auth::user()->roles->nombre == 'Administrador' || Auth::user()->roles->nombre == 'Superadmin')
+                @endif
+                @if (Auth::user()->roles->nombre == 'Administrador' || Auth::user()->roles->nombre == 'Superadmin')
                     <li>
                         <a href="javascript:;" class="has-arrow">
                             <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
@@ -131,8 +136,8 @@
                             </li>
                         </ul>
                     </li>
-                    @endif
-                    @if (Auth::user()->roles->nombre == 'Moderador' || Auth::user()->roles->nombre == 'Superadmin')
+                @endif
+                @if (Auth::user()->roles->nombre == 'Moderador' || Auth::user()->roles->nombre == 'Superadmin')
                     <li>
                         <a href="javascript:;" class="has-arrow">
                             <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
@@ -170,8 +175,7 @@
 
                         </ul>
                     </li>
-
-                    @endif
+                @endif
 
 
             </ul>
@@ -279,7 +283,7 @@
                             <img src="{{ asset('../assets/images/avatars/logo-marketitco-avatar-adminuser.png') }}"
                                 class="user-img" alt="user avatar">
                             <div class="user-info ps-3">
-                            
+
                                 @if (Auth::check())
                                     <p class="user-name mb-0">{{ Auth::user()->nombre_completo }}</p>
                                     <p class="designattion mb-0">{{ Auth::user()->roles->nombre }}</p>
@@ -296,11 +300,15 @@
                             </li>
 
                             <li>
-                                @if (optional(Auth::user()->roles)->nombre == 'Superadmin' || optional(Auth::user()->roles)->nombre == 'Administrador')
-                                    <a class="dropdown-item" href="{{ route('home') }}">
+                                @if (optional(Auth::user()->roles)->id_rol == 1)
+                                    <a class="dropdown-item" href="{{ route('homeSuperadmin') }}">
                                         <i class='bx bx-home-circle'></i><span>Dashboard</span>
                                     </a>
-                                @elseif (optional(Auth::user()->roles)->nombre == 'Moderador')
+                                @elseif (optional(Auth::user()->roles)->id_rol == 2)
+                                    <a class="dropdown-item" href="{{ route('homeAdministrador') }}">
+                                        <i class='bx bx-home-circle'></i><span>Dashboard</span>
+                                    </a>
+                                @elseif (optional(Auth::user()->roles)->id_rol == 3)
                                     <a class="dropdown-item" href="{{ route('paginasInformacion.index') }}">
                                         <i class='bx bx-home-circle'></i><span>Dashboard</span>
                                     </a>
@@ -404,6 +412,9 @@
     <script src="https://cdn.tiny.cloud/1/ridcfj86k1i5y88uy1n1vznbruw2zv4icacguzwpjgeoum26/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
 
+    <!--Editor de texto mejorado-->
+    <script src="{{ asset('../assets/plugins/textarea-definitive/summernote-lite.js') }}"></script>
+
     <script>
         $(function() {
             $(".knob").knob();
@@ -412,7 +423,7 @@
         // Datatables
         $(document).ready(function() {
             $('#tablaUsuariosAdmin').DataTable();
-        }); 
+        });
         $(document).ready(function() {
             $('#tablaUsuariosBloqueados').DataTable();
         });
@@ -540,6 +551,51 @@
             $('#password').val('');
         });
     </script>
+
+
+    {{-- editor de texto mejorado --}}
+    <script>
+        $(document).ready(function() {
+            $('#summernoteTextareaRegistrar').summernote({
+                height: 150,
+                placeholder: 'Escribe el contenido del anuncio',
+            });
+
+            $('span.note-icon-caret').remove();
+
+            $('.note-editable').css('background', '#fff');
+        });
+    </script>
+
+    {{-- editor de texto mejorado --}}
+    <script>
+        $(document).ready(function() {
+            $('#summernoteTextareaEditar').summernote({
+                height: 150,
+                placeholder: 'Escribe el contenido del anuncio',
+            });
+
+            $('span.note-icon-caret').remove();
+
+            $('.note-editable').css('background', '#fff');
+        });
+    </script>
+
+      {{-- editor de texto mejorado --}}
+      <script>
+        $(document).ready(function() {
+            $('#summernoteTextareaPlanes').summernote({
+                height: 150,
+                placeholder: 'Escribe las características del plan',
+            });
+    
+            $('span.note-icon-caret').remove();
+    
+            $('.note-editable').css('background', '#fff');
+        });
+    </script>
+    
+
 </body>
 
 </html>

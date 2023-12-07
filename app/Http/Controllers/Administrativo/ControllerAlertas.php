@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-
 class ControllerAlertas extends Controller
 {
     /**
@@ -38,27 +37,16 @@ class ControllerAlertas extends Controller
     public function store(Request $request)
     {
 
-
-        $errors = [
+        $validator = Validator::make($request->all(), [
             'titulo' => 'required||unique:alertas',
             'descripcion' => 'required',
             'tipo_destinatario' => 'required',
             'fecha_inicio' => 'required',
             'fecha_final' => 'required',
-        ];
-        $messages = [
-            'titulo.unique' => 'El titulo ya está en uso.',
-            'descripcion.required' => 'La descripcion esta vacia.',
-            'tipo_destinatario.required' => 'El destinatario esta vacio.',
-            'fecha_inicio.required' => 'La fecha de inicio no se a seleecionado.',
-            'fecha_final.required' => 'La fecha de finalización no se a seleecionado.',
-        ]; 
-        $validator = Validator::make($request->all(),$errors, $messages);
-    
+        ]);
+
         if ($validator->fails()) {
-            return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
+            return redirect()->back();
         }
 
         // Creando alerta
@@ -69,7 +57,7 @@ class ControllerAlertas extends Controller
         $alerta->tipo_destinatario = $request->tipo_destinatario;
         $alerta->fecha_inicio = $request->fecha_inicio;
         $alerta->fecha_final = $request->fecha_final;
-        $alerta->id_estado = 1;  //Aqui esta quemado hay que cambiarlo
+        $alerta->id_estado = 1;
         $alerta->save();
 
         return redirect()->back();
@@ -98,29 +86,6 @@ class ControllerAlertas extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $errors = [
-            'titulo' => 'required||unique:alertas',
-            'descripcion' => 'required',
-            'tipo_destinatario' => 'required',
-            'fecha_inicio' => 'required',
-            'fecha_final' => 'required',
-        ];
-        $messages = [
-            'titulo.unique' => 'El titulo ya está en uso.',
-            'descripcion.required' => 'La descripcion esta vacia.',
-            'tipo_destinatario.required' => 'El destinatario esta vacio.',
-            'fecha_inicio.required' => 'La fecha de inicio no se a seleecionado.',
-            'fecha_final.required' => 'La fecha de finalización no se a seleecionado.',
-        ]; 
-        $validator = Validator::make($request->all(),$errors, $messages);
-    
-        if ($validator->fails()) {
-            return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
-        }
-        
         $alerta = Alerta::find($id);
         $alerta->id_usuario_remitente = Auth::user()->id_usuario_administrativo;
         $alerta->titulo = $request->titulo;
