@@ -32,8 +32,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Rutas para la autenticacion
-Route::get('/login', [ControllerLogin::class, 'index'])->name('login');
-Route::post('/validarLogin', [ControllerLogin::class, 'login'])->name('validarLogin');
+Route::get('/', function () {
+    if (Auth::check()) {
+        $user = Auth::user();
+        if ($user->id_rol == 1) {
+            return redirect()->route('homeSuperadmin');
+        } elseif ($user->id_rol == 2) {
+            return redirect()->route('homeAdministrador');
+        } elseif ($user->id_rol == 3) {
+            return redirect()->route('homeModerador');
+        }
+    }
+    return redirect('/login');
+});
+
+Route::middleware(['checkLogin'])->group(function () {
+    Route::get('/login', [ControllerLogin::class, 'index'])->name('login');
+    Route::post('/validarLogin', [ControllerLogin::class, 'login'])->name('validarLogin');
+});
 
 // Middleware (Rutas compartidas de superadmin, administrador y moderador)
 Route::middleware(['auth'])->group(function () {
@@ -88,7 +104,6 @@ Route::middleware(['auth', 'checkModerador'])->group(function () {
 
 // Middleware (Rutas exclusivas de superadmin y administrador)
 Route::middleware(['auth', 'checkSuperadminAdministrador'])->group(function () {
-    Route::get('/administrador', [ControllerUsuariosAdministrativos::class, 'index'])->name('homeAdministrador');
     Route::resource('/usuariosAdministrativos', ControllerUsuariosAdministrativos::class);
     Route::post('/bloquear_usuario', [ControllerUsuariosAdministrativos::class, 'bloquear_usuario'])->name('bloquear_usuario');
     Route::post('/desbloquear_usuario', [ControllerUsuariosAdministrativos::class, 'desbloquearUsuario'])->name('desbloquearUsuario');
@@ -102,7 +117,6 @@ Route::middleware(['auth', 'checkSuperadminAdministrador'])->group(function () {
 
 // Middleware (Rutas exclusivas de superadmin y moderador)
 Route::middleware(['auth', 'checkSuperadminModerador'])->group(function () {
-    Route::get('/moderador', [ControllerPaginasInformacion::class, 'index'])->name('homeModerador');
     Route::resource('paginasInformacion', ControllerPaginasInformacion::class);
     Route::resource('articulos', ControllerArticulos::class);
     Route::resource('categorias', ControllerCategorias::class);
