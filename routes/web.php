@@ -41,9 +41,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/perfil/{id}', [ControllerPerfilUsuario::class, 'show'])->name('perfil.show');
     Route::post('/contrasena_actual', [ControllerUsuariosAdministrativos::class, 'validar_password'])->name('contrasena.actual');
     Route::post('/actualizar_password', [ControllerUsuariosAdministrativos::class, 'actualizar_password'])->name('actualizar.password');
-    Route::post('/verificar_codigo', [ControllerLogin::class, 'verificarCodigo'])->name('verificar_codigo');
     Route::get('/cerrar-sesion',  [ControllerLogin::class, 'logout'])->name('usuarios.logout');
 });
+
+    Route::post('/verificar_codigo', [ControllerLogin::class, 'verificarCodigo'])->name('verificar_codigo');
 
 // Middleware (Rutas exclusivas de superadmin)
 Route::middleware(['auth', 'checkSuperadmin'])->group(function () {
