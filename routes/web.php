@@ -18,6 +18,7 @@ use App\Http\Controllers\Administrativo\ControllerPlanes;
 use App\Http\Controllers\Administrativo\ControllerSolicitudesProductos;
 use App\Http\Controllers\Administrativo\ControllerSolicitudesVendedores;
 use App\Http\Controllers\Administrativo\ControllerSubcategorias;
+use App\Http\Controllers\ControllerRecuperarPassword;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,12 @@ Route::get('/', function () {
 Route::middleware(['checkLogin'])->group(function () {
     Route::get('/login', [ControllerLogin::class, 'index'])->name('login');
     Route::post('/validarLogin', [ControllerLogin::class, 'login'])->name('validarLogin');
+
+    // Recuperar contraseña
+    Route::get('/recuperarContraseña', [ControllerRecuperarPassword::class, 'index'])->name('recuperarPassword');
+    Route::post('/verificarIdentidad', [ControllerRecuperarPassword::class, 'validarCorreo'])->name('validarCorreo');
+    Route::post('/reestablecerContraseña', [ControllerRecuperarPassword::class, 'validarCodigo'])->name('validarCodigo');
+    Route::post('/guardarCredenciales', [ControllerRecuperarPassword::class, 'guardarCredenciales'])->name('guardarCredenciales');
 });
 
 // Middleware (Rutas compartidas de superadmin, administrador y moderador)
@@ -70,7 +77,7 @@ Route::middleware(['auth', 'checkSuperadmin'])->group(function () {
 
     Route::middleware(['auth', 'checkSuperadminAdministrador'])->group(function () {
         Route::resource('/usuariosAdministrativos', ControllerUsuariosAdministrativos::class);
-        Route::post('/bloquear_usuario', [ControllerUsuariosAdministrativos::class, 'bloquear_usuario'])->name('bloquear_usuario');
+        Route::post('/activar_usuario', [ControllerUsuariosAdministrativos::class, 'activar_usuario'])->name('activar_usuario');
         Route::post('/desbloquear_usuario', [ControllerUsuariosAdministrativos::class, 'desbloquearUsuario'])->name('desbloquearUsuario');
         Route::get('/solicitudesVendedoresIndividuales', [ControllerSolicitudesVendedores::class, 'vendedoresIndividuales'])->name('vendedoresIndividuales');
         Route::get('/solicitudesVendedoresEmpresariales', [ControllerSolicitudesVendedores::class, 'vendedoresEmpresariales'])->name('vendedoresEmpresariales');
@@ -139,5 +146,4 @@ Route::get('/plantillaCorreoRegistro', [ControllerPlantillasCorreos::class, 'Cor
 Route::get('/plantillaCorreoSolicitud', [ControllerPlantillasCorreos::class, 'CorreoSolicitud'])->name('correoSolicitud');
 
 // Rutas para recuperar contraseña
-Route::view('/recuperarContrasena', 'login.recuperacionContrasena');
-Route::view('/correoContrasena', 'login.correoContrasena');
+Route::view('/codv', 'login.codigoVerificacion')->name('codigoVerificacion');

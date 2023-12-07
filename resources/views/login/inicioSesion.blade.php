@@ -78,18 +78,25 @@
                                             <div class="col-md-6 text-end">
 
                                             </div>
+
                                             <div class="col-12">
                                                 <div class="d-grid">
                                                     <button type="submit" class="btn btn-primary"><i
                                                             class="bx bxs-lock-open"></i>Inicia Sesión</button>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-12 mt-4">
+                                                <a href="{{ route('recuperarPassword') }}">¿Olvidaste tu
+                                                    contraseña?</a>
+                                            </div>
                                         </form>
 
                                         @if (session('error'))
                                             <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
                                                 <div class="text-dark">{{ session('error') }}</div>
-                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
                                             </div>
                                         @endif
 

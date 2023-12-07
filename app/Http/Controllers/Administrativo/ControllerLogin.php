@@ -153,4 +153,5 @@ class ControllerLogin extends Controller
             return redirect()->route('login')->with('error', 'Codigo incorrecto');
         }
     }
+
 }
