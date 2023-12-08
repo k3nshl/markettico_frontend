@@ -66,17 +66,6 @@ class ControllerHistoriales extends Controller
     }
 
 
-    public function store_usuario(Request $request, string $accion)
-    {
-        $historial = new HistorialGestionCuentas();
-        $historial->fecha_hora =  date(Date::now());
-        $historial->accion =  $accion.$request->nombre_completo;
-        $historial->id_usuario = Auth::user()->id_usuario_administrativo;
-        $historial->email_usuario =  $request->correo_empresarial;
-        $historial->save();
-    }
-
-
     public function store_paginasInfo(Request $request){
         $historial = new HistorialGestionPaginas();
         $historial->id_pagina_informacion  = $request->id_pagina_informacion;

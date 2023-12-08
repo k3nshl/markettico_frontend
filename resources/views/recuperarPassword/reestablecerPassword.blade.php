@@ -37,28 +37,25 @@
                                                 <h4 class="logo-text">MarketTico</h4>
                                             </div>
                                         </div>
-
-                                        <form class="form-body" action="" method="POST">
-											@method('post')
+                                        
+                                        <form class="form-body" action="{{ route('guardarCredenciales') }}" method="POST">
 											@csrf
-                                            <h4 class="mt-5 font-weight-bold text-center">Generar Nueva Contraseña</h4>
-                                            <p class="text-muted text-center">Recibimos su solicitud de restablecimiento
-                                                de contraseña. ¡Por favor, introduzca su nueva contraseña!</p>
+                                            <h4 class="mt-5 font-weight-bold text-center">Crear nueva contraseña</h4>
+                                            <p class="text-muted text-center">Puedes reestablecer tu contraseña e iniciar sesión nuevamente.
+                                            </p>
                                             <div class="mb-3 mt-5">
-                                                <label class="form-label">Nueva Contraseña</label>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Ingresa la Nueva Contraseña" name="contrasenaNueva"/>
+                                                <label class="form-label">Nueva contraseña</label>
+                                                <input type="password" class="form-control"
+                                                    placeholder="Ingresa la Nueva Contraseña" name="nuevaPassword"/>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">Confirmar Contraseña</label>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Confirmar Contraseña" name="confirmarContrasena"/>
+                                                <label class="form-label">Confirmar contraseña</label>
+                                                <input type="password" class="form-control"
+                                                    placeholder="Confirmar Contraseña" name="confirmarPassword"/>
                                             </div>
                                             <div class="d-grid gap-2">
-                                                <a style="background-color: #04D9D9" type="button"
-                                                    class="btn text-light">Cambiar Contraseña</a>
-                                                <a href="{{ route('login') }}" class="btn btn-light"><i
-                                                        class='bx bx-arrow-back mr-1'></i>Regresar al login</a>
+                                                <button type="submit" style="background-color: #04D9D9"
+                                                    class="btn text-light">Guardar e iniciar sesión</button>
                                             </div>
                                         </form>
                                     </div>

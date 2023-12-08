@@ -91,9 +91,9 @@ class ControllerLogin extends Controller
         $password_login = sha1($request->password);
 
         if ($user->id_estado == 1 && $user->correo_empresarial == $request->correo_empresarial && $user->password == $password_login) {
-             $codigo = $this->getcodigoAleatorio($user);
+            $codigo = $this->getcodigoAleatorio($user);
             // $this->controllerCorreos->email_seller($request, $codigo);
-             return view('login.codigoVerificacion', compact('user', 'codigo')); 
+            return view('login.codigoVerificacion', compact('user', 'codigo'));
             auth::login($user);
             if ($user->id_rol == 1) {
                 return redirect()->route('homeSuperadmin');
@@ -120,7 +120,7 @@ class ControllerLogin extends Controller
 
         foreach ($codigos_registrados as $item) {
             if ($codigo == $item->codigo) {
-                return $this->getcodigoAleatorio();
+                return $this->getcodigoAleatorio($user);
             }
         }
         $nuevoCodigo = new CodigoVerificacion();
@@ -136,37 +136,33 @@ class ControllerLogin extends Controller
     public function verificarCodigo(Request $request)
     {
         $codigo = CodigoVerificacion::where('codigo', $request->codigo)->first();
-          $horaactual=date('Y-m-d H:i:s');
+        $horaactual = date('Y-m-d H:i:s');
         if ($codigo) {
-            $horacoddb=$codigo->fecha_hora;
+            $horacoddb = $codigo->fecha_hora;
             if (time() - strtotime($horacoddb) <= 60) {
-          //      return "mi primera chamba";
+                //      return "mi primera chamba";
 
-          $codigo->id_estado = 2; //??????
+                $codigo->id_estado = 2; //??????
 
-          $codigo->update();
-          $user = UsuarioAdministrativo::find($request->id_usuario);
-          auth::login($user);
+                $codigo->update();
+                $user = UsuarioAdministrativo::find($request->id_usuario);
+                auth::login($user);
 
 
-          if ($user->id_rol == 1) {
-            return redirect()->route('homeSuperadmin');
-        } else if ($user->id_rol == 2) {
-            return redirect()->route('homeAdministrador');
-        } else if ($user->id_rol == 3) {
-            return redirect()->route('homeModerador');
-        }
-
-    } else {
-        //que se quiere hacer cuando el codigo expira  ???
-        return redirect()->route('login')->with('error', 'Codigo expiro');
-        
-    }
-
-            }else{
-              //  return "mi segunda chamba";
-                return  redirect()->route('login')->with('error', 'Codigo incorrecto');
+                if ($user->id_rol == 1) {
+                    return redirect()->route('homeSuperadmin');
+                } else if ($user->id_rol == 2) {
+                    return redirect()->route('homeAdministrador');
+                } else if ($user->id_rol == 3) {
+                    return redirect()->route('homeModerador');
+                }
+            } else {
+                //que se quiere hacer cuando el codigo expira  ???
+                return redirect()->route('login')->with('error', 'Codigo expiro');
             }
-
+        } else {
+            //  return "mi segunda chamba";
+            return  redirect()->route('login')->with('error', 'Codigo incorrecto');
         }
     }
+}

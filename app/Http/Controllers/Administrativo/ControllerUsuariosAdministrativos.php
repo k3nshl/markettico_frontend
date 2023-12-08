@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Http\Controllers\Administrativo;
@@ -30,9 +29,10 @@ class ControllerUsuariosAdministrativos extends Controller
     public function index()
     {
         $data = UsuarioAdministrativo::where('id_estado', 1)->get();
+        $usuarios_inactivos = UsuarioAdministrativo::where('id_estado', 2)->get();
         $data_bloqueados = UsuarioBloqueado::where('tipo_usuario', 'Administrativo')->get();
         $roles = Rol::all();
-        return view('usuariosAdministrativos.index', compact('data', 'data_bloqueados', 'roles'));
+        return view('usuariosAdministrativos.index', compact('data', 'data_bloqueados', 'roles', 'usuarios_inactivos'));
     }
 
     /**
@@ -201,13 +201,18 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->id_estado = 3;
         $item->update();
 
-        $itemBloqueado = new UsuarioBloqueado();
-        $itemBloqueado->id_usuario_administrativo = $request->id_usuario_administrativo;
-        $itemBloqueado->descripcion = $request->descripcion;
-        $itemBloqueado->tipo_usuario = 'Administrativo';
-        $itemBloqueado->save();
 
-        return redirect()->back();
+        if ($request->descripcion == null) {
+            // Falta alerta de campo vacio
+            return redirect()->back()->with('');
+        } else {
+            $itemBloqueado = new UsuarioBloqueado();
+            $itemBloqueado->id_usuario_administrativo = $request->id_usuario_administrativo;
+            $itemBloqueado->descripcion = $request->descripcion;
+            $itemBloqueado->tipo_usuario = 'Administrativo';
+            $itemBloqueado->save();
+            return redirect()->back();
+        }
     }
 
     public function desbloquearUsuario(Request $request)
