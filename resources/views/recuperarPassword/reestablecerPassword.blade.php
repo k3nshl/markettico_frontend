@@ -43,6 +43,7 @@
                                             <h4 class="mt-5 font-weight-bold text-center">Crear nueva contraseña</h4>
                                             <p class="text-muted text-center">Puedes reestablecer tu contraseña e iniciar sesión nuevamente.
                                             </p>
+                                            <input type="hidden" name="user" value="{{$user}}">
                                             <div class="mb-3 mt-5">
                                                 <label class="form-label">Nueva contraseña</label>
                                                 <input type="password" class="form-control"

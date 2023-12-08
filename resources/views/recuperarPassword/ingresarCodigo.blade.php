@@ -38,7 +38,7 @@
                                 </div>
                                 <h4 class="font-weight-bold">Código de verificación</h4>
                                 <p class="text-muted">Hemos enviado un código de verificación al correo electrónico
-                                    <b>{{ $correoIngresado }}</b>.
+                                    {{-- <b>{{ $correoIngresado }}</b>. --}}
                                 </p>
                                 <form action="{{ route('validarCodigo') }}" method="post">
                                     @csrf
@@ -46,6 +46,8 @@
                                         <label class="form-label">Código de verificación</label>
                                         <input type="text" name="codigo" class="form-control"
                                             placeholder="Ingresar codigo" />
+                                            <input type="hidden" name="user" value="{{$user->id_usuario_administrativo}}" >
+                                            <input type="hidden" name="codigo_original" value="{{$codigo}}">
                                     </div>
                                     <div class="d-grid gap-2">
                                         <button type="submit" class="btn btn-primary">Verificar</button>
