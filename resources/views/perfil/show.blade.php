@@ -24,6 +24,13 @@
                 </div>
             @endif
 
+            @if (session('exito'))
+                <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                    <div class="text-dark">{{ session('exito') }}</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             <div class="card col-sm-8 mx-auto mt-4 border-top border-0 border-4 border-info" id="card_perfil">
                 <div class="card-body" id="cardbody_perfil">
                     <div class="d-flex flex-column align-items-center text-center">

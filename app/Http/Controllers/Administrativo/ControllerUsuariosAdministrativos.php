@@ -136,7 +136,7 @@ class ControllerUsuariosAdministrativos extends Controller
         $item = UsuarioAdministrativo::find(Auth::user()->id_usuario_administrativo);
         $item->password = sha1($request->password);
         $item->update();
-        return redirect()->back();
+        return redirect()->back()->with('exito', 'Contraseña actualizada exitosamente');
     }
 
     public function bloquear_usuario(Request $request)
