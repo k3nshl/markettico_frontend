@@ -8,6 +8,7 @@ use App\Models\HistorialGestionPaginas;
 use App\Models\PaginaInformacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ControllerPaginasInformacion extends Controller
 {
@@ -56,6 +57,13 @@ class ControllerPaginasInformacion extends Controller
             $imagen->move(public_path('img/fotografias'), $filename);
             $item->icono = $filename;
         }
+        $item->save();
+
+        $request->merge([
+            'id_pagina_informacion' => $item->id_pagina_informacion,
+        ]);
+         $this->controllerHitoriales->store_paginasInfo($request);
+
 
         $item->save();
         $this->guardarHistorial($item);

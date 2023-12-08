@@ -21,6 +21,7 @@
                             </div>
                         @endif
 
+
                         <ul class="nav nav-pills mb-3" role="tablist">
                             <li class="nav-item">
                                 <button class="nav-link active custom-bg-color" data-bs-toggle="tab"
@@ -37,7 +38,6 @@
                                 </button>
                             </li>
                         </ul>
-
 
                         <div class="tab-content">
                             <div class="tab-pane show active fade" id="tab-listaUsuarios">
@@ -603,6 +603,10 @@
                                                             </th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">
+                                                                Rol
+                                                            </th>
+                                                            <th class="bg_datatable"
+                                                                style="background-color: #05C7F2; color: #F2F2F2">
                                                                 Descripción
                                                             </th>
                                                             <th class="bg_datatable"
@@ -618,6 +622,9 @@
                                                                 <td>{{ $item->id_usuario_administrativo }}</td>
                                                                 <td>{{ $item->usuarioAdministrativo->correo_empresarial }}
                                                                 </td>
+<
+                                                                <td>{{ $item->usuarioAdministrativo->roles->nombre }}</td>
+>
                                                                 <td>{{ $item->descripcion }}</td>
                                                                 <td>
                                                                     <div class="text-center">
@@ -635,18 +642,23 @@
                                                                         </button>
 
                                                                         <!-- Botón de desbloquear -->
-                                                                        <button class="btn btn-sm btn-block"
-                                                                            style="background-color: #05f29d"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#DesbloquearUsuarioModal{{ $item->id_usuario_bloqueado }}"
-                                                                            data-bs-toggle="tooltip"
-                                                                            data-bs-placement="top"
-                                                                            title="Desbloquear Usuario Administrativo">
-                                                                            <div class="text-center">
-                                                                                <i class="lni lni-unlock"
-                                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                            </div>
-                                                                        </button>
+                                                                        @if (Auth::user()->roles->nombre == 'Superadmin' ||
+                                                                                (Auth::user()->roles->nombre == 'Administrador' &&
+                                                                                    $item->usuarioAdministrativo->id_rol != 1 &&
+                                                                                    $item->usuarioAdministrativo->id_rol != 2))
+                                                                            <button class="btn btn-sm btn-block"
+                                                                                style="background-color: #05f29d"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#DesbloquearUsuarioModal{{ $item->id_usuario_bloqueado }}"
+                                                                                data-bs-toggle="tooltip"
+                                                                                data-bs-placement="top"
+                                                                                title="Desbloquear Usuario Administrativo">
+                                                                                <div class="text-center">
+                                                                                    <i class="lni lni-unlock"
+                                                                                        style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                                </div>
+                                                                            </button>
+                                                                        @endif
                                                                     </div>
 
                                                                     <!-- Modal de visualizacion -->
@@ -747,6 +759,9 @@
                                     </div>
                                 </div>
                             </div>
+
+
+
                         </div>
                     </div>
                 </div>

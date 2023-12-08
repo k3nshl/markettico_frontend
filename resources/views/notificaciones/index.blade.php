@@ -154,7 +154,7 @@
                                                                             <label for="contenido"
                                                                                 class="col-sm-4 col-form-label">Contenido:</label>
 
-                                                                            <textarea id="mytextarea" name="contenido" rows="3" placeholder="Contenido"></textarea>
+                                                                            <textarea id="summernoteTextareaRegistrar" name="contenido" rows="3" placeholder="Contenido"></textarea>
                                                                         </div>
 
                                                                         <div class="modal-footer">
@@ -182,7 +182,7 @@
                                             <hr />
 
                                             {{-- Listado de anuncios --}}
-                                            <div class="table-responsive">
+                                            <div class="">
                                                 <table id="tablaAnuncios" class="table table-bordered">
                                                     <thead class="theadAnuncios">
                                                         <tr class="text-center">
@@ -213,10 +213,10 @@
                                                                 <td>{{ $item->fecha_inicio }}</td>
                                                                 <td>{{ $item->fecha_final }}</td>
                                                                 <td>
-                                                                    <div class="text-center">
+                                                                    <div class="text-center d-flex justify-content-center">
 
                                                                         {{-- Botón de visualizar --}}
-                                                                        <button class="btn btn-primary btn-sm"
+                                                                        <button class="btn btn-primary btn-sm me-1"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#showUserAnuncioModal{{ $item->id_anuncio }}"
                                                                             data-bs-toggle="tooltip"
@@ -228,7 +228,7 @@
                                                                         </button>
 
                                                                         <!-- Botón de editar con modal -->
-                                                                        <button class="btn btn-warning btn-sm"
+                                                                        <button class="btn btn-warning btn-sm me-1"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#editarAnuncios{{ $item->id_anuncio }}"
                                                                             data-bs-toggle="tooltip"
@@ -241,7 +241,7 @@
                                                                         </button>
 
                                                                         {{-- Botón de eliminar --}}
-                                                                        <button class="btn btn-danger btn-sm"
+                                                                        <button class="btn btn-danger btn-sm me-1"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#eliminarAnuncio{{ $item->id_anuncio }}">
                                                                             <i class="lni lni-trash"
@@ -432,7 +432,7 @@
                                                                                             <label for="contenido"
                                                                                                 class="col-sm-4 col-form-label">Contenido:</label>
 
-                                                                                            <textarea id="mytextarea" name="contenido" rows="3" placeholder="Contenido">{{ $item->contenido }}</textarea>
+                                                                                            <textarea id="summernoteTextareaEditar" name="contenido" rows="3" placeholder="Contenido">{{ $item->contenido }}</textarea>
                                                                                         </div>
 
                                                                                         <div class="modal-footer">

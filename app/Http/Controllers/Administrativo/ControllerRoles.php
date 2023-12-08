@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\HistorialGestionRoles;
 use App\Models\Rol;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -43,14 +41,10 @@ class ControllerRoles extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'nombre' => 'required||unique:roles',
+        $request->validate([
+            'nombre' => 'required|unique:roles',
             'id_estado' => 'required',
         ]);
-    
-        if ($validator->fails()) {
-            return redirect()->back();
-        }
         
         $rol = new Rol();
         $rol->nombre= $request->nombre;
@@ -86,14 +80,10 @@ class ControllerRoles extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $validator = Validator::make($request->all(), [
-            'nombre' => 'required||unique:roles',
+        $request->validate([
+            'nombre' => 'required|unique:roles',
             'id_estado' => 'required',
         ]);
-    
-        if ($validator->fails()) {
-            return redirect()->back();
-        }
 
         $rol = Rol::find($id);
         $rol->nombre = $request->nombre;
@@ -123,6 +113,7 @@ class ControllerRoles extends Controller
             'id_rol' => $rol->id_rol,
             'nombre' => $rol->nombre,
         ]);
+        
         $this->controllerHistorial->store_rol($request,'Eliminación del rol ');
         return redirect()->back();
     }

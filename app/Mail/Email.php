@@ -38,7 +38,11 @@ class Email extends Mailable
             return new Envelope(
                 subject: 'Prueba 1' ,
             );
-        } 
+        }elseif ($this->type == 2 ) {
+            return new Envelope(
+                subject: 'Recuperando contraseña' ,
+            );
+        }
     }
 
     /**
@@ -46,9 +50,16 @@ class Email extends Mailable
      */
     public function content(): Content
     {
-        return new Content(
-            view: 'plantillasCorreos.correoAutenticacion',
-        );
+        if ($this->type == 1) {
+            return new Content(
+                view: 'plantillasCorreos.correoAutenticacion',
+            );
+        }elseif ($this->type == 2) {
+            return new Content(
+                view: 'plantillasCorreos.correoContrasena',
+            );
+        }
+       
     }
 
     /**
