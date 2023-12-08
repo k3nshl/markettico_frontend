@@ -5,14 +5,22 @@
 @section('contenido')
     <section class="content">
         <div class="row">
+
             <div class="col-xl-12 mx-auto">
+
+
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
+                    <
                     <div class="card-body">
 
-                        <!-- Alerta campo vacio en bloquear text area -->
-                        <!-- <div class="alert alert-warning" role="alert">
-                           Necesita agregarle una descripción.
-                        </div> -->
+                        @if (session('success'))
+                            <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                <div class="text-dark">{{ session('success') }}</div>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+
 
                         <ul class="nav nav-pills mb-3" role="tablist">
                             <li class="nav-item">
@@ -614,7 +622,9 @@
                                                                 <td>{{ $item->id_usuario_administrativo }}</td>
                                                                 <td>{{ $item->usuarioAdministrativo->correo_empresarial }}
                                                                 </td>
+<
                                                                 <td>{{ $item->usuarioAdministrativo->roles->nombre }}</td>
+>
                                                                 <td>{{ $item->descripcion }}</td>
                                                                 <td>
                                                                     <div class="text-center">

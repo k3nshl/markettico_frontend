@@ -147,5 +147,4 @@ Route::get('/plantillaCorreoExpiracionSuspension', [ControllerPlantillasCorreos:
 Route::get('/plantillaCorreoRegistro', [ControllerPlantillasCorreos::class, 'CorreoRegistro'])->name('correoRegistro');
 Route::get('/plantillaCorreoSolicitud', [ControllerPlantillasCorreos::class, 'CorreoSolicitud'])->name('correoSolicitud');
 
-// Rutas para recuperar contraseña
-Route::view('/codv', 'login.codigoVerificacion')->name('codigoVerificacion');
+

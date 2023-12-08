@@ -21,6 +21,19 @@
     <section class="content">
         <div class="row">
             <div class="col-xl-12 mx-auto">
+
+                @if (session('error'))
+                <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                    <div class="text-dark">{{ session('error') }}</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @elseif(session('success'))
+                <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                    <div class="text-dark">{{ session('success') }}</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+                
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
                     <div class="card-body">
 
