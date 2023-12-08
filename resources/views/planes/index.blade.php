@@ -223,7 +223,7 @@
                                                                                     
                                                                                         <div class="mb-3">
                                                                                             <label for="duracion" class="form-label">Duración del plan (en meses):</label>
-                                                                                            <input type="text" class="form-control" id="duracion" name="duracion" placeholder="Duración del plan" value="{{ old('duracion', $item->duracion) }}">
+                                                                                            <input type="number" class="form-control" id="duracion" name="duracion" placeholder="Duración del plan" value="{{ old('duracion', $item->duracion) }}">
                                                                                         </div>
 
                                                                                         <div class="row mb-3">
@@ -379,7 +379,7 @@
                                                     <label for="duracion" class="col-sm-4 col-form-label">Duración del
                                                         plan (en meses):</label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="duracion"
+                                                        <input type="number" class="form-control" id="duracion"
                                                             name="duracion" placeholder="Duración del plan"
                                                             value="{{ old('duracion') }}">
                                                     </div>

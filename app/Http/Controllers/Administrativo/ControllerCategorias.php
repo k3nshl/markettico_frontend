@@ -54,7 +54,7 @@ class ControllerCategorias extends Controller
     {
        $estados = Estado::all();
         $itemCategoria = Categoria::find($id);
-        $subcategorias = Subcategoria::all();
+        $subcategorias = Subcategoria::where('id_categoria',$id)->get();
         return view('categorias.show',compact('itemCategoria','estados','subcategorias'));
     }
 

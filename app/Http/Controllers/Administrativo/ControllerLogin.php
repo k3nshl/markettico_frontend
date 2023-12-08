@@ -86,61 +86,97 @@ class ControllerLogin extends Controller
 
     function login(Request $request)
     {
-        $user = UsuarioAdministrativo::where('correo_empresarial', $request->correo_empresarial)->first();
-        $password_login = sha1($request->password);
+        
+        if ($request->type == 1) {
+            $user = UsuarioAdministrativo::where('correo_empresarial', $request->correo_empresarial)->first();
 
-        if ($user->id_estado == 1 && $user->correo_empresarial == $request->correo_empresarial && $user->password == $password_login) {
-            // $codigo = $this->getcodigoAleatorio();
-            // $this->controllerCorreos->email_seller($request, $codigo);
-            // return view('login.codigoVerificacion', compact('user', 'codigo'));
-            auth::login($user);
-            return redirect()->route('home');
-        } else {
-            return redirect()->route('login')->with('error', 'Contraseña o usuario incorrectas');
+            $password_login = sha1($request->password);
+
+            if ($user->id_estado == 1 && $user->correo_empresarial == $request->correo_empresarial && $user->password == $password_login) {
+                $codigo = $this->getcodigoAleatorio($user);
+                // $this->controllerCorreos->email_seller($request, $codigo);
+                // return view('login.codigoVerificacion', compact('user', 'codigo'));
+                auth::login($user);
+                if ($user->id_rol == 1) {
+                    return redirect()->route('homeSuperadmin');
+                } else if ($user->id_rol == 2) {
+                    return redirect()->route('homeAdministrador');
+                } else if ($user->id_rol == 3) {
+                    return redirect()->route('homeModerador');
+                }
+            } else {
+                return redirect()->route('login')->with('error', 'Contraseña o usuario incorrectas');
+            }
+        }elseif ($request->type == 2) {
+            
+            $user = UsuarioAdministrativo::where('correo_empresarial', $request->correo_empresarial)->first();
+           if ($user) {
+            $codigo = $this->getcodigoAleatorio($user);
+            $this->controllerCorreos->email_seller($request, $codigo);
+            return view('recuperarPassword.ingresarCodigo', compact('user', 'codigo'));
+           }else{
+            return redirect()->back();
+           }
+           
         }
     }
 
-    function logout()
+    public function logout()
     {
         Auth::logout();
-        return redirect()->route('estados.index');
+        return redirect()->route('login')->with('error', 'Haz cerrado sesión');;
     }
 
-    public function getcodigoAleatorio()
-{
-    $codigo = rand(000000, 999999);
-    $codigos_registrados = CodigoVerificacion::all();
+    public function getcodigoAleatorio($user)
+    {
+        $codigo = rand(000000, 999999);
+        $codigos_registrados = CodigoVerificacion::all();
 
-    foreach ($codigos_registrados as $item) {
-        if ($codigo == $item->codigo) {
-            return $this->getcodigoAleatorio();
+        foreach ($codigos_registrados as $item) {
+            if ($codigo == $item->codigo) {
+                return $this->getcodigoAleatorio($user);
+            }
         }
+        $nuevoCodigo = new CodigoVerificacion();
+        $nuevoCodigo->codigo = $codigo;
+        $nuevoCodigo->id_usuario_administrativo = $user->id_usuario_administrativo; // Aquí puedes establecer el valor correcto
+        $nuevoCodigo->tipo_usuario =  $user->roles->nombre; // Aquí puedes establecer el valor correcto
+        $nuevoCodigo->id_estado = $user->id_estado;
+        $nuevoCodigo->fecha_hora = date('Y-m-d H:i:s');
+        $nuevoCodigo->save();
+        return $codigo;
     }
-    $nuevoCodigo = new CodigoVerificacion();
-    $nuevoCodigo->codigo = $codigo;
-    $nuevoCodigo->id_usuario = 2; // Aquí puedes establecer el valor correcto
-    $nuevoCodigo->tipo_usuario = "admin"; // Aquí puedes establecer el valor correcto
-    $nuevoCodigo->id_estado = 1;
-    $nuevoCodigo->save();
-
-    return $codigo;
-}
-
-
- 
 
     public function verificarCodigo(Request $request)
     {
         $codigo = CodigoVerificacion::where('codigo', $request->codigo)->first();
+        $horaactual = date('Y-m-d H:i:s');
         if ($codigo) {
-            $codigo->id_estado = 2;
-            $codigo->update();
-            $user = UsuarioAdministrativo::find($request->id_usuario);
-            auth::login($user); 
-            
-            return redirect()->route('estados.index');
+            $horacoddb = $codigo->fecha_hora;
+            if (time() - strtotime($horacoddb) <= 60) {
+                //      return "mi primera chamba";
+
+                $codigo->id_estado = 2; //??????
+
+                $codigo->update();
+                $user = UsuarioAdministrativo::find($request->id_usuario);
+                auth::login($user);
+
+
+                if ($user->id_rol == 1) {
+                    return redirect()->route('homeSuperadmin');
+                } else if ($user->id_rol == 2) {
+                    return redirect()->route('homeAdministrador');
+                } else if ($user->id_rol == 3) {
+                    return redirect()->route('homeModerador');
+                }
+            } else {
+                //que se quiere hacer cuando el codigo expira  ???
+                return redirect()->route('login')->with('error', 'Codigo expiro');
+            }
         } else {
-            return redirect()->route('login')->with('error', 'Codigo incorrecto');
+            //  return "mi segunda chamba";
+            return  redirect()->route('login')->with('error', 'Codigo incorrecto');
         }
     }
 }

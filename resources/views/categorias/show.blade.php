@@ -47,6 +47,8 @@
                                                             <form action=" {{ route('subcategorias.store') }}"
                                                                 method="POST">
                                                                 @csrf
+
+                                                                <input type="hidden" name="id_estado" value="1">
                                                                 <div class="row mb-3">
                                                                     <input type="text" class="form-control"
                                                                         name="id_categoria"
@@ -66,23 +68,6 @@
                                                                         <input type="text" class="form-control"
                                                                             id="descripcion" name="descripcion"
                                                                             placeholder="Ingrese la descripción">
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row mb-3">
-                                                                    <label for="id_estado"
-                                                                        class="col-sm-4 col-form-label">Estado:
-                                                                    </label>
-                                                                    <div class="col-sm-8">
-
-                                                                        <select class="form-select" id="id_estado"
-                                                                            name="id_estado">
-                                                                            @foreach ($estados as $ite_estado)
-                                                                                <option
-                                                                                    value="{{ $ite_estado->id_estado }}">
-                                                                                    {{ $ite_estado->nombre }}</option>
-                                                                            @endforeach
-                                                                        </select>
                                                                     </div>
                                                                 </div>
 

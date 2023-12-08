@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 
-use App\Models\Alerta;
-
 class ControllerAlertas extends Controller
 {
     /**
@@ -40,7 +38,6 @@ class ControllerAlertas extends Controller
     public function store(Request $request)
     {
 
-<
         $validator = Validator::make($request->all(), [
             'titulo' => 'required||unique:alertas',
             'id_estado' => 'required',
