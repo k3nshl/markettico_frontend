@@ -59,7 +59,7 @@ class ControllerUsuariosAdministrativos extends Controller
 
         $this->controllerHistorial->store_usuario($request,'Creacion del usuario ');
         
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Usuario creado exitosamente');
     }
 
     /**
@@ -95,7 +95,7 @@ class ControllerUsuariosAdministrativos extends Controller
         $item->update();
         
         $this->controllerHistorial->store_usuario($request,'Actulaización del usuario ');
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Usuario actualizado exitosamente');
     }
 
     /**
@@ -151,7 +151,7 @@ class ControllerUsuariosAdministrativos extends Controller
         $itemBloqueado->tipo_usuario = 'Administrativo';
         $itemBloqueado->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Usuario bloqueado exitosamente');
     }
 
     public function desbloquearUsuario(Request $request)
@@ -163,7 +163,7 @@ class ControllerUsuariosAdministrativos extends Controller
         $itemBloqueado = UsuarioBloqueado::where('id_usuario_bloqueado', $request->id_usuario_bloqueado)->first();
         $itemBloqueado->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Usuario desbloqueado exitosamente');;
     }
 
 }

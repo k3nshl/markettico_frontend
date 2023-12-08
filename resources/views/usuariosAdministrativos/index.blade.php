@@ -5,9 +5,21 @@
 @section('contenido')
     <section class="content">
         <div class="row">
+
             <div class="col-xl-12 mx-auto">
+
+
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
+                    <
                     <div class="card-body">
+
+                        @if (session('success'))
+                            <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                <div class="text-dark">{{ session('success') }}</div>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
 
                         <ul class="nav nav-pills mb-3" role="tablist">
                             <li class="nav-item">
@@ -604,7 +616,8 @@
                                                         @foreach ($data_bloqueados as $item)
                                                             <tr>
                                                                 <td>{{ $item->id_usuario_administrativo }}</td>
-                                                                <td>{{ $item->usuarioAdministrativo->correo_empresarial }}</td>
+                                                                <td>{{ $item->usuarioAdministrativo->correo_empresarial }}
+                                                                </td>
                                                                 <td>{{ $item->descripcion }}</td>
                                                                 <td>
                                                                     <div class="text-center">
@@ -697,7 +710,8 @@
                                                                                         data-bs-dismiss="modal"
                                                                                         aria-label="Close"></button>
                                                                                 </div>
-                                                                                <form action="{{ route('desbloquearUsuario') }}"
+                                                                                <form
+                                                                                    action="{{ route('desbloquearUsuario') }}"
                                                                                     method="POST">
                                                                                     @csrf
                                                                                     <div class="modal-body">

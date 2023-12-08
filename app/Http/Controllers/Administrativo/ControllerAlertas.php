@@ -46,7 +46,7 @@ class ControllerAlertas extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back();
+            return redirect()->back()->with('error', 'No se ha podido crear la alerta');;
         }
 
         // Creando alerta
@@ -60,7 +60,7 @@ class ControllerAlertas extends Controller
         $alerta->id_estado = 1;
         $alerta->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Se ha creado exitosamente la alerta');;
     }
 
     /**
@@ -95,7 +95,7 @@ class ControllerAlertas extends Controller
         $alerta->fecha_final = $request->fecha_final;
         $alerta->id_estado = $request->id_estado;
         $alerta->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Haz actualizado la alerta');;
 
     }
 
@@ -107,6 +107,6 @@ class ControllerAlertas extends Controller
         $alerta =  Alerta::find($id);
         $alerta->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('error', 'Haz eliminado la alerta');;
     }
 }

@@ -96,7 +96,7 @@ class ControllerSolicitudesVendedores extends Controller
         $item->update();
 
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Haz actualizado la solicitud');
     }
 
     /**
