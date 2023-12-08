@@ -415,6 +415,8 @@
     <!--Editor de texto mejorado-->
     <script src="{{ asset('../assets/plugins/textarea-definitive/summernote-lite.js') }}"></script>
 
+    @yield('js')
+
     <script>
         $(function() {
             $(".knob").knob();
