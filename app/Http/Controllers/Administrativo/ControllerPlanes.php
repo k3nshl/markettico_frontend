@@ -42,30 +42,19 @@ class ControllerPlanes extends Controller
 
         $item = new Plan();
 
-        $request->validate([
-            'nombre' => 'required|string|max:50'
-        ]);
-        // Validacion de que no se repita el nombre del estado
+        $item->nombre = $request->nombre;
+        $item->tipo = $request->tipo;
+        $item->costo = $request->costo;
 
-        $validacion = Plan::where('nombre', $request->nombre)->first();
+        $item->cantidad_Productos = $request->cantidad_productos;
 
-        if ($validacion) {
-            return back()->with('error', 'Ya existe un registro con este nombre');
-        } else {
-            $item->nombre = $request->nombre;
-            $item->tipo = $request->tipo;
-            $item->costo = $request->costo;
-
-            $item->cantidad_Productos = $request->cantidad_productos;
-
-            $item->multitienda = $multitienda;
-            $item->duracion = $request->duracion;
-            $item->descripcion = $request->descripcion;
-            //estado no existe en front se hace prueba con id directo
-            $item->id_estado = 1;
-            $item->save();
-            return redirect()->back();
-        }
+        $item->multitienda = $multitienda;
+        $item->duracion = $request->duracion;
+        $item->descripcion = $request->textareaEditarAnuncio;
+        //estado no existe en front se hace prueba con id directo
+        $item->id_estado = 1;
+        $item->save();
+        return redirect()->back();
     }
 
     /**
@@ -93,7 +82,7 @@ class ControllerPlanes extends Controller
      */
     public function update(Request $request, string $id)
     {
-
+        //$idEs = 3;
         $multitienda = 0;
         if ($request->multitienda == "si") {
             $multitienda = 1;
@@ -102,40 +91,30 @@ class ControllerPlanes extends Controller
         };
 
 
-        $item =  Plan::find($id);
+        $item = Plan::find($id);
 
-        $request->validate([
-            'nombre' => 'required|string|max:50'
-        ]);
-        // Validacion de que no se repita el nombre del estado
+        $item->nombre = $request->nombre;
+        $item->tipo = $request->tipo;
+        $item->costo = $request->costo;
 
-        $validacion = Plan::where('nombre', $request->nombre)->first();
+        $item->cantidad_Productos = $request->cantidad_productos;
 
-        if ($validacion) {
-            return back()->with('error', 'Ya existe un registro con este nombre');
-        } else {
-            $item->nombre = $request->nombre;
-            $item->tipo = $request->tipo;
-            $item->costo = $request->costo;
+        $item->multitienda = $multitienda;
+        $item->duracion = $request->duracion;
 
-            $item->cantidad_Productos = $request->cantidad_productos;
-
-            $item->multitienda = $multitienda;
-            $item->duracion = $request->duracion;
-            //$item->descripcion = $request->descripcion;
-            //estado no existe en front se hace prueba con id directo
-            $item->id_estado = 1;
-            $item->update();
-            return back()->with('success', 'El plan se ha actualizado correctamente');
-        }
+        $item->descripcion = $item->descripcion;
+        //$item->descripcion = $request->textareaEditarAnuncio;
+        //estado no existe en front se hace prueba con id directo
+        $item->id_estado = 1;
+        $item->update();
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-
         $plan = Plan::find($id);
         $plan->delete();
         return redirect()->back();

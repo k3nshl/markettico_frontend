@@ -17,6 +17,7 @@
                                         <div class="d-flex align-items-center">
                                             <div><i class="lni lni-clipboard me-1 font-22 text-info"></i></div>
                                             <h5 class="mb-0 text-dark" title="Agregar SubCategoría">Lista de Subcategorias
+                                                de {{ $itemCategoria->nombre }}
                                             </h5>
                                         </div>
                                         <div class="d-flex align-items-center">
@@ -43,9 +44,13 @@
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action=" {{ route('subcategorias.store') }}" method="POST">
+                                                            <form action=" {{ route('subcategorias.store') }}"
+                                                                method="POST">
                                                                 @csrf
                                                                 <div class="row mb-3">
+                                                                    <input type="text" class="form-control"
+                                                                        name="id_categoria"
+                                                                        value="{{ $itemCategoria->id_categoria }}" hidden>
                                                                     <label for="nombre"
                                                                         class="col-sm-4 col-form-label">Nombre:</label>
                                                                     <div class="col-sm-8">
@@ -67,14 +72,16 @@
                                                                 <div class="row mb-3">
                                                                     <label for="id_estado"
                                                                         class="col-sm-4 col-form-label">Estado:
-                                                                        </label>
+                                                                    </label>
                                                                     <div class="col-sm-8">
 
                                                                         <select class="form-select" id="id_estado"
                                                                             name="id_estado">
-                                                                            <option value="1">Activo</option>
-                                                                            <option value="0">Inactivo
-                                                                            </option>
+                                                                            @foreach ($estados as $ite_estado)
+                                                                                <option
+                                                                                    value="{{ $ite_estado->id_estado }}">
+                                                                                    {{ $ite_estado->nombre }}</option>
+                                                                            @endforeach
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -91,7 +98,7 @@
 
                                                             </form>
                                                         </div>
-                                                       
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -114,137 +121,165 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="text-center">
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Cocina</td>
-                                                    <td>Ahhhajjajbbcbxxuusisisisiis</td>
-                                                    <td>
-                                                        <!-- Botón de editar con modal -->
-                                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                            data-bs-target="#editarCategoriaModal" data-bs-toggle="tooltip"
-                                                            data-bs-placement="top" title="Editar Categoria">
-                                                            <div class="text-center">
-                                                                <i class="lni lni-pencil-alt"
-                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                            </div>
-                                                        </button>
+                                                @foreach ($subcategorias as $item)
+                                                    <tr>
+                                                        <td>{{ $item->id_subcategoria }}</td>
+                                                        <td>{{ $item->nombre }}</td>
+                                                        <td>{{ $item->descripcion }}</td>
+                                                        <td>
+                                                            <!-- Botón de editar con modal -->
+                                                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                                                data-bs-target="#editarCategoriaModal{{ $item->id_subcategoria }}"
+                                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                title="Editar Categoria">
+                                                                <div class="text-center">
+                                                                    <i class="lni lni-pencil-alt"
+                                                                        style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                </div>
+                                                            </button>
 
 
-                                                        <!-- Modal de edición -->
-                                                        <div class="modal fade" id="editarCategoriaModal" tabindex="-1"
-                                                            aria-labelledby="editarCategoriaModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-scrollable">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title"
-                                                                            id="editarCategoriaModalLabel">
-                                                                            Editar Categoría</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal" aria-label="Close"
-                                                                            data-bs-toggle="tooltip"
-                                                                            data-bs-placement="top"
-                                                                            title="Cerrar"></button>
-                                                                    </div>
+                                                            <!-- Modal de edición -->
+                                                            <div class="modal fade"
+                                                                id="editarCategoriaModal{{ $item->id_subcategoria }}"
+                                                                tabindex="-1" aria-labelledby="editarCategoriaModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-scrollable">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="editarCategoriaModalLabel">
+                                                                                Editar Categoría</h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal" aria-label="Close"
+                                                                                data-bs-toggle="tooltip"
+                                                                                data-bs-placement="top"
+                                                                                title="Cerrar"></button>
+                                                                        </div>
 
-                                                                    <div class="modal-body">
-                                                                        <form action=" {{ route('subcategorias.update', 1) }}" method="POST">
-                                                                            @method('PUT')
-                                                                            @csrf
-                                                                            <div class="row mb-3">
-                                                                                <label for="nombre"
-                                                                                    class="col-sm-4 col-form-label">Nombre:</label>
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="text" class="form-control"
-                                                                                        id="nombre" name="nombre"
-                                                                                        placeholder="Ingrese el nombre">
+                                                                        <div class="modal-body">
+                                                                            <form
+                                                                                action=" {{ route('subcategorias.update', $item->id_subcategoria) }}"
+                                                                                method="POST">
+                                                                                @method('PUT')
+                                                                                @csrf
+                                                                                <div class="row mb-3">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        name="id_categoria"
+                                                                                        value="{{ $itemCategoria->id_categoria }}"
+                                                                                        hidden>
+                                                                                    <label for="nombre"
+                                                                                        class="col-sm-4 col-form-label">Nombre:</label>
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            id="nombre" name="nombre"
+                                                                                            value="{{ $item->nombre }}">
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="row mb-3">
-                                                                                <label for="descripcion"
-                                                                                    class="col-sm-4 col-form-label">Descripción:</label>
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="text" class="form-control"
-                                                                                        id="descripcion" name="descripcion"
-                                                                                        placeholder="Ingrese la descripción">
+                                                                                <div class="row mb-3">
+                                                                                    <label for="descripcion"
+                                                                                        class="col-sm-4 col-form-label">Descripción:</label>
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            id="descripcion"
+                                                                                            name="descripcion"
+                                                                                            value="{{ $item->descripcion }}">
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            
-                                                                            <div class="row mb-3">
-                                                                                <label for="id_estado"
-                                                                                    class="col-sm-4 col-form-label">Estado:
+
+                                                                                <div class="row mb-3">
+                                                                                    <label for="id_estado"
+                                                                                        class="col-sm-4 col-form-label">Estado:
                                                                                     </label>
-                                                                                <div class="col-sm-8">
-    
-                                                                                    <select class="form-select" id="id_estado"
-                                                                                        name="id_estado">
-                                                                                        <option value="1">Activo</option>
-                                                                                        <option value="0">Inactivo
-                                                                                        </option>
-                                                                                    </select>
+                                                                                    <div class="col-sm-8">
+
+                                                                                        <select class="form-select"
+                                                                                            id="id_estado"
+                                                                                            name="id_estado">
+                                                                                            @foreach ($estados as $items)
+                                                                                                <option
+                                                                                                    value="{{ $items->id_estado }}"
+                                                                                                    {{ $items->id_estado == $item->id_estado ? 'selected' : '' }}>
+                                                                                                    {{ $items->nombre }}
+                                                                                                </option>
+                                                                                            @endforeach
+
+
+                                                                                        </select>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            </div>
-            
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cerrar</button>
-                                                                                <button type="submit" class="btn btn-info text-white"
-                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                    <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                                                    Guardar
-                                                                                </button>
-                                                                            </div>
-            
-                                                                        </form>
-                                                                    </div>
+                                                                        </div>
 
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                                            data-bs-target="#eliminarCategoriaModal">
-                                                            <i class="lni lni-trash"
-                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                        </button>
-
-                                                        <!-- Modal de eliminación -->
-                                                        <div class="modal fade" id="eliminarCategoriaModal"
-                                                            tabindex="-1" aria-labelledby="eliminarCategoriaModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title"
-                                                                            id="eliminarCategoriaModalLabel">Confirmar
-                                                                            eliminación</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal"
-                                                                            aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        ¿Estás seguro de que deseas eliminar esta
-                                                                        subcategoría?
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Cancelar</button>
-                                                                        <!-- Form de eliminación -->
-                                                                        <form action="{{ route('subcategorias.destroy', 1) }}" method="POST">
-                                                                            @method('DELETE')
-                                                                            @csrf
-                                                                            <button type="submit" class="btn btn-danger"
-                                                                                data-bs-dismiss="modal"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#eliminacionCorrectaModal">Eliminar
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-info text-white"
+                                                                                style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                <i class="bx bx-save"
+                                                                                    style="color: #F2F2F2;"></i>
+                                                                                Guardar
                                                                             </button>
+                                                                        </div>
+
                                                                         </form>
-                                                                        <!-- Form de eliminación -->
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                                data-bs-target="#eliminarCategoriaModal{{ $item->id_subcategoria }}">
+                                                                <i class="lni lni-trash"
+                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                            </button>
+
+                                                            <!-- Modal de eliminación -->
+                                                            <div class="modal fade"
+                                                                id="eliminarCategoriaModal{{ $item->id_subcategoria }}"
+                                                                tabindex="-1"
+                                                                aria-labelledby="eliminarCategoriaModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="eliminarCategoriaModalLabel">Confirmar
+                                                                                eliminación</h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            ¿Estás seguro de que deseas eliminar esta
+                                                                            subcategoría?
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Cancelar</button>
+                                                                            <!-- Form de eliminación -->
+                                                                            <form
+                                                                                action="{{ route('subcategorias.destroy', $item->id_subcategoria) }}"
+                                                                                method="POST">
+                                                                                @method('DELETE')
+                                                                                @csrf
+                                                                                <button class="btn btn-danger"
+                                                                                    data-bs-target="#eliminacionCorrectaModal">Eliminar
+                                                                                </button>
+                                                                            </form>
+                                                                            <!-- Form de eliminación -->
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

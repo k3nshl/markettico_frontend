@@ -23,7 +23,8 @@
                                     <div class="row mb-3">
                                         <form action="{{ route('articulos.store') }}" method="post">
                                             @csrf
-
+                                            <input type="text" name="id_pagina" class="form-control" value="{{$id_pagina_informacion}}" hidden>
+                                            <input type="text" name="id_estado" class="form-control" value="1" hidden>
                                             <div class="">
                                                 <label for="titulo" class="col-form-label">Titulo del
                                                     articulo:</label>
@@ -32,7 +33,7 @@
                                                     placeholder="Titulo del articulo">
 
                                             </div>
-                                            <input type="hidden" name="id_pagina" value="{{$id_pagina}}">
+                                            <input type="hidden" name="id_pagina" value="{{$id_pagina_informacion}}">
                                             <input type="hidden" name="id_estado" value="1">
                                             <div class="mt-3">
 
