@@ -39,12 +39,14 @@
                                 <h4 class="font-weight-bold">Correo de la cuenta</h4>
                                 <p class="text-muted">Escribe la dirección de correo electrónico asociado a tu cuenta.
                                 </p>
-                                <form action="{{ route('validarCorreo') }}" method="POST">
+                                <form action="{{ route('validarLogin') }}" method="POST">
                                     @csrf
                                     <div class="mb-3 mt-4">
                                         <label class="form-label">Correo electrónico</label>
-                                        <input type="text" name="correo" class="form-control"
+                                        <input type="email" name="correo_empresarial" class="form-control"
                                             placeholder="Ingresar correo" />
+                                            <input type="hidden" name="type" value="2">
+                                            <input type="hidden" name="emisor" value="markettico23@gmail.com">
                                     </div>
                                     <div class="d-grid gap-2">
                                         <button type="submit" class="btn btn-primary">Verificar</button>

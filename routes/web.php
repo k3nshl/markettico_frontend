@@ -18,7 +18,7 @@ use App\Http\Controllers\Administrativo\ControllerPlanes;
 use App\Http\Controllers\Administrativo\ControllerSolicitudesProductos;
 use App\Http\Controllers\Administrativo\ControllerSolicitudesVendedores;
 use App\Http\Controllers\Administrativo\ControllerSubcategorias;
-use App\Http\Controllers\ControllerRecuperarPassword;
+use App\Http\Controllers\Administrativo\ControllerRecuperarPassword;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -68,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cerrar-sesion',  [ControllerLogin::class, 'logout'])->name('usuarios.logout');
 });
 
-    Route::post('/verificar_codigo', [ControllerLogin::class, 'verificarCodigo'])->name('verificar_codigo');
+Route::post('/verificar_codigo', [ControllerLogin::class, 'verificarCodigo'])->name('verificar_codigo');
 
 // Middleware (Rutas exclusivas de superadmin)
 Route::middleware(['auth', 'checkSuperadmin'])->group(function () {

@@ -44,6 +44,7 @@
                                         <div class="d-grid gap-2 my-5">
                                             <a type="button" class="btn btn-primary" href="">Recuperar Contraseña</a>
                                         </div>
+                                        <p>{{$codigo}}</p>
 
                                         <p class="">Si no realizaste esta solicitud, no se requiere realizar ninguna otra acción.</p>
                                         
