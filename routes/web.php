@@ -68,6 +68,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cerrar-sesion',  [ControllerLogin::class, 'logout'])->name('usuarios.logout');
 });
 
+    Route::post('/verificar_codigo', [ControllerLogin::class, 'verificarCodigo'])->name('verificar_codigo');
+
 // Middleware (Rutas exclusivas de superadmin)
 Route::middleware(['auth', 'checkSuperadmin'])->group(function () {
     Route::get('/superadmin', [ControllerUsuariosAdministrativos::class, 'index'])->name('homeSuperadmin');
