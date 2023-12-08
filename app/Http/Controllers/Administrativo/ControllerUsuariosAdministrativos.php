@@ -1,4 +1,3 @@
-
 <?php
 namespace App\Http\Controllers\Administrativo;
 
@@ -27,7 +26,8 @@ class ControllerUsuariosAdministrativos extends Controller
 
     public function index()
     {
-        $data = UsuarioAdministrativo::where('id_estado', 1)->get();
+        $user = Auth::user()->id_usuario_administrativo;
+        $data = UsuarioAdministrativo::where('id_estado', 1)->where('id_usuario_administrativo', '!=', $user)->get();
         $data_bloqueados = UsuarioBloqueado::where('tipo_usuario', 'Administrativo')->get();
         $roles = Rol::all();     
         return view('usuariosAdministrativos.index', compact('data','data_bloqueados','roles'));

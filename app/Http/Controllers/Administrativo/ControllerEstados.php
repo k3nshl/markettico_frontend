@@ -88,6 +88,7 @@ class ControllerEstados extends Controller
         $request->merge([
             'id_estado' => $item->id_estado,
         ]);
+        
         $this->controllerHitoriales->store_estados($request, 'Actualización del estado ');
 
         return redirect()->back();

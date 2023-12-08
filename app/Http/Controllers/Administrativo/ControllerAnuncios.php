@@ -98,7 +98,6 @@ class ControllerAnuncios extends Controller
         $validator = Validator::make($request->all(), [
             'titulo' => 'required||unique:anuncios',
             'contenido' => 'required',
-            'img_portada' => 'required',
             'fecha_inicio' => 'required',
             'fecha_final' => 'required',
             'etiqueta' => 'required',
@@ -108,20 +107,20 @@ class ControllerAnuncios extends Controller
             return redirect()->back();
         }
 
+        $anuncio = Anuncio::find($id);
+
         // Cargar imagen
         if ($request->hasFile('img_portada')) {
             $file = $request->file('img_portada');
             $fileName = Carbon::now()->format('YmdHisv').'_'.$file->getClientOriginalName();
             $file->move(public_path('img\anuncios'), $fileName);
+            $anuncio->img_portada = $fileName;
         }
-
-        $anuncio = Anuncio::find($id);
 
         $anuncio->id_usuario_remitente = Auth::user()->id_usuario_administrativo;
         $anuncio->id_estado = $request->id_estado;
         $anuncio->titulo = $request->titulo;
         $anuncio->contenido = $request->contenido;
-        $anuncio->img_portada = $fileName;
         $anuncio->fecha_inicio = $request->fecha_inicio;
         $anuncio->fecha_final = $request->fecha_final;
         $anuncio->etiqueta = $request->etiqueta;

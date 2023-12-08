@@ -10,17 +10,15 @@
 
 
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
-                    <
                     <div class="card-body">
 
                         @if (session('success'))
-                            <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                            <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
                                 <div class="text-dark">{{ session('success') }}</div>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                     aria-label="Close"></button>
                             </div>
                         @endif
-
 
                         <ul class="nav nav-pills mb-3" role="tablist">
                             <li class="nav-item">
@@ -79,8 +77,10 @@
                                                                     <form
                                                                         action="{{ route('usuariosAdministrativos.store') }}"
                                                                         method="POST">
-                                                                        @method('POST')
                                                                         @csrf
+
+                                                                        <input type="hidden" name="id_estado" value="1">
+
                                                                         <div class="row mb-3">
                                                                             <label for="nombre_completo"
                                                                                 class="col-sm-4 col-form-label">Nombre de
@@ -141,27 +141,6 @@
                                                                                 </select>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="row mb-3">
-                                                                            <label for="id_estado"
-                                                                                class="col-sm-4 col-form-label">Estado
-                                                                                del
-                                                                                Usuario:</label>
-                                                                            <div class="col-sm-8">
-                                                                                <select class="form-select" id="id_estado"
-                                                                                    name="id_estado">
-                                                                                    <option value="1">
-                                                                                        Activo
-                                                                                    </option>
-                                                                                    <option value="2">
-                                                                                        Inactivo
-                                                                                    </option>
-                                                                                    <option value="3">
-                                                                                        Bloqueado
-                                                                                    </option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
@@ -622,9 +601,7 @@
                                                                 <td>{{ $item->id_usuario_administrativo }}</td>
                                                                 <td>{{ $item->usuarioAdministrativo->correo_empresarial }}
                                                                 </td>
-<
                                                                 <td>{{ $item->usuarioAdministrativo->roles->nombre }}</td>
->
                                                                 <td>{{ $item->descripcion }}</td>
                                                                 <td>
                                                                     <div class="text-center">

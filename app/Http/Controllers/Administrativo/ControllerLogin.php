@@ -94,8 +94,8 @@ class ControllerLogin extends Controller
 
             if ($user->id_estado == 1 && $user->correo_empresarial == $request->correo_empresarial && $user->password == $password_login) {
                 $codigo = $this->getcodigoAleatorio($user);
-                $this->controllerCorreos->email_seller($request, $codigo);
-                return view('login.codigoVerificacion', compact('user', 'codigo'));
+                // $this->controllerCorreos->email_seller($request, $codigo);
+                // return view('login.codigoVerificacion', compact('user', 'codigo'));
                 auth::login($user);
                 if ($user->id_rol == 1) {
                     return redirect()->route('homeSuperadmin');

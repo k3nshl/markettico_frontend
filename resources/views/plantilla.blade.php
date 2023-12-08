@@ -113,27 +113,7 @@
                             <li> <a href="{{ route('notificaciones') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                     Notificaciones</a>
                             </li>
-                            <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Plantillas
-                                    para Correos</a>
-                                <ul>
-                                    <li> <a href="{{ route('correoAutenticacion') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Correo Autenticacion</a>
-                                    </li>
-                                    <li> <a href="{{ route('correoCambiosPoliticas') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Correo cambios en politicas</a>
-                                    </li>
-                                    <li> <a href="{{ route('correoExpiracionSuspension') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Correo expiracion y suspencion</a>
-                                    </li>
-                                    <li> <a href="{{ route('correoRegistro') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Correo registro</a>
-                                    </li>
-                                    <li> <a href="{{ route('correoSolicitud') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Correo solicitud</a>
-                                    </li>
-                                </ul>
-
-                            </li>
+                            
                         </ul>
                     </li>
                 @endif
