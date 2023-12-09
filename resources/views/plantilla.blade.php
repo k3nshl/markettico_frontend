@@ -80,8 +80,6 @@
                             </li>
                         </ul>
                     </li>
-                @endif
-                @if (Auth::user()->roles->nombre == 'Administrador' || Auth::user()->roles->nombre == 'Superadmin')
                     <li>
                         <a href="javascript:;" class="has-arrow">
                             <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
@@ -113,11 +111,9 @@
                             <li> <a href="{{ route('notificaciones') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
                                     Notificaciones</a>
                             </li>
-                            
+
                         </ul>
                     </li>
-                @endif
-                @if (Auth::user()->roles->nombre == 'Moderador' || Auth::user()->roles->nombre == 'Superadmin')
                     <li>
                         <a href="javascript:;" class="has-arrow">
                             <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
@@ -156,8 +152,99 @@
                         </ul>
                     </li>
                 @endif
+                {{--Solo Administrador--}}
+                @if (Auth::user()->roles->nombre == 'Administrador')
+                    <div class="menu">
+                        <a href="#" class="menu-item">
+                            <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i></div>
+                            <div class="menu-title">Administrador</div>
+                        </a>
 
+                        <div class="submenu">
+                            <a href="{{ route('usuariosAdministrativos.index') }}" class="menu-item">
+                                <div class="child-icon"><i class="bx bx-right-arrow-alt"></i></div>
+                                <div class="menu-title">Gestionar usuarios</div>
+                            </a>
+                        </div>
 
+                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Ver Solicitudes</a>
+                            <ul>
+                                <li>
+                                    <a href="{{ route('solicitudesProductos') }}"><i
+                                            class="bx bx-right-arrow-alt"></i>Solicitudes Productos</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('solicitudesServicios') }}"><i
+                                            class="bx bx-right-arrow-alt"></i>Solicitudes Servicios</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <div class="submenu">
+                            <a href="{{ route('estadisticas.index') }}" class="menu-item">
+                                <div class="child-icon"><i class="bx bx-right-arrow-alt"></i></div>
+                                <div class="menu-title">Gestionar Estadisticas</div>
+                            </a>
+                        </div>
+
+                        <div class="submenu">
+                            <a href="{{ route('notificaciones') }}" class="menu-item">
+                                <div class="child-icon"><i class="bx bx-right-arrow-alt"></i></div>
+                                <div class="menu-title">Gestionar Notificaciones</div>
+                            </a>
+                        </div>
+                    </div>
+                @endif
+                {{--Solo Moderador--}}
+                @if (Auth::user()->roles->nombre == 'Moderador')
+                    <div class="menu">
+                        <a href="#" class="menu-item">
+                            <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i></div>
+                            <div class="menu-title">Moderador</div>
+                        </a>
+
+                        <div class="submenu">
+                            <a href="{{ route('paginasInformacion.index') }}" class="menu-item">
+                                <div class="child-icon"><i class="bx bx-right-arrow-alt"></i></div>
+                                <div class="menu-title">Gestionar Paginas</div>
+                            </a>
+                        </div>
+
+                        <div class="submenu">
+                            <a href="{{ route('planes.index') }}" class="menu-item">
+                                <div class="child-icon"><i class="bx bx-right-arrow-alt"></i></div>
+                                <div class="menu-title">Gestionar Planes</div>
+                            </a>
+                        </div>
+
+                        <div class="submenu">
+                            <a href="{{ route('categorias.index') }}" class="menu-item">
+                                <div class="child-icon"><i class="bx bx-right-arrow-alt"></i></div>
+                                <div class="menu-title">Gestionar Categorias</div>
+                            </a>
+                        </div>
+
+                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Ver Solicitudes</a>
+                            <ul>
+                                <li>
+                                    <a href="{{ route('solicitudesProductos') }}"><i
+                                            class="bx bx-right-arrow-alt"></i>Solicitudes Productos</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('solicitudesServicios') }}"><i
+                                            class="bx bx-right-arrow-alt"></i>Solicitudes Servicios</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <div class="submenu">
+                            <a href="{{ route('moderarContenido.index') }}" class="menu-item">
+                                <div class="child-icon"><i class="bx bx-right-arrow-alt"></i></div>
+                                <div class="menu-title">Gestionar Contenido</div>
+                            </a>
+                        </div>
+                    </div>
+                @endif
             </ul>
             <!--end navigation-->
         </div>
@@ -563,20 +650,20 @@
         });
     </script>
 
-      {{-- editor de texto mejorado --}}
-      <script>
+    {{-- editor de texto mejorado --}}
+    <script>
         $(document).ready(function() {
             $('#summernoteTextareaPlanes').summernote({
                 height: 150,
                 placeholder: 'Escribe las características del plan',
             });
-    
+
             $('span.note-icon-caret').remove();
-    
+
             $('.note-editable').css('background', '#fff');
         });
     </script>
-    
+
 
 </body>
 
