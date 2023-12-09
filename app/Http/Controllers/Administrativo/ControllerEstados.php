@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Estado;
 use App\Models\Rol;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class ControllerEstados extends Controller
 {
@@ -40,20 +41,29 @@ class ControllerEstados extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required|string|max:50|unique:estados'
-        ]);
+        try {
 
-        $item = new Estado();
-        $item->nombre = $request->nombre;
-        $item->save();
+            $request->validate([
+                'nombre' => 'required|string|max:50|unique:estados'
+            ]);
 
-        $request->merge([
-            'id_estado' => $item->id_estado,
-        ]);
-        $this->controllerHitoriales->store_estados($request, 'Creacion del estado ');
+            $item = new Estado();
+            $item->nombre = $request->nombre;
+            $item->save();
 
-        return redirect()->back();
+            $request->merge([
+                'id_estado' => $item->id_estado,
+            ]);
+
+            $this->controllerHitoriales->store_estados($request, 'Creacion del estado ');
+
+            return redirect()->back()->with('success', 'Estado creado correctamente.')->with('origen', 'estados');
+
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            $errors->add('origen', 'estados');
+            return redirect()->back()->withErrors($errors);
+        }
     }
 
     /**
@@ -78,7 +88,7 @@ class ControllerEstados extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nombre' => 'required|string|max:50|unique:estados'
+            'nombre' => 'required|string|max:50|unique:estados,nombre,' . $id . ',id_estado'
         ]);
 
         $item =  Estado::find($id);
@@ -88,10 +98,10 @@ class ControllerEstados extends Controller
         $request->merge([
             'id_estado' => $item->id_estado,
         ]);
-        
+
         $this->controllerHitoriales->store_estados($request, 'Actualización del estado ');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Estado actualizado correctamente.')->with('origen', 'estados');
     }
 
     /**
@@ -112,7 +122,7 @@ class ControllerEstados extends Controller
             ]);
             $this->controllerHitoriales->store_estados($request, 'Eliminación del estado ');
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Estado eliminado correctamente.')->with('origen', 'estados');
         } catch (\Throwable $th) {
 
             return redirect()->back()->with('error', 'Este estado no puede ser eliminado ya que esta vinculado con otros registros');
