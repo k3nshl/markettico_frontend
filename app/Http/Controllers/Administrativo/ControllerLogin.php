@@ -153,13 +153,14 @@ class ControllerLogin extends Controller
         $horaactual = date('Y-m-d H:i:s');
         if ($codigo) {
             $horacoddb = $codigo->fecha_hora;
-            if (time() - strtotime($horacoddb) <= 60) {
+            $user = UsuarioAdministrativo::find($request->id_usuario);
+            if (time() - strtotime($horacoddb) <= 60 && $user->id_estado == 1) {
                 //      return "mi primera chamba";
 
                 $codigo->id_estado = 2; //??????
 
                 $codigo->update();
-                $user = UsuarioAdministrativo::find($request->id_usuario);
+               
                 auth::login($user);
 
 
