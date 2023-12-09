@@ -5,9 +5,19 @@
 @section('contenido')
     <section class="content">
         <div class="row">
+
             <div class="col-xl-12 mx-auto">
+
+
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
                     <div class="card-body">
+
+                        @if (session('success'))
+                            <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                <div class="text-dark">{{ session('success') }}</div>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
 
                         <ul class="nav nav-pills mb-3" role="tablist">
                             <li class="nav-item">
@@ -26,7 +36,6 @@
                             </li>
                         </ul>
 
-
                         <div class="tab-content">
                             <div class="tab-pane show active fade" id="tab-listaUsuarios">
                                 <div class="row justify-content-center align-items-center">
@@ -41,16 +50,18 @@
                                                         Administrativos</h5>
                                                 </div>
                                                 <div class="d-flex align-items-center">
-                                                    <div class="me-2">
-                                                        <h5 class="m-0">Registrar</h5>
-                                                    </div>
-                                                    <div class="me-2">
-                                                        <button type="button" class="btn btn-info text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#modalAgregarUsuario"
-                                                            style="background-color: #04D9B2; border-color: #04D9D9;"
-                                                            data-bs-toggle="tooltip" data-bs-placement="top"
-                                                            title="Agregar Usuario Administrativo">+</button>
-                                                    </div>
+                                                    @if (Auth::user()->roles->nombre == 'Superadmin')
+                                                        <div class="me-2">
+                                                            <h5 class="m-0">Registrar</h5>
+                                                        </div>
+                                                        <div class="me-2">
+                                                            <button type="button" class="btn btn-info text-white"
+                                                                data-bs-toggle="modal" data-bs-target="#modalAgregarUsuario"
+                                                                style="background-color: #04D9B2; border-color: #04D9D9;"
+                                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                title="Agregar Usuario Administrativo">+</button>
+                                                        </div>
+                                                    @endif
 
                                                     <div class="modal fade" id="modalAgregarUsuario" tabindex="-1"
                                                         aria-labelledby="modalAgregarUsuarioLabel" aria-hidden="true">
@@ -67,8 +78,11 @@
                                                                     <form
                                                                         action="{{ route('usuariosAdministrativos.store') }}"
                                                                         method="POST">
-                                                                        @method('POST')
                                                                         @csrf
+
+                                                                        <input type="hidden" name="id_estado"
+                                                                            value="1">
+
                                                                         <div class="row mb-3">
                                                                             <label for="nombre_completo"
                                                                                 class="col-sm-4 col-form-label">Nombre de
@@ -107,10 +121,10 @@
                                                                                 class="col-sm-4 col-form-label">Número
                                                                                 Telefónico:</label>
                                                                             <div class="col-sm-8">
-                                                                                <input type="text" class="form-control"
+                                                                                <input type="number" class="form-control"
                                                                                     id="numero_telefonico"
                                                                                     placeholder="Número Telefónico"
-                                                                                    name="numero_telefonico">
+                                                                                    name="numero_telefonico" min=0>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row mb-3">
@@ -120,31 +134,15 @@
                                                                             <div class="col-sm-8">
                                                                                 <select class="form-select" id="id_rol"
                                                                                     name="id_rol">
-                                                                                    <option value="1">Superadmin
-                                                                                    </option>
-                                                                                    <option value="2">
-                                                                                        Administrador</option>
-                                                                                    <option value="3">Moderador
-                                                                                    </option>
+                                                                                    @foreach ($roles as $rol)
+                                                                                        <option
+                                                                                            value="{{ $rol->id_rol }}">
+                                                                                            {{ $rol->nombre }}
+                                                                                        </option>
+                                                                                    @endforeach
                                                                                 </select>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="row mb-3">
-                                                                            <label for="id_estado"
-                                                                                class="col-sm-4 col-form-label">Estado
-                                                                                del
-                                                                                Usuario:</label>
-                                                                            <div class="col-sm-8">
-
-                                                                                <select class="form-select" id="id_estado"
-                                                                                    name="id_estado">
-                                                                                    <option value="1">Activo</option>
-                                                                                    <option value="0">Inactivo
-                                                                                    </option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
@@ -190,11 +188,11 @@
                                                     <tbody>
                                                         @foreach ($data as $item)
                                                             <tr>
-                                                                <td>{{$item->id_usuario_administrativo}}</td>
-                                                                <td>{{$item->nombre_completo}}</td>
+                                                                <td>{{ $item->id_usuario_administrativo }}</td>
+                                                                <td>{{ $item->nombre_completo }}</td>
                                                                 <td>
 
-                                                                    <p class="">Administrador</p>
+                                                                    <p class="">{{ $item->roles->nombre }}</p>
 
                                                                 </td>
                                                                 <td>
@@ -206,7 +204,7 @@
                                                                         <!-- Botón de visualizar -->
                                                                         <button class="btn btn-primary btn-sm btn-block"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#showUserModal"
+                                                                            data-bs-target="#showUserModal{{ $item->id_usuario_administrativo }}"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="Visualizar Estado">
@@ -217,51 +215,58 @@
                                                                         </button>
 
                                                                         <!-- Botón de editar con modal -->
-                                                                        <button class="btn btn-warning btn-sm btn-block"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#editarUsuarioModal"
-                                                                            data-bs-toggle="tooltip"
-                                                                            data-bs-placement="top"
-                                                                            title="Editar Usuario Administrativo">
-                                                                            <div class="text-center">
-                                                                                <i class="lni lni-pencil-alt"
-                                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                            </div>
-                                                                        </button>
+                                                                        @if (Auth::user()->roles->nombre == 'Superadmin' ||
+                                                                                (Auth::user()->roles->nombre == 'Administrador' &&
+                                                                                    $item->roles->nombre != 'Superadmin' &&
+                                                                                    $item->roles->nombre != 'Administrador'))
+                                                                            <button
+                                                                                class="btn btn-warning btn-sm btn-block"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#editarUsuarioModal{{ $item->id_usuario_administrativo }}"
+                                                                                data-bs-toggle="tooltip"
+                                                                                data-bs-placement="top"
+                                                                                title="Editar Usuario Administrativo">
+                                                                                <div class="text-center">
+                                                                                    <i class="lni lni-pencil-alt"
+                                                                                        style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                                </div>
+                                                                            </button>
+                                                                        @endif
+
 
                                                                         <!-- Botón de eliminar -->
-                                                                        <button class="btn btn-danger btn-sm btn-block"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#eliminarUsuarioModal">
-                                                                            <i class="lni lni-trash"
-                                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                        </button>
-
+                                                                        @if (Auth::user()->roles->nombre == 'Superadmin')
+                                                                            <button class="btn btn-danger btn-sm btn-block"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#eliminarUsuarioModal{{ $item->id_usuario_administrativo }}">
+                                                                                <i class="lni lni-trash"
+                                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                            </button>
+                                                                        @endif
 
                                                                         <!-- Botón de bloquear -->
-                                                                        <button class="btn btn-sm btn-block"
-                                                                            style="background-color: #05f29d"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#bloquearUsuarioModal"
-                                                                            data-bs-toggle="tooltip"
-                                                                            data-bs-placement="top"
-                                                                            title="Bloquear Usuario Administrativo">
-                                                                            <div class="text-center">
-                                                                                <i class="lni lni-lock"
-                                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                            </div>
-                                                                        </button>
-
-
-
+                                                                        @if (Auth::user()->roles->nombre == 'Superadmin' ||
+                                                                                (Auth::user()->roles->nombre == 'Administrador' &&
+                                                                                    $item->roles->nombre != 'Superadmin' &&
+                                                                                    $item->roles->nombre != 'Administrador'))
+                                                                            <button class="btn btn-sm btn-block"
+                                                                                style="background-color: #05f29d"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#bloquearUsuarioModal{{ $item->id_usuario_administrativo }}"
+                                                                                data-bs-toggle="tooltip"
+                                                                                data-bs-placement="top"
+                                                                                title="Bloquear Usuario Administrativo">
+                                                                                <div class="text-center">
+                                                                                    <i class="lni lni-lock"
+                                                                                        style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                                </div>
+                                                                            </button>
+                                                                        @endif
                                                                     </div>
 
-
-
-
-
                                                                     <!-- Modal de visaualizacion -->
-                                                                    <div class="modal fade" id="showUserModal"
+                                                                    <div class="modal fade"
+                                                                        id="showUserModal{{ $item->id_usuario_administrativo }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="showUserModalLabel"
                                                                         aria-hidden="true">
@@ -286,8 +291,10 @@
                                                                                         <div class="mb-3">
                                                                                             <label for="showNombreUsuario"
                                                                                                 class="form-label">Nombre:
-                                                                                                <span>{{$item->nombre_completo}}</span>
+                                                                                                <span>{{ $item->nombre_completo }}</span>
                                                                                             </label>
+
+
 
                                                                                         </div>
 
@@ -296,7 +303,7 @@
                                                                                                 for="showCorreoEmpresarial"
                                                                                                 class="form-label">Correo
                                                                                                 Empresarial:
-                                                                                                <span>{{$item->correo_empresarial}}</span></label>
+                                                                                                <span>{{ $item->correo_empresarial }}</span></label>
                                                                                         </div>
 
                                                                                         <div class="mb-3">
@@ -304,24 +311,25 @@
                                                                                                 for="showNumeroTelefonico"
                                                                                                 class="form-label">Número
                                                                                                 Telefónico:
-                                                                                                <span>Acá</span></label>
+                                                                                                <span>{{ $item->numero_telefonico }}</span></label>
                                                                                         </div>
 
                                                                                         <div class="mb-3">
                                                                                             <label for="showRolUsuario"
                                                                                                 class="form-label">Rol:
-                                                                                                <span>Acá</span></label>
+                                                                                                <span>{{ $item->roles->nombre }}</span></label>
                                                                                         </div>
 
                                                                                         <div class="mb-3">
                                                                                             <label for="showEstadoUsuario"
                                                                                                 class="form-label">Estado:
-                                                                                                <span>Acá</span></label>
+                                                                                                <span>{{ $item->estados->nombre }}</span></label>
                                                                                         </div>
                                                                                         <div class="mb-3">
                                                                                             <label for="showEstadoUsuario"
                                                                                                 class="form-label">Fecha de
-                                                                                                registro: <span>Acá</span>
+                                                                                                registro:
+                                                                                                <span>{{ $item->fecha_hora }}</span>
                                                                                             </label>
                                                                                         </div>
 
@@ -341,7 +349,8 @@
 
 
                                                                     <!-- Modal de edición -->
-                                                                    <div class="modal fade" id="editarUsuarioModal"
+                                                                    <div class="modal fade"
+                                                                        id="editarUsuarioModal{{ $item->id_usuario_administrativo }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="editarUsuarioModalLabel"
                                                                         aria-hidden="true">
@@ -362,73 +371,116 @@
 
                                                                                 <div class="modal-body">
                                                                                     <form
-                                                                                        action="{{ route('usuariosAdministrativos.update', 1) }}"
+                                                                                        action="{{ route('usuariosAdministrativos.update', $item->id_usuario_administrativo) }}"
                                                                                         method="POST">
                                                                                         @method('PUT')
                                                                                         @csrf
-                                                                                        <div class="mb-3">
-                                                                                            <label for="editNombreUsuario"
-                                                                                                class="col-sm-4 col-form-label">Nombre</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="editNombreUsuario"
-                                                                                                placeholder="Nombre de usuario">
-                                                                                        </div>
 
-                                                                                        <div class="mb-3">
-                                                                                            <label
-                                                                                                for="editCorreoEmpresarial"
-                                                                                                class="form-label">Correo
-                                                                                                empresarial</label>
-                                                                                            <input type="email"
-                                                                                                class="form-control"
-                                                                                                id="editCorreoEmpresarial"
-                                                                                                placeholder="Correo empresarial">
-                                                                                        </div>
+                                                                                        @if (Auth::user()->roles->nombre == 'Superadmin')
+                                                                                            <div class="mb-3">
+                                                                                                <label
+                                                                                                    for="editNombreUsuario"
+                                                                                                    class="col-sm-4 col-form-label">Nombre</label>
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    id="editNombreUsuario"
+                                                                                                    name="nombre_completo"
+                                                                                                    value="{{ $item->nombre_completo }}"
+                                                                                                    placeholder="Nombre de usuario">
+                                                                                            </div>
 
-                                                                                        <div class="mb-3">
-                                                                                            <label
-                                                                                                for="editNumeroTelefonico"
-                                                                                                class="form-label">Número
-                                                                                                telefónico</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="editNumeroTelefonico"
-                                                                                                placeholder="Número telefónico">
-                                                                                        </div>
+                                                                                            <div class="mb-3">
+                                                                                                <label
+                                                                                                    for="editCorreoEmpresarial"
+                                                                                                    class="form-label">Correo
+                                                                                                    empresarial</label>
+                                                                                                <input type="email"
+                                                                                                    class="form-control"
+                                                                                                    id="editCorreoEmpresarial"
+                                                                                                    name="correo_empresarial"
+                                                                                                    value="{{ $item->correo_empresarial }}"
+                                                                                                    placeholder="Correo empresarial">
+                                                                                            </div>
+
+                                                                                            <div class="mb-3">
+                                                                                                <label
+                                                                                                    for="editNumeroTelefonico"
+                                                                                                    class="form-label">Número
+                                                                                                    telefónico</label>
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    id="editNumeroTelefonico"
+                                                                                                    name="numero_telefonico"
+                                                                                                    value="{{ $item->numero_telefonico }}"
+                                                                                                    placeholder="Número telefónico">
+                                                                                            </div>
+
+                                                                                            <div class="mb-3">
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    id="editIdUsuario"
+                                                                                                    name="id_usuario_administrativo"
+                                                                                                    value="{{ $item->id_usuario_administrativo }}"
+                                                                                                    hidden>
+                                                                                            </div>
+
+                                                                                            <div class="mb-3">
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    id="editIdUsuario"
+                                                                                                    name="id_estado"
+                                                                                                    value="{{ $item->id_estado }}"
+                                                                                                    hidden>
+                                                                                            </div>
+                                                                                        @endif
 
                                                                                         <div class="mb-3">
                                                                                             <label for="editRolUsuario"
                                                                                                 class="form-label">Rol
                                                                                             </label>
-                                                                                            <select class="form-select"
+                                                                                            <select name="id_rol"
+                                                                                                class="form-select"
                                                                                                 id="editRolUsuario">
-                                                                                                <option value="superadmin">
-                                                                                                    Superadmin
-                                                                                                </option>
-                                                                                                <option
-                                                                                                    value="administrador">
-                                                                                                    Administrador
-                                                                                                </option>
-                                                                                                <option value="moderador">
-                                                                                                    Moderador</option>
+                                                                                                @if (Auth::user()->roles->nombre == 'Superadmin')
+                                                                                                    @foreach ($roles as $rol)
+                                                                                                        <option
+                                                                                                            value="{{ $rol->id_rol }}"
+                                                                                                            {{ $rol->id_rol == $item->id_rol ? 'selected' : '' }}>
+                                                                                                            {{ $rol->nombre }}
+                                                                                                        </option>
+                                                                                                    @endforeach
+                                                                                                @else
+                                                                                                    @foreach ($roles as $rolAdmin)
+                                                                                                        @if ($rolAdmin->nombre != 'Superadmin' && $rolAdmin->nombre != 'Administrador')
+                                                                                                            <option
+                                                                                                                value="{{ $rolAdmin->id_rol }}"
+                                                                                                                {{ $rolAdmin->id_rol == $item->id_rol ? 'selected' : '' }}>
+                                                                                                                {{ $rolAdmin->nombre }}
+                                                                                                            </option>
+                                                                                                        @endif
+                                                                                                    @endforeach
+                                                                                                @endif
+
                                                                                             </select>
                                                                                         </div>
-
                                                                                         <div class="mb-3">
-                                                                                            <label for="editEstadoUsuario"
-                                                                                                class="form-label">Estado
-                                                                                            </label>
+                                                                                            <label for="id_estado"
+                                                                                                class="col-sm-4 col-form-label">Estado
+                                                                                                del
+                                                                                                Usuario:</label>
                                                                                             <select class="form-select"
-                                                                                                id="editEstadoUsuario">
-                                                                                                <option value="activo">
-                                                                                                    Activo</option>
-                                                                                                <option value="inactivo">
-                                                                                                    Inactivo</option>
+                                                                                                id="id_estado"
+                                                                                                name="id_estado">
+                                                                                                <option value="1"
+                                                                                                    {{ $item->id_estado == 1 ? 'selected' : '' }}>
+                                                                                                    Activo
+                                                                                                </option>
+                                                                                                <option value="2"
+                                                                                                    {{ $item->id_estado == 2 ? 'selected' : '' }}>
+                                                                                                    Inactivo
+                                                                                                </option>
                                                                                             </select>
                                                                                         </div>
-
-
                                                                                 </div>
 
                                                                                 <div class="modal-footer">
@@ -449,7 +501,8 @@
                                                                     </div>
 
                                                                     {{-- Modal de eliminar --}}
-                                                                    <div class="modal fade" id="eliminarUsuarioModal"
+                                                                    <div class="modal fade"
+                                                                        id="eliminarUsuarioModal{{ $item->id_usuario_administrativo }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="eliminarUsuarioModalLabel"
                                                                         aria-hidden="true">
@@ -476,15 +529,12 @@
                                                                                         class="btn btn-secondary"
                                                                                         data-bs-dismiss="modal">Cancelar</button>
                                                                                     <form
-                                                                                        action="{{ route('usuariosAdministrativos.destroy', 1) }}"
+                                                                                        action="{{ route('usuariosAdministrativos.destroy', $item->id_usuario_administrativo) }}"
                                                                                         method="POST">
                                                                                         @method('DELETE')
                                                                                         @csrf
-                                                                                        <button type="sumit"
-                                                                                            class="btn btn-danger"
-                                                                                            data-bs-dismiss="modal"
-                                                                                            data-bs-toggle="modal"
-                                                                                            data-bs-target="#eliminacionCorrectaModal">Eliminar
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-danger">Eliminar
                                                                                         </button>
                                                                                     </form>
                                                                                 </div>
@@ -493,7 +543,8 @@
                                                                     </div>
 
                                                                     <!-- Modal de bloquear  -->
-                                                                    <div class="modal fade" id="bloquearUsuarioModal"
+                                                                    <div class="modal fade"
+                                                                        id="bloquearUsuarioModal{{ $item->id_usuario_administrativo }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="bloquearUsuarioModalLabel"
                                                                         aria-hidden="true">
@@ -509,21 +560,34 @@
                                                                                         data-bs-dismiss="modal"
                                                                                         aria-label="Close"></button>
                                                                                 </div>
-                                                                                <div class="modal-body">
-                                                                                    ¿Estás seguro de que deseas bloquear
-                                                                                    este
-                                                                                    usuario?
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button"
-                                                                                        class="btn btn-secondary"
-                                                                                        data-bs-dismiss="modal">Cancelar</button>
-                                                                                    <button type="button"
-                                                                                        class="btn btn-danger"
-                                                                                        data-bs-dismiss="modal"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#bloqueoCorrectoModal">Bloquear</button>
-                                                                                </div>
+                                                                                <form
+                                                                                    action="{{ route('bloquear_usuario', $item->id_usuario_administrativo) }}"
+                                                                                    method="POST">
+                                                                                    @csrf
+
+                                                                                    <div class="modal-body">
+                                                                                        <p>¿Estás seguro de que deseas
+                                                                                            bloquear
+                                                                                            este
+                                                                                            usuario?</p>
+                                                                                        <input type="hidden"
+                                                                                            name="id_usuario_administrativo"
+                                                                                            value="{{ $item->id_usuario_administrativo }}">
+                                                                                        <div class="my-3">
+                                                                                            <label>Descripción
+                                                                                                del bloqueo</label>
+                                                                                            <textarea class="form-control" name="descripcion" rows="5" placeholder="Ingrese la descripción del bloqueo"></textarea>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-bs-dismiss="modal">Cancelar</button>
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-danger">Bloquear</button>
+                                                                                    </div>
+                                                                                </form>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -538,6 +602,7 @@
                                 </div>
                             </div>
 
+                            {{-- Usuarios Bloqueados --}}
                             <div class="tab-pane fade" id="tab-bloqueados">
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
@@ -559,20 +624,20 @@
                                                         <tr class="text-center">
 
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">ID</th>
+                                                                style="background-color: #05C7F2; color: #F2F2F2">
+                                                                ID
+                                                            </th>
                                                             <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Usuario
+                                                                style="background-color: #05C7F2; color: #F2F2F2">
+                                                                Usuario
+                                                            </th>
+                                                            <th class="bg_datatable"
+                                                                style="background-color: #05C7F2; color: #F2F2F2">
+                                                                Rol
                                                             </th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">
                                                                 Descripción
-                                                            </th>
-                                                            <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Tipo
-                                                                Usuario
-                                                            </th>
-                                                            <th class="bg_datatable"
-                                                                style="background-color: #05C7F2; color: #F2F2F2">Vendedor
                                                             </th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Acciones
@@ -581,276 +646,140 @@
 
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>Juanito Perez</td>
-                                                            <td>Bloqueado por falta de datos</td>
-                                                            <td>Un usuario</td>
-                                                            <td>Nanami Kento</td>
-                                                            <td>
 
-                                                                <div class="text-center">
-
-                                                                    {{-- Botón de visualizar --}}
-                                                                    <button class="btn btn-primary btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#showUserBloqueadoModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Ver Bloqueados">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-eye"
-                                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-                                                                    <!-- Botón de editar con modal -->
-                                                                    <button class="btn btn-warning btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#editarUsuarioBloqueadoModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Editar Usuario Bloqueados">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-pencil-alt"
-                                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-                                                                    {{-- Botón de eliminar --}}
-                                                                    <button class="btn btn-danger btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#eliminarUsuarioBloqueadoModal">
-                                                                        <i class="lni lni-trash"
-                                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                    </button>
-
-                                                                    <!-- Botón de bloquear -->
-                                                                    <button class="btn btn-sm btn-block"
-                                                                        style="background-color: #05f29d"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#DesbloquearUsuarioModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Desbloquear Usuario Administrativo">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-unlock"
-                                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-                                                                </div>
-
-
-                                                                <!-- Modal de bloquear  -->
-                                                                <div class="modal fade" id="DesbloquearUsuarioModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="DesbloquearUsuarioModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="DesbloquearUsuarioModalLabel">
-                                                                                    Confirmar
-                                                                                    desbloqueo</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
+                                                        @foreach ($data_bloqueados as $item)
+                                                            <tr>
+                                                                <td>{{ $item->id_usuario_administrativo }}</td>
+                                                                <td>{{ $item->usuarioAdministrativo->correo_empresarial }}
+                                                                </td>
+                                                                <td>{{ $item->usuarioAdministrativo->roles->nombre }}</td>
+                                                                <td>{{ $item->descripcion }}</td>
+                                                                <td>
+                                                                    <div class="text-center">
+                                                                        {{-- Botón de visualizar --}}
+                                                                        <button class="btn btn-primary btn-sm"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#showUserBloqueadoModal{{ $item->id_usuario_bloqueado }}"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            title="Ver Bloqueados">
+                                                                            <div class="text-center">
+                                                                                <i class="lni lni-eye"
+                                                                                    style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
                                                                             </div>
-                                                                            <div class="modal-body">
-                                                                                ¿Estás seguro de que deseas desbloquear este
-                                                                                usuario?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-danger"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#bloqueoCorrectoModal">Bloquear</button>
+                                                                        </button>
+
+                                                                        <!-- Botón de desbloquear -->
+                                                                        @if (Auth::user()->roles->nombre == 'Superadmin' ||
+                                                                                (Auth::user()->roles->nombre == 'Administrador' &&
+                                                                                    $item->usuarioAdministrativo->id_rol != 1 &&
+                                                                                    $item->usuarioAdministrativo->id_rol != 2))
+                                                                            <button class="btn btn-sm btn-block"
+                                                                                style="background-color: #05f29d"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#DesbloquearUsuarioModal{{ $item->id_usuario_bloqueado }}"
+                                                                                data-bs-toggle="tooltip"
+                                                                                data-bs-placement="top"
+                                                                                title="Desbloquear Usuario Administrativo">
+                                                                                <div class="text-center">
+                                                                                    <i class="lni lni-unlock"
+                                                                                        style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                                </div>
+                                                                            </button>
+                                                                        @endif
+                                                                    </div>
+
+                                                                    <!-- Modal de visualizacion -->
+                                                                    <div class="modal fade"
+                                                                        id="showUserBloqueadoModal{{ $item->id_usuario_bloqueado }}"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="showUserBloqueadoModalLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="showUserBloqueadoModalLabel">
+                                                                                        Visualizar usuarios bloqueados</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"
+                                                                                        data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Cerrar"></button>
+                                                                                </div>
+
+                                                                                <div class="modal-body">
+                                                                                    <div class="mb-3">
+                                                                                        <label>Usuario:</label>
+                                                                                        <span>{{ $item->usuarioAdministrativo->correo_empresarial }}</span>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3">
+                                                                                        <label>Descripción:</label>
+                                                                                        <span
+                                                                                            style="white-space: pre-line;">{{ $item->descripcion }}</span>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-bs-dismiss="modal">Regresar</button>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
 
-
-                                                                <!-- Modal de visaualizacion -->
-                                                                <div class="modal fade" id="showUserBloqueadoModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="showUserBloqueadoModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="showUserBloqueadoModalLabel">
-                                                                                    Visualizar usuarios bloqueados</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="id_usuario"
-                                                                                            class="col-sm-4 col-form-label">Usuario:
-                                                                                            <span>Acá</span></label>
-
+                                                                    <!-- Modal de desbloquear -->
+                                                                    <div class="modal fade"
+                                                                        id="DesbloquearUsuarioModal{{ $item->id_usuario_bloqueado }}"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="DesbloquearUsuarioModalLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="DesbloquearUsuarioModalLabel">
+                                                                                        Confirmar
+                                                                                        desbloqueo</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"></button>
+                                                                                </div>
+                                                                                <form
+                                                                                    action="{{ route('desbloquearUsuario') }}"
+                                                                                    method="POST">
+                                                                                    @csrf
+                                                                                    <div class="modal-body">
+                                                                                        <input type="hidden"
+                                                                                            value="{{ $item->id_usuario_bloqueado }}"
+                                                                                            name="id_usuario_bloqueado">
+                                                                                        <input type="hidden"
+                                                                                            value="{{ $item->id_usuario_administrativo }}"
+                                                                                            name="id_usuario_administrativo">
+                                                                                        ¿Estás seguro de que deseas
+                                                                                        desbloquear
+                                                                                        este
+                                                                                        usuario?
                                                                                     </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="descripcion"
-                                                                                            class="col-sm-4 col-form-label">Descripción:
-                                                                                            <span>Acá</span></label>
-
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="tipo_usuario"
-                                                                                            class="col-sm-4 col-form-label">Tipo
-                                                                                            de usuario:
-                                                                                            <span>Acá</span></label>
-
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="id_vendedor"
-                                                                                            class="col-sm-4 col-form-label">Vendedor:
-                                                                                            <span>Acá</span></label>
-
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-bs-dismiss="modal">Cancelar</button>
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-danger">Desbloquear</button>
                                                                                     </div>
                                                                                 </form>
                                                                             </div>
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Regresar</button>
-
-                                                                            </div>
-
                                                                         </div>
                                                                     </div>
-                                                                </div>
-
-
-                                                                <!-- Modal de edición -->
-                                                                <div class="modal fade" id="editarUsuarioBloqueadoModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="editarUsuarioBloqueadoModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="editarUsuarioBloqueadoModalLabel">
-                                                                                    Editar usuario bloqueado</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row mb-3">
-                                                                                        <div class="col-sm">
-                                                                                            <label for="id_usuario"
-                                                                                                class="form-label">Usuario:</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="id_usuario"
-                                                                                                placeholder="Nombre de Usuario">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <div class="col-sm">
-                                                                                            <label for="descripcion"
-                                                                                                class="form-label">Descripción:</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="descripcion"
-                                                                                                placeholder="Descripción">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <div class="col-sm">
-                                                                                            <label for="tipo_usuario"
-                                                                                                class="form-label">Tipo de
-                                                                                                usuario:</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="tipo_usuario"
-                                                                                                placeholder="Tipo de usuario">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row mb-3">
-                                                                                        <div class="col-sm">
-                                                                                            <label for="id_vendedor"
-                                                                                                class="form-label">Vendedor:</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="id_vendedor"
-                                                                                                placeholder="Nombre del Vendedor">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cerrar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-info text-white"
-                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                    <i class="bx bx-save"
-                                                                                        style="color: #F2F2F2;"></i>
-                                                                                    Guardar
-                                                                                </button>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                {{-- Modal de eliminar --}}
-                                                                <div class="modal fade" id="eliminarUsuarioBloqueadoModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="eliminarUsuarioBloqueadoModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="eliminarUsuarioBloqueadoModalLabel">
-                                                                                    Confirmar eliminación</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                ¿Estás seguro de que deseas eliminar este
-                                                                                usuario bloqueado?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-danger"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -859,10 +788,11 @@
                                 </div>
                             </div>
 
+
+
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

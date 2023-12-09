@@ -6,19 +6,27 @@ use App\Http\Controllers\Controller;
 use App\Models\Estado;
 use App\Models\Rol;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class ControllerEstados extends Controller
 {
+    protected $controllerHitoriales;
+
+    public function __construct(ControllerHistoriales $controllerHistoriales)
+    {
+        $this->controllerHitoriales = $controllerHistoriales;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // Este si sirve
         $estados = Estado::all();
         $roles = Rol::all();
+
         return view('estadosRoles.index', compact('estados', 'roles'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -26,7 +34,6 @@ class ControllerEstados extends Controller
     public function create()
     {
         //
-        return view('estadosRoles.index');
     }
 
     /**
@@ -34,10 +41,29 @@ class ControllerEstados extends Controller
      */
     public function store(Request $request)
     {
-        $item = new Estado();
-        $item->nombre = $request->nombre;
-        $item->save();
-        return redirect()->back();
+        try {
+
+            $request->validate([
+                'nombre' => 'required|string|max:50|unique:estados'
+            ]);
+
+            $item = new Estado();
+            $item->nombre = $request->nombre;
+            $item->save();
+
+            $request->merge([
+                'id_estado' => $item->id_estado,
+            ]);
+
+            $this->controllerHitoriales->store_estados($request, 'Creacion del estado ');
+
+            return redirect()->back()->with('success', 'Estado creado correctamente.')->with('origen', 'estados');
+
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            $errors->add('origen', 'estados');
+            return redirect()->back()->withErrors($errors);
+        }
     }
 
     /**
@@ -46,8 +72,6 @@ class ControllerEstados extends Controller
     public function show(string $id)
     {
         //
-        $itemEstado= Estado::find($id);
-        return view('estadosRoles.index',compact('itemEstado'));
     }
 
     /**
@@ -55,40 +79,53 @@ class ControllerEstados extends Controller
      */
     public function edit($id)
     {
-        $itemEs = Estado::find($id); 
-        $itemEs->update();
-        return view('estadosRoles.index');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-
     {
-        //$id=4;
-        $itemEstado= Estado::find($id);
-        $itemEstado->nombre = $request->nombre;
-        $itemEstado->update();
-        return redirect()->back();
-        
+        $request->validate([
+            'nombre' => 'required|string|max:50|unique:estados,nombre,' . $id . ',id_estado'
+        ]);
+
+        $item =  Estado::find($id);
+        $item->nombre = $request->nombre;
+        $item->update();
+
+        $request->merge([
+            'id_estado' => $item->id_estado,
+        ]);
+
+        $this->controllerHitoriales->store_estados($request, 'Actualización del estado ');
+
+        return redirect()->back()->with('success', 'Estado actualizado correctamente.')->with('origen', 'estados');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(string $id)
     {
 
-            // Encuentra el modelo por su ID
+        $item = Estado::find($id);
+        try {
             $item = Estado::find($id);
-    
-            // Elimina el modelo
             $item->delete();
 
-    
-            // Redirige a la página de índice con un mensaje de éxito
-            return redirect()->back();
-            
+            $request = new Request();
+            $request->merge([
+                'id_estado' => $item->id_estado,
+                'nombre' => $item->nombre,
+            ]);
+            $this->controllerHitoriales->store_estados($request, 'Eliminación del estado ');
+
+            return redirect()->back()->with('success', 'Estado eliminado correctamente.')->with('origen', 'estados');
+        } catch (\Throwable $th) {
+
+            return redirect()->back()->with('error', 'Este estado no puede ser eliminado ya que esta vinculado con otros registros');
+        }
     }
 }

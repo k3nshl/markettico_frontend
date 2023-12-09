@@ -1,6 +1,6 @@
 @extends('plantilla')
 
-@section('gestion_nombre', 'Gestionar/Productos')
+@section('gestion_nombre', 'Revisiones de Productos')
 
 @section('contenido')
 
@@ -183,21 +183,32 @@
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-bs-dismiss="modal">Regresar</button>
-                                                                                <form action="" method="POST">
+
+                                                                                 
+                                                                                <form action="{{ route('solicitudes-productos.update', 5)}}" method="POST">
                                                                                     @csrf
+                                                                                    @method('Put')
+                                                                                    
                                                                                     <button type="submit"
-                                                                                        class="btn btn-success"
-                                                                                        data-bs-dismiss="modal">Aprobar
+                                                                                        class="btn btn-success">Aprobar
                                                                                     </button>
+                                                                                    <input type="hidden" name="revision" value="1">
+
                                                                                 </form>
-                                                                                <form action="" method="POST">
+
+
+                                                                                
+                                                                                <form action=" {{ route('solicitudes-productos.update', 5)}}" method="POST">
                                                                                     @csrf
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-danger"
+                                                                                    @method('Put')
+                                                                                    
+                                                                                    <button type="submit" 
+                                                                                    class="btn btn-danger"
                                                                                         data-bs-dismiss="modal"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#showAfirmacionModal">Rechazar
                                                                                     </button>
+                                                                                    <input type="hidden" name="revision" value="2">
                                                                                 </form>
                                                                             </div>
                                                                         </div>
@@ -224,20 +235,22 @@
                                                                             </div>
 
                                                                             <div class="modal-body">
-                                                                                <form>
+                                                                                <form action="{{ route('solicitudes-productos.update', 5)}}" method="POST">
+                                                                                    @csrf
+                                                                                    @method('Put')
 
 
                                                                                     <div class="mb-3 ">
-                                                                                        <label for="nombre_completo"
+                                                                                        <label for="contenido"
                                                                                             class="col-sm-4 col-form-label">Motivo
                                                                                             de rechazo del producto:</label>
 
-                                                                                        <form method="post">
-                                                                                            <textarea class="form-control" name="mytextarea" rows="5">Hello, World!</textarea>
-                                                                                        </form>
+
+                                                                                        <textarea class="form-control" name="contenido" rows="5" placeholder="Ingrese el motivo aqui"></textarea>
+
                                                                                     </div>
 
-                                                                                </form>
+
                                                                             </div>
 
                                                                             <div class="modal-footer">
@@ -246,11 +259,12 @@
                                                                                     data-bs-dismiss="modal"
                                                                                     data-bs-toggle="modal"
                                                                                     data-bs-target="#showEsperaModal">Regresar</button>
-                                                                                <button type="button"
-                                                                                    class="btn btn-success"
-                                                                                    data-bs-dismiss="modal">Confirmar</button>
 
+                                                                                <button type="submit"
+                                                                                    class="btn btn-success">Confirmar</button>
+                                                                                    <input type="hidden" name="revision" value="2">
                                                                             </div>
+                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -263,6 +277,7 @@
                                     </div>
                                 </div>
                             </div>
+
 
                             <!-- tab-Aprobados -->
 

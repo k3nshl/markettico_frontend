@@ -3,16 +3,31 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\Articulo;
+use App\Models\HistorialGestionPaginas;
+use App\Models\PaginaInformacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ControllerPaginasInformacion extends Controller
 {
+
+    public function guardarHistorial($item)
+    {   
+        $paginaHistorial = new HistorialGestionPaginas();
+        $fecha_actual = date('Y-m-d H:i:s');
+        $paginaHistorial->id_pagina_informacion  = $item->id_pagina_informacion;
+        $paginaHistorial->fecha_hora = $fecha_actual;
+        $paginaHistorial->save();
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('paginasInformacion.index');
+        $data_paginas = PaginaInformacion::all();
+
+        return view('paginasInformacion.index', compact('data_paginas'));
     }
 
     /**
@@ -20,7 +35,6 @@ class ControllerPaginasInformacion extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -28,7 +42,26 @@ class ControllerPaginasInformacion extends Controller
      */
     public function store(Request $request)
     {
-        return "Store de paginas de informacion";
+        
+        $item = new PaginaInformacion();
+
+        $item->titulo = $request->titulo;
+        $item->descripcion = $request->descripcion;
+
+        $imagen = $request->icono;
+        
+        if ($imagen) {
+            $filename = $imagen->getClientOriginalName();
+
+            $imagen->move(public_path('img/fotografias'), $filename);
+            $item->icono = $filename;
+        }
+        
+        $item->id_estado=1;
+        $item->save();
+        $this->guardarHistorial($item);
+        //return $this->index();
+        return redirect()->back();
     }
 
     /**
@@ -36,7 +69,9 @@ class ControllerPaginasInformacion extends Controller
      */
     public function show($id)
     {
-        return view('paginasInformacion.show');
+        $data_articulos = Articulo::where('id_pagina_informacion', $id)->get();
+        $pagina = PaginaInformacion::find($id);
+        return view('paginasInformacion.show', compact('data_articulos','pagina'));
     }
 
     /**
@@ -52,7 +87,22 @@ class ControllerPaginasInformacion extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "Update de paginas de informacion";
+        $item = PaginaInformacion::find($id);
+        $item->titulo = $request->titulo;
+        $item->descripcion = $request->descripcion;
+
+        $imagen = $request->icono;
+        if ($imagen) {
+            $filename = $imagen->getClientOriginalName();
+
+            $imagen->move(public_path('img/fotografias'), $filename);
+            $item->icono = $filename;
+        }
+        //FALTA EN LA VISTA CAMBIAR ESTADO
+        $item->id_estado=1;
+        $item->update();
+        $this->guardarHistorial($item);
+        return redirect()->back();
     }
 
     /**
@@ -60,6 +110,9 @@ class ControllerPaginasInformacion extends Controller
      */
     public function destroy(string $id)
     {
-        return "Destroy de paginas de informacion";
+        $item = PaginaInformacion::find($id);
+        $item->delete();
+        $this->guardarHistorial($item);
+        return redirect()->back();
     }
 }

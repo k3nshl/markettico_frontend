@@ -31,6 +31,11 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('../assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}">
 
+    <!--plugins editor de texto mejorado-->
+    <link rel="stylesheet" href="{{ asset('../assets/plugins/textarea-definitive/summernote-lite.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('../assets/plugins/textarea-definitive/summernote-bs5.min.css') }}">
+
 
     <title>MarketTico Admin</title>
 </head>
@@ -54,94 +59,103 @@
             <!--navigation-->
             <ul class="metismenu" id="menu">
                 <li class="menu-label">Administrativo</li>
-                <li>
-                    <a href="javascript:;" class="has-arrow">
-                        <div class="parent-icon"><i class='lni lni-crown'></i>
-                        </div>
-                        <div class="menu-title">Superadmin</div>
-                    </a>
-                    <ul>
-                        <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
-                                    class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
-                        </li>
-                        <li> <a href="{{ route('estados.index') }}"><i
-                                    class="bx bx-right-arrow-alt"></i>Gestionar Estados/Roles</a>
-                        </li>
-                        <li> <a href="{{ route('historiales.index') }}"><i class="bx bx-right-arrow-alt"></i>Visualizar
-                                Historiales</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:;" class="has-arrow">
-                        <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
-                        </div>
-                        <div class="menu-title">Administrador</div>
-                    </a>
-                    <ul>
-                        <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
-                                    class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
-                        </li>
-                        <li> <a href="{{ route('solicitudes-vendedores.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
-                                Vendedores</a>
-                        </li>
-                        <li> <a href="{{ route('estadisticas.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
-                                Estadisticas</a>
 
-                        </li>
-                        <li> <a href="{{ route('notificaciones') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
-                                Notificaciones</a>
-                        </li>
-                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Plantillas
-                                para Correos</a>
-                            <ul>
-                                <li> <a href="{{ route('correoAutenticacion') }}"><i
-                                            class="bx bx-right-arrow-alt"></i>Correo Autenticacion</a>
-                                </li>
-                                <li> <a href="{{ route('correoCambiosPoliticas') }}"><i
-                                            class="bx bx-right-arrow-alt"></i>Correo cambios en politicas</a>
-                                </li>
-                                <li> <a href="{{ route('correoExpiracionSuspension') }}"><i
-                                            class="bx bx-right-arrow-alt"></i>Correo expiracion y suspencion</a>
-                                </li>
-                                <li> <a href="{{ route('correoRegistro') }}"><i
-                                            class="bx bx-right-arrow-alt"></i>Correo registro</a>
-                                </li>
-                                <li> <a href="{{ route('correoSolicitud') }}"><i
-                                            class="bx bx-right-arrow-alt"></i>Correo solicitud</a>
-                                </li>
-                            </ul>
+                @if (Auth::user()->roles->nombre == 'Superadmin')
+                    <li>
+                        <a href="javascript:;" class="has-arrow">
+                            <div class="parent-icon"><i class='lni lni-crown'></i>
+                            </div>
+                            <div class="menu-title">Superadmin</div>
+                        </a>
+                        <ul>
+                            <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
+                                        class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
+                            </li>
+                            <li> <a href="{{ route('estados.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                    Estados/Roles</a>
+                            </li>
+                            <li> <a href="{{ route('historiales.index') }}"><i
+                                        class="bx bx-right-arrow-alt"></i>Visualizar
+                                    Historiales</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+                @if (Auth::user()->roles->nombre == 'Administrador' || Auth::user()->roles->nombre == 'Superadmin')
+                    <li>
+                        <a href="javascript:;" class="has-arrow">
+                            <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
+                            </div>
+                            <div class="menu-title">Administrador</div>
+                        </a>
+                        <ul>
+                            <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
+                                        class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
+                            </li>
+                            <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Solicitudes
+                                    Vendedores</a>
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('vendedoresIndividuales') }}"><i
+                                                class="bx bx-right-arrow-alt"></i>Vendedores Individuales</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('vendedoresEmpresariales') }}"><i
+                                                class="bx bx-right-arrow-alt"></i>Vendedores Empresariales</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li> <a href="{{ route('estadisticas.index') }}"><i
+                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                    Estadisticas</a>
 
-                        </li>
-                    </ul>
-                </li>
+                            </li>
+                            <li> <a href="{{ route('notificaciones') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                    Notificaciones</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                @endif
+                @if (Auth::user()->roles->nombre == 'Moderador' || Auth::user()->roles->nombre == 'Superadmin')
+                    <li>
+                        <a href="javascript:;" class="has-arrow">
+                            <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
+                            </div>
+                            <div class="menu-title">Moderador</div>
+                        </a>
+                        <ul>
+                            <li> <a href="{{ route('paginasInformacion.index') }}"><i
+                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                    Paginas</a>
+                            </li>
+                            <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                                    Planes</a>
+                            </li>
+                            <li> <a href="{{ route('categorias.index') }}"><i
+                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                    Categorias</a>
+                            </li>
 
-                <li>
-                    <a href="javascript:;" class="has-arrow">
-                        <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
-                        </div>
-                        <div class="menu-title">Moderador</div>
-                    </a>
-                    <ul>
-                        <li> <a href="{{ route('paginasInformacion.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
-                                Paginas</a>
-                        </li>
-                        <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
-                                Planes</a>
-                        </li>
-                        <li> <a href="{{ route('categorias.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
-                                Categorias</a>
-                        </li>
+                            <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Ver Solicitudes</a>
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('solicitudesProductos') }}"><i
+                                                class="bx bx-right-arrow-alt"></i>Solicitudes Productos</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('solicitudesServicios') }}"><i
+                                                class="bx bx-right-arrow-alt"></i>Solicitudes Servicios</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li> <a href="{{ route('moderarContenido.index') }}"><i
+                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                    Contenido</a>
 
-                        <li> <a href="{{ route('solicitudes-productos.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
-                                Productos</a>
-                        </li>
-                        <li> <a href="{{ route('moderarContenido.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
-                                Contenido</a>
-
-                    </ul>
-                </li>
-
+                        </ul>
+                    </li>
+                @endif
 
 
             </ul>
@@ -175,7 +189,7 @@
                             <li class="nav-item dropdown dropdown-large">
                                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative"
                                     href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="alert-count">7</span>
+                                    <span class="alert-count">0</span>
                                     <i class='bx bx-bell'></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
@@ -209,7 +223,7 @@
                             <li class="nav-item dropdown dropdown-large">
                                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative"
                                     href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="alert-count">8</span>
+                                    <span class="alert-count">0</span>
                                     <i class='bx bx-comment'></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
@@ -246,30 +260,47 @@
                     <div class="user-box dropdown">
                         <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret"
                             href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ asset('../assets/images/avatars/avatar-2.png') }}" class="user-img"
-                                alt="user avatar">
+                            <img src="{{ asset('../assets/images/avatars/logo-marketitco-avatar-adminuser.png') }}"
+                                class="user-img" alt="user avatar">
                             <div class="user-info ps-3">
-                                <p class="user-name mb-0">Delia Smith</p>
-                                <p class="designattion mb-0">Project Manager</p>
+
+                                @if (Auth::check())
+                                    <p class="user-name mb-0">{{ Auth::user()->nombre_completo }}</p>
+                                    <p class="designattion mb-0">{{ Auth::user()->roles->nombre }}</p>
+                                @endif
+
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href="{{ route('perfil.show', ['id' => 1]) }}">
+                                <a class="dropdown-item"
+                                    href="{{ route('perfil.show', ['id' => auth()->user()->id_usuario_administrativo]) }}">
                                     <i class="bx bx-user"></i><span>Perfil</span>
                                 </a>
                             </li>
-                            <li><a class="dropdown-item" href="javascript:;"><i
-                                        class="bx bx-cog"></i><span>Configuracion</span></a>
+
+                            <li>
+                                @if (optional(Auth::user()->roles)->id_rol == 1)
+                                    <a class="dropdown-item" href="{{ route('homeSuperadmin') }}">
+                                        <i class='bx bx-home-circle'></i><span>Dashboard</span>
+                                    </a>
+                                @elseif (optional(Auth::user()->roles)->id_rol == 2)
+                                    <a class="dropdown-item" href="{{ route('homeAdministrador') }}">
+                                        <i class='bx bx-home-circle'></i><span>Dashboard</span>
+                                    </a>
+                                @elseif (optional(Auth::user()->roles)->id_rol == 3)
+                                    <a class="dropdown-item" href="{{ route('paginasInformacion.index') }}">
+                                        <i class='bx bx-home-circle'></i><span>Dashboard</span>
+                                    </a>
+                                @endif
                             </li>
-                            <li><a class="dropdown-item" href="javascript:;"><i
-                                        class='bx bx-home-circle'></i><span>Dashboard</span></a>
-                            </li>
+
                             <li>
                                 <div class="dropdown-divider mb-0"></div>
                             </li>
-                            <li><a class="dropdown-item" href="javascript:;"><i
-                                        class='bx bx-log-out-circle'></i><span>Cerrar sesion</span></a>
+                            <li><a class="dropdown-item" href="{{ Route('usuarios.logout') }}">
+                                    <i class='bx bx-log-out-circle text-danger'>
+                                    </i><span>Cerrar sesion</span></a>
                             </li>
                         </ul>
                     </div>
@@ -355,47 +386,47 @@
     <script src="{{ asset('assets/js/index.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('assets/js/index.js') }}"></script>
+    <!--app JS-->
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="https://cdn.tiny.cloud/1/ridcfj86k1i5y88uy1n1vznbruw2zv4icacguzwpjgeoum26/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
+    <!--Editor de texto mejorado-->
+    <script src="{{ asset('../assets/plugins/textarea-definitive/summernote-lite.js') }}"></script>
+
+    @yield('js')
+
     <script>
         $(function() {
             $(".knob").knob();
         });
-    </script>
-    <!--Inicio datatables-->
-    <script>
+
+        // Datatables
         $(document).ready(function() {
             $('#tablaUsuariosAdmin').DataTable();
         });
-    </script>
-    <script>
+        $(document).ready(function() {
+            $('#tablaUsuariosBloqueados').DataTable();
+        });
         $(document).ready(function() {
             $('#tablaRoles').DataTable();
         });
-    </script>
-    <script>
         $(document).ready(function() {
             $('#tablaEstados').DataTable();
         });
-    </script>
-    <script>
         $(document).ready(function() {
             $('#tablaSolicitudEspera').DataTable();
         });
-    </script>
-    <script>
         $(document).ready(function() {
             $('#tablaSolicitudAprobados').DataTable();
         });
-    </script>
-    <script>
         $(document).ready(function() {
             $('#tablaSolicitudRechazados').DataTable();
         });
-    </script>
-    <script>
         $(document).ready(function() {
             $('#tablaCorreos').DataTable();
         });
-
         $(document).ready(function() {
             $('#tablaAnuncios').DataTable();
         });
@@ -403,140 +434,81 @@
         $(document).ready(function() {
             $('#tablaAlertas').DataTable();
         });
-    </script>
-    <!--Fin datatables-->
-
-
-    <!-- Inicio datatable moderador -->
-
-    <script>
         $(document).ready(function() {
             $('#tablaArticulo').DataTable();
         });
-    </script>
-
-
-    <script>
         $(document).ready(function() {
             $('#tablaColeccion').DataTable();
         });
-    </script>
-
-
-
-    <!-- Fin de datatable moderador -->
-
-
-
-    <!-- Inicio datatable planes -->
-
-    <script>
         $(document).ready(function() {
             $('#tablaPlanes').DataTable();
         });
-    </script>
 
-    <!-- Fin de datatable planes -->
+        $(document).ready(function() {
+            $('#tablaHistorialEstados').DataTable();
+        });
 
-
-
-
-    <!-- Inicio de las tablas de historial -->
-    <script>
         $(document).ready(function() {
             $('#tablaHistorialRoles').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaHistorialGestionCuentas').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaHistorialAcciones').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaHistorialSuspenciones').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaHistorialInicioSesion').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaHistorialPaginas').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaProductosEspera').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaProductosAprobados').DataTable();
         });
-    </script>
 
-    <script>
         $(document).ready(function() {
             $('#tablaProductosRechazados').DataTable();
         });
-    </script>
 
 
-    <!-- Fin de las tablas de historial -->
+        // Tooltips y Popovers
+        $(function() {
+            $('[data-bs-toggle="popover"]').popover();
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        })
 
+        // Texto enriquecido
+        tinymce.init({
+            selector: '#mytextarea'
+        });
 
-    <script>
         $(document).ready(function() {
             var table = $('#').DataTable({
                 lengthChange: false,
                 buttons: ['copy', 'excel', 'pdf', 'print']
             });
         });
-    </script>
-
-    <script src="{{ asset('assets/js/index.js') }}"></script>
-    <!--app JS-->
-    <script src="{{ asset('assets/js/app.js') }}"></script>
-
-
-
-    <script>
-        $(function() {
-            $('[data-bs-toggle="popover"]').popover();
-            $('[data-bs-toggle="tooltip"]').tooltip();
-        })
-    </script>
-
-    <script src="https://cdn.tiny.cloud/1/ridcfj86k1i5y88uy1n1vznbruw2zv4icacguzwpjgeoum26/tinymce/6/tinymce.min.js"
-        referrerpolicy="origin"></script>
-
-    <script>
-        tinymce.init({
-            selector: '#mytextarea'
-        });
-    </script>
-
-
-
-    <script>
         $(document).ready(function() {
             $("#portada").change(function() {
                 readURL(this, "#imagen-preview-portada");
+            });
+
+            $("#portada-edit").change(function() {
+                readURL(this, "#imagen-preview-portada-edit");
             });
 
             $("#otroInput").change(function() {
@@ -556,15 +528,55 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-    </script>
 
-{{-- Para limpiar el campo de verificar contra --}}
-    <script>
         $('#VerificarContra').on('hidden.bs.modal', function() {
             $('#password').val('');
         });
     </script>
 
+
+    {{-- editor de texto mejorado --}}
+    <script>
+        $(document).ready(function() {
+            $('#summernoteTextareaRegistrar').summernote({
+                height: 150,
+                placeholder: 'Escribe el contenido del anuncio',
+            });
+
+            $('span.note-icon-caret').remove();
+
+            $('.note-editable').css('background', '#fff');
+        });
+    </script>
+
+    {{-- editor de texto mejorado --}}
+    <script>
+        $(document).ready(function() {
+            $('#summernoteTextareaEditar').summernote({
+                height: 150,
+                placeholder: 'Escribe el contenido del anuncio',
+            });
+
+            $('span.note-icon-caret').remove();
+
+            $('.note-editable').css('background', '#fff');
+        });
+    </script>
+
+      {{-- editor de texto mejorado --}}
+      <script>
+        $(document).ready(function() {
+            $('#summernoteTextareaPlanes').summernote({
+                height: 150,
+                placeholder: 'Escribe las características del plan',
+            });
+    
+            $('span.note-icon-caret').remove();
+    
+            $('.note-editable').css('background', '#fff');
+        });
+    </script>
+    
 
 </body>
 

@@ -47,25 +47,36 @@
                                     <div class="text-center">
                                         <h3 class="">Inicia sesión</h3>
                                     </div>
-                                    <div class="login-separater text-center mb-4"> <span>INICA SESIÓN CON TU CORREO EMPRESARIAL Y
+                                    <div class="login-separater text-center mb-4"> <span>INICA SESIÓN CON TU CORREO
+                                            EMPRESARIAL Y
                                             CONTRASEÑA</span>
                                         <hr />
                                     </div>
+                                    @if (session('error'))
+                                        <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                            <div class="text-dark">{{ session('error') }}</div>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                        </div>
+                                    @endif
                                     <div class="form-body">
                                         <form action="{{ route('validarLogin') }}" class="row g-3" method="POST">
                                             @csrf
+                                            <input type="hidden" name="emisor" value="markettico23@gmail.com">
+                                            <input type="hidden" name="type" value="1">
                                             <div class="col-12">
-                                                <label for="inputEmailAddress" class="form-label">Correo Empresarial</label>
-                                                <input type="user" name="correo_empresarial" class="form-control" id="inputUser"
-                                                    placeholder="Correo Empresarial">
+                                                <label for="inputEmailAddress" class="form-label">Correo
+                                                    Empresarial</label>
+                                                <input type="user" name="correo_empresarial" class="form-control"
+                                                    id="inputUser" placeholder="Correo Empresarial">
                                             </div>
                                             <div class="col-12">
                                                 <label for="inputChoosePassword" class="form-label">Contraseña</label>
                                                 <div class="input-group" id="show_hide_password">
-                                                    <input type="password" name="password" class="form-control border-end-0"
-                                                        id="inputPassword" value=""
-                                                        placeholder="Ingresa Contraseña"> <a href="javascript:;"
-                                                        class="input-group-text bg-transparent"></a>
+                                                    <input type="password" name="password"
+                                                        class="form-control border-end-0" id="inputPassword"
+                                                        value="" placeholder="Ingresa Contraseña"> <a
+                                                        href="javascript:;" class="input-group-text bg-transparent"></a>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -74,13 +85,20 @@
                                             <div class="col-md-6 text-end">
 
                                             </div>
+
                                             <div class="col-12">
                                                 <div class="d-grid">
                                                     <button type="submit" class="btn btn-primary"><i
                                                             class="bx bxs-lock-open"></i>Inicia Sesión</button>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-12 mt-4 text-center">
+                                                <a href="{{ route('recuperarPassword') }}">¿Olvidaste tu
+                                                    contraseña?</a>
+                                            </div>
                                         </form>
+
                                     </div>
                                 </div>
                             </div>

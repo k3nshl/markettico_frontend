@@ -54,273 +54,241 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>EjemploUsuario</td>
-                                                            <td>ejemplo@empresa.com</td>
-                                                            <td>
-                                                                <div class="text-center">
+                                                        @foreach ($planes as $item)
+                                                            <tr>
+                                                                <td>{{ $item->id_plan }}</td>
+                                                                <td>{{ $item->nombre }}</td>
+                                                                <td>{{ $item->costo }}</td>
+                                                                <td>
+                                                                    <div class="text-center">
 
-                                                                    {{-- Botón de Visualizar --}}
-                                                                    <button class="btn btn-primary btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#showPlanModal"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Visualizar">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-eye"
-                                                                                style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
+                                                                        {{-- Botón de Visualizar --}}
+                                                                        <button class="btn btn-primary btn-sm"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#showPlanModal{{ $item->id_plan }}"
+                                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                            title="Visualizar">
+                                                                            <div class="text-center">
+                                                                                <i class="lni lni-eye"
+                                                                                    style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
+                                                                            </div>
+                                                                        </button>
 
-                                                                    <!-- Botón de editar con modal -->
-                                                                    <button class="btn btn-warning btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#editarPlanModal">
-                                                                        <div class="text-center">
-                                                                            <i class="lni lni-pencil-alt"
+                                                                        <!-- Botón de editar con modal -->
+                                                                        <button class="btn btn-warning btn-sm"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#editarPlanModal{{ $item->id_plan }}">
+                                                                            <div class="text-center">
+                                                                                <i class="lni lni-pencil-alt"
+                                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                            </div>
+                                                                        </button>
+
+                                                                        {{-- Botón de eliminar --}}
+                                                                        <button class="btn btn-danger btn-sm"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#eliminarPlanModal{{ $item->id_plan }}">
+                                                                            <i class="lni lni-trash"
                                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                        </div>
-                                                                    </button>
-
-                                                                    {{-- Botón de eliminar --}}
-                                                                    <button class="btn btn-danger btn-sm"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#eliminarPlanModal">
-                                                                        <i class="lni lni-trash"
-                                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                    </button>
-                                                                </div>
-
-                                                                <!-- Modal de visualizacion -->
-                                                                <div class="modal fade" id="showPlanModal" tabindex="-1"
-                                                                    aria-labelledby="showUserModalLabel" aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="showPlanModalLabel">
-                                                                                    Visualizar el plan</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                    data-bs-toggle="tooltip"
-                                                                                    data-bs-placement="top"
-                                                                                    title="Cerrar"></button>
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="nombre"
-                                                                                            class="col-sm-4 col-form-label">Nombre
-                                                                                            del plan:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="tipo"
-                                                                                            class="col-sm-4 col-form-label">Tipo:</label>
-                                                                                    </div>
-
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="col-sm-4 col-form-label">Costo:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="cantidad_productos"
-                                                                                            class="col-sm-4 col-form-label">Límite
-                                                                                            máximo de venta de
-                                                                                            productos:</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label
-                                                                                            class="col-sm-4 col-form-label">¿Es
-                                                                                            multitienda?</label>
-                                                                                    </div>
-
-                                                                                    <div class="row mb-3">
-                                                                                        <label for="duracion"
-                                                                                            class="col-sm-4 col-form-label">Duración
-                                                                                            del plan (en meses):</label>
-                                                                                    </div>
-
-
-                                                                                </form>
-                                                                            </div>
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Regresar</button>
-                                                                            </div>
-                                                                        </div>
+                                                                        </button>
                                                                     </div>
-                                                                </div>
 
-                                                                <!-- Modal de edición -->
-                                                                <div class="modal fade" id="editarPlanModal"
-                                                                    tabindex="-1" aria-labelledby="editarPlanModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="editarPlanModalLabel">
-                                                                                    Editar plan
-                                                                                </h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-
-                                                                            <div class="modal-body">
-                                                                                {{-- Form Editar --}}
-                                                                                <form
-                                                                                    action="{{ route('planes.update', 1) }}"
-                                                                                    method="POST">
-                                                                                    @method('PUT')
-                                                                                    @csrf
-                                                                                    <div class="mb-3">
-                                                                                        <label for="nombre"
-                                                                                            class="form-label">Nombre del
-                                                                                            plan:</label>
-                                                                                        <input type="text"
-                                                                                            class="form-control"
-                                                                                            id="nombre"
-                                                                                            placeholder="Nombre del plan">
-                                                                                    </div>
-
-                                                                                    <div class="mb-3">
-                                                                                        <label for="tipo"
-                                                                                            class="form-label">Tipo:</label>
-                                                                                        <select class="form-select"
-                                                                                            id="tipo">
-                                                                                            <option value="opcion1">Plan
-                                                                                                básico</option>
-                                                                                            <option value="opcion2">Plan
-                                                                                                empresarial</option>
-                                                                                            <option value="opcion3">Plan
-                                                                                                premium</option>
-                                                                                            <option value="opcion4">Plan
-                                                                                                deluxe</option>
-                                                                                        </select>
-                                                                                    </div>
-
-                                                                                    <div class="mb-3">
-                                                                                        <label for="costo"
-                                                                                            class="form-label">Costo:</label>
-                                                                                        <input type="number"
-                                                                                            class="form-control"
-                                                                                            id="costo"
-                                                                                            placeholder="Costo">
-                                                                                    </div>
-
-                                                                                    <div class="mb-3">
-                                                                                        <label for="cantidad_productos"
-                                                                                            class="form-label">Límite
-                                                                                            máximo de venta de
-                                                                                            productos:</label>
-                                                                                        <input type="number"
-                                                                                            class="form-control"
-                                                                                            id="cantidad_productos"
-                                                                                            placeholder="Límite máximo de venta de productos">
-                                                                                    </div>
-
-                                                                                    <div class="mb-3">
-                                                                                        <label class="form-label">¿Es
-                                                                                            multitienda?</label>
-                                                                                        <div class="form-check">
-                                                                                            <input class="form-check-input"
-                                                                                                type="radio"
-                                                                                                name="multitienda"
-                                                                                                id="multitienda-si"
-                                                                                                value="si">
-                                                                                            <label class="form-check-label"
-                                                                                                for="multitienda-si">Sí</label>
+                                                                    <!-- Modal de visualizacion -->
+                                                                    <div class="modal fade" id="showPlanModal{{ $item->id_plan }}" tabindex="-1" aria-labelledby="showUserModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="showPlanModalLabel">Visualizar el plan</h5>
+                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Cerrar"></button>
+                                                                                </div>
+                                                                    
+                                                                                <div class="modal-body">
+                                                                                    <form>
+                                                                                        <div class="row mb-3">
+                                                                                            <label for="nombre" class="col-sm-4 col-form-label">Nombre del plan:</label>
+                                                                                            <div class="col-sm-8">
+                                                                                                <input type="text" class="form-control" id="nombre" value="{{ $item->nombre }}" readonly>
+                                                                                            </div>
                                                                                         </div>
-                                                                                        <div class="form-check">
-                                                                                            <input class="form-check-input"
-                                                                                                type="radio"
-                                                                                                name="multitienda"
-                                                                                                id="multitienda-no"
-                                                                                                value="no">
-                                                                                            <label class="form-check-label"
-                                                                                                for="multitienda-no">No</label>
+                                                                    
+                                                                                        <div class="row mb-3">
+                                                                                            <label for="tipo" class="col-sm-4 col-form-label">Tipo:</label>
+                                                                                            <div class="col-sm-8">
+                                                                                                <input type="text" class="form-control" id="tipo" value="{{ $item->tipo }}" readonly>
+                                                                                            </div>
                                                                                         </div>
-                                                                                    </div>
-
-                                                                                    <div class="mb-3">
-                                                                                        <label for="duracion"
-                                                                                            class="form-label">Duración del
-                                                                                            plan (en meses):</label>
-                                                                                        <input type="text"
-                                                                                            class="form-control"
-                                                                                            id="duracion"
-                                                                                            placeholder="Duración del plan">
-                                                                                    </div>
-
-                                                                            </div>
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cerrar</button>
-                                                                                <button type="submit"
-                                                                                    class="btn btn-info text-white"
-                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                    <i class="bx bx-save"
-                                                                                        style="color: #F2F2F2;"></i>
-                                                                                    Guardar
-                                                                                </button>
-                                                                            </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                {{-- Modal Eliminar --}}
-                                                                <div class="modal fade" id="eliminarPlanModal"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="eliminarPlanModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="eliminarPlanModalLabel">
-                                                                                    Confirmar
-                                                                                    eliminación</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                ¿Estás seguro de que deseas eliminar
-                                                                                este plan?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cancelar</button>
-                                                                                {{-- form de eliminar --}}
-                                                                                <form
-                                                                                    action="{{ route('planes.destroy', 1) }}">
-                                                                                    @method('DELETE')
-                                                                                    @csrf
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-danger">Eliminar
-                                                                                    </button>
-                                                                                </form>
+                                                                    
+                                                                                        <div class="row mb-3">
+                                                                                            <label for="costo" class="col-sm-4 col-form-label">Costo:</label>
+                                                                                            <div class="col-sm-8">
+                                                                                                <input type="text" class="form-control" id="costo" value="{{ $item->costo }}" readonly>
+                                                                                            </div>
+                                                                                        </div>
+                                                                    
+                                                                                        <div class="row mb-3">
+                                                                                            <label for="cantidad_productos" class="col-sm-4 col-form-label">Límite máximo de venta de
+                                                                                                productos:</label>
+                                                                                            <div class="col-sm-8">
+                                                                                                <input type="text" class="form-control" id="cantidad_productos"
+                                                                                                    value="{{ $item->cantidad_productos }}" readonly>
+                                                                                            </div>
+                                                                                        </div>
+                                                                    
+                                                                                        <div class="row mb-3">
+                                                                                            <label class="col-sm-4 col-form-label">¿Es multitienda?</label>
+                                                                                            <div class="col-sm-8">
+                                                                                                <input type="text" class="form-control" value="{{ $item->multitienda == 1 ? 'Sí' : 'No' }}"
+                                                                                                    readonly>
+                                                                                            </div>
+                                                                                        </div>
+                                                                    
+                                                                                        <div class="row mb-3">
+                                                                                            <label for="duracion" class="col-sm-4 col-form-label">Duración del plan (en meses):</label>
+                                                                                            <div class="col-sm-8">
+                                                                                                <input type="text" class="form-control" id="duracion" value="{{ $item->duracion }}" readonly>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                    
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Regresar</button>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                                    
+
+                                                                    <!-- Modal de edición -->
+                                                                    <div class="modal fade" id="editarPlanModal{{ $item->id_plan }}"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="editarPlanModalLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="editarPlanModalLabel">
+                                                                                        Editar plan
+                                                                                    </h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"></button>
+                                                                                </div>
+
+                                                                                <div class="modal-body">
+                                                                                    {{-- FOOOOOORM EDIIIIIIIIT --}}
+
+                                                                                    <form action="{{ route('planes.update', $item->id_plan) }}" method="POST">
+                                                                                        @method('PUT')
+                                                                                        @csrf
+                                                                                    
+                                                                                        <div class="mb-3">
+                                                                                            <label for="nombre" class="form-label">Nombre del plan:</label>
+                                                                                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del plan" value="{{ old('nombre', $item->nombre) }}">
+                                                                                        </div>
+                                                                                        <div class="mb-3">
+                                                                                            <label for="tipo" class="form-label">Tipo:</label>
+                                                                                            <select class="form-select" id="tipo" name="tipo">
+                                                                                                <option value="Plan básico" {{ $item->tipo == 'Plan básico' ? 'selected' : '' }}>Plan básico</option>
+                                                                                                <option value="Plan empresarial" {{ $item->tipo == 'Plan empresarial' ? 'selected' : '' }}>Plan empresarial</option>
+                                                                                                <option value="Plan premium" {{ $item->tipo == 'Plan premium' ? 'selected' : '' }}>Plan premium</option>
+                                                                                                <option value="Plan deluxe" {{ $item->tipo == 'Plan deluxe' ? 'selected' : '' }}>Plan deluxe</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    
+                                                                                        <div class="mb-3">
+                                                                                            <label for="costo" class="form-label">Costo:</label>
+                                                                                            <input type="number" class="form-control" id="costo" name="costo" placeholder="Costo" value="{{ old('costo', $item->costo) }}">
+                                                                                        </div>
+                                                                                    
+                                                                                        <div class="mb-3">
+                                                                                            <label for="cantidad_productos" class="form-label">Límite máximo de venta de productos:</label>
+                                                                                            <input type="number" class="form-control" id="cantidad_productos" name="cantidad_productos" placeholder="Límite máximo de venta de productos" value="{{ old('cantidad_productos', $item->cantidad_productos) }}">
+                                                                                        </div>
+                                                                                    
+                                                                                        <div class="mb-3">
+                                                                                            <label class="form-label">¿Es multitienda?</label>
+                                                                                            <div class="form-check">
+                                                                                                <input class="form-check-input" type="radio" name="multitienda" id="multitienda-si" value="si" {{ $item->multitienda == 1 ? 'checked' : '' }}>
+                                                                                                <label class="form-check-label" for="multitienda-si">Sí</label>
+                                                                                            </div>
+                                                                                            <div class="form-check">
+                                                                                                <input class="form-check-input" type="radio" name="multitienda" id="multitienda-no" value="no" {{ $item->multitienda == 0 ? 'checked' : '' }}>
+                                                                                                <label class="form-check-label" for="multitienda-no">No</label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    
+                                                                                        <div class="mb-3">
+                                                                                            <label for="duracion" class="form-label">Duración del plan (en meses):</label>
+                                                                                            <input type="number" class="form-control" id="duracion" name="duracion" placeholder="Duración del plan" value="{{ old('duracion', $item->duracion) }}">
+                                                                                        </div>
+
+                                                                                        <div class="row mb-3">
+                                                                                            <label for="contenido"
+                                                                                                class="col-sm-4 col-form-label">Características:</label>
+                                                                                                <textarea id="mytextarea" name="descripcion" rows="3" placeholder="Escribe las características del plan">{{ old('descripcion', $item->descripcion) }}</textarea>
+                                                                                        </div>
+                                                                                    
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                                                            <button type="submit" class="btn btn-info text-white" style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                                <i class="bx bx-save" style="color: #F2F2F2;"></i>
+                                                                                                Guardar
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                    
+
+                                                                                </div>    
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    {{-- Modal Eliminar --}}
+                                                                    <div class="modal fade" id="eliminarPlanModal{{ $item->id_plan }}"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="eliminarPlanModalLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="eliminarPlanModalLabel">
+                                                                                        Confirmar
+                                                                                        eliminación</h5>
+                                                                                    <button type="button"
+                                                                                        class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"></button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    ¿Estás seguro de que deseas eliminar
+                                                                                    este plan?
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-bs-dismiss="modal">Cancelar</button>
+                                                                                    {{-- FOOOOOORM ELIMINAAAR --}}
+                                                                                    <form
+                                                                                        action="{{ route('planes.destroy', $item->id_plan) }}" method="POST">
+                                                                                        @method('DELETE')
+                                                                                        @csrf
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-danger">Eliminar
+                                                                                        </button>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -342,38 +310,39 @@
                                             </div>
 
                                             <hr />
-                                            {{-- Form Registrar --}}
+                                            {{-- FOOOORM REGISTROOOOOOOOOOOOOOOOO --}}
                                             <form action="{{ route('planes.store') }}" method="POST">
                                                 @method('POST')
                                                 @csrf
+
                                                 <div class="row mb-3">
                                                     <label for="nombre" class="col-sm-4 col-form-label">Nombre del
                                                         plan:</label>
                                                     <div class="col-sm-8">
                                                         <input type="text" class="form-control" id="nombre"
-                                                            placeholder="Nombre del plan">
+                                                            name="nombre" placeholder="Nombre del plan"
+                                                            value="{{ old('nombre') }}">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
                                                     <label for="tipo" class="col-sm-4 col-form-label">Tipo:</label>
                                                     <div class="col-sm-8">
-                                                        <select class="form-select" id="nombre">
-                                                            <option value="opcion1">Plan básico</option>
-                                                            <option value="opcion2">Plan empresarial</option>
-                                                            <option value="opcion3">Plan premium</option>
-                                                            <option value="opcion3">Plan deluxe</option>
+                                                        <select class="form-select" id="tipo" name="tipo">
+                                                            <option value="Plan básico">Plan básico</option>
+                                                            <option value="Plan empresarial">Plan empresarial</option>
+                                                            <option value="Plan premium">Plan premium</option>
+                                                            <option value="Plan deluxe">Plan deluxe</option>
                                                         </select>
                                                     </div>
                                                 </div>
-
-
 
                                                 <div class="row mb-3">
                                                     <label for="costo" class="col-sm-4 col-form-label">Costo:</label>
                                                     <div class="col-sm-8">
                                                         <input type="number" class="form-control" id="costo"
-                                                            placeholder="Costo">
+                                                            name="costo" placeholder="Costo"
+                                                            value="{{ old('costo') }}">
                                                     </div>
                                                 </div>
 
@@ -382,8 +351,9 @@
                                                         máximo de venta de productos:</label>
                                                     <div class="col-sm-8">
                                                         <input type="number" class="form-control"
-                                                            id="cantidad_productos"
-                                                            placeholder="Límite máximo de venta de productos">
+                                                            id="cantidad_productos" name="cantidad_productos"
+                                                            placeholder="Límite máximo de venta de productos"
+                                                            value="{{ old('cantidad_productos') }}">
                                                     </div>
                                                 </div>
 
@@ -398,7 +368,7 @@
                                                         </div>
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="radio"
-                                                                name="es_multitienda" id="multitienda-no" value="no">
+                                                                name="multitienda" id="multitienda-no" value="no">
                                                             <label class="form-check-label"
                                                                 for="multitienda-no">No</label>
                                                         </div>
@@ -409,15 +379,16 @@
                                                     <label for="duracion" class="col-sm-4 col-form-label">Duración del
                                                         plan (en meses):</label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="duracion"
-                                                            placeholder="Duración del plan">
+                                                        <input type="number" class="form-control" id="duracion"
+                                                            name="duracion" placeholder="Duración del plan"
+                                                            value="{{ old('duracion') }}">
                                                     </div>
                                                 </div>
+
                                                 <div class="row mb-3">
                                                     <label for="contenido"
                                                         class="col-sm-4 col-form-label">Características:</label>
-                                                    <textarea id="mytextarea" name="textareaEditarAnuncio" rows="3" placeholder="Escribe las características"></textarea>
-
+                                                        <textarea id="mytextarea" name="textareaEditarAnuncio" rows="3" placeholder="Escribe las características del plan">{{ old('textareaEditarAnuncio') }}</textarea>
                                                 </div>
 
                                                 <hr>
@@ -425,14 +396,11 @@
                                                 <div class="row">
                                                     <label class="col-sm-3 col-form-label"></label>
                                                     <div class="col-sm-9 text-end">
-                                                        <button type="submit" class="btn btn-info text-white"
-                                                            style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                            <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                            Guardar
-                                                        </button>
+                                                        <button type="submit" class="btn btn-primary">Guardar</button>
                                                     </div>
                                                 </div>
                                             </form>
+
                                         </div>
                                     </div>
                                 </div>

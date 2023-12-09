@@ -3,17 +3,28 @@
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
+use App\Models\HistorialGestionRoles;
 use App\Models\Rol;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class ControllerRoles extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+    protected $controllerHistorial;
+
+    public function __construct(ControllerHistoriales $historial)
+    {
+        $this->controllerHistorial = $historial;
+    }
+
+
     public function index()
     {
-        
     }
 
     /**
@@ -29,12 +40,29 @@ class ControllerRoles extends Controller
      */
     public function store(Request $request)
     {
-       
-        $rol = new Rol();
-        $rol->nombre= $request->nombre;
-        $rol->id_estado= $request->id_estado;
-        $rol->save();
-        return redirect()->back();
+        try {
+            $request->validate([
+                'nombre' => 'required|unique:roles',
+                'id_estado' => 'required',
+            ]);
+
+            $rol = new Rol();
+            $rol->nombre = $request->nombre;
+            $rol->id_estado = $request->id_estado;
+            $rol->save();
+
+            $request->merge([
+                'id_rol' => $rol->id_rol,
+            ]);
+
+            $this->controllerHistorial->store_rol($request, 'Creacion del rol ');
+            return redirect()->back()->with('success', 'Rol creado correctamente.')->with('origen', 'roles');
+
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            $errors->add('origen', 'roles');
+            return redirect()->back()->withErrors($errors);
+        }
     }
 
     /**
@@ -42,7 +70,6 @@ class ControllerRoles extends Controller
      */
     public function show(string $id)
     {
-        
     }
 
     /**
@@ -57,11 +84,24 @@ class ControllerRoles extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
+    {  
+        $request->validate([
+            'nombre' => 'required|unique:roles,nombre,' . $id . ',id_rol',
+            'id_estado' => 'required',
+        ]);
+
         $rol = Rol::find($id);
         $rol->nombre = $request->nombre;
-        $rol->save(); 
-        return redirect()->back();
+        $rol->id_estado = $request->id_estado;
+        $rol->save();
+
+        $request->merge([
+            'id_rol' => $rol->id_rol,
+        ]);
+
+        $this->controllerHistorial->store_rol($request, 'Actualización del rol ');
+
+        return redirect()->back()->with('success', 'Rol actualizado correctamente.')->with('origen', 'roles');
     }
 
     /**
@@ -71,6 +111,15 @@ class ControllerRoles extends Controller
     {
         $rol =  Rol::find($id);
         $rol->delete();
-        return redirect()->back();
+
+        $request = new Request();
+
+        $request->merge([
+            'id_rol' => $rol->id_rol,
+            'nombre' => $rol->nombre,
+        ]);
+
+        $this->controllerHistorial->store_rol($request, 'Eliminación del rol ');
+        return redirect()->back()->with('success', 'Rol eliminado correctamente.')->with('origen', 'roles');
     }
 }
