@@ -63,52 +63,52 @@
                 @if (Auth::user()->roles->nombre == 'Superadmin')
                     <li>
                         <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon"><i class='lni lni-crown'></i>
+                            <div class="parent-icon"><i class='fadeIn animated bx bx-right-arrow'></i>
                             </div>
                             <div class="menu-title">Superadmin</div>
                         </a>
                         <ul>
                             <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
-                                        class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
+                                        class="fadeIn animated bx bx-user"></i>Usuarios Administrativos</a>
                             </li>
-                            <li> <a href="{{ route('estados.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                            <li> <a href="{{ route('estados.index') }}"><i class="fadeIn animated bx bx-message-alt-edit"></i>Gestionar
                                     Estados/Roles</a>
                             </li>
                             <li> <a href="{{ route('historiales.index') }}"><i
-                                        class="bx bx-right-arrow-alt"></i>Visualizar
+                                        class="fadeIn animated bx bx-notepad"></i>Visualizar
                                     Historiales</a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
+                            <div class="parent-icon"><i class="fadeIn animated bx bx-right-arrow"></i>
                             </div>
                             <div class="menu-title">Administrador</div>
                         </a>
                         <ul>
                             <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
-                                        class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
+                                        class="fadeIn animated bx bx-user"></i>Gestionar usuarios</a>
                             </li>
-                            <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Solicitudes
+                            <li> <a href="#"><i class="fadeIn animated bx bx-detail"></i>Solicitudes
                                     Vendedores</a>
                                 <ul>
                                     <li>
                                         <a href="{{ route('vendedoresIndividuales') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Vendedores Individuales</a>
+                                                class="fadeIn animated bx bx-store-alt"></i>Vendedores Individuales</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('vendedoresEmpresariales') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Vendedores Empresariales</a>
+                                                class="fadeIn animated bx bx-buildings"></i>Vendedores Empresariales</a>
                                     </li>
                                 </ul>
                             </li>
                             <li> <a href="{{ route('estadisticas.index') }}"><i
-                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                        class="fadeIn animated bx bx-bar-chart-alt-2"></i>Gestionar
                                     Estadisticas</a>
 
                             </li>
-                            <li> <a href="{{ route('notificaciones') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                            <li> <a href="{{ route('notificaciones') }}"><i class="fadeIn animated bx bx-bell"></i>Gestionar
                                     Notificaciones</a>
                             </li>
 
@@ -116,37 +116,37 @@
                     </li>
                     <li>
                         <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
+                            <div class="parent-icon"><i class="fadeIn animated bx bx-right-arrow"></i>
                             </div>
                             <div class="menu-title">Moderador</div>
                         </a>
                         <ul>
                             <li> <a href="{{ route('paginasInformacion.index') }}"><i
-                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                        class="fadeIn animated bx bx-windows"></i>Gestionar
                                     Paginas</a>
                             </li>
-                            <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                            <li> <a href="{{ route('planes.index') }}"><i class="fadeIn animated bx bx-message-alt-edit"></i>Gestionar
                                     Planes</a>
                             </li>
                             <li> <a href="{{ route('categorias.index') }}"><i
-                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                        class="fadeIn animated bx bx-list-ol"></i>Gestionar
                                     Categorias</a>
                             </li>
 
-                            <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Ver Solicitudes</a>
+                            <li> <a href="#"><i class="fadeIn animated bx bx-detail"></i>Ver Solicitudes</a>
                                 <ul>
                                     <li>
                                         <a href="{{ route('solicitudesProductos') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Solicitudes Productos</a>
+                                                class="fadeIn animated bx bx-package"></i>Solicitudes Productos</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('solicitudesServicios') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Solicitudes Servicios</a>
+                                                class="fadeIn animated bx bx-food-menu"></i>Solicitudes Servicios</a>
                                     </li>
                                 </ul>
                             </li>
                             <li> <a href="{{ route('moderarContenido.index') }}"><i
-                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                        class="fadeIn animated bx bx-message-dots"></i>Gestionar
                                     Contenido</a>
 
                         </ul>
