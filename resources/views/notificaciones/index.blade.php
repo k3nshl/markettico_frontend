@@ -13,40 +13,46 @@
 
                         <ul class="nav nav-pills mb-3" role="tablist">
                             <li class="nav-item">
-                                <button class="nav-link active custom-bg-color" data-bs-toggle="tab"
-                                    data-bs-target="#tab-anuncios">
+                                <button class="nav-link custom-bg-color" data-bs-toggle="tab" data-bs-target="#tab-anuncios"
+                                    id="btn_tab_anuncios">
                                     <i class="lni lni-alarm"></i> Anuncios
 
                                 </button>
                             </li>
 
                             <li class="nav-item">
-                                <button class="nav-link custom-bg-color" data-bs-toggle="tab" data-bs-target="#tab-alertas">
+                                <button class="nav-link custom-bg-color" data-bs-toggle="tab" data-bs-target="#tab-alertas"
+                                    id="btn_tab_alertas">
                                     <i class="fadeIn animated bx bx-comment-error"></i> Alertas
 
                                 </button>
                             </li>
                         </ul>
 
-                        @if (session('error'))
-                            <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
-                                <div class="text-dark">{{ session('error') }}</div>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
-                            </div>
-                        @elseif(session('success'))
-                            <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
-                                <div class="text-dark">{{ session('success') }}</div>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
-                            </div>
-                        @endif
-
-
                         <div class="tab-content">
 
                             {{-- Anuncios --}}
-                            <div class="tab-pane show active fade" id="tab-anuncios">
+                            <div class="tab-pane fade" id="tab-anuncios">
+                                @if (session('origen') == 'anuncios')
+                                    <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                        {{ session('success') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
+                                @if ($errors->first('origen') == 'anuncios' && $errors->any())
+                                    <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                @if ($error != 'anuncios')
+                                                    <li>{{ $error }}</li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="border p-3 rounded">
@@ -174,7 +180,6 @@
                                                 <table id="tablaAnuncios" class="table table-bordered">
                                                     <thead class="theadAnuncios">
                                                         <tr class="text-center">
-
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">ID</th>
                                                             <th class="bg_datatable"
@@ -498,6 +503,26 @@
 
                             {{-- Alertas --}}
                             <div class="tab-pane fade" id="tab-alertas">
+                                @if (session('origen') == 'alertas')
+                                    <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                        {{ session('success') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
+                                @if ($errors->first('origen') == 'alertas' && $errors->any())
+                                    <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                @if ($error != 'alertas')
+                                                    <li>{{ $error }}</li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="border p-3 rounded">
@@ -915,5 +940,42 @@
 
         </div>
     </section>
+
+@endsection
+
+@section('js')
+
+    <script>
+        $(document).ready(function() {
+            setTab();
+        });
+
+        // Tabs de anuncios y alertas
+        $('#btn_tab_anuncios').click(function() {
+            localStorage.setItem('tabActivo', 'anuncios');
+        });
+
+        $('#btn_tab_alertas').click(function() {
+            localStorage.setItem('tabActivo', 'alertas');
+        });
+
+        function setTab() {
+            var tabActivo = localStorage.getItem('tabActivo');
+            if (tabActivo == 'anuncios') {
+                $('#btn_tab_anuncios').addClass('active');
+                $('#tab-anuncios').addClass('show');
+                $('#tab-anuncios').addClass('active');
+            } else if (tabActivo == 'alertas') {
+                $('#btn_tab_alertas').addClass('active');
+                $('#tab-alertas').addClass('show');
+                $('#tab-alertas').addClass('active');
+            } else {
+                $('#btn_tab_anuncios').addClass('active');
+                $('#tab-anuncios').addClass('show');
+                $('#tab-anuncios').addClass('active');
+            }
+        }
+    </script>
+
 
 @endsection

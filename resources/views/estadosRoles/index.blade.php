@@ -11,8 +11,8 @@
                         <ul class="nav nav-pills mb-3" role="tablist">
                             <li class="nav-item" role="presentation">
 
-                                <a class="nav-link" data-bs-toggle="pill" href="#tab-estados" id="btn_tab_estados" role="tab"
-                                    aria-selected="true">
+                                <a class="nav-link" data-bs-toggle="pill" href="#tab-estados" id="btn_tab_estados"
+                                    role="tab" aria-selected="true">
                                     <div class="d-flex align-items-center">
                                         <div class="tab-icon"><i class="bx bx-home font-18 me-1"></i>
                                         </div>
@@ -21,8 +21,8 @@
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" data-bs-toggle="pill" href="#tab-roles" id="btn_tab_roles" role="tab"
-                                    aria-selected="false">
+                                <a class="nav-link" data-bs-toggle="pill" href="#tab-roles" id="btn_tab_roles"
+                                    role="tab" aria-selected="false">
                                     <div class="d-flex align-items-center">
                                         <div class="tab-icon"><i class="bx bx-user-pin font-18 me-1"></i>
                                         </div>
@@ -31,21 +31,30 @@
                                 </a>
                             </li>
                         </ul>
-                        @if ($errors->any())
-                            <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
-                            </div>
-                        @endif
+
                         <div class="tab-content">
                             {{-- Inicio estados --}}
                             <div class="tab-pane fade" id="tab-estados" role="tabpanel">
-
+                                @if (session('origen') == 'estados')
+                                    <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                        {{ session('success') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
+                                @if ($errors->first('origen') == 'estados' && $errors->any())
+                                    <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                @if ($error != 'estados')
+                                                    <li>{{ $error }}</li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="border p-3 rounded">
@@ -288,7 +297,26 @@
 
                             {{-- Inicio roles --}}
                             <div class="tab-pane fade" id="tab-roles" role="tabpanel">
-
+                                @if (session('origen') == 'roles')
+                                    <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                        {{ session('success') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
+                                @if ($errors->first('origen') == 'roles' && $errors->any())
+                                    <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                @if ($error != 'roles')
+                                                    <li>{{ $error }}</li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="border p-3 rounded">
@@ -328,7 +356,7 @@
                                                                         method="POST">
                                                                         @csrf
                                                                         <input type="hidden" class="form-control"
-                                                                        name="id_estado" value="1">
+                                                                            name="id_estado" value="1">
                                                                         <div class="row mb-3">
                                                                             <label for="nombre"
                                                                                 class="col-sm-4 col-form-label">Nombre
@@ -377,6 +405,9 @@
                                                                 Nombre</th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">
+                                                                Estado</th>
+                                                            <th class="bg_datatable"
+                                                                style="background-color: #05C7F2; color: #F2F2F2">
                                                                 Acciones</th>
                                                         </tr>
                                                     </thead>
@@ -387,6 +418,13 @@
                                                                 <tr>
                                                                     <td>{{ $item->id_rol }}</td>
                                                                     <td>{{ $item->nombre }}</td>
+                                                                    <td>
+                                                                        @if ($item->id_estado == 1)
+                                                                            <span class="badge bg-success">Activo</span>
+                                                                        @else
+                                                                            <span class="badge bg-danger">Inactivo</span>
+                                                                        @endif
+                                                                    </td>
                                                                     <td>
                                                                         <div class="text-center">
                                                                             <!-- Botón de editar con modal -->
@@ -423,8 +461,7 @@
                                                                                 class="modal-dialog modal-dialog-scrollable">
                                                                                 <div class="modal-content">
                                                                                     <div class="modal-header">
-                                                                                        <h5 class="modal-title"
-                                                                                            id="editarUsuarioModalLabel{{ $item->id_rol }}">
+                                                                                        <h5 class="modal-title">
                                                                                             Editar Rol</h5>
                                                                                         <button type="button"
                                                                                             class="btn-close"
@@ -466,10 +503,12 @@
                                                                                                         id="id_estado"
                                                                                                         name="id_estado">
                                                                                                         <option
-                                                                                                            value="1">
+                                                                                                            value="1"
+                                                                                                            {{ $item->id_estado == 1 ? 'selected' : '' }}>
                                                                                                             Activo</option>
                                                                                                         <option
-                                                                                                            value="2">
+                                                                                                            value="2"
+                                                                                                            {{ $item->id_estado == 2 ? 'selected' : '' }}>
                                                                                                             Inactivo
                                                                                                         </option>
                                                                                                     </select>
@@ -563,7 +602,6 @@
 @section('js')
 
     <script>
-
         $(document).ready(function() {
             setTab();
         });
@@ -587,11 +625,11 @@
                 $('#btn_tab_roles').addClass('active');
                 $('#tab-roles').addClass('show');
                 $('#tab-roles').addClass('active');
-            }else{
+            } else {
                 $('#btn_tab_estados').addClass('active');
                 $('#tab-estados').addClass('show');
                 $('#tab-estados').addClass('active');
-            }            
+            }
         }
     </script>
 
