@@ -5,7 +5,7 @@
 
 @section('contenido')
 
-{{-- {{$data_paginas}} --}}
+    {{-- {{$data_paginas}} --}}
 
     <section class="content">
 
@@ -59,8 +59,8 @@
 
                         <div class="col-md-8">
                             <div class="d-flex justify-content-between align-items-end mb-3">
-                                <h5 class="text-dark"><i class="bx bx-notepad me-2 font-22 text-info"></i>Lista de
-                                    Páginas</h5>
+                                <h5 class="text-dark"><i class="bx bx-notepad me-2 font-22 text-info"></i>Lista de Páginas
+                                </h5>
 
                             </div>
                             <hr>
@@ -76,6 +76,8 @@
                                             <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">
                                                 Descripción</th>
                                             <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">
+                                                Ver articulos</th>
+                                            <th class="bg_datatable" style="background-color: #05C7F2; color: #F2F2F2">
                                                 Acciones</th>
                                         </tr>
                                     </thead>
@@ -86,12 +88,11 @@
 
                                         @foreach ($data_paginas as $item)
                                             <tr>
-                                                <td>{{ $i++ }}</td>
-                                                <td>{{ $item->nombre }}</td>
+                                                <td>{{ $item->id_pagina_informacion }}</td>
+                                                <td>{{ $item->titulo }}</td>
                                                 <td>{{ $item->descripcion }}</td>
                                                 <td>
                                                     <div class="text-center">
-
                                                         <a href="{{ route('paginasInformacion.show', $item->id_pagina_informacion) }}"
                                                             class="btn btn-primary btn-sm" data-bs-toggle="tooltip"
                                                             data-bs-placement="top" title="Visualizar Artículo">
@@ -100,11 +101,18 @@
                                                                     style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
                                                             </div>
                                                         </a>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="text-center">
+
+
 
                                                         <!-- Botón de editar con modal -->
                                                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                            data-bs-target="#editarColeccionModal{{$item->id_pagina_informacion}}" data-bs-toggle="tooltip"
-                                                            data-bs-placement="top" title="Editar Colección">
+                                                            data-bs-target="#editarColeccionModal{{ $item->id_pagina_informacion }}"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Editar Colección">
                                                             <div class="text-center">
                                                                 <i class="lni lni-pencil-alt"
                                                                     style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
@@ -113,15 +121,17 @@
 
                                                         {{-- Botón eliminar --}}
                                                         <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                                            data-bs-target="#eliminarPaginaModal{{$item->id_pagina_informacion}}">
+                                                            data-bs-target="#eliminarPaginaModal{{ $item->id_pagina_informacion }}">
                                                             <i class="lni lni-trash"
                                                                 style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                         </button>
                                                     </div>
 
                                                     <!-- Modal de edición -->
-                                                    <div class="modal fade" id="editarColeccionModal{{$item->id_pagina_informacion}}" tabindex="-1"
-                                                        aria-labelledby="editarColeccionModalLabel" aria-hidden="true">
+                                                    <div class="modal fade"
+                                                        id="editarColeccionModal{{ $item->id_pagina_informacion }}"
+                                                        tabindex="-1" aria-labelledby="editarColeccionModalLabel"
+                                                        aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-scrollable">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -135,8 +145,8 @@
 
                                                                 <div class="modal-body">
                                                                     <form
-                                                                        action="{{ route('paginasInformacion.update', 1) }}"
-                                                                        method="POST">
+                                                                        action="{{ route('paginasInformacion.update', $item->id_pagina_informacion) }}"
+                                                                        method="POST" enctype="multipart/form-data">
                                                                         @csrf
                                                                         @method('PUT')
                                                                         <div class="mb-3">
@@ -144,22 +154,26 @@
                                                                                 class="form-label">Título:</label>
                                                                             <input type="text" name="titulo"
                                                                                 class="form-control" id="titulo"
-                                                                                placeholder="Título de página" value="{{$item->titulo}}">
+                                                                                placeholder="Título de página"
+                                                                                value="{{ $item->titulo }}">
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <label for="descripcion"
                                                                                 class="form-label">Descripción:</label>
                                                                             <input type="text" name="descripcion"
                                                                                 class="form-control" id="descripcion"
-                                                                                placeholder="Descripción" value="{{$item->descripcion}}">
+                                                                                placeholder="Descripción"
+                                                                                value="{{ $item->descripcion }}">
                                                                         </div>
-                                                                        
+
                                                                         <div class="mb-3">
-                                                                            <h3>FALTA JALAR EL ICONO</h3>
                                                                             <label for="icono"
                                                                                 class="form-label">Icono:</label>
                                                                             <input type="file" class="form-control"
                                                                                 id="icono" name="icono">
+                                                                            <img src="/img/fotografias/{{ $item->icono }}"
+                                                                                alt="profile-img"
+                                                                                class="rounded-pill avatar-10 img-fluid">
                                                                         </div>
 
                                                                         <div class="modal-footer">
@@ -183,8 +197,10 @@
                                                     </div>
 
                                                     {{-- Modal eliminar --}}
-                                                    <div class="modal fade" id="eliminarPaginaModal{{$item->id_pagina_informacion}}" tabindex="-1"
-                                                        aria-labelledby="eliminarPaginaModalLabel" aria-hidden="true">
+                                                    <div class="modal fade"
+                                                        id="eliminarPaginaModal{{ $item->id_pagina_informacion }}"
+                                                        tabindex="-1" aria-labelledby="eliminarPaginaModalLabel"
+                                                        aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -206,8 +222,7 @@
                                                                         method="post">
                                                                         @csrf
                                                                         @method('DELETE')
-                                                                        <button type="submit" class="btn btn-danger"
-                                                                            data-bs-dismiss="modal" data-bs-toggle="modal"
+                                                                        <button class="btn btn-danger"
                                                                             data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
                                                                     </form>
                                                                 </div>

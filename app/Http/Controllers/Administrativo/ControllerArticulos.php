@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
 use App\Models\Articulo;
+use App\Models\Estado;
 use App\Models\PaginaInformacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Expr\New_;
 
 class ControllerArticulos extends Controller
@@ -15,17 +17,18 @@ class ControllerArticulos extends Controller
      */
     public function index()
     {
-        $articulos = PaginaInformacion::all();
+        // $articulos = PaginaInformacion::all();
 
-        return view('paginasInformacion.articulos', compact('articulos'));
+        // return view('paginasInformacion.articulos', compact('articulos'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('paginasInformacion.createArticulo');
+        $id_pagina_informacion = $request->id;
+        return view('paginasInformacion.createArticulo', compact('id_pagina_informacion'));
     }
 
     /**
@@ -34,12 +37,13 @@ class ControllerArticulos extends Controller
     public function store(Request $request)
     {
         $articulo = new Articulo();
+        $articulo->id_usuario = Auth::user()->id_usuario_administrativo;
         $articulo->id_estado = $request->id_estado;
         $articulo->id_pagina_informacion = $request->id_pagina;
 
         $articulo->titulo = $request->titulo;
         $articulo->contenido = $request->contenido;
-        $articulo->fecha = $request->fecha;
+        $articulo->fecha = date('Y-m-d');
 
         $articulo->save();
         return redirect()->back();
@@ -51,7 +55,7 @@ class ControllerArticulos extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         $articulo = Articulo::find($id);
         return view('articulos.show', compact('articulo'));
@@ -60,10 +64,11 @@ class ControllerArticulos extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id, Request $request)
     {
         $articulo = articulo::find($id);
-        return view('articulos.editArticulo', compact('articulo'));
+        $estados = Estado::all();
+        return view('paginasInformacion.editArticulo', compact('articulo','estados'));
     }
 
     /**
@@ -74,11 +79,10 @@ class ControllerArticulos extends Controller
 
         $articulo = Articulo::find($id);
         $articulo->id_estado = $request->id_estado;
-        $articulo->id_pagina_informacion = $request->id_pagina;
 
         $articulo->titulo = $request->titulo;
         $articulo->contenido = $request->contenido;
-        $articulo->fecha = $request->fecha;
+        $articulo->fecha = date('Y-m-d');
 
         $articulo->save();
 

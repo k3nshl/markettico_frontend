@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+use App\Models\Estado;
+use App\Models\Subcategoria;
 
 class ControllerCategorias extends Controller
 {
@@ -13,9 +15,10 @@ class ControllerCategorias extends Controller
      */
     public function index()
     {
+        $estados = Estado::all();
         $categorias = Categoria::all();
         
-        return view('categorias.index', compact('categorias'));
+        return view('categorias.index', compact('categorias','estados'));
 
     }
 
@@ -25,6 +28,7 @@ class ControllerCategorias extends Controller
      */
     public function create()
     {
+       
         return view('categorias.index');
     }
 
@@ -48,9 +52,10 @@ class ControllerCategorias extends Controller
      */
     public function show($id)
     {
-       
+       $estados = Estado::all();
         $itemCategoria = Categoria::find($id);
-        return view('categorias.index',compact('itemCategoria'));
+        $subcategorias = Subcategoria::where('id_categoria',$id)->get();
+        return view('categorias.show',compact('itemCategoria','estados','subcategorias'));
     }
 
     /**
@@ -72,6 +77,7 @@ class ControllerCategorias extends Controller
         $itemCategoria= Categoria::find($id);
         $itemCategoria->nombre = $request->nombre;
         $itemCategoria->descripcion = $request->descripcion;
+        $itemCategoria->id_estado = $request->id_estado;
         $itemCategoria ->update();
         return redirect()->back();
 

@@ -10,17 +10,14 @@
 
 
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
-                    <
                     <div class="card-body">
 
                         @if (session('success'))
-                            <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                            <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
                                 <div class="text-dark">{{ session('success') }}</div>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
-
 
                         <ul class="nav nav-pills mb-3" role="tablist">
                             <li class="nav-item">
@@ -53,16 +50,18 @@
                                                         Administrativos</h5>
                                                 </div>
                                                 <div class="d-flex align-items-center">
-                                                    <div class="me-2">
-                                                        <h5 class="m-0">Registrar</h5>
-                                                    </div>
-                                                    <div class="me-2">
-                                                        <button type="button" class="btn btn-info text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#modalAgregarUsuario"
-                                                            style="background-color: #04D9B2; border-color: #04D9D9;"
-                                                            data-bs-toggle="tooltip" data-bs-placement="top"
-                                                            title="Agregar Usuario Administrativo">+</button>
-                                                    </div>
+                                                    @if (Auth::user()->roles->nombre == 'Superadmin')
+                                                        <div class="me-2">
+                                                            <h5 class="m-0">Registrar</h5>
+                                                        </div>
+                                                        <div class="me-2">
+                                                            <button type="button" class="btn btn-info text-white"
+                                                                data-bs-toggle="modal" data-bs-target="#modalAgregarUsuario"
+                                                                style="background-color: #04D9B2; border-color: #04D9D9;"
+                                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                title="Agregar Usuario Administrativo">+</button>
+                                                        </div>
+                                                    @endif
 
                                                     <div class="modal fade" id="modalAgregarUsuario" tabindex="-1"
                                                         aria-labelledby="modalAgregarUsuarioLabel" aria-hidden="true">
@@ -79,8 +78,11 @@
                                                                     <form
                                                                         action="{{ route('usuariosAdministrativos.store') }}"
                                                                         method="POST">
-                                                                        @method('POST')
                                                                         @csrf
+
+                                                                        <input type="hidden" name="id_estado"
+                                                                            value="1">
+
                                                                         <div class="row mb-3">
                                                                             <label for="nombre_completo"
                                                                                 class="col-sm-4 col-form-label">Nombre de
@@ -141,27 +143,6 @@
                                                                                 </select>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="row mb-3">
-                                                                            <label for="id_estado"
-                                                                                class="col-sm-4 col-form-label">Estado
-                                                                                del
-                                                                                Usuario:</label>
-                                                                            <div class="col-sm-8">
-                                                                                <select class="form-select" id="id_estado"
-                                                                                    name="id_estado">
-                                                                                    <option value="1">
-                                                                                        Activo
-                                                                                    </option>
-                                                                                    <option value="2">
-                                                                                        Inactivo
-                                                                                    </option>
-                                                                                    <option value="3">
-                                                                                        Bloqueado
-                                                                                    </option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
@@ -234,41 +215,53 @@
                                                                         </button>
 
                                                                         <!-- Botón de editar con modal -->
-                                                                        <button class="btn btn-warning btn-sm btn-block"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#editarUsuarioModal{{ $item->id_usuario_administrativo }}"
-                                                                            data-bs-toggle="tooltip"
-                                                                            data-bs-placement="top"
-                                                                            title="Editar Usuario Administrativo">
-                                                                            <div class="text-center">
-                                                                                <i class="lni lni-pencil-alt"
-                                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                            </div>
-                                                                        </button>
+                                                                        @if (Auth::user()->roles->nombre == 'Superadmin' ||
+                                                                                (Auth::user()->roles->nombre == 'Administrador' &&
+                                                                                    $item->roles->nombre != 'Superadmin' &&
+                                                                                    $item->roles->nombre != 'Administrador'))
+                                                                            <button
+                                                                                class="btn btn-warning btn-sm btn-block"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#editarUsuarioModal{{ $item->id_usuario_administrativo }}"
+                                                                                data-bs-toggle="tooltip"
+                                                                                data-bs-placement="top"
+                                                                                title="Editar Usuario Administrativo">
+                                                                                <div class="text-center">
+                                                                                    <i class="lni lni-pencil-alt"
+                                                                                        style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                                </div>
+                                                                            </button>
+                                                                        @endif
+
 
                                                                         <!-- Botón de eliminar -->
-                                                                        <button class="btn btn-danger btn-sm btn-block"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#eliminarUsuarioModal{{ $item->id_usuario_administrativo }}">
-                                                                            <i class="lni lni-trash"
-                                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                        </button>
-
+                                                                        @if (Auth::user()->roles->nombre == 'Superadmin')
+                                                                            <button class="btn btn-danger btn-sm btn-block"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#eliminarUsuarioModal{{ $item->id_usuario_administrativo }}">
+                                                                                <i class="lni lni-trash"
+                                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                            </button>
+                                                                        @endif
 
                                                                         <!-- Botón de bloquear -->
-                                                                        <button class="btn btn-sm btn-block"
-                                                                            style="background-color: #05f29d"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#bloquearUsuarioModal{{ $item->id_usuario_administrativo }}"
-                                                                            data-bs-toggle="tooltip"
-                                                                            data-bs-placement="top"
-                                                                            title="Bloquear Usuario Administrativo">
-                                                                            <div class="text-center">
-                                                                                <i class="lni lni-lock"
-                                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                            </div>
-                                                                        </button>
-
+                                                                        @if (Auth::user()->roles->nombre == 'Superadmin' ||
+                                                                                (Auth::user()->roles->nombre == 'Administrador' &&
+                                                                                    $item->roles->nombre != 'Superadmin' &&
+                                                                                    $item->roles->nombre != 'Administrador'))
+                                                                            <button class="btn btn-sm btn-block"
+                                                                                style="background-color: #05f29d"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#bloquearUsuarioModal{{ $item->id_usuario_administrativo }}"
+                                                                                data-bs-toggle="tooltip"
+                                                                                data-bs-placement="top"
+                                                                                title="Bloquear Usuario Administrativo">
+                                                                                <div class="text-center">
+                                                                                    <i class="lni lni-lock"
+                                                                                        style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                                </div>
+                                                                            </button>
+                                                                        @endif
                                                                     </div>
 
                                                                     <!-- Modal de visaualizacion -->
@@ -300,6 +293,8 @@
                                                                                                 class="form-label">Nombre:
                                                                                                 <span>{{ $item->nombre_completo }}</span>
                                                                                             </label>
+
+
 
                                                                                         </div>
 
@@ -380,60 +375,64 @@
                                                                                         method="POST">
                                                                                         @method('PUT')
                                                                                         @csrf
-                                                                                        <div class="mb-3">
-                                                                                            <label for="editNombreUsuario"
-                                                                                                class="col-sm-4 col-form-label">Nombre</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="editNombreUsuario"
-                                                                                                name="nombre_completo"
-                                                                                                value="{{ $item->nombre_completo }}"
-                                                                                                placeholder="Nombre de usuario">
-                                                                                        </div>
 
-                                                                                        <div class="mb-3">
-                                                                                            <label
-                                                                                                for="editCorreoEmpresarial"
-                                                                                                class="form-label">Correo
-                                                                                                empresarial</label>
-                                                                                            <input type="email"
-                                                                                                class="form-control"
-                                                                                                id="editCorreoEmpresarial"
-                                                                                                name="correo_empresarial"
-                                                                                                value="{{ $item->correo_empresarial }}"
-                                                                                                placeholder="Correo empresarial">
-                                                                                        </div>
+                                                                                        @if (Auth::user()->roles->nombre == 'Superadmin')
+                                                                                            <div class="mb-3">
+                                                                                                <label
+                                                                                                    for="editNombreUsuario"
+                                                                                                    class="col-sm-4 col-form-label">Nombre</label>
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    id="editNombreUsuario"
+                                                                                                    name="nombre_completo"
+                                                                                                    value="{{ $item->nombre_completo }}"
+                                                                                                    placeholder="Nombre de usuario">
+                                                                                            </div>
 
-                                                                                        <div class="mb-3">
-                                                                                            <label
-                                                                                                for="editNumeroTelefonico"
-                                                                                                class="form-label">Número
-                                                                                                telefónico</label>
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="editNumeroTelefonico"
-                                                                                                name="numero_telefonico"
-                                                                                                value="{{ $item->numero_telefonico }}"
-                                                                                                placeholder="Número telefónico">
-                                                                                        </div>
+                                                                                            <div class="mb-3">
+                                                                                                <label
+                                                                                                    for="editCorreoEmpresarial"
+                                                                                                    class="form-label">Correo
+                                                                                                    empresarial</label>
+                                                                                                <input type="email"
+                                                                                                    class="form-control"
+                                                                                                    id="editCorreoEmpresarial"
+                                                                                                    name="correo_empresarial"
+                                                                                                    value="{{ $item->correo_empresarial }}"
+                                                                                                    placeholder="Correo empresarial">
+                                                                                            </div>
 
-                                                                                        <div class="mb-3">
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="editIdUsuario"
-                                                                                                name="id_usuario_administrativo"
-                                                                                                value="{{ $item->id_usuario_administrativo }}"
-                                                                                                hidden>
-                                                                                        </div>
+                                                                                            <div class="mb-3">
+                                                                                                <label
+                                                                                                    for="editNumeroTelefonico"
+                                                                                                    class="form-label">Número
+                                                                                                    telefónico</label>
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    id="editNumeroTelefonico"
+                                                                                                    name="numero_telefonico"
+                                                                                                    value="{{ $item->numero_telefonico }}"
+                                                                                                    placeholder="Número telefónico">
+                                                                                            </div>
 
-                                                                                        <div class="mb-3">
-                                                                                            <input type="text"
-                                                                                                class="form-control"
-                                                                                                id="editIdUsuario"
-                                                                                                name="id_estado"
-                                                                                                value="{{ $item->id_estado }}"
-                                                                                                hidden>
-                                                                                        </div>
+                                                                                            <div class="mb-3">
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    id="editIdUsuario"
+                                                                                                    name="id_usuario_administrativo"
+                                                                                                    value="{{ $item->id_usuario_administrativo }}"
+                                                                                                    hidden>
+                                                                                            </div>
+
+                                                                                            <div class="mb-3">
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    id="editIdUsuario"
+                                                                                                    name="id_estado"
+                                                                                                    value="{{ $item->id_estado }}"
+                                                                                                    hidden>
+                                                                                            </div>
+                                                                                        @endif
 
                                                                                         <div class="mb-3">
                                                                                             <label for="editRolUsuario"
@@ -442,13 +441,44 @@
                                                                                             <select name="id_rol"
                                                                                                 class="form-select"
                                                                                                 id="editRolUsuario">
-                                                                                                @foreach ($roles as $rol)
-                                                                                                    <option
-                                                                                                        value="{{ $rol->id_rol }}"
-                                                                                                        {{ $rol->id_rol == $item->id_rol ? 'selected' : '' }}>
-                                                                                                        {{ $rol->nombre }}
-                                                                                                    </option>
-                                                                                                @endforeach
+                                                                                                @if (Auth::user()->roles->nombre == 'Superadmin')
+                                                                                                    @foreach ($roles as $rol)
+                                                                                                        <option
+                                                                                                            value="{{ $rol->id_rol }}"
+                                                                                                            {{ $rol->id_rol == $item->id_rol ? 'selected' : '' }}>
+                                                                                                            {{ $rol->nombre }}
+                                                                                                        </option>
+                                                                                                    @endforeach
+                                                                                                @else
+                                                                                                    @foreach ($roles as $rolAdmin)
+                                                                                                        @if ($rolAdmin->nombre != 'Superadmin' && $rolAdmin->nombre != 'Administrador')
+                                                                                                            <option
+                                                                                                                value="{{ $rolAdmin->id_rol }}"
+                                                                                                                {{ $rolAdmin->id_rol == $item->id_rol ? 'selected' : '' }}>
+                                                                                                                {{ $rolAdmin->nombre }}
+                                                                                                            </option>
+                                                                                                        @endif
+                                                                                                    @endforeach
+                                                                                                @endif
+
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="mb-3">
+                                                                                            <label for="id_estado"
+                                                                                                class="col-sm-4 col-form-label">Estado
+                                                                                                del
+                                                                                                Usuario:</label>
+                                                                                            <select class="form-select"
+                                                                                                id="id_estado"
+                                                                                                name="id_estado">
+                                                                                                <option value="1"
+                                                                                                    {{ $item->id_estado == 1 ? 'selected' : '' }}>
+                                                                                                    Activo
+                                                                                                </option>
+                                                                                                <option value="2"
+                                                                                                    {{ $item->id_estado == 2 ? 'selected' : '' }}>
+                                                                                                    Inactivo
+                                                                                                </option>
                                                                                             </select>
                                                                                         </div>
                                                                                 </div>
@@ -622,9 +652,7 @@
                                                                 <td>{{ $item->id_usuario_administrativo }}</td>
                                                                 <td>{{ $item->usuarioAdministrativo->correo_empresarial }}
                                                                 </td>
-<
                                                                 <td>{{ $item->usuarioAdministrativo->roles->nombre }}</td>
->
                                                                 <td>{{ $item->descripcion }}</td>
                                                                 <td>
                                                                     <div class="text-center">

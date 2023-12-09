@@ -8,7 +8,6 @@ use App\Models\HistorialGestionPaginas;
 use App\Models\PaginaInformacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 
 class ControllerPaginasInformacion extends Controller
 {
@@ -50,21 +49,15 @@ class ControllerPaginasInformacion extends Controller
         $item->descripcion = $request->descripcion;
 
         $imagen = $request->icono;
-
+        
         if ($imagen) {
             $filename = $imagen->getClientOriginalName();
 
             $imagen->move(public_path('img/fotografias'), $filename);
             $item->icono = $filename;
         }
-        $item->save();
-
-        $request->merge([
-            'id_pagina_informacion' => $item->id_pagina_informacion,
-        ]);
-         $this->controllerHitoriales->store_paginasInfo($request);
-
-
+        
+        $item->id_estado=1;
         $item->save();
         $this->guardarHistorial($item);
         //return $this->index();
@@ -77,8 +70,8 @@ class ControllerPaginasInformacion extends Controller
     public function show($id)
     {
         $data_articulos = Articulo::where('id_pagina_informacion', $id)->get();
-        $id_pagina =$id;
-        return view('paginasInformacion.show', compact('data_articulos','id_pagina'));
+        $pagina = PaginaInformacion::find($id);
+        return view('paginasInformacion.show', compact('data_articulos','pagina'));
     }
 
     /**
@@ -99,13 +92,14 @@ class ControllerPaginasInformacion extends Controller
         $item->descripcion = $request->descripcion;
 
         $imagen = $request->icono;
-
         if ($imagen) {
             $filename = $imagen->getClientOriginalName();
 
             $imagen->move(public_path('img/fotografias'), $filename);
             $item->icono = $filename;
         }
+        //FALTA EN LA VISTA CAMBIAR ESTADO
+        $item->id_estado=1;
         $item->update();
         $this->guardarHistorial($item);
         return redirect()->back();

@@ -23,7 +23,7 @@
                                     <hr />
 
                                     <div>
-                                        <form action="{{ route('articulos.update', 1) }}" method="post">
+                                        <form action="{{ route('articulos.update', $articulo->id_articulo) }}" method="post">
                                             @csrf
                                             @method('PUT')
 
@@ -32,22 +32,41 @@
                                                     articulo:</label>
 
                                                 <input type="text" name="titulo" class="form-control" id="titulo"
-                                                    placeholder="Titulo del articulo">
+                                                    value="{{$articulo->titulo}}">
 
+                                            </div>
+
+                                            <div class="mt-3">
+                                                <label for="id_estado"
+                                                    class="col-sm-4 col-form-label">Estado:
+                                                </label>
+                                                <div class="">
+                                                    <select class="form-select"
+                                                        id="id_estado"
+                                                        name="id_estado">
+                                                        @foreach ($estados as $items)
+                                                            <option
+                                                                value="{{ $items->id_estado }}"
+                                                                {{ $items->id_estado == $articulo->id_estado ? 'selected' : '' }}>
+                                                                {{ $items->nombre }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
 
                                             <div class="mt-3">
 
                                                 <label for="contenido" class="col-form-label">Contenido:</label>
 
-                                                <textarea id="mytextarea" name="contenido" rows="3" placeholder="Escribe el contenido del artículo"></textarea>
+                                                <textarea id="mytextarea" name="contenido" rows="3" placeholder="Escribe el contenido del artículo">{{$articulo->contenido}}</textarea>
 
                                             </div>
 
                                             <div class="text-end">
                                                 <hr />
 
-                                                <a href="{{ route('paginasInformacion.show', 1) }}"
+                                                <a href="{{ route('paginasInformacion.show', $articulo->id_pagina_informacion) }}"
                                                     class="btn btn-secondary">Regresar</a>
 
                                                 <button type="submit" class="btn btn-info text-white"
