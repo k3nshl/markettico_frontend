@@ -33,20 +33,17 @@
 
                             {{-- Anuncios --}}
                             <div class="tab-pane fade" id="tab-anuncios">
-                                @if (session('origen') == 'anuncios')
+                                @if (session('successAnuncios'))
                                     <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
-                                        {{ session('success') }}
+                                        {{ session('successAnuncios') }}
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"
                                             aria-label="Close"></button>
                                     </div>
-                                @endif
-                                @if ($errors->first('origen') == 'anuncios' && $errors->any())
+                                @elseif (session('mistakeAnuncios'))
                                     <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
                                         <ul>
-                                            @foreach ($errors->all() as $error)
-                                                @if ($error != 'anuncios')
-                                                    <li>{{ $error }}</li>
-                                                @endif
+                                            @foreach (session('mistakeAnuncios')->all() as $error)
+                                                <li>{{ $error }}</li>
                                             @endforeach
                                         </ul>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"
@@ -118,13 +115,12 @@
                                                                                 class="col-sm-4 col-form-label">Imagen de
                                                                                 portada:</label>
                                                                             <input type="file"
-                                                                                class="form-control input-imagen"
-                                                                                name="img_portada" id="portada">
+                                                                                class="form-control input-imagen img_selected"
+                                                                                name="img_portada">
                                                                             <div class="text-center p-3">
                                                                                 <img src="#"
-                                                                                    id="imagen-preview-portada"
                                                                                     alt="Vista previa de la imagen"
-                                                                                    class="rounded-3 imagen-preview"
+                                                                                    class="rounded-3 imagen-preview preview_img_selected"
                                                                                     style="width:300px; height: 200px; object-fit: cover; display: none;">
                                                                             </div>
                                                                         </div>
@@ -148,7 +144,7 @@
                                                                             <label for="contenido"
                                                                                 class="col-sm-4 col-form-label">Contenido:</label>
 
-                                                                            <textarea id="summernoteTextareaRegistrar" name="contenido" rows="3" placeholder="Contenido"></textarea>
+                                                                            <textarea class="summernoteTextarea" name="contenido" rows="3" placeholder="Contenido"></textarea>
                                                                         </div>
 
                                                                         <div class="modal-footer">
@@ -177,7 +173,7 @@
 
                                             {{-- Listado de anuncios --}}
                                             <div class="">
-                                                <table id="tablaAnuncios" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadAnuncios">
                                                         <tr class="text-center">
                                                             <th class="bg_datatable"
@@ -390,14 +386,12 @@
                                                                                             <label>Imagen de
                                                                                                 portada:</label>
                                                                                             <input type="file"
-                                                                                                class="form-control input-imagen"
-                                                                                                id="portada-edit"
+                                                                                                class="form-control input-imagen img_selected"
                                                                                                 name="img_portada">
                                                                                             <div class="text-center p-3">
                                                                                                 <img src="/img/anuncios/{{ $item->img_portada }}"
-                                                                                                    id="imagen-preview-portada-edit"
                                                                                                     alt="Vista previa de la imagen"
-                                                                                                    class="rounded-3 imagen-preview"
+                                                                                                    class="rounded-3 imagen-preview preview_img_selected"
                                                                                                     style="width:300px; height: 200px; object-fit: cover;">
                                                                                             </div>
                                                                                         </div>
@@ -425,7 +419,7 @@
                                                                                             <label for="contenido"
                                                                                                 class="col-sm-4 col-form-label">Contenido:</label>
 
-                                                                                            <textarea id="summernoteTextareaEditar" name="contenido" rows="3" placeholder="Contenido">{{ $item->contenido }}</textarea>
+                                                                                            <textarea class="summernoteTextarea" name="contenido" rows="3" placeholder="Contenido">{{ $item->contenido }}</textarea>
                                                                                         </div>
 
                                                                                         <div class="modal-footer">
@@ -503,20 +497,17 @@
 
                             {{-- Alertas --}}
                             <div class="tab-pane fade" id="tab-alertas">
-                                @if (session('origen') == 'alertas')
+                                @if (session('successAlertas'))
                                     <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
-                                        {{ session('success') }}
+                                        {{ session('successAlertas') }}
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"
                                             aria-label="Close"></button>
                                     </div>
-                                @endif
-                                @if ($errors->first('origen') == 'alertas' && $errors->any())
+                                @elseif (session('mistakeAlertas'))
                                     <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
                                         <ul>
-                                            @foreach ($errors->all() as $error)
-                                                @if ($error != 'alertas')
-                                                    <li>{{ $error }}</li>
-                                                @endif
+                                            @foreach (session('mistakeAlertas')->all() as $error)
+                                                <li>{{ $error }}</li>
                                             @endforeach
                                         </ul>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"
@@ -635,7 +626,7 @@
                                             <hr />
                                             {{-- Listado de alertas --}}
                                             <div class="table-responsive">
-                                                <table id="tablaAlertas" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadAlertas">
                                                         <tr class="text-center">
 

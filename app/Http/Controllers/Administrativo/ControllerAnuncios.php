@@ -7,7 +7,6 @@ use App\Models\Alerta;
 use App\Models\Anuncio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use Illuminate\Validation\ValidationException;
 
@@ -68,11 +67,10 @@ class ControllerAnuncios extends Controller
             $anuncio->etiqueta = $request->etiqueta;
             $anuncio->save();
 
-            return redirect()->back()->with('success', 'Anuncio creado correctamente.')->with('origen', 'anuncios');
+            return redirect()->back()->with('successAnuncios', 'Anuncio creado correctamente.');
         } catch (ValidationException $e) {
             $errors = $e->validator->errors();
-            $errors->add('origen', 'anuncios');
-            return redirect()->back()->withErrors($errors);
+            return redirect()->back()->with('mistakeAnuncios', $errors);
         }
     }
 
@@ -109,7 +107,6 @@ class ControllerAnuncios extends Controller
 
             $anuncio = Anuncio::find($id);
 
-            // Cargar imagen
             if ($request->hasFile('img_portada')) {
                 $file = $request->file('img_portada');
                 $fileName = Carbon::now()->format('YmdHisv') . '_' . $file->getClientOriginalName();
@@ -126,11 +123,10 @@ class ControllerAnuncios extends Controller
             $anuncio->etiqueta = $request->etiqueta;
 
             $anuncio->save();
-            return redirect()->back()->with('success', 'Anuncio actualizado correctamente.')->with('origen', 'anuncios');
+            return redirect()->back()->with('successAnuncios', 'Anuncio actualizado correctamente.');
         } catch (ValidationException $e) {
             $errors = $e->validator->errors();
-            $errors->add('origen', 'anuncios');
-            return redirect()->back()->withErrors($errors);
+            return redirect()->back()->with('mistakeAnuncios', $errors);
         }
     }
 
@@ -141,6 +137,6 @@ class ControllerAnuncios extends Controller
     {
         $anuncio = Anuncio::find($id);
         $anuncio->delete();
-        return redirect()->back()->with('success', 'Anuncio eliminado correctamente.')->with('origen', 'anuncios');
+        return redirect()->back()->with('successAnuncios', 'Anuncio eliminado correctamente.');
     }
 }

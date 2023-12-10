@@ -53,11 +53,10 @@ class ControllerAlertas extends Controller
             $alerta->id_estado = 1;
             $alerta->save();
 
-            return redirect()->back()->with('success', 'Alerta creada correctamente.')->with('origen', 'alertas');
+            return redirect()->back()->with('successAlertas', 'Alerta creada correctamente.');
         } catch (ValidationException $e) {
             $errors = $e->validator->errors();
-            $errors->add('origen', 'alertas');
-            return redirect()->back()->withErrors($errors);
+            return redirect()->back()->with('mistakeAlertas', $errors);
         }
     }
 
@@ -102,11 +101,10 @@ class ControllerAlertas extends Controller
             $item->id_estado = $request->id_estado;
 
             $item->update();
-            return redirect()->back()->with('success', 'Alerta actualizada correctamente.')->with('origen', 'alertas');
+            return redirect()->back()->with('successAlertas', 'Alerta actualizada correctamente.');
         } catch (ValidationException $e) {
             $errors = $e->validator->errors();
-            $errors->add('origen', 'alertas');
-            return redirect()->back()->withErrors($errors);
+            return redirect()->back()->with('mistakeAlertas', $errors);
         }
     }
 
@@ -117,6 +115,6 @@ class ControllerAlertas extends Controller
     {
         $item = Alerta::find($id);
         $item->delete($id);
-        return redirect()->back()->with('success', 'Alerta eliminada correctamente.')->with('origen', 'alertas');
+        return redirect()->back()->with('successAlertas', 'Alerta eliminada correctamente.');
     }
 }

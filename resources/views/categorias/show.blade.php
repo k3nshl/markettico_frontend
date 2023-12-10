@@ -9,9 +9,25 @@
             <div class="col-xl-12 mx-auto">
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
                     <div class="card-body">
-
                         <div class="row justify-content-center align-items-center">
                             <div class="col">
+                                @if (session('success'))
+                                    <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                        {{ session('success') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @elseif (session('mistake'))
+                                    <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                        <ul>
+                                            @foreach (session('mistake')->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="border p-3 rounded">
                                     <div class="card-title d-flex align-items-center justify-content-between">
                                         <div class="d-flex align-items-center">
@@ -24,7 +40,7 @@
                                             <div class="me-2">
                                                 <h5 class="m-0">Registrar</h5>
                                             </div>
-                                            <div class="me-2">
+                                            <div>
                                                 <button type="button" class="btn btn-info text-white"
                                                     data-bs-toggle="modal" data-bs-target="#modalAgregarSubCategoria"
                                                     style="background-color: #04D9B2; border-color: #04D9D9;"
@@ -92,7 +108,7 @@
                                     <hr />
                                     {{-- Lista de subcategorías --}}
                                     <div class="table-responsive">
-                                        <table id="tablaRoles" class="table table-bordered">
+                                        <table class="tablas table table-bordered">
                                             <thead class="theadRoles">
                                                 <tr>
                                                     <th class="bg_datatable"
@@ -133,7 +149,6 @@
                                                                         style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                                 </div>
                                                             </button>
-
 
                                                             <!-- Modal de edición -->
                                                             <div class="modal fade"
@@ -228,6 +243,7 @@
                                                                 </div>
                                                             </div>
 
+                                                            <!-- Boton eliminar -->
                                                             <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                                                 data-bs-target="#eliminarCategoriaModal{{ $item->id_subcategoria }}">
                                                                 <i class="lni lni-trash"
@@ -278,6 +294,11 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <hr>
+                                    <div class="text-end">
+                                        <a href="{{ route('categorias.index') }}"
+                                            class="btn btn-secondary">Regresar</a>
                                     </div>
                                 </div>
                             </div>

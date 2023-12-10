@@ -55,13 +55,11 @@ class ControllerRoles extends Controller
                 'id_rol' => $rol->id_rol,
             ]);
 
-            $this->controllerHistorial->store_rol($request, 'Creacion del rol ');
-            return redirect()->back()->with('success', 'Rol creado correctamente.')->with('origen', 'roles');
-
+            $this->controllerHistorial->store_rol($request, 'Creacion ');
+            return redirect()->back()->with('successRoles', 'Rol creado correctamente.');
         } catch (ValidationException $e) {
             $errors = $e->validator->errors();
-            $errors->add('origen', 'roles');
-            return redirect()->back()->withErrors($errors);
+            return redirect()->back()->with('mistakeRoles', $errors);
         }
     }
 
@@ -84,24 +82,28 @@ class ControllerRoles extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {  
-        $request->validate([
-            'nombre' => 'required|unique:roles,nombre,' . $id . ',id_rol',
-            'id_estado' => 'required',
-        ]);
+    {
+        try {
+            $request->validate([
+                'nombre' => 'required|unique:roles,nombre,' . $id . ',id_rol',
+                'id_estado' => 'required',
+            ]);
 
-        $rol = Rol::find($id);
-        $rol->nombre = $request->nombre;
-        $rol->id_estado = $request->id_estado;
-        $rol->save();
+            $rol = Rol::find($id);
+            $rol->nombre = $request->nombre;
+            $rol->id_estado = $request->id_estado;
+            $rol->save();
 
-        $request->merge([
-            'id_rol' => $rol->id_rol,
-        ]);
+            $request->merge([
+                'id_rol' => $rol->id_rol,
+            ]);
 
-        $this->controllerHistorial->store_rol($request, 'Actualización del rol ');
-
-        return redirect()->back()->with('success', 'Rol actualizado correctamente.')->with('origen', 'roles');
+            $this->controllerHistorial->store_rol($request, 'Actualización');
+            return redirect()->back()->with('successRoles', 'Rol actualizado correctamente.');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistakeRoles', $errors);
+        }
     }
 
     /**
@@ -120,6 +122,6 @@ class ControllerRoles extends Controller
         ]);
 
         $this->controllerHistorial->store_rol($request, 'Eliminación del rol ');
-        return redirect()->back()->with('success', 'Rol eliminado correctamente.')->with('origen', 'roles');
+        return redirect()->back()->with('successRoles', 'Rol eliminado correctamente.');
     }
 }

@@ -4,22 +4,19 @@ namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
 use App\Models\Articulo;
-use App\Models\HistorialGestionPaginas;
 use App\Models\PaginaInformacion;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 
 class ControllerPaginasInformacion extends Controller
 {
+    protected $controllerHitoriales;
 
-    public function guardarHistorial($item)
-    {   
-        $paginaHistorial = new HistorialGestionPaginas();
-        $fecha_actual = date('Y-m-d H:i:s');
-        $paginaHistorial->id_pagina_informacion  = $item->id_pagina_informacion;
-        $paginaHistorial->fecha_hora = $fecha_actual;
-        $paginaHistorial->save();
+    public function __construct(ControllerHistoriales $controllerHistoriales)
+    {
+        $this->controllerHitoriales = $controllerHistoriales;
     }
+
     /**
      * Display a listing of the resource.
      */
@@ -42,26 +39,42 @@ class ControllerPaginasInformacion extends Controller
      */
     public function store(Request $request)
     {
-        
-        $item = new PaginaInformacion();
+        try {
 
-        $item->titulo = $request->titulo;
-        $item->descripcion = $request->descripcion;
+            $request->validate([
+                'titulo' => 'required|string|max:100|unique:paginas_informacion',
+                'descripcion' => 'required|string|max:100',
+                'icono' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            ]);
 
-        $imagen = $request->icono;
-        
-        if ($imagen) {
-            $filename = $imagen->getClientOriginalName();
+            $item = new PaginaInformacion();
 
-            $imagen->move(public_path('img/fotografias'), $filename);
-            $item->icono = $filename;
+            $item->titulo = $request->titulo;
+            $item->descripcion = $request->descripcion;
+            $item->id_estado = 1;
+
+            $imagen = $request->icono;
+
+            if ($imagen) {
+                $filename = $imagen->getClientOriginalName();
+
+                $imagen->move(public_path('img/fotografias'), $filename);
+                $item->icono = $filename;
+            }
+
+            $item->save();
+
+            $request->merge([
+                'id_pagina_informacion' => $item->id_pagina_informacion,
+            ]);
+            $this->controllerHitoriales->store_paginasInfo($request, 'Creación');
+
+
+            return redirect()->back()->with('success', 'Página de información creada correctamente.');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistake', $errors);
         }
-        
-        $item->id_estado=1;
-        $item->save();
-        $this->guardarHistorial($item);
-        //return $this->index();
-        return redirect()->back();
     }
 
     /**
@@ -69,9 +82,9 @@ class ControllerPaginasInformacion extends Controller
      */
     public function show($id)
     {
-        $data_articulos = Articulo::where('id_pagina_informacion', $id)->get();
         $pagina = PaginaInformacion::find($id);
-        return view('paginasInformacion.show', compact('data_articulos','pagina'));
+        $data_articulos = Articulo::where('id_pagina_informacion', $id)->get();
+        return view('paginasInformacion.show', compact('data_articulos', 'pagina'));
     }
 
     /**
@@ -87,22 +100,36 @@ class ControllerPaginasInformacion extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $item = PaginaInformacion::find($id);
-        $item->titulo = $request->titulo;
-        $item->descripcion = $request->descripcion;
+        try {
 
-        $imagen = $request->icono;
-        if ($imagen) {
-            $filename = $imagen->getClientOriginalName();
+            $request->validate([
+                'titulo' => 'required|string|max:100|unique:paginas_informacion,titulo,' . $id . ',id_pagina_informacion',
+                'descripcion' => 'required|string|max:100',
+            ]);
 
-            $imagen->move(public_path('img/fotografias'), $filename);
-            $item->icono = $filename;
+            $item = PaginaInformacion::find($id);
+            $item->titulo = $request->titulo;
+            $item->descripcion = $request->descripcion;
+
+            $imagen = $request->icono;
+            if ($imagen) {
+                $filename = $imagen->getClientOriginalName();
+                $imagen->move(public_path('img/fotografias'), $filename);
+                $item->icono = $filename;
+            }
+            
+            $item->update();
+
+            $request->merge([
+                'id_pagina_informacion' => $item->id_pagina_informacion,
+            ]);
+            $this->controllerHitoriales->store_paginasInfo($request, 'Actualización');
+
+            return redirect()->back()->with('success', 'Página de información actualizada correctamente.');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistake', $errors);
         }
-        //FALTA EN LA VISTA CAMBIAR ESTADO
-        $item->id_estado=1;
-        $item->update();
-        $this->guardarHistorial($item);
-        return redirect()->back();
     }
 
     /**
@@ -112,7 +139,13 @@ class ControllerPaginasInformacion extends Controller
     {
         $item = PaginaInformacion::find($id);
         $item->delete();
-        $this->guardarHistorial($item);
-        return redirect()->back();
+
+        $request = new Request();
+        $request->merge([
+            'id_pagina_informacion' => $item->id_pagina_informacion,
+            'titulo' => $item->titulo,
+        ]);
+        $this->controllerHitoriales->store_paginasInfo($request, 'Eliminación');
+        return redirect()->back()->with('success', 'Página de información eliminada correctamente.');
     }
 }
