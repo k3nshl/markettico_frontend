@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
-    <link rel="stylesheet" href="{{ asset('../assets/images/logo-markettico-icono.png') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/images/logo-markettico-icono.png') }}">
     <!-- loader-->
     <link href="assets/css/pace.min.css" rel="stylesheet" />
     <script src="assets/js/pace.min.js"></script>
@@ -30,7 +30,7 @@
                                     <div class="p-5">
                                         <div class="mb-4 text-center">
                                             <div>
-                                                <img src="../assets/images/logo-markettico-icono.png" class="logo-icon"
+                                                <img src="/assets/images/logo-markettico-icono.png" class="logo-icon"
                                                     alt="logo icon">
                                             </div>
                                             <div>

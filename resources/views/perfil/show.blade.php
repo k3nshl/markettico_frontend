@@ -137,7 +137,7 @@
                                         <div class="mb-3">
                                             <label for="VerificarContraLabel" class="form-label">Digite su contraseña
                                                 actual:</label>
-                                            <input type="text" class="form-control" id="password" name="password">
+                                            <input type="password" class="form-control" id="password" name="password">
                                         </div>
 
                                         <div class="modal-footer">
@@ -180,7 +180,7 @@
 
                                         <div class="mb-3">
                                             <label for="passwordLabel" class="form-label">Contraseña nueva:</label>
-                                            <input type="text" class="form-control" id="password" name="password">
+                                            <input type="password" class="form-control" id="password" name="password">
                                         </div>
 
 

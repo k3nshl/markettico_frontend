@@ -36,7 +36,7 @@ class Email extends Mailable
     {
         if ($this->type == 1) {
             return new Envelope(
-                subject: 'Codigo De Verificación' ,
+                subject: 'Código De Verificación' ,
             );
         }elseif ($this->type == 2 ) {
             return new Envelope(
