@@ -7,14 +7,10 @@
 
 
     <section class="content">
-
         <div class="row">
-            <div class="col-xl-9 mx-auto">
+            <div class="col-md mx-auto">
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
-
                     <div class="card-body">
-
-
                         <div class="row justify-content-center align-items-center">
                             <div class="col">
                                 <div class="border p-3 rounded">
@@ -22,40 +18,44 @@
                                         <div class="d-flex align-items-center">
                                             <div><i class="bx bx-library me-1 font-22 text-info"></i>
                                             </div>
-                                            <h5 class="mb-0 text-dark">Colección {{ $pagina->titulo }}
+                                            <h5 class="mb-0 text-dark">Página: {{ $pagina->titulo }}
                                             </h5>
                                         </div>
-                                        <div class="d-flex align-items-center">
+                                        <form action="{{ route('articulos.create') }}" method="get" class="d-flex align-items-center">
+                                            @csrf
+                                            <input type="text" name="id"
+                                                value="{{ $pagina->id_pagina_informacion }}" hidden>
                                             <div class="me-2">
-                                                <h5 class="m-0"></h5>
+                                                <h5 class="m-0">Registrar</h5>
                                             </div>
-                                            <div class="me-2">
-                                                <form action="{{ route('articulos.create') }}" method="get">
-                                                    @csrf
-                                                    <input type="text" name="id"
-                                                        value="{{ $pagina->id_pagina_informacion }}" hidden>
-                                                    <button class="btn btn-info text-white"
-                                                        style="background-color: #04D9B2; border-color: #04D9D9;"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Agregar artículo">Agregar artículo</button>
-                                                </form>
-
+                                            <div>
+                                                <button type="submit" class="btn btn-info text-white"
+                                                    data-bs-toggle="modal" data-bs-target="#modalAgregarSubCategoria"
+                                                    style="background-color: #04D9B2; border-color: #04D9D9;"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Agregar Nueva Subcategoria">+</button>
                                             </div>
-
-                                        </div>
+                                        </form>
                                     </div>
                                     <hr />
+                                    @if (session('success'))
+                                        <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                            {{ session('success') }}
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                        </div>
+                                    @endif
+                                    <div class="d-flex align-items-center">
+                                        <div><i class="lni lni-clipboard me-1 font-22 text-info"></i>
+                                        </div>
 
-                                    {{-- <h1 class="bg-red"> {{ $id_pagina }}</h1> --}}
-
-                                    <div class="text-center">
-                                        <h6 class="mb-0 text-dark">Lista de artículos de Colección
-                                            <span>{{ $pagina->titulo }}</span>
-                                        </h6>
+                                        <h5 class="mb-0 text-dark">
+                                            Lista de
+                                            Artículos</h5>
                                     </div>
                                     <br>
                                     <div class="table-responsive">
-                                        <table id="tablaArticulo"A class="table table-bordered">
+                                        <table class="tablas table table-bordered">
                                             <thead class="theadUsuariosAdministradores">
                                                 <tr>
                                                     <th class="bg_datatable"
@@ -64,7 +64,6 @@
                                                         style="background-color: #05C7F2; color: #F2F2F2">Nombre</th>
                                                     <th class="bg_datatable"
                                                         style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
-
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -147,6 +146,11 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <hr>
+                                    <div class="text-end">
+                                        <a href="{{ route('paginasInformacion.index') }}"
+                                            class="btn btn-secondary">Regresar</a>
                                     </div>
                                 </div>
                             </div>

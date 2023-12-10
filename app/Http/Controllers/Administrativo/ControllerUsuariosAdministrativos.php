@@ -1,14 +1,15 @@
 <?php
+
 namespace App\Http\Controllers\Administrativo;
 
 use App\Http\Controllers\Controller;
-use App\Models\HistorialGestionCuentas;
 use App\Models\Rol;
 use App\Models\UsuarioAdministrativo;
 use App\Models\UsuarioBloqueado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Validation\ValidationException;
 
 class ControllerUsuariosAdministrativos extends Controller
 {
@@ -17,7 +18,7 @@ class ControllerUsuariosAdministrativos extends Controller
      * Display a listing of the resource.
      */
 
-     protected $controllerHistorial;
+    protected $controllerHistorial;
 
     public function __construct(ControllerHistoriales $historiales)
     {
@@ -29,8 +30,8 @@ class ControllerUsuariosAdministrativos extends Controller
         $user = Auth::user()->id_usuario_administrativo;
         $data = UsuarioAdministrativo::where('id_estado', 1)->where('id_usuario_administrativo', '!=', $user)->get();
         $data_bloqueados = UsuarioBloqueado::where('tipo_usuario', 'Administrativo')->get();
-        $roles = Rol::all();     
-        return view('usuariosAdministrativos.index', compact('data','data_bloqueados','roles'));
+        $roles = Rol::all();
+        return view('usuariosAdministrativos.index', compact('data', 'data_bloqueados', 'roles'));
     }
 
     /**
@@ -38,7 +39,7 @@ class ControllerUsuariosAdministrativos extends Controller
      */
     public function create()
     {
-        return view('usuariosAdministrativos.index');
+        //
     }
 
     /**
@@ -46,30 +47,41 @@ class ControllerUsuariosAdministrativos extends Controller
      */
     public function store(Request $request)
     {
-        $item = new UsuarioAdministrativo();
-        
-        $item->id_rol = $request->id_rol;
-        $item->id_estado = $request->id_estado;
-        $item->nombre_completo = $request->nombre_completo;
-        $item->password = sha1($request->password);
-        $item->correo_empresarial = $request->correo_empresarial;
-        $item->numero_telefonico = $request->numero_telefonico;
-        $item->fecha_hora = date(Date::now());
-        $item->save();
+        try {
+            $request->validate([
+                'nombre_completo' => 'requerid|unique:usuario_administrativo|max:250',
+                'password' => 'requerid',
+                'correo_empresarial' => 'requerid|unique:usuario_administrativo|max:150|email',
+                'numero_telefonico' => 'requerid|numeric',
+            ]);
 
-        $this->controllerHistorial->store_usuario($request,'Creacion del usuario ');
-        
-        return redirect()->back()->with('success', 'Usuario creado exitosamente');
+
+            $item = new UsuarioAdministrativo();
+            $item->id_rol = $request->id_rol;
+            $item->id_estado = $request->id_estado;
+            $item->nombre_completo = $request->nombre_completo;
+            $item->password = sha1($request->password);
+            $item->correo_empresarial = $request->correo_empresarial;
+            $item->numero_telefonico = $request->numero_telefonico;
+            $item->fecha_hora = date(Date::now());
+            $item->save();
+
+            $this->controllerHistorial->store_usuario($request, 'Creación');
+
+            return redirect()->back()->with('success', 'Usuario creado exitosamente');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistake', $errors);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    
+
     public function show(string $id)
     {
-        $item = UsuarioAdministrativo::find($id);
-        return view('usuariosAdministrativos.index', compact('index'));
+        //
     }
 
     /**
@@ -77,8 +89,7 @@ class ControllerUsuariosAdministrativos extends Controller
      */
     public function edit(string $id)
     {
-        $item = UsuarioAdministrativo::find($id);
-        return view('usuariosAdministrativos.index', compact('item'));
+        //
     }
 
     /**
@@ -86,16 +97,28 @@ class ControllerUsuariosAdministrativos extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $item = UsuarioAdministrativo::find($id);
-        $item->id_rol = $request->id_rol;
-        $item->id_estado = $request->id_estado;
-        $item->nombre_completo = $request->nombre_completo;
-        $item->correo_empresarial = $request->correo_empresarial;
-        $item->numero_telefonico = $request->numero_telefonico;
-        $item->update();
-        
-        $this->controllerHistorial->store_usuario($request,'Actulaización del usuario ');
-        return redirect()->back()->with('success', 'Usuario actualizado exitosamente');
+        try {
+            $request->validate([
+                'nombre_completo' => 'requerid|unique:usuario_administrativo,nombre_completo,'.$id.',id_usuario_administrativo|max:250',
+                'password' => 'requerid',
+                'correo_empresarial' => 'requerid|unique:usuario_administrativo|max:150|email',
+                'numero_telefonico' => 'requerid|numeric',
+            ]);
+            $item = UsuarioAdministrativo::find($id);
+            $item->id_rol = $request->id_rol;
+            $item->id_estado = $request->id_estado;
+            $item->nombre_completo = $request->nombre_completo;
+            $item->correo_empresarial = $request->correo_empresarial;
+            $item->numero_telefonico = $request->numero_telefonico;
+            $item->update();
+
+            $this->controllerHistorial->store_usuario($request, 'Actualización');
+
+            return redirect()->back()->with('success', 'Usuario actualizado exitosamente');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistake', $errors);
+        }
     }
 
     /**
@@ -113,7 +136,7 @@ class ControllerUsuariosAdministrativos extends Controller
             'correo_empresarial' => $item->correo_empresarial,
         ]);
 
-        $this->controllerHistorial->store_usuario($request,'Eliminación del usuario ');
+        $this->controllerHistorial->store_usuario($request, 'Eliminación');
         return redirect()->back();
     }
 
@@ -141,17 +164,25 @@ class ControllerUsuariosAdministrativos extends Controller
 
     public function bloquear_usuario(Request $request)
     {
-        $item = UsuarioAdministrativo::find($request->id_usuario_administrativo);
-        $item->id_estado = 3;
-        $item->update();
-        
-        $itemBloqueado = new UsuarioBloqueado();
-        $itemBloqueado->id_usuario_administrativo = $request->id_usuario_administrativo;
-        $itemBloqueado->descripcion = $request->descripcion;
-        $itemBloqueado->tipo_usuario = 'Administrativo';
-        $itemBloqueado->save();
+        try {
+            $request->validate([
+                'descripcion' => 'required',
+            ]);
 
-        return redirect()->back()->with('success', 'Usuario bloqueado exitosamente');
+            $item = UsuarioAdministrativo::find($request->id_usuario_administrativo);
+            $item->id_estado = 3;
+            $item->update();
+
+            $itemBloqueado = new UsuarioBloqueado();
+            $itemBloqueado->id_usuario_administrativo = $request->id_usuario_administrativo;
+            $itemBloqueado->descripcion = $request->descripcion;
+            $itemBloqueado->tipo_usuario = 'Administrativo';
+            $itemBloqueado->save();
+
+            return redirect()->back()->with('successBloqueo', 'Usuario bloqueado exitosamente.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('mistakeBloqueo', 'Debe ingresar una descripción.');
+        }
     }
 
     public function desbloquearUsuario(Request $request)
@@ -163,14 +194,6 @@ class ControllerUsuariosAdministrativos extends Controller
         $itemBloqueado = UsuarioBloqueado::where('id_usuario_bloqueado', $request->id_usuario_bloqueado)->first();
         $itemBloqueado->delete();
 
-        return redirect()->back()->with('success', 'Usuario desbloqueado exitosamente');;
+        return redirect()->back()->with('successDesbloqueo', 'Usuario desbloqueado exitosamente');;
     }
-
 }
-
-
-
-
-
-
-

@@ -9,6 +9,25 @@
         <div class="row">
             <div class="col-xl-12 mx-auto">
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
+                    <div class="mx-3">
+                        @if (session('success'))
+                            <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @elseif (session('mistake'))
+                            <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                <ul>
+                                    @foreach (session('mistake')->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+                    </div>
                     <div class="card-body">
                         <div class="row justify-content-center align-items-center">
                             <div class="col">
@@ -23,23 +42,24 @@
                                     <div class="row mb-3">
                                         <form action="{{ route('articulos.store') }}" method="post">
                                             @csrf
-                                            <input type="text" name="id_pagina" class="form-control" value="{{$id_pagina_informacion}}" hidden>
-                                            <input type="text" name="id_estado" class="form-control" value="1" hidden>
+                                            <input type="text" name="id_pagina" class="form-control"
+                                                value="{{ $id_pagina_informacion }}" hidden>
+                                            <input type="text" name="id_estado" class="form-control" value="1"
+                                                hidden>
                                             <div class="">
                                                 <label for="titulo" class="col-form-label">Titulo del
                                                     articulo:</label>
 
                                                 <input type="text" name="titulo" class="form-control" id="titulo"
                                                     placeholder="Titulo del articulo">
-
                                             </div>
-                                            <input type="hidden" name="id_pagina" value="{{$id_pagina_informacion}}">
+                                            <input type="hidden" name="id_pagina" value="{{ $id_pagina_informacion }}">
                                             <input type="hidden" name="id_estado" value="1">
                                             <div class="mt-3">
 
                                                 <label for="contenido" class="col-form-label">Contenido:</label>
 
-                                                <textarea id="mytextarea" name="contenido" rows="3" placeholder="Escribe el contenido del artículo"></textarea>
+                                                <textarea class="summernoteTextarea" name="contenido" rows="3" placeholder="Escribe el contenido del artículo"></textarea>
 
                                             </div>
 
