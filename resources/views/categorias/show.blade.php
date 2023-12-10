@@ -118,6 +118,8 @@
                                                     <th class="bg_datatable"
                                                         style="background-color: #05C7F2; color: #F2F2F2">Descripción</th>
                                                     <th class="bg_datatable"
+                                                        style="background-color: #05C7F2; color: #F2F2F2">Estado</th>
+                                                    <th class="bg_datatable"
                                                         style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
                                                 </tr>
                                             </thead>
@@ -127,6 +129,15 @@
                                                         <td>{{ $item->id_subcategoria }}</td>
                                                         <td>{{ $item->nombre }}</td>
                                                         <td>{{ $item->descripcion }}</td>
+                                                        <td>
+                                                            @if ($item->estado->id_estado == 1)
+                                                                <span
+                                                                    class="badge bg-success">{{ $item->estado->nombre }}</span>
+                                                            @elseif ($item->estado->id_estado == 2)
+                                                                <span
+                                                                    class="badge bg-danger">{{ $item->estado->nombre }}</span>
+                                                            @endif
+                                                        </td>
                                                         <td>
                                                             <!-- Botón de editar con modal -->
                                                             <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
