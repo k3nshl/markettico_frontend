@@ -373,7 +373,7 @@
 
                                             <hr />
                                             <div class="table-responsive">
-                                                <table id="tablaSolicitudRechazados" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadSolicitudRechazados">
                                                         <tr>
                                                             <th class="bg_datatable"

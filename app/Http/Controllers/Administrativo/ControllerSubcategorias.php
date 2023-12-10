@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use App\Models\Subcategoria;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class ControllerSubcategorias extends Controller
 {
@@ -30,21 +31,22 @@ class ControllerSubcategorias extends Controller
      */
     public function store(Request $request)
     {
-
-        // $validator = Validator::make($request->all(), [
-        //     'nombre' => 'required||unique:alertas',
-        // ]);
-
-        // if ($validator->fails()) {
-        //     return redirect()->back();
-        // }
-        $subcategoria = new Subcategoria();
-        $subcategoria->id_categoria = $request->id_categoria;
-        $subcategoria->nombre = $request->nombre;
-        $subcategoria->descripcion = $request->descripcion;
-        $subcategoria->id_estado = $request->id_estado;
-        $subcategoria->save();
-        return redirect()->back();
+        try {
+            $request->validate([
+                'nombre' => 'required|string|max:100|unique:subcategorias',
+                'descripcion' => 'required|string|max:255',
+            ]);
+            $subcategoria = new Subcategoria();
+            $subcategoria->id_categoria = $request->id_categoria;
+            $subcategoria->nombre = $request->nombre;
+            $subcategoria->descripcion = $request->descripcion;
+            $subcategoria->id_estado = $request->id_estado;
+            $subcategoria->save();
+            return redirect()->back()->with('success', 'Subcategoria creada exitosamente.');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistake', $errors);
+        }
     }
 
     /**
@@ -68,13 +70,22 @@ class ControllerSubcategorias extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $subcategoria = Subcategoria::find($id);
-        $subcategoria->id_categoria = $request->id_categoria;
-        $subcategoria->nombre = $request->nombre;
-        $subcategoria->descripcion = $request->descripcion;
-        $subcategoria->id_estado = $request->id_estado;
-        $subcategoria->save();
-        return redirect()->back();
+        try {
+            $request->validate([
+                'nombre' => 'required|string|max:100|unique:subcategorias,nombre,' . $id . ',id_subcategoria',
+                'descripcion' => 'required|string|max:255',
+            ]);
+            $subcategoria = Subcategoria::find($id);
+            $subcategoria->id_categoria = $request->id_categoria;
+            $subcategoria->nombre = $request->nombre;
+            $subcategoria->descripcion = $request->descripcion;
+            $subcategoria->id_estado = $request->id_estado;
+            $subcategoria->save();
+            return redirect()->back()->with('success', 'Subcategoria actualizada exitosamente.');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistake', $errors);
+        }
     }
 
     /**
@@ -84,6 +95,6 @@ class ControllerSubcategorias extends Controller
     {
         $subcategoria = Subcategoria::find($id);
         $subcategoria->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Subcategoria eliminada exitosamente.');
     }
 }

@@ -5,10 +5,9 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use App\Models\Articulo;
 use App\Models\Estado;
-use App\Models\PaginaInformacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Expr\New_;
+use Illuminate\Validation\ValidationException;
 
 class ControllerArticulos extends Controller
 {
@@ -17,9 +16,7 @@ class ControllerArticulos extends Controller
      */
     public function index()
     {
-        // $articulos = PaginaInformacion::all();
-
-        // return view('paginasInformacion.articulos', compact('articulos'));
+        //
     }
 
     /**
@@ -36,21 +33,28 @@ class ControllerArticulos extends Controller
      */
     public function store(Request $request)
     {
-        $articulo = new Articulo();
-        $articulo->id_usuario = Auth::user()->id_usuario_administrativo;
-        $articulo->id_estado = $request->id_estado;
-        $articulo->id_pagina_informacion = $request->id_pagina;
+        try {
+            $request->validate([
+                'titulo' => 'required|string|max:150|unique:articulos',
+                'contenido' => 'required|string',
+            ]);
 
-        $articulo->titulo = $request->titulo;
-        $articulo->contenido = $request->contenido;
-        $articulo->fecha = date('Y-m-d');
+            $articulo = new Articulo();
+            $articulo->id_usuario = Auth::user()->id_usuario_administrativo;
+            $articulo->id_estado = $request->id_estado;
+            $articulo->id_pagina_informacion = $request->id_pagina;
 
-        $articulo->save();
-        return redirect()->back();
+            $articulo->titulo = $request->titulo;
+            $articulo->contenido = $request->contenido;
+            $articulo->fecha = date('Y-m-d');
+
+            $articulo->save();
+            return redirect()->back()->with('success', 'Artículo creado correctamente.');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistake', $errors);
+        }
     }
-
-    
-
 
     /**
      * Display the specified resource.
@@ -68,7 +72,7 @@ class ControllerArticulos extends Controller
     {
         $articulo = articulo::find($id);
         $estados = Estado::all();
-        return view('paginasInformacion.editArticulo', compact('articulo','estados'));
+        return view('paginasInformacion.editArticulo', compact('articulo', 'estados'));
     }
 
     /**
@@ -76,17 +80,25 @@ class ControllerArticulos extends Controller
      */
     public function update(Request $request, string $id)
     {
+        try {
+            $request->validate([
+                'titulo' => 'required|string|max:150|unique:articulos,titulo,' . $id . ',id_articulo',
+                'contenido' => 'required|string',
+                'id_estado' => 'required',
+            ]);
+            $articulo = Articulo::find($id);
+            $articulo->id_estado = $request->id_estado;
+            $articulo->titulo = $request->titulo;
+            $articulo->contenido = $request->contenido;
+            $articulo->fecha = date('Y-m-d');
 
-        $articulo = Articulo::find($id);
-        $articulo->id_estado = $request->id_estado;
+            $articulo->save();
 
-        $articulo->titulo = $request->titulo;
-        $articulo->contenido = $request->contenido;
-        $articulo->fecha = date('Y-m-d');
-
-        $articulo->save();
-
-        return redirect()->back();
+            return redirect()->back()->with('success', 'Artículo actualizado correctamente.');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistake', $errors);
+        }
     }
 
     /**
@@ -96,6 +108,6 @@ class ControllerArticulos extends Controller
     {
         $articulo = Articulo::find($id);
         $articulo->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Artículo eliminado correctamente.');
     }
 }

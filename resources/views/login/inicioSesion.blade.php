@@ -59,6 +59,13 @@
                                                 aria-label="Close"></button>
                                         </div>
                                     @endif
+                                    @if (session('warning'))
+                                        <div class="alert alert-warning border-0 alert-dismissible fade show mt-3">
+                                            <div class="text-dark">{{ session('warning') }}</div>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                        </div>
+                                    @endif
                                     <div class="form-body">
                                         <form action="{{ route('validarLogin') }}" class="row g-3" method="POST">
                                             @csrf

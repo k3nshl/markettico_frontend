@@ -3,17 +3,30 @@
 @section('gestion_nombre', 'Gestión de Categorías')
 
 @section('contenido')
-
-
-
     <section class="content">
         <div class="row">
             <div class="col-xl-12 mx-auto">
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
                     <div class="card-body">
-
                         <div class="row justify-content-center align-items-center">
                             <div class="col">
+                                @if (session('success'))
+                                    <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                        {{ session('success') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @elseif (session('mistake'))
+                                    <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                        <ul>
+                                            @foreach (session('mistake')->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="border p-3 rounded">
                                     <div class="card-title d-flex align-items-center justify-content-between">
                                         <div class="d-flex align-items-center">
@@ -48,9 +61,8 @@
                                                             <form action="{{ route('categorias.store') }}" method="POST">
                                                                 @csrf
 
-                                                                <input type="hidden" name="id_estado"
-                                                                    value="1">
-                                                                    
+                                                                <input type="hidden" name="id_estado" value="1">
+
                                                                 <div class="row mb-3">
                                                                     <label for="nombre"
                                                                         class="col-sm-4 col-form-label">Nombre:</label>
@@ -94,7 +106,7 @@
 
                                     {{-- Lista de categorías --}}
                                     <div class="table-responsive">
-                                        <table id="tablaRoles" class="table table-bordered">
+                                        <table class="tablas table table-bordered">
                                             <thead class="theadRoles">
                                                 <tr>
                                                     <th class="bg_datatable"

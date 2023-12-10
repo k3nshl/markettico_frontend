@@ -6,7 +6,7 @@
 
     <section class="content">
         <div class="row">
-            <div class="col-xl-10 mx-auto">
+            <div class="col-md mx-auto">
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
                     <div class="card-body">
 
@@ -68,7 +68,7 @@
                                             <hr />
 
                                             <div class="table-responsive">
-                                                <table id="tablaHistorialEstados" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadUsuariosAdministradores">
                                                         <tr class="text-center">
                                                             <th class="bg_datatable"
@@ -126,7 +126,7 @@
                                             <hr />
 
                                             <div class="table-responsive">
-                                                <table id="tablaHistorialRoles" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadUsuariosAdministradores">
                                                         <tr class="text-center">
                                                             <th class="bg_datatable"
@@ -182,7 +182,7 @@
 
                                             <hr />
                                             <div class="table-responsive">
-                                                <table id="tablaHistorialGestionCuentas" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadUsuariosAdministradores">
                                                         <tr class="text-center">
 
@@ -238,7 +238,7 @@
 
                                             <hr />
                                             <div class="table-responsive">
-                                                <table id="tablaHistorialSuspenciones" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadUsuariosAdministradores">
                                                         <tr class="text-center">
 
@@ -358,7 +358,7 @@
 
                                             <hr />
                                             <div class="table-responsive">
-                                                <table id="tablaHistorialPaginas" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadUsuariosAdministradores">
                                                         <tr class="text-center">
                                                             <th class="bg_datatable"

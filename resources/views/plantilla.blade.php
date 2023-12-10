@@ -403,98 +403,16 @@
         });
 
         // Datatables
-        $(document).ready(function() {
-            $('#tablaUsuariosAdmin').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaUsuariosBloqueados').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaRoles').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaEstados').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaSolicitudEspera').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaSolicitudAprobados').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaSolicitudRechazados').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaCorreos').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaAnuncios').DataTable();
-        });
 
         $(document).ready(function() {
-            $('#tablaAlertas').DataTable();
+            $('.tablas').DataTable();
         });
-        $(document).ready(function() {
-            $('#tablaArticulo').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaColeccion').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaPlanes').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaHistorialEstados').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaHistorialRoles').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaHistorialGestionCuentas').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaHistorialAcciones').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaHistorialSuspenciones').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaHistorialInicioSesion').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaHistorialPaginas').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaProductosEspera').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaProductosAprobados').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaProductosRechazados').DataTable();
-        });
-
 
         // Tooltips y Popovers
         $(function() {
             $('[data-bs-toggle="popover"]').popover();
             $('[data-bs-toggle="tooltip"]').tooltip();
         })
-
-        // Texto enriquecido
-        tinymce.init({
-            selector: '#mytextarea'
-        });
 
         $(document).ready(function() {
             var table = $('#').DataTable({
@@ -503,16 +421,8 @@
             });
         });
         $(document).ready(function() {
-            $("#portada").change(function() {
-                readURL(this, "#imagen-preview-portada");
-            });
-
-            $("#portada-edit").change(function() {
-                readURL(this, "#imagen-preview-portada-edit");
-            });
-
-            $("#otroInput").change(function() {
-                readURL(this, "#imagen-preview-otroInput");
+            $(".img_selected").change(function() {
+                readURL(this, ".preview_img_selected");
             });
         });
 
@@ -534,39 +444,10 @@
         });
     </script>
 
-
     {{-- editor de texto mejorado --}}
     <script>
         $(document).ready(function() {
-            $('#summernoteTextareaRegistrar').summernote({
-                height: 150,
-                placeholder: 'Escribe el contenido del anuncio',
-            });
-
-            $('span.note-icon-caret').remove();
-
-            $('.note-editable').css('background', '#fff');
-        });
-    </script>
-
-    {{-- editor de texto mejorado --}}
-    <script>
-        $(document).ready(function() {
-            $('#summernoteTextareaEditar').summernote({
-                height: 150,
-                placeholder: 'Escribe el contenido del anuncio',
-            });
-
-            $('span.note-icon-caret').remove();
-
-            $('.note-editable').css('background', '#fff');
-        });
-    </script>
-
-      {{-- editor de texto mejorado --}}
-      <script>
-        $(document).ready(function() {
-            $('#summernoteTextareaPlanes').summernote({
+            $('.summernoteTextarea').summernote({
                 height: 150,
                 placeholder: 'Escribe las características del plan',
             });

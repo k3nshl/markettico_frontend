@@ -35,20 +35,17 @@
                         <div class="tab-content">
                             {{-- Inicio estados --}}
                             <div class="tab-pane fade" id="tab-estados" role="tabpanel">
-                                @if (session('origen') == 'estados')
+                                @if (session('successEstados'))
                                     <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
-                                        {{ session('success') }}
+                                        {{ session('successEstados') }}
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"
                                             aria-label="Close"></button>
                                     </div>
-                                @endif
-                                @if ($errors->first('origen') == 'estados' && $errors->any())
+                                @elseif (session('mistakeEstados'))
                                     <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
                                         <ul>
-                                            @foreach ($errors->all() as $error)
-                                                @if ($error != 'estados')
-                                                    <li>{{ $error }}</li>
-                                                @endif
+                                            @foreach (session('mistakeEstados')->all() as $error)
+                                                <li>{{ $error }}</li>
                                             @endforeach
                                         </ul>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"
@@ -63,7 +60,7 @@
                                                     <div><i class="lni lni-clipboard me-1 font-22 text-info"></i>
                                                     </div>
 
-                                                    <h5 class="mb-0 text-dark" title="Agregar Usuario">
+                                                    <h5 class="mb-0 text-dark">
                                                         Lista de
                                                         Estados</h5>
                                                 </div>
@@ -134,7 +131,7 @@
                                             <hr />
 
                                             <div class="table-responsive">
-                                                <table id="tablaEstados" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadEstados">
                                                         <tr>
                                                             <th class="bg_datatable"
@@ -297,20 +294,17 @@
 
                             {{-- Inicio roles --}}
                             <div class="tab-pane fade" id="tab-roles" role="tabpanel">
-                                @if (session('origen') == 'roles')
+                                @if (session('successRoles'))
                                     <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
-                                        {{ session('success') }}
+                                        {{ session('successRoles') }}
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"
                                             aria-label="Close"></button>
                                     </div>
-                                @endif
-                                @if ($errors->first('origen') == 'roles' && $errors->any())
+                                @elseif (session('mistakeRoles'))
                                     <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
                                         <ul>
-                                            @foreach ($errors->all() as $error)
-                                                @if ($error != 'roles')
-                                                    <li>{{ $error }}</li>
-                                                @endif
+                                            @foreach (session('mistakeRoles')->all() as $error)
+                                                <li>{{ $error }}</li>
                                             @endforeach
                                         </ul>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"
@@ -380,8 +374,6 @@
                                                                                 Guardar
                                                                             </button>
                                                                         </div>
-
-
                                                                     </form>
                                                                 </div>
 
@@ -393,7 +385,7 @@
                                             <hr />
                                             {{-- Listado de roles --}}
                                             <div class="table-responsive">
-                                                <table id="tablaRoles" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadRoles">
                                                         <tr>
                                                             <th class="bg_datatable"

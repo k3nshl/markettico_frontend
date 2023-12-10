@@ -7,22 +7,12 @@
         <div class="row">
 
             <div class="col-xl-12 mx-auto">
-
-
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
                     <div class="card-body">
-
-                        @if (session('success'))
-                            <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
-                                <div class="text-dark">{{ session('success') }}</div>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        @endif
-
                         <ul class="nav nav-pills mb-3" role="tablist">
                             <li class="nav-item">
-                                <button class="nav-link active custom-bg-color" data-bs-toggle="tab"
-                                    data-bs-target="#tab-listaUsuarios">
+                                <button class="nav-link custom-bg-color" data-bs-toggle="tab" data-bs-target="#tab-usuarios"
+                                    id="btn_tab_usuarios">
                                     <i class="bx bx-notepad me-2"></i> Usuarios
 
                                 </button>
@@ -30,14 +20,43 @@
 
                             <li class="nav-item">
                                 <button class="nav-link custom-bg-color" data-bs-toggle="tab"
-                                    data-bs-target="#tab-bloqueados">
+                                    data-bs-target="#tab-bloqueados" id="btn_tab_bloqueados">
                                     <i class="bx bx-notepad me-2"></i> Usuarios Bloqueados
                                 </button>
                             </li>
                         </ul>
 
                         <div class="tab-content">
-                            <div class="tab-pane show active fade" id="tab-listaUsuarios">
+                            <div class="tab-pane fade" id="tab-usuarios">
+                                @if (session('success'))
+                                    <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                        <div class="text-dark">{{ session('success') }}</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @elseif (session('mistake'))
+                                    <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                        <ul>
+                                            @foreach (session('mistakebloqueados')->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @elseif (session('successBloqueo'))
+                                    <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                        <div class="text-dark">{{ session('successBloqueo') }}</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @elseif (session('mistakeBloqueo'))
+                                    <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                        <div class="text-dark">{{ session('mistakeBloqueo') }}</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="border p-3 rounded">
@@ -99,7 +118,8 @@
                                                                                 class="col-sm-4 col-form-label">Contraseña:</label>
                                                                             <div class="col-sm-8">
                                                                                 <input type="password" class="form-control"
-                                                                                    id="password" placeholder="Contraseña"
+                                                                                    id="password"
+                                                                                    placeholder="Contraseña"
                                                                                     name="password">
                                                                             </div>
                                                                         </div>
@@ -164,7 +184,7 @@
                                             <hr />
 
                                             <div class="table-responsive">
-                                                <table id="tablaUsuariosAdmin" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadUsuariosAdministradores">
                                                         <tr class="text-center">
 
@@ -270,7 +290,7 @@
                                                                         tabindex="-1"
                                                                         aria-labelledby="showUserModalLabel"
                                                                         aria-hidden="true">
-                                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                                        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-lg-down">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
                                                                                     <h5 class="modal-title"
@@ -286,53 +306,84 @@
                                                                                         title="Cerrar"></button>
                                                                                 </div>
 
-                                                                                <div class="modal-body">
-                                                                                    <form>
-                                                                                        <div class="mb-3">
+                                                                                <div class="modal-body mt-2">
+                                                                                    <form class="row g-3">
+                                                                                        <div class="col-md-6 mb-3">
                                                                                             <label for="showNombreUsuario"
-                                                                                                class="form-label">Nombre:
-                                                                                                <span>{{ $item->nombre_completo }}</span>
-                                                                                            </label>
-
-
-
+                                                                                                class="form-label h6">Nombre:</label>
+                                                                                            <div
+                                                                                                class=" p-2 rounded">
+                                                                                                <p
+                                                                                                    class="form-control-plaintext m-0">
+                                                                                                    {{ $item->nombre_completo }}
+                                                                                                </p>
+                                                                                            </div>
                                                                                         </div>
 
-                                                                                        <div class="mb-3">
+                                                                                        <div class="col-md-6 mb-3">
                                                                                             <label
                                                                                                 for="showCorreoEmpresarial"
-                                                                                                class="form-label">Correo
-                                                                                                Empresarial:
-                                                                                                <span>{{ $item->correo_empresarial }}</span></label>
+                                                                                                class="form-label h6">Correo
+                                                                                                Empresarial:</label>
+                                                                                            <div
+                                                                                                class=" p-2 rounded">
+                                                                                                <p
+                                                                                                    class="form-control-plaintext m-0">
+                                                                                                    {{ $item->correo_empresarial }}
+                                                                                                </p>
+                                                                                            </div>
                                                                                         </div>
 
-                                                                                        <div class="mb-3">
+                                                                                        <div class="col-md-6 mb-3">
                                                                                             <label
                                                                                                 for="showNumeroTelefonico"
-                                                                                                class="form-label">Número
-                                                                                                Telefónico:
-                                                                                                <span>{{ $item->numero_telefonico }}</span></label>
+                                                                                                class="form-label h6">Número
+                                                                                                Telefónico:</label>
+                                                                                            <div
+                                                                                                class=" p-2 rounded">
+                                                                                                <p
+                                                                                                    class="form-control-plaintext m-0">
+                                                                                                    {{ $item->numero_telefonico }}
+                                                                                                </p>
+                                                                                            </div>
                                                                                         </div>
 
-                                                                                        <div class="mb-3">
+                                                                                        <div class="col-md-6 mb-3">
                                                                                             <label for="showRolUsuario"
-                                                                                                class="form-label">Rol:
-                                                                                                <span>{{ $item->roles->nombre }}</span></label>
+                                                                                                class="form-label h6">Rol:</label>
+                                                                                            <div
+                                                                                                class=" p-2 rounded">
+                                                                                                <p
+                                                                                                    class="form-control-plaintext m-0">
+                                                                                                    {{ $item->roles->nombre }}
+                                                                                                </p>
+                                                                                            </div>
                                                                                         </div>
 
-                                                                                        <div class="mb-3">
+                                                                                        <div class="col-md-6 mb-3">
                                                                                             <label for="showEstadoUsuario"
-                                                                                                class="form-label">Estado:
-                                                                                                <span>{{ $item->estados->nombre }}</span></label>
-                                                                                        </div>
-                                                                                        <div class="mb-3">
-                                                                                            <label for="showEstadoUsuario"
-                                                                                                class="form-label">Fecha de
-                                                                                                registro:
-                                                                                                <span>{{ $item->fecha_hora }}</span>
-                                                                                            </label>
+                                                                                                class="form-label h6">Estado:</label>
+                                                                                            <div
+                                                                                                class=" p-2 rounded">
+                                                                                                <p
+                                                                                                    class="form-control-plaintext m-0">
+                                                                                                    {{ $item->estados->nombre }}
+                                                                                                </p>
+                                                                                            </div>
                                                                                         </div>
 
+                                                                                        <div class="col-md-6 mb-3">
+                                                                                            <label for="showEstadoUsuario"
+                                                                                                class="form-label h6">Fecha
+                                                                                                de Registro:</label>
+                                                                                            <div
+                                                                                                class=" p-2 rounded">
+                                                                                                <p
+                                                                                                    class="form-control-plaintext m-0">
+                                                                                                    {{ $item->fecha_hora }}
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
                                                                                     </form>
                                                                                 </div>
 
@@ -340,9 +391,7 @@
                                                                                     <button type="button"
                                                                                         class="btn btn-secondary"
                                                                                         data-bs-dismiss="modal">Regresar</button>
-
                                                                                 </div>
-
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -604,6 +653,13 @@
 
                             {{-- Usuarios Bloqueados --}}
                             <div class="tab-pane fade" id="tab-bloqueados">
+                                @if (session('successDesbloqueo'))
+                                    <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                        <div class="text-dark">{{ session('successDesbloqueo') }}</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="border p-3 rounded">
@@ -619,10 +675,9 @@
 
                                             <hr />
                                             <div class="table-responsive">
-                                                <table id="tablaUsuariosBloqueados" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadUsuariosAdministradores">
                                                         <tr class="text-center">
-
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">
                                                                 ID
@@ -643,7 +698,6 @@
                                                                 style="background-color: #05C7F2; color: #F2F2F2">Acciones
                                                             </th>
                                                         </tr>
-
                                                     </thead>
                                                     <tbody>
 
@@ -787,13 +841,46 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+@endsection
+
+@section('js')
+
+    <script>
+        $(document).ready(function() {
+            setTab();
+        });
+
+        // Tabs de usuarios y bloqueados
+        $('#btn_tab_usuarios').click(function() {
+            localStorage.setItem('tabActivo', 'usuarios');
+        });
+
+        $('#btn_tab_bloqueados').click(function() {
+            localStorage.setItem('tabActivo', 'bloqueados');
+        });
+
+        function setTab() {
+            var tabActivo = localStorage.getItem('tabActivo');
+            if (tabActivo == 'usuarios') {
+                $('#btn_tab_usuarios').addClass('active');
+                $('#tab-usuarios').addClass('show');
+                $('#tab-usuarios').addClass('active');
+            } else if (tabActivo == 'bloqueados') {
+                $('#btn_tab_bloqueados').addClass('active');
+                $('#tab-bloqueados').addClass('show');
+                $('#tab-bloqueados').addClass('active');
+            } else {
+                $('#btn_tab_usuarios').addClass('active');
+                $('#tab-usuarios').addClass('show');
+                $('#tab-usuarios').addClass('active');
+            }
+        }
+    </script>
+
 @endsection
