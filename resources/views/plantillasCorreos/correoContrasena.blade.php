@@ -37,17 +37,28 @@
                                                 <h4 class="logo-text">MarketTico</h4>
                                             </div>
                                         </div>
-                                        <h4 class="mt-5 font-weight-bold text-center">Cambio Contraseña</h4>
+                                        <h4 class="mt-5 font-weight-bold text-center">Código Para Cambio Contraseña</h4>
 
-                                        <p class="text-muted"><h6 class="text-center">Ariana Hernández</h6>Este correo ha sido generado porque se hizo una solicitud de receuperación de contraseña, para tu cuenta!</p>
-                                        
-                                        <div class="d-grid gap-2 my-5">
-                                            <a type="button" class="btn btn-primary" href="">Recuperar Contraseña</a>
+                                        <p class="text-muted">
+                                        ¡Este correo ha sido generado porque
+                                        se hizo una solicitud de receuperación de contraseña, para tu cuenta!</p>
+
+                                        {{-- <div class="d-grid gap-2 my-5">
+                                            <a type="button" class="btn btn-primary" href="">Recuperar
+                                                Contraseña</a>
+                                        </div> --}}
+                                        <div class="mb-3 mt-5 text-center">
+                                            <h5 class="form-label">Código:</h5>
+                                            <td style="padding:0px 35px 25px 35px">
+
+                                                <p style="font-size:23px;line-height:20px;color:#001435;margin:0;word-break:break-word"
+                                                    dir="ltr">
+                                                    <b>{{$codigo}}</b>
+                                                </p>
+
+                                            </td>
                                         </div>
-                                        <p>{{$codigo}}</p>
 
-                                        <p class="">Si no realizaste esta solicitud, no se requiere realizar ninguna otra acción.</p>
-                                        
                                     </div>
                                 </div>
                             </div>
