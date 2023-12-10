@@ -49,10 +49,10 @@ class ControllerUsuariosAdministrativos extends Controller
     {
         try {
             $request->validate([
-                'nombre_completo' => 'requerid|unique:usuario_administrativo|max:250',
-                'password' => 'requerid',
-                'correo_empresarial' => 'requerid|unique:usuario_administrativo|max:150|email',
-                'numero_telefonico' => 'requerid|numeric',
+                'nombre_completo' => 'required|unique:usuarios_administrativos|max:250',
+                'password' => 'required',
+                'correo_empresarial' => 'required|unique:usuarios_administrativos|max:150|email',
+                'numero_telefonico' => 'required|numeric',
             ]);
 
 
@@ -99,10 +99,9 @@ class ControllerUsuariosAdministrativos extends Controller
     {
         try {
             $request->validate([
-                'nombre_completo' => 'requerid|unique:usuario_administrativo,nombre_completo,'.$id.',id_usuario_administrativo|max:250',
-                'password' => 'requerid',
-                'correo_empresarial' => 'requerid|unique:usuario_administrativo|max:150|email',
-                'numero_telefonico' => 'requerid|numeric',
+                'nombre_completo' => 'required|unique:usuarios_administrativos,nombre_completo,'.$id.',id_usuario_administrativo|max:250',
+                'correo_empresarial' => 'required|max:150|email',
+                'numero_telefonico' => 'required|numeric',
             ]);
             $item = UsuarioAdministrativo::find($id);
             $item->id_rol = $request->id_rol;

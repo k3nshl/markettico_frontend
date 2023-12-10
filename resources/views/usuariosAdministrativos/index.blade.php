@@ -37,7 +37,7 @@
                                 @elseif (session('mistake'))
                                     <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
                                         <ul>
-                                            @foreach (session('mistakebloqueados')->all() as $error)
+                                            @foreach (session('mistake')->all() as $error)
                                                 <li>{{ $error }}</li>
                                             @endforeach
                                         </ul>

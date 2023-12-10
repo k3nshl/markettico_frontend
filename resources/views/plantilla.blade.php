@@ -136,7 +136,7 @@
                                     Categorias</a>
                             </li>
 
-                            <li> <a href="#"><i class="fadeIn animated bx bx-detail"></i>Ver Solicitudes</a>
+                            <li> <a href="#"><i class="fadeIn animated bx bx-detail"></i> Ver Solicitudes</a>
                                 <ul>
                                     <li>
                                         <a href="{{ route('solicitudesProductos') }}"><i
