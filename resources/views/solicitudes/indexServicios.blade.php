@@ -50,7 +50,7 @@
 
                                             <hr />
                                             <div class="table-responsive">
-                                                <table id="tablaProductosEspera" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadProductosEspera">
                                                         <tr>
                                                             <th class="bg_datatable"
@@ -279,7 +279,7 @@
 
                                             <hr />
                                             <div class="table-responsive">
-                                                <table id="tablaProductosAprobados" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadProductosAprobados">
                                                         <tr>
                                                             <th class="bg_datatable"
@@ -446,7 +446,7 @@
 
                                             <hr />
                                             <div class="table-responsive">
-                                                <table id="tablaProductosRechazados" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadProductosRechazados">
                                                         <tr>
                                                             <th class="bg_datatable"

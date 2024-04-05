@@ -36,11 +36,11 @@ class Email extends Mailable
     {
         if ($this->type == 1) {
             return new Envelope(
-                subject: 'Prueba 1' ,
+                subject: 'Código De Verificación' ,
             );
         }elseif ($this->type == 2 ) {
             return new Envelope(
-                subject: 'Recuperando contraseña' ,
+                subject: 'Recuperando Contraseña' ,
             );
         }
     }

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
-    <link rel="stylesheet" href="{{ asset('../assets/images/logo-markettico-icono.png') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/images/logo-markettico-icono.png') }}">
     <!-- loader-->
     <link href="assets/css/pace.min.css" rel="stylesheet" />
     <script src="assets/js/pace.min.js"></script>
@@ -30,7 +30,7 @@
                                     <div class="p-5">
                                         <div class="mb-4 text-center">
                                             <div>
-                                                <img src="../assets/images/logo-markettico-icono.png" class="logo-icon"
+                                                <img src="/assets/images/logo-markettico-icono.png" class="logo-icon"
                                                     alt="logo icon">
                                             </div>
                                             <div>
@@ -39,9 +39,9 @@
                                         </div>
                                         <h4 class="mt-5 font-weight-bold text-center">Código Verificación</h4>
 
-                                        <p class="text-muted"><h6 class="text-center">Sebastian Cerdas</h6>Tú Código de Verificación es el siguiente!</p>
+                                        <p class="text-muted">¡Tú Código de Verificación es el siguiente!</p>
                                         <div class="mb-3 mt-5 text-center">
-                                            <h5 class="form-label">Código</h5>
+                                            <h5 class="form-label">Código:</h5>
                                             <td style="padding:0px 35px 25px 35px">
 
                                                 <p style="font-size:23px;line-height:20px;color:#001435;margin:0;word-break:break-word"

@@ -2,7 +2,6 @@
 
 @section('gestion_nombre', 'Gestión de Categorías')
 
-@section('contenido')
 
 
 <h2>Prueba 1</h2>
@@ -12,9 +11,25 @@
             <div class="col-xl-12 mx-auto">
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
                     <div class="card-body">
-
                         <div class="row justify-content-center align-items-center">
                             <div class="col">
+                                @if (session('success'))
+                                    <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                        {{ session('success') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @elseif (session('mistake'))
+                                    <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                        <ul>
+                                            @foreach (session('mistake')->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="border p-3 rounded">
                                     <div class="card-title d-flex align-items-center justify-content-between">
                                         <div class="d-flex align-items-center">
@@ -48,6 +63,9 @@
                                                         <div class="modal-body">
                                                             <form action="{{ route('categorias.store') }}" method="POST">
                                                                 @csrf
+
+                                                                <input type="hidden" name="id_estado" value="1">
+
                                                                 <div class="row mb-3">
                                                                     <label for="nombre"
                                                                         class="col-sm-4 col-form-label">Nombre:</label>
@@ -64,21 +82,6 @@
                                                                         <input type="text" class="form-control"
                                                                             name="descripcion"
                                                                             placeholder="Ingrese la descripción">
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row mb-3">
-                                                                    <label for="id_estado"
-                                                                        class="col-sm-4 col-form-label">Estado:
-                                                                    </label>
-                                                                    <div class="col-sm-8">
-
-                                                                        <select class="form-select" id="id_estado"
-                                                                            name="id_estado">
-                                                                            <option value="1">Activo</option>
-                                                                            <option value="0">Inactivo
-                                                                            </option>
-                                                                        </select>
                                                                     </div>
                                                                 </div>
 
@@ -106,7 +109,7 @@
 
                                     {{-- Lista de categorías --}}
                                     <div class="table-responsive">
-                                        <table id="tablaRoles" class="table table-bordered">
+                                        <table class="tablas table table-bordered">
                                             <thead class="theadRoles">
                                                 <tr>
                                                     <th class="bg_datatable"
@@ -116,154 +119,175 @@
                                                     <th class="bg_datatable"
                                                         style="background-color: #05C7F2; color: #F2F2F2">Descripción</th>
                                                     <th class="bg_datatable"
+                                                        style="background-color: #05C7F2; color: #F2F2F2">Ver subcategorias
+                                                    </th>
+                                                    <th class="bg_datatable"
                                                         style="background-color: #05C7F2; color: #F2F2F2">Acciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="text-center">
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Hogar</td>
-                                                    <td>Ahhhajjajbbcbxxuusisisisiis</td>
-                                                    <td>
+                                                @foreach ($categorias as $item)
+                                                    <tr>
+                                                        <td>{{ $item->id_categoria }}</td>
+                                                        <td>{{ $item->nombre }}</td>
+                                                        <td>{{ $item->descripcion }}</td>
+                                                        <td>
+                                                            <!-- Botón de visualizar con modal -->
+                                                            <a href="{{ route('categorias.show', $item->id_categoria) }}"
+                                                                class="btn btn-primary btn-sm" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" title="Visualizar Subcategoría">
+                                                                <div class="text-center">
+                                                                    <i class="lni lni-eye"
+                                                                        style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
+                                                                </div>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <!-- Botón de editar con modal -->
+                                                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                                                data-bs-target="#editarCategoriaModal{{ $item->id_categoria }}"
+                                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                title="Editar Categoria">
+                                                                <div class="text-center">
+                                                                    <i class="lni lni-pencil-alt"
+                                                                        style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                </div>
+                                                            </button>
 
-                                                        <!-- Botón de visualizar con modal -->
-                                                        <a href="{{ route('categorias.show', 1) }}"
-                                                            class="btn btn-primary btn-sm" data-bs-toggle="tooltip"
-                                                            data-bs-placement="top" title="Visualizar Subcategoría">
-                                                            <div class="text-center">
-                                                                <i class="lni lni-eye"
-                                                                    style="color: #FFFFFF; margin: 0 auto; display: block;"></i>
-                                                            </div>
-                                                        </a>
+                                                            <!-- Modal de edición -->
+                                                            <div class="modal fade"
+                                                                id="editarCategoriaModal{{ $item->id_categoria }}"
+                                                                tabindex="-1" aria-labelledby="editarCategoriaModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-scrollable">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="editarCategoriaModalLabel">
+                                                                                Editar Categoría</h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal" aria-label="Close"
+                                                                                data-bs-toggle="tooltip"
+                                                                                data-bs-placement="top"
+                                                                                title="Cerrar"></button>
+                                                                        </div>
 
-                                                        <!-- Botón de editar con modal -->
-                                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                            data-bs-target="#editarCategoriaModal" data-bs-toggle="tooltip"
-                                                            data-bs-placement="top" title="Editar Categoria">
-                                                            <div class="text-center">
-                                                                <i class="lni lni-pencil-alt"
-                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                            </div>
-                                                        </button>
-
-                                                        <!-- Modal de edición -->
-                                                        <div class="modal fade" id="editarCategoriaModal" tabindex="-1"
-                                                            aria-labelledby="editarCategoriaModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-scrollable">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title"
-                                                                            id="editarCategoriaModalLabel">
-                                                                            Editar Categoría</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal" aria-label="Close"
-                                                                            data-bs-toggle="tooltip"
-                                                                            data-bs-placement="top"
-                                                                            title="Cerrar"></button>
-                                                                    </div>
-
-                                                                    <div class="modal-body">
-                                                                        <form action="{{ route('categorias.update', 1) }}" method="POST">
-                                                                            @csrf
-                                                                            @method('PUT')
-                                                                            <div class="row mb-3">
-                                                                                <label for="nombre"
-                                                                                    class="col-sm-4 col-form-label">Nombre:</label>
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="text" class="form-control"
-                                                                                        name="nombre" placeholder="Ingrese el nombre">
+                                                                        <div class="modal-body">
+                                                                            <form
+                                                                                action="{{ route('categorias.update', $item->id_categoria) }}"
+                                                                                method="POST">
+                                                                                @csrf
+                                                                                @method('PUT')
+                                                                                <div class="row mb-3">
+                                                                                    <label for="nombre"
+                                                                                        class="col-sm-4 col-form-label">Nombre:</label>
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="nombre"
+                                                                                            value="{{ $item->nombre }}">
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-            
-                                                                            <div class="row mb-3">
-                                                                                <label for="descripcion"
-                                                                                    class="col-sm-4 col-form-label">Descripción:</label>
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="text" class="form-control"
-                                                                                        name="descripcion"
-                                                                                        placeholder="Ingrese la descripción">
-                                                                                </div>
-                                                                            </div>
 
-                                                                            
-                                                                            <div class="row mb-3">
-                                                                                <label for="id_estado"
-                                                                                    class="col-sm-4 col-form-label">Estado:
+                                                                                <div class="row mb-3">
+                                                                                    <label for="descripcion"
+                                                                                        class="col-sm-4 col-form-label">Descripción:</label>
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="descripcion"
+                                                                                            value="{{ $item->descripcion }}">
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row mb-3">
+                                                                                    <label for="id_estado"
+                                                                                        class="col-sm-4 col-form-label">Estado:
                                                                                     </label>
-                                                                                <div class="col-sm-8">
-    
-                                                                                    <select class="form-select" id="id_estado"
-                                                                                        name="id_estado">
-                                                                                        <option value="1">Activo</option>
-                                                                                        <option value="0">Inactivo
-                                                                                        </option>
-                                                                                    </select>
+                                                                                    <div class="col-sm-8">
+
+                                                                                        <select class="form-select"
+                                                                                            id="id_estado"
+                                                                                            name="id_estado">
+                                                                                            @foreach ($estados as $items)
+                                                                                                <option
+                                                                                                    value="{{ $items->id_estado }}"
+                                                                                                    {{ $items->id_estado == $item->id_estado ? 'selected' : '' }}>
+                                                                                                    {{ $items->nombre }}
+                                                                                                </option>
+                                                                                            @endforeach
+                                                                                        </select>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-            
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cerrar</button>
-            
-                                                                                <button type="submit" class="btn btn-info text-white"
-                                                                                    style="background-color: #04D9D9; border-color: #04D9D9;">
-                                                                                    <i class="bx bx-save" style="color: #F2F2F2;"></i>
-                                                                                    Guardar
-                                                                                </button>
-            
-                                                                            </div>
-            
-                                                                        </form>
-                                                                    </div>
 
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-bs-dismiss="modal">Cerrar</button>
+
+                                                                                    <button class="btn btn-info text-white"
+                                                                                        style="background-color: #04D9D9; border-color: #04D9D9;">
+                                                                                        <i class="bx bx-save"
+                                                                                            style="color: #F2F2F2;"></i>
+                                                                                        Guardar
+                                                                                    </button>
+
+                                                                                </div>
+
+                                                                            </form>
+                                                                        </div>
+
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                                            data-bs-target="#eliminarCategoriaModal">
-                                                            <i class="lni lni-trash"
-                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                        </button>
+                                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                                data-bs-target="#eliminarCategoriaModal{{ $item->id_categoria }}">
+                                                                <i class="lni lni-trash"
+                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                            </button>
 
-                                                        <!-- Modal de eliminación -->
-                                                        <div class="modal fade" id="eliminarCategoriaModal"
-                                                            tabindex="-1" aria-labelledby="eliminarRolModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title"
-                                                                            id="eliminarCategoriaModalLabel">Confirmar
-                                                                            eliminación</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal"
-                                                                            aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        ¿Estás seguro de que deseas eliminar esta categoría?
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Cancelar</button>
-
-                                                                        <form action="{{ route('categorias.destroy', 1)}}" method="POST">
-                                                                            @method('DELETE')
-                                                                            @csrf
-                                                                            
-                                                                            <button type="submit" class="btn btn-danger"
+                                                            <!-- Modal de eliminación -->
+                                                            <div class="modal fade"
+                                                                id="eliminarCategoriaModal{{ $item->id_categoria }}"
+                                                                tabindex="-1" aria-labelledby="eliminarRolModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="eliminarCategoriaModalLabel">Confirmar
+                                                                                eliminación</h5>
+                                                                            <button type="button" class="btn-close"
                                                                                 data-bs-dismiss="modal"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#eliminacionCorrectaModal">Eliminar
-                                                                            </button>
-                                                                        </form>
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            ¿Estás seguro de que deseas eliminar esta
+                                                                            categoría?
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Cancelar</button>
 
+                                                                            <form
+                                                                                action="{{ route('categorias.destroy', $item->id_categoria) }}"
+                                                                                method="POST">
+                                                                                @method('DELETE')
+                                                                                @csrf
+
+                                                                                <button class="btn btn-danger"
+                                                                                    data-bs-target="#eliminacionCorrectaModal">Eliminar
+                                                                                </button>
+                                                                            </form>
+
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

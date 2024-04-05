@@ -7,8 +7,8 @@ use App\Models\Alerta;
 use App\Models\Anuncio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
+use Illuminate\Validation\ValidationException;
 
 class ControllerAnuncios extends Controller
 {
@@ -37,40 +37,41 @@ class ControllerAnuncios extends Controller
     public function store(Request $request)
     {
 
-        // Validar campos
-        $validator = Validator::make($request->all(), [
-            'titulo' => 'required||unique:anuncios',
-            'contenido' => 'required',
-            'img_portada' => 'required',
-            'fecha_inicio' => 'required',
-            'fecha_final' => 'required',
-            'etiqueta' => 'required',
-        ]);
-    
-        if ($validator->fails()) {
-            return redirect()->back();
+        try {
+            $request->validate([
+                'titulo' => 'required|unique:anuncios',
+                'contenido' => 'required',
+                'img_portada' => 'required',
+                'fecha_inicio' => 'required',
+                'fecha_final' => 'required',
+                'etiqueta' => 'required',
+            ]);
+
+            // Crear anuncio
+            $anuncio = new Anuncio();
+
+            if ($request->hasFile('img_portada')) {
+                $file = $request->file('img_portada');
+                $fileName = Carbon::now()->format('YmdHisv') . '_' . $file->getClientOriginalName();
+                $file->move(public_path('img\anuncios'), $fileName);
+                $anuncio->img_portada = $fileName;
+            }
+
+            $anuncio->id_usuario_remitente = Auth::user()->id_usuario_administrativo;
+            $anuncio->id_estado = 1;
+            $anuncio->titulo = $request->titulo;
+            $anuncio->contenido = $request->contenido;
+
+            $anuncio->fecha_inicio = $request->fecha_inicio;
+            $anuncio->fecha_final = $request->fecha_final;
+            $anuncio->etiqueta = $request->etiqueta;
+            $anuncio->save();
+
+            return redirect()->back()->with('successAnuncios', 'Anuncio creado correctamente.');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistakeAnuncios', $errors);
         }
-
-        // Cargar imagen
-        if ($request->hasFile('img_portada')) {
-            $file = $request->file('img_portada');
-            $fileName = Carbon::now()->format('YmdHisv').'_'.$file->getClientOriginalName();
-            $file->move(public_path('img\anuncios'), $fileName);
-        }
-
-        // Crear anuncio
-        $anuncio = new Anuncio();
-        $anuncio->id_usuario_remitente = Auth::user()->id_usuario_administrativo;
-        $anuncio->id_estado = 1;
-        $anuncio->titulo = $request->titulo;
-        $anuncio->contenido = $request->contenido;
-        $anuncio->img_portada = $fileName;
-        $anuncio->fecha_inicio = $request->fecha_inicio;
-        $anuncio->fecha_final = $request->fecha_final;
-        $anuncio->etiqueta = $request->etiqueta;
-
-        $anuncio->save();
-        return redirect()->back();
     }
 
     /**
@@ -94,40 +95,39 @@ class ControllerAnuncios extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // Validar campos
-        $validator = Validator::make($request->all(), [
-            'titulo' => 'required||unique:anuncios',
-            'contenido' => 'required',
-            'img_portada' => 'required',
-            'fecha_inicio' => 'required',
-            'fecha_final' => 'required',
-            'etiqueta' => 'required',
-        ]);
+        try {
 
-        if ($validator->fails()) {
-            return redirect()->back();
+            $request->validate([
+                'titulo' => 'required|unique:anuncios,titulo,' . $id . ',id_anuncio',
+                'contenido' => 'required',
+                'fecha_inicio' => 'required',
+                'fecha_final' => 'required',
+                'etiqueta' => 'required',
+            ]);
+
+            $anuncio = Anuncio::find($id);
+
+            if ($request->hasFile('img_portada')) {
+                $file = $request->file('img_portada');
+                $fileName = Carbon::now()->format('YmdHisv') . '_' . $file->getClientOriginalName();
+                $file->move(public_path('img\anuncios'), $fileName);
+                $anuncio->img_portada = $fileName;
+            }
+
+            $anuncio->id_usuario_remitente = Auth::user()->id_usuario_administrativo;
+            $anuncio->id_estado = $request->id_estado;
+            $anuncio->titulo = $request->titulo;
+            $anuncio->contenido = $request->contenido;
+            $anuncio->fecha_inicio = $request->fecha_inicio;
+            $anuncio->fecha_final = $request->fecha_final;
+            $anuncio->etiqueta = $request->etiqueta;
+
+            $anuncio->save();
+            return redirect()->back()->with('successAnuncios', 'Anuncio actualizado correctamente.');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistakeAnuncios', $errors);
         }
-
-        // Cargar imagen
-        if ($request->hasFile('img_portada')) {
-            $file = $request->file('img_portada');
-            $fileName = Carbon::now()->format('YmdHisv').'_'.$file->getClientOriginalName();
-            $file->move(public_path('img\anuncios'), $fileName);
-        }
-
-        $anuncio = Anuncio::find($id);
-
-        $anuncio->id_usuario_remitente = Auth::user()->id_usuario_administrativo;
-        $anuncio->id_estado = $request->id_estado;
-        $anuncio->titulo = $request->titulo;
-        $anuncio->contenido = $request->contenido;
-        $anuncio->img_portada = $fileName;
-        $anuncio->fecha_inicio = $request->fecha_inicio;
-        $anuncio->fecha_final = $request->fecha_final;
-        $anuncio->etiqueta = $request->etiqueta;
-
-        $anuncio->save();    
-        return redirect()->back();
     }
 
     /**
@@ -137,7 +137,6 @@ class ControllerAnuncios extends Controller
     {
         $anuncio = Anuncio::find($id);
         $anuncio->delete();
-        return redirect()->back();
+        return redirect()->back()->with('successAnuncios', 'Anuncio eliminado correctamente.');
     }
-
 }

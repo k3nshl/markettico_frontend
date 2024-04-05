@@ -4,48 +4,52 @@
 
 @section('contenido')
 
-
-
-@if(session('error'))
-<div class="alert alert-danger" role="alert">
-    <h3>{{session('error')}}  </h3>
-</div>
-@endif
-
-@if(session('success'))
-<div class="alert alert-success" role="alert">
- <h3>{{session('success')}}  </h3>
-</div>
-@endif
-
     <section class="content">
         <div class="row">
             <div class="col-xl-12 mx-auto">
+
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
                     <div class="card-body">
 
                         <ul class="nav nav-pills mb-3" role="tablist">
                             <li class="nav-item">
-                                <button class="nav-link active custom-bg-color" data-bs-toggle="tab"
-                                    data-bs-target="#tab-anuncios">
+                                <button class="nav-link custom-bg-color" data-bs-toggle="tab" data-bs-target="#tab-anuncios"
+                                    id="btn_tab_anuncios">
                                     <i class="lni lni-alarm"></i> Anuncios
 
                                 </button>
                             </li>
 
                             <li class="nav-item">
-                                <button class="nav-link custom-bg-color" data-bs-toggle="tab" data-bs-target="#tab-alertas">
+                                <button class="nav-link custom-bg-color" data-bs-toggle="tab" data-bs-target="#tab-alertas"
+                                    id="btn_tab_alertas">
                                     <i class="fadeIn animated bx bx-comment-error"></i> Alertas
 
                                 </button>
                             </li>
                         </ul>
 
-
                         <div class="tab-content">
 
                             {{-- Anuncios --}}
-                            <div class="tab-pane show active fade" id="tab-anuncios">
+                            <div class="tab-pane fade" id="tab-anuncios">
+                                @if (session('successAnuncios'))
+                                    <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                        {{ session('successAnuncios') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @elseif (session('mistakeAnuncios'))
+                                    <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                        <ul>
+                                            @foreach (session('mistakeAnuncios')->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="border p-3 rounded">
@@ -111,13 +115,12 @@
                                                                                 class="col-sm-4 col-form-label">Imagen de
                                                                                 portada:</label>
                                                                             <input type="file"
-                                                                                class="form-control input-imagen"
-                                                                                name="img_portada" id="portada">
+                                                                                class="form-control input-imagen img_selected"
+                                                                                name="img_portada">
                                                                             <div class="text-center p-3">
                                                                                 <img src="#"
-                                                                                    id="imagen-preview-portada"
                                                                                     alt="Vista previa de la imagen"
-                                                                                    class="rounded-3 imagen-preview"
+                                                                                    class="rounded-3 imagen-preview preview_img_selected"
                                                                                     style="width:300px; height: 200px; object-fit: cover; display: none;">
                                                                             </div>
                                                                         </div>
@@ -141,7 +144,7 @@
                                                                             <label for="contenido"
                                                                                 class="col-sm-4 col-form-label">Contenido:</label>
 
-                                                                            <textarea id="summernoteTextareaRegistrar" name="contenido" rows="3" placeholder="Contenido"></textarea>
+                                                                            <textarea class="summernoteTextarea" name="contenido" rows="3" placeholder="Contenido"></textarea>
                                                                         </div>
 
                                                                         <div class="modal-footer">
@@ -170,10 +173,9 @@
 
                                             {{-- Listado de anuncios --}}
                                             <div class="">
-                                                <table id="tablaAnuncios" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadAnuncios">
                                                         <tr class="text-center">
-
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">ID</th>
                                                             <th class="bg_datatable"
@@ -384,14 +386,12 @@
                                                                                             <label>Imagen de
                                                                                                 portada:</label>
                                                                                             <input type="file"
-                                                                                                class="form-control input-imagen"
-                                                                                                id="portada-edit"
+                                                                                                class="form-control input-imagen img_selected"
                                                                                                 name="img_portada">
                                                                                             <div class="text-center p-3">
                                                                                                 <img src="/img/anuncios/{{ $item->img_portada }}"
-                                                                                                    id="imagen-preview-portada-edit"
                                                                                                     alt="Vista previa de la imagen"
-                                                                                                    class="rounded-3 imagen-preview"
+                                                                                                    class="rounded-3 imagen-preview preview_img_selected"
                                                                                                     style="width:300px; height: 200px; object-fit: cover;">
                                                                                             </div>
                                                                                         </div>
@@ -419,7 +419,7 @@
                                                                                             <label for="contenido"
                                                                                                 class="col-sm-4 col-form-label">Contenido:</label>
 
-                                                                                            <textarea id="summernoteTextareaEditar" name="contenido" rows="3" placeholder="Contenido">{{ $item->contenido }}</textarea>
+                                                                                            <textarea class="summernoteTextarea" name="contenido" rows="3" placeholder="Contenido">{{ $item->contenido }}</textarea>
                                                                                         </div>
 
                                                                                         <div class="modal-footer">
@@ -497,6 +497,23 @@
 
                             {{-- Alertas --}}
                             <div class="tab-pane fade" id="tab-alertas">
+                                @if (session('successAlertas'))
+                                    <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                        {{ session('successAlertas') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @elseif (session('mistakeAlertas'))
+                                    <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                        <ul>
+                                            @foreach (session('mistakeAlertas')->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="border p-3 rounded">
@@ -587,7 +604,7 @@
                                                                             <button type="button"
                                                                                 class="btn btn-secondary"
                                                                                 data-bs-dismiss="modal">Cerrar</button>
-                                                                            <button type="submit" 
+                                                                            <button type="submit"
                                                                                 class="btn btn-info text-white"
                                                                                 style="background-color: #04D9D9; border-color: #04D9D9;">
                                                                                 <i class="bx bx-save"
@@ -609,7 +626,7 @@
                                             <hr />
                                             {{-- Listado de alertas --}}
                                             <div class="table-responsive">
-                                                <table id="tablaAlertas" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadAlertas">
                                                         <tr class="text-center">
 
@@ -914,5 +931,42 @@
 
         </div>
     </section>
+
+@endsection
+
+@section('js')
+
+    <script>
+        $(document).ready(function() {
+            setTab();
+        });
+
+        // Tabs de anuncios y alertas
+        $('#btn_tab_anuncios').click(function() {
+            localStorage.setItem('tabActivo', 'anuncios');
+        });
+
+        $('#btn_tab_alertas').click(function() {
+            localStorage.setItem('tabActivo', 'alertas');
+        });
+
+        function setTab() {
+            var tabActivo = localStorage.getItem('tabActivo');
+            if (tabActivo == 'anuncios') {
+                $('#btn_tab_anuncios').addClass('active');
+                $('#tab-anuncios').addClass('show');
+                $('#tab-anuncios').addClass('active');
+            } else if (tabActivo == 'alertas') {
+                $('#btn_tab_alertas').addClass('active');
+                $('#tab-alertas').addClass('show');
+                $('#tab-alertas').addClass('active');
+            } else {
+                $('#btn_tab_anuncios').addClass('active');
+                $('#tab-anuncios').addClass('show');
+                $('#tab-anuncios').addClass('active');
+            }
+        }
+    </script>
+
 
 @endsection

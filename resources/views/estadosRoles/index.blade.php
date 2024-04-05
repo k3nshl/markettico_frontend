@@ -3,31 +3,16 @@
 @section('gestion_nombre', 'Estados/Roles')
 
 @section('contenido')
-
-   
-  @if(session('error'))
-    <div class="alert alert-danger" role="alert">
-        <h1>{{session('error')}}  </h1>
-    </div>
- @endif
-
- @if(session('success'))
- <div class="alert alert-success" role="alert">
-     <h1>{{session('success')}}  </h1>
- </div>
-@endif
-
     <section class="content">
         <div class="row">
             <div class="col-xl-12 mx-auto">
                 <div class="card border-top border-0 border-4 border-info" style="margin: 5%">
                     <div class="card-body">
-
                         <ul class="nav nav-pills mb-3" role="tablist">
                             <li class="nav-item" role="presentation">
 
-                                <a class="nav-link active" data-bs-toggle="pill" href="#tab-estados" role="tab"
-                                    aria-selected="true">
+                                <a class="nav-link" data-bs-toggle="pill" href="#tab-estados" id="btn_tab_estados"
+                                    role="tab" aria-selected="true">
                                     <div class="d-flex align-items-center">
                                         <div class="tab-icon"><i class="bx bx-home font-18 me-1"></i>
                                         </div>
@@ -36,8 +21,8 @@
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" data-bs-toggle="pill" href="#tab-roles" role="tab"
-                                    aria-selected="false">
+                                <a class="nav-link" data-bs-toggle="pill" href="#tab-roles" id="btn_tab_roles"
+                                    role="tab" aria-selected="false">
                                     <div class="d-flex align-items-center">
                                         <div class="tab-icon"><i class="bx bx-user-pin font-18 me-1"></i>
                                         </div>
@@ -49,8 +34,24 @@
 
                         <div class="tab-content">
                             {{-- Inicio estados --}}
-                            <div class="tab-pane show active fade" id="tab-estados" role="tabpanel">
-
+                            <div class="tab-pane fade" id="tab-estados" role="tabpanel">
+                                @if (session('successEstados'))
+                                    <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                        {{ session('successEstados') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @elseif (session('mistakeEstados'))
+                                    <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                        <ul>
+                                            @foreach (session('mistakeEstados')->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="border p-3 rounded">
@@ -58,8 +59,8 @@
                                                 <div class="d-flex align-items-center">
                                                     <div><i class="lni lni-clipboard me-1 font-22 text-info"></i>
                                                     </div>
-                                                    
-                                                    <h5 class="mb-0 text-dark" title="Agregar Usuario">
+
+                                                    <h5 class="mb-0 text-dark">
                                                         Lista de
                                                         Estados</h5>
                                                 </div>
@@ -67,9 +68,6 @@
                                                     <div class="me-2">
                                                         <h5 class="m-0">Registrar</h5>
                                                     </div>
-                                                     
-                                           
-
 
                                                     <div class="me-2">
                                                         <button type="button" class="btn btn-info text-white"
@@ -131,17 +129,9 @@
                                                 </div>
                                             </div>
                                             <hr />
-                                            {{-- Listado de estados --}}
-                                            @if (session('error'))
-                                                <div
-                                                    class="alert alert-danger border-0 bg-danger alert-dismissible fade show">
-                                                    <div class="text-white">{{ session('error') }}</div>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                            @endif
+
                                             <div class="table-responsive">
-                                                <table id="tablaEstados" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadEstados">
                                                         <tr>
                                                             <th class="bg_datatable"
@@ -161,21 +151,21 @@
                                                                 <td>{{ $item->id_estado }}</td>
                                                                 <td>{{ $item->nombre }}</td>
                                                                 <td>
-                                                                
+
                                                                     <div class="text-center">
-                                                                    
+
 
                                                                         <!-- Botón de editar con modal -->
                                                                         <button class="btn btn-warning btn-sm"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#editarEstadoModal"
+                                                                            data-bs-target="#editarEstadoModal{{ $item->id_estado }}"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top" title="Editar Estado">
                                                                             <div class="text-center">
                                                                                 <i class="lni lni-pencil-alt"
                                                                                     style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                                             </div>
-                                                                            
+
                                                                         </button>
                                                                         {{-- Botón de eliminar --}}
                                                                         <button class="btn btn-danger btn-sm"
@@ -187,7 +177,8 @@
                                                                     </div>
 
                                                                     <!-- Modal de edición -->
-                                                                    <div class="modal fade" id="editarEstadoModal"
+                                                                    <div class="modal fade"
+                                                                        id="editarEstadoModal{{ $item->id_estado }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="editarEstadoModalLabel"
                                                                         aria-hidden="true">
@@ -221,6 +212,7 @@
                                                                                                     class="form-control"
                                                                                                     id="nombre"
                                                                                                     name="nombre"
+                                                                                                    value="{{ $item->nombre }}"
                                                                                                     placeholder="Ingrese el nombre del Estado">
                                                                                             </div>
                                                                                         </div>
@@ -234,7 +226,7 @@
                                                                                                 style="background-color: #04D9D9; border-color: #04D9D9;">
                                                                                                 <i class="bx bx-save"
                                                                                                     style="color: #F2F2F2;"></i>
-                                                                                                Guardar 
+                                                                                                Guardar
                                                                                             </button>
                                                                                         </div>
 
@@ -266,19 +258,19 @@
                                                                                 <div class="modal-body">
                                                                                     ¿Estás seguro de que
                                                                                     deseas eliminar
-                                                                                    este estado? 
+                                                                                    este estado?
                                                                                 </div>
                                                                                 <div class="modal-footer">
                                                                                     <button type="button"
                                                                                         class="btn btn-secondary"
                                                                                         data-bs-dismiss="modal">Cancelar</button>
                                                                                     <form
-                                                                                        action="{{ route('estados.destroy', 20) }}"
+                                                                                        action="{{ route('estados.destroy', $item->id_estado) }}"
                                                                                         method="POST">
                                                                                         @csrf
                                                                                         @method('delete')
                                                                                         <button type="submit"
-                                                                                            class="btn btn-danger" 
+                                                                                            class="btn btn-danger"
                                                                                             data-bs-toggle="modal"
                                                                                             data-bs-target="#eliminacionCorrectaModal">Eliminar</button>
                                                                                     </form>
@@ -287,7 +279,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                
+
                                                             </tr>
                                                         @endforeach
                                                     </tbody>
@@ -302,7 +294,23 @@
 
                             {{-- Inicio roles --}}
                             <div class="tab-pane fade" id="tab-roles" role="tabpanel">
-
+                                @if (session('successRoles'))
+                                    <div class="alert alert-success border-0 alert-dismissible fade show mt-3">
+                                        {{ session('successRoles') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @elseif (session('mistakeRoles'))
+                                    <div class="alert alert-danger border-0 alert-dismissible fade show mt-3">
+                                        <ul>
+                                            @foreach (session('mistakeRoles')->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col">
                                         <div class="border p-3 rounded">
@@ -341,6 +349,8 @@
                                                                     <form action="{{ route('roles.store') }}"
                                                                         method="POST">
                                                                         @csrf
+                                                                        <input type="hidden" class="form-control"
+                                                                            name="id_estado" value="1">
                                                                         <div class="row mb-3">
                                                                             <label for="nombre"
                                                                                 class="col-sm-4 col-form-label">Nombre
@@ -348,31 +358,9 @@
                                                                             <div class="col-sm-8">
                                                                                 <input type="text" class="form-control"
                                                                                     id="nombre" name="nombre"
-                                                                                    placeholder="Ingrese el nombre del Rol"required>
-
-                                                                                <input type="hidden" class="form-control"
-                                                                                    name="id_estado" value="1">
-
+                                                                                    placeholder="Ingrese el nombre del Rol">
                                                                             </div>
                                                                         </div>
-
-
-                                                                        <div class="row mb-3">
-                                                                            <label for="id_estado"
-                                                                                class="col-sm-4 col-form-label">Estado:
-                                                                            </label>
-                                                                            <div class="col-sm-8">
-
-                                                                                <select class="form-select" id="id_estado"
-                                                                                    name="id_estado">
-                                                                                    <option value="1">Activo</option>
-                                                                                    <option value="0">Inactivo
-                                                                                    </option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-
-
 
                                                                         <div class="modal-footer">
                                                                             <button type="button"
@@ -386,8 +374,6 @@
                                                                                 Guardar
                                                                             </button>
                                                                         </div>
-
-
                                                                     </form>
                                                                 </div>
 
@@ -397,10 +383,9 @@
                                                 </div>
                                             </div>
                                             <hr />
-
                                             {{-- Listado de roles --}}
                                             <div class="table-responsive">
-                                                <table id="tablaRoles" class="table table-bordered">
+                                                <table class="tablas table table-bordered">
                                                     <thead class="theadRoles">
                                                         <tr>
                                                             <th class="bg_datatable"
@@ -412,18 +397,26 @@
                                                                 Nombre</th>
                                                             <th class="bg_datatable"
                                                                 style="background-color: #05C7F2; color: #F2F2F2">
+                                                                Estado</th>
+                                                            <th class="bg_datatable"
+                                                                style="background-color: #05C7F2; color: #F2F2F2">
                                                                 Acciones</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
 
                                                         @if ($roles)
-
-
                                                             @foreach ($roles as $item)
                                                                 <tr>
                                                                     <td>{{ $item->id_rol }}</td>
                                                                     <td>{{ $item->nombre }}</td>
+                                                                    <td>
+                                                                        @if ($item->id_estado == 1)
+                                                                            <span class="badge bg-success">Activo</span>
+                                                                        @else
+                                                                            <span class="badge bg-danger">Inactivo</span>
+                                                                        @endif
+                                                                    </td>
                                                                     <td>
                                                                         <div class="text-center">
                                                                             <!-- Botón de editar con modal -->
@@ -451,7 +444,8 @@
 
 
                                                                         <!-- Modal de edición -->
-                                                                        <div class="modal fade" id="editarRolModal{{ $item->id_rol }}"
+                                                                        <div class="modal fade"
+                                                                            id="editarRolModal{{ $item->id_rol }}"
                                                                             tabindex="-1"
                                                                             aria-labelledby="editarRolModalLabel"
                                                                             aria-hidden="true">
@@ -459,8 +453,7 @@
                                                                                 class="modal-dialog modal-dialog-scrollable">
                                                                                 <div class="modal-content">
                                                                                     <div class="modal-header">
-                                                                                        <h5 class="modal-title"
-                                                                                            id="editarUsuarioModalLabel{{ $item->id_rol }}">
+                                                                                        <h5 class="modal-title">
                                                                                             Editar Rol</h5>
                                                                                         <button type="button"
                                                                                             class="btn-close"
@@ -472,8 +465,6 @@
                                                                                     </div>
 
                                                                                     <div class="modal-body">
-                                                                                        {{-- 2 --}}
-                                                                                        {{-- + id_rol a editar --}}
                                                                                         <form
                                                                                             action="{{ route('roles.update', $item->id_rol) }}"
                                                                                             method="POST">
@@ -488,7 +479,8 @@
                                                                                                         class="form-control"
                                                                                                         id="nombre"
                                                                                                         name="nombre"
-                                                                                                        placeholder="Ingrese el nombre del Rol" value="{{ $item->nombre }}">
+                                                                                                        placeholder="Ingrese el nombre del Rol"
+                                                                                                        value="{{ $item->nombre }}">
                                                                                                 </div>
                                                                                             </div>
 
@@ -503,10 +495,12 @@
                                                                                                         id="id_estado"
                                                                                                         name="id_estado">
                                                                                                         <option
-                                                                                                            value="1">
+                                                                                                            value="1"
+                                                                                                            {{ $item->id_estado == 1 ? 'selected' : '' }}>
                                                                                                             Activo</option>
                                                                                                         <option
-                                                                                                            value="2">
+                                                                                                            value="2"
+                                                                                                            {{ $item->id_estado == 2 ? 'selected' : '' }}>
                                                                                                             Inactivo
                                                                                                         </option>
                                                                                                     </select>
@@ -542,8 +536,7 @@
                                                                             <div class="modal-dialog">
                                                                                 <div class="modal-content">
                                                                                     <div class="modal-header">
-                                                                                        <h5 class="modal-title"
-                                                                                            id="eliminarRolModalLabel{{ $item->id_rol }}">
+                                                                                        <h5 class="modal-title">
                                                                                             Confirmar
                                                                                             eliminación</h5>
                                                                                         <button type="button"
@@ -567,10 +560,7 @@
                                                                                             @csrf
                                                                                             @method('DELETE')
                                                                                             <button type="submit"
-                                                                                                class="btn btn-danger"
-                                                                                                {{--  data-bs-dismiss="modal"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#eliminacionCorrectaModal" --}}>Eliminar
+                                                                                                class="btn btn-danger">Eliminar
                                                                                             </button>
                                                                                         </form>
                                                                                         <!-- Fin Form de eliminar -->
@@ -582,6 +572,7 @@
                                                                 </tr>
                                                             @endforeach
                                                         @endif
+
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -598,5 +589,40 @@
         </div>
     </section>
 
+@endsection
+
+@section('js')
+
+    <script>
+        $(document).ready(function() {
+            setTab();
+        });
+
+        // Tabs de estados y roles
+        $('#btn_tab_estados').click(function() {
+            localStorage.setItem('tabActivo', 'estados');
+        });
+
+        $('#btn_tab_roles').click(function() {
+            localStorage.setItem('tabActivo', 'roles');
+        });
+
+        function setTab() {
+            var tabActivo = localStorage.getItem('tabActivo');
+            if (tabActivo == 'estados') {
+                $('#btn_tab_estados').addClass('active');
+                $('#tab-estados').addClass('show');
+                $('#tab-estados').addClass('active');
+            } else if (tabActivo == 'roles') {
+                $('#btn_tab_roles').addClass('active');
+                $('#tab-roles').addClass('show');
+                $('#tab-roles').addClass('active');
+            } else {
+                $('#btn_tab_estados').addClass('active');
+                $('#tab-estados').addClass('show');
+                $('#tab-estados').addClass('active');
+            }
+        }
+    </script>
 
 @endsection

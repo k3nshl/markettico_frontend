@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use App\Models\Plan;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class ControllerPlanes extends Controller
 {
@@ -15,7 +16,6 @@ class ControllerPlanes extends Controller
     {
         $planes = Plan::all();
         return view('planes.index', compact('planes'));
-        //return view('planes.index');
     }
 
     /**
@@ -24,7 +24,6 @@ class ControllerPlanes extends Controller
     public function create()
     {
         //
-        return view('planes.index');
     }
 
     /**
@@ -32,26 +31,26 @@ class ControllerPlanes extends Controller
      */
     public function store(Request $request)
     {
-        $multitienda = 0;
-        if ($request->multitienda == "si") {
-            $multitienda = 1;
-        } else {
+        try {
+            $request->validate([
+                'nombre' => 'required|string|max:30|unique:planes',
+                'tipo' => 'required|string|max:50',
+                'costo' => 'required|numeric',
+                'cantidad_productos' => 'required|numeric',
+                'multitienda' => 'required|string|max:2',
+                'duracion' => 'required|numeric',
+                'descripcion' => 'required|string|max:255',
+            ]);
+
             $multitienda = 0;
-        };
+            if ($request->multitienda == "si") {
+                $multitienda = 1;
+            } else {
+                $multitienda = 0;
+            };
 
+            $item = new Plan();
 
-        $item = new Plan();
-
-        $request->validate([
-            'nombre' => 'required|string|max:50'
-        ]);
-        // Validacion de que no se repita el nombre del estado
-
-        $validacion = Plan::where('nombre', $request->nombre)->first();
-
-        if ($validacion) {
-            return back()->with('error', 'Ya existe un registro con este nombre');
-        } else {
             $item->nombre = $request->nombre;
             $item->tipo = $request->tipo;
             $item->costo = $request->costo;
@@ -61,10 +60,12 @@ class ControllerPlanes extends Controller
             $item->multitienda = $multitienda;
             $item->duracion = $request->duracion;
             $item->descripcion = $request->descripcion;
-            //estado no existe en front se hace prueba con id directo
             $item->id_estado = 1;
             $item->save();
-            return redirect()->back();
+            return redirect()->back()->with('successStore', 'Plan creado correctamente.');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistakeStore', $errors);
         }
     }
 
@@ -74,8 +75,6 @@ class ControllerPlanes extends Controller
     public function show(string $id)
     {
         //
-        $itemPlan = Plan::find($id);
-        return view('planes.index', compact('itemPlan'));
     }
 
     /**
@@ -83,9 +82,7 @@ class ControllerPlanes extends Controller
      */
     public function edit(string $id)
     {
-        $itemPlan = Plan::find($id);
-        $itemPlan->update();
-        return view('planes.index');
+        //
     }
 
     /**
@@ -93,27 +90,27 @@ class ControllerPlanes extends Controller
      */
     public function update(Request $request, string $id)
     {
+        try {
+            $request->validate([
+                'nombre' => 'required|string|max:30|unique:planes,nombre,' . $id . ',id_plan',
+                'tipo' => 'required|string|max:50',
+                'costo' => 'required|numeric',
+                'cantidad_productos' => 'required|numeric',
+                'multitienda' => 'required|string|max:2',
+                'duracion' => 'required|numeric',
+                'descripcion' => 'required|string|max:255',
+                'id_estado' => 'required|numeric',
+            ]);
 
-        $multitienda = 0;
-        if ($request->multitienda == "si") {
-            $multitienda = 1;
-        } else {
             $multitienda = 0;
-        };
+            if ($request->multitienda == "si") {
+                $multitienda = 1;
+            } else {
+                $multitienda = 0;
+            };
 
+            $item = Plan::find($id);
 
-        $item =  Plan::find($id);
-
-        $request->validate([
-            'nombre' => 'required|string|max:50'
-        ]);
-        // Validacion de que no se repita el nombre del estado
-
-        $validacion = Plan::where('nombre', $request->nombre)->first();
-
-        if ($validacion) {
-            return back()->with('error', 'Ya existe un registro con este nombre');
-        } else {
             $item->nombre = $request->nombre;
             $item->tipo = $request->tipo;
             $item->costo = $request->costo;
@@ -122,22 +119,24 @@ class ControllerPlanes extends Controller
 
             $item->multitienda = $multitienda;
             $item->duracion = $request->duracion;
-            //$item->descripcion = $request->descripcion;
-            //estado no existe en front se hace prueba con id directo
-            $item->id_estado = 1;
+
+            $item->descripcion = $item->descripcion;
+            $item->id_estado = $request->id_estado;
             $item->update();
-            return back()->with('success', 'El plan se ha actualizado correctamente');
+            return redirect()->back()->with('success', 'Plan actualizado correctamente.');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistake', $errors);
         }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-
         $plan = Plan::find($id);
         $plan->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Plan eliminado correctamente.');
     }
 }

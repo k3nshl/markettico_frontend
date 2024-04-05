@@ -54,6 +54,17 @@ class ControllerHistoriales extends Controller
         $historial->save();
     }
 
+    public function store_estados(Request $request,$accion)
+    {
+        $historial = new HistorialGestionEstados();
+        $historial->id_estado =  $request->id_estado;
+        $historial->nombre_estado =  $request->nombre;
+        $historial->id_usuario =Auth::user()->id_usuario_administrativo;
+        $historial->fecha_hora =  date(Date::now());
+        $historial->accion = $accion.$request->nombre;
+        $historial->save();
+    }
+
     public function store_rol(Request $request, string $accion)
     {
         $historial = new HistorialGestionRoles();
@@ -64,7 +75,6 @@ class ControllerHistoriales extends Controller
         $historial->accion =  $accion.$request->nombre;
         $historial->save();
     }
-
 
     public function store_paginasInfo(Request $request){
         $historial = new HistorialGestionPaginas();

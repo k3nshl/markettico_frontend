@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Administrativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+use App\Models\Estado;
+use App\Models\Subcategoria;
+use Illuminate\Validation\ValidationException;
 
 class ControllerCategorias extends Controller
 {
@@ -13,10 +16,10 @@ class ControllerCategorias extends Controller
      */
     public function index()
     {
+        $estados = Estado::all();
         $categorias = Categoria::all();
-        
-        return view('categorias.index', compact('categorias'));
 
+        return view('categorias.index', compact('categorias', 'estados'));
     }
 
 
@@ -33,14 +36,21 @@ class ControllerCategorias extends Controller
      */
     public function store(Request $request)
     {
-     
-        $item = new Categoria();
-        $item->nombre = $request->nombre;
-        $item->descripcion = $request->descripcion;
-        $item->id_estado = $request->id_estado;
-        $item->save();
-        return redirect()->back();
-
+        try {
+            $request->validate([
+                'nombre' => 'required|string|max:100|unique:categorias',
+                'descripcion' => 'required|string|max:255',
+            ]);
+            $item = new Categoria();
+            $item->nombre = $request->nombre;
+            $item->descripcion = $request->descripcion;
+            $item->id_estado = $request->id_estado;
+            $item->save();
+            return redirect()->back()->with('success', 'Categoria creada exitosamente.');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistake', $errors);
+        }
     }
 
     /**
@@ -48,9 +58,10 @@ class ControllerCategorias extends Controller
      */
     public function show($id)
     {
-       
+        $estados = Estado::all();
         $itemCategoria = Categoria::find($id);
-        return view('categorias.index',compact('itemCategoria'));
+        $subcategorias = Subcategoria::where('id_categoria', $id)->get();
+        return view('categorias.show', compact('itemCategoria', 'estados', 'subcategorias'));
     }
 
     /**
@@ -58,9 +69,7 @@ class ControllerCategorias extends Controller
      */
     public function edit(string $id)
     {
-        $itemCategoria = Categoria::find($id); 
-        $itemCategoria->update();
-        return view('categorias.index');
+        //
     }
 
     /**
@@ -68,13 +77,22 @@ class ControllerCategorias extends Controller
      */
     public function update(Request $request, string $id)
     {
-
-        $itemCategoria= Categoria::find($id);
-        $itemCategoria->nombre = $request->nombre;
-        $itemCategoria->descripcion = $request->descripcion;
-        $itemCategoria ->update();
-        return redirect()->back();
-
+        try {
+            $request->validate([
+                'nombre' => 'required|string|max:100|unique:categorias,nombre,' . $id . ',id_categoria',
+                'descripcion' => 'required|string|max:255',
+                'id_estado' => 'required|integer',
+            ]);
+            $itemCategoria = Categoria::find($id);
+            $itemCategoria->nombre = $request->nombre;
+            $itemCategoria->descripcion = $request->descripcion;
+            $itemCategoria->id_estado = $request->id_estado;
+            $itemCategoria->update();
+            return redirect()->back()->with('success', 'Categoria actualizada exitosamente.');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistake', $errors);
+        }
     }
 
     /**
@@ -82,15 +100,8 @@ class ControllerCategorias extends Controller
      */
     public function destroy(string $id)
     {
-        
-            // Encuentra el modelo por su ID
-            $item = Categoria::find($id);
-    
-            // Elimina el modelo
-            $item->delete();
-
-    
-            // Redirige a la página de índice con un mensaje de éxito
-            return redirect()->back();
+        $item = Categoria::find($id);
+        $item->delete();
+        return redirect()->back()->with('success', 'Categoria eliminada exitosamente.');
     }
 }

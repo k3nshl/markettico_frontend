@@ -63,121 +63,192 @@
                 @if (Auth::user()->roles->nombre == 'Superadmin')
                     <li>
                         <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon"><i class='lni lni-crown'></i>
+                            <div class="parent-icon"><i class='fadeIn animated bx bx-right-arrow'></i>
                             </div>
                             <div class="menu-title">Superadmin</div>
                         </a>
                         <ul>
                             <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
-                                        class="bx bx-right-arrow-alt"></i>Usuarios Administrativos</a>
+                                        class="fadeIn animated bx bx-user"></i>Usuarios Administrativos</a>
                             </li>
-                            <li> <a href="{{ route('estados.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                            <li> <a href="{{ route('estados.index') }}"><i
+                                        class="fadeIn animated bx bx-message-alt-edit"></i>Gestionar
                                     Estados/Roles</a>
                             </li>
                             <li> <a href="{{ route('historiales.index') }}"><i
-                                        class="bx bx-right-arrow-alt"></i>Visualizar
+                                        class="fadeIn animated bx bx-notepad"></i>Visualizar
                                     Historiales</a>
                             </li>
                         </ul>
                     </li>
-                @endif
-                @if (Auth::user()->roles->nombre == 'Administrador' || Auth::user()->roles->nombre == 'Superadmin')
                     <li>
                         <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
+                            <div class="parent-icon"><i class="fadeIn animated bx bx-right-arrow"></i>
                             </div>
                             <div class="menu-title">Administrador</div>
                         </a>
                         <ul>
                             <li> <a href="{{ route('usuariosAdministrativos.index') }}"><i
-                                        class="bx bx-right-arrow-alt"></i>Gestionar usuarios</a>
+                                        class="fadeIn animated bx bx-user"></i>Gestionar usuarios</a>
                             </li>
-                            <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Solicitudes
+                            <li> <a href="#"><i class="fadeIn animated bx bx-detail"></i>Solicitudes
                                     Vendedores</a>
                                 <ul>
                                     <li>
                                         <a href="{{ route('vendedoresIndividuales') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Vendedores Individuales</a>
+                                                class="fadeIn animated bx bx-store-alt"></i>Vendedores Individuales</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('vendedoresEmpresariales') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Vendedores Empresariales</a>
+                                                class="fadeIn animated bx bx-buildings"></i>Vendedores Empresariales</a>
                                     </li>
                                 </ul>
                             </li>
                             <li> <a href="{{ route('estadisticas.index') }}"><i
-                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                        class="fadeIn animated bx bx-bar-chart-alt-2"></i>Gestionar
                                     Estadisticas</a>
 
                             </li>
-                            <li> <a href="{{ route('notificaciones') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                            <li> <a href="{{ route('notificaciones') }}"><i
+                                        class="fadeIn animated bx bx-bell"></i>Gestionar
                                     Notificaciones</a>
                             </li>
-                            <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Plantillas
-                                    para Correos</a>
-                                <ul>
-                                    <li> <a href="{{ route('correoAutenticacion') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Correo Autenticacion</a>
-                                    </li>
-                                    <li> <a href="{{ route('correoCambiosPoliticas') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Correo cambios en politicas</a>
-                                    </li>
-                                    <li> <a href="{{ route('correoExpiracionSuspension') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Correo expiracion y suspencion</a>
-                                    </li>
-                                    <li> <a href="{{ route('correoRegistro') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Correo registro</a>
-                                    </li>
-                                    <li> <a href="{{ route('correoSolicitud') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Correo solicitud</a>
-                                    </li>
-                                </ul>
 
-                            </li>
                         </ul>
                     </li>
-                @endif
-                @if (Auth::user()->roles->nombre == 'Moderador' || Auth::user()->roles->nombre == 'Superadmin')
                     <li>
                         <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon"><i class="fadeIn animated bx bx-bot"></i>
+                            <div class="parent-icon"><i class="fadeIn animated bx bx-right-arrow"></i>
                             </div>
                             <div class="menu-title">Moderador</div>
                         </a>
                         <ul>
                             <li> <a href="{{ route('paginasInformacion.index') }}"><i
-                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                        class="fadeIn animated bx bx-windows"></i>Gestionar
                                     Paginas</a>
                             </li>
-                            <li> <a href="{{ route('planes.index') }}"><i class="bx bx-right-arrow-alt"></i>Gestionar
+                            <li> <a href="{{ route('planes.index') }}"><i
+                                        class="fadeIn animated bx bx-message-alt-edit"></i>Gestionar
                                     Planes</a>
                             </li>
                             <li> <a href="{{ route('categorias.index') }}"><i
-                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                        class="fadeIn animated bx bx-list-ol"></i>Gestionar
                                     Categorias</a>
                             </li>
 
-                            <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Ver Solicitudes</a>
+                            <li> <a href="#"><i class="fadeIn animated bx bx-detail"></i> Ver Solicitudes</a>
                                 <ul>
                                     <li>
                                         <a href="{{ route('solicitudesProductos') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Solicitudes Productos</a>
+                                                class="fadeIn animated bx bx-package"></i>Solicitudes Productos</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('solicitudesServicios') }}"><i
-                                                class="bx bx-right-arrow-alt"></i>Solicitudes Servicios</a>
+                                                class="fadeIn animated bx bx-food-menu"></i>Solicitudes Servicios</a>
                                     </li>
                                 </ul>
                             </li>
                             <li> <a href="{{ route('moderarContenido.index') }}"><i
-                                        class="bx bx-right-arrow-alt"></i>Gestionar
+                                        class="fadeIn animated bx bx-message-dots"></i>Gestionar
                                     Contenido</a>
 
                         </ul>
                     </li>
                 @endif
+                {{-- Solo Administrador --}}
+                @if (Auth::user()->roles->nombre == 'Administrador')
+                    <div class="menu">
+                        <a href="#" class="menu-item">
+                            <div class="parent-icon"><i class="fadeIn animated bx bx-right-arrow"></i></div>
+                            <div class="menu-title">Administrador</div>
+                        </a>
 
+                        <div class="submenu">
+                            <a href="{{ route('usuariosAdministrativos.index') }}" class="menu-item">
+                                <div class="child-icon"><i class="fadeIn animated bx bx-user"></i></div>
+                                <div class="menu-title">Gestionar usuarios</div>
+                            </a>
+                        </div>
 
+                        <li> <a href="#"><i class="fadeIn animated bx bx-detail"></i> Solicitudes
+                                Vendedores</a>
+                            <ul>
+                                <li>
+                                    <a href="{{ route('vendedoresIndividuales') }}"><i
+                                            class="fadeIn animated bx bx-store-alt"></i>Vendedores Individuales</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('vendedoresEmpresariales') }}"><i
+                                            class="fadeIn animated bx bx-buildings"></i>Vendedores Empresariales</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <div class="submenu">
+                            <a href="{{ route('estadisticas.index') }}" class="menu-item">
+                                <div class="child-icon"><i class="fadeIn animated bx bx-bar-chart-alt-2"></i></div>
+                                <div class="menu-title">Gestionar Estadisticas</div>
+                            </a>
+                        </div>
+
+                        <div class="submenu">
+                            <a href="{{ route('notificaciones') }}" class="menu-item">
+                                <div class="child-icon"><i class="fadeIn animated bx bx-bell"></i></div>
+                                <div class="menu-title">Gestionar Notificaciones</div>
+                            </a>
+                        </div>
+                    </div>
+                @endif
+                {{-- Solo Moderador --}}
+                @if (Auth::user()->roles->nombre == 'Moderador')
+                    <div class="menu">
+                        <a href="#" class="menu-item">
+                            <div class="parent-icon"><i class="fadeIn animated bx bx-right-arrow"></i></div>
+                            <div class="menu-title">Moderador</div>
+                        </a>
+
+                        <div class="submenu">
+                            <a href="{{ route('paginasInformacion.index') }}" class="menu-item">
+                                <div class="child-icon"><i class="fadeIn animated bx bx-windows"></i></div>
+                                <div class="menu-title">Gestionar Paginas</div>
+                            </a>
+                        </div>
+
+                        <div class="submenu">
+                            <a href="{{ route('planes.index') }}" class="menu-item">
+                                <div class="child-icon"><i class="fadeIn animated bx bx-message-alt-edit"></i></div>
+                                <div class="menu-title">Gestionar Planes</div>
+                            </a>
+                        </div>
+
+                        <div class="submenu">
+                            <a href="{{ route('categorias.index') }}" class="menu-item">
+                                <div class="child-icon"><i class="fadeIn animated bx bx-list-ol"></i></div>
+                                <div class="menu-title">Gestionar Categorias</div>
+                            </a>
+                        </div>
+
+                        <li> <a href="#"><i class="fadeIn animated bx bx-detail"></i>Ver Solicitudes</a>
+                            <ul>
+                                <li>
+                                    <a href="{{ route('solicitudesProductos') }}"><i
+                                            class="fadeIn animated bx bx-package"></i>Solicitudes Productos</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('solicitudesServicios') }}"><i
+                                            class="fadeIn animated bx bx-food-menu"></i>Solicitudes Servicios</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <div class="submenu">
+                            <a href="{{ route('moderarContenido.index') }}" class="menu-item">
+                                <div class="child-icon"><i class="fadeIn animated bx bx-message-dots"></i></div>
+                                <div class="menu-title">Gestionar Contenido</div>
+                            </a>
+                        </div>
+                    </div>
+                @endif
             </ul>
             <!--end navigation-->
         </div>
@@ -415,104 +486,24 @@
     <!--Editor de texto mejorado-->
     <script src="{{ asset('../assets/plugins/textarea-definitive/summernote-lite.js') }}"></script>
 
+    @yield('js')
+
     <script>
         $(function() {
             $(".knob").knob();
         });
 
         // Datatables
-        $(document).ready(function() {
-            $('#tablaUsuariosAdmin').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaUsuariosBloqueados').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaRoles').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaEstados').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaSolicitudEspera').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaSolicitudAprobados').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaSolicitudRechazados').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaCorreos').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaAnuncios').DataTable();
-        });
 
         $(document).ready(function() {
-            $('#tablaAlertas').DataTable();
+            $('.tablas').DataTable();
         });
-        $(document).ready(function() {
-            $('#tablaArticulo').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaColeccion').DataTable();
-        });
-        $(document).ready(function() {
-            $('#tablaPlanes').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaHistorialEstados').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaHistorialRoles').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaHistorialGestionCuentas').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaHistorialAcciones').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaHistorialSuspenciones').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaHistorialInicioSesion').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaHistorialPaginas').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaProductosEspera').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaProductosAprobados').DataTable();
-        });
-
-        $(document).ready(function() {
-            $('#tablaProductosRechazados').DataTable();
-        });
-
 
         // Tooltips y Popovers
         $(function() {
             $('[data-bs-toggle="popover"]').popover();
             $('[data-bs-toggle="tooltip"]').tooltip();
         })
-
-        // Texto enriquecido
-        tinymce.init({
-            selector: '#mytextarea'
-        });
 
         $(document).ready(function() {
             var table = $('#').DataTable({
@@ -521,16 +512,8 @@
             });
         });
         $(document).ready(function() {
-            $("#portada").change(function() {
-                readURL(this, "#imagen-preview-portada");
-            });
-
-            $("#portada-edit").change(function() {
-                readURL(this, "#imagen-preview-portada-edit");
-            });
-
-            $("#otroInput").change(function() {
-                readURL(this, "#imagen-preview-otroInput");
+            $(".img_selected").change(function() {
+                readURL(this, ".preview_img_selected");
             });
         });
 
@@ -552,49 +535,21 @@
         });
     </script>
 
-
     {{-- editor de texto mejorado --}}
     <script>
         $(document).ready(function() {
-            $('#summernoteTextareaRegistrar').summernote({
-                height: 150,
-                placeholder: 'Escribe el contenido del anuncio',
-            });
 
-            $('span.note-icon-caret').remove();
-
-            $('.note-editable').css('background', '#fff');
-        });
-    </script>
-
-    {{-- editor de texto mejorado --}}
-    <script>
-        $(document).ready(function() {
-            $('#summernoteTextareaEditar').summernote({
-                height: 150,
-                placeholder: 'Escribe el contenido del anuncio',
-            });
-
-            $('span.note-icon-caret').remove();
-
-            $('.note-editable').css('background', '#fff');
-        });
-    </script>
-
-      {{-- editor de texto mejorado --}}
-      <script>
-        $(document).ready(function() {
-            $('#summernoteTextareaPlanes').summernote({
+            $('.summernoteTextarea').summernote({
                 height: 150,
                 placeholder: 'Escribe las características del plan',
             });
-    
+
             $('span.note-icon-caret').remove();
-    
+
             $('.note-editable').css('background', '#fff');
         });
     </script>
-    
+
 
 </body>
 

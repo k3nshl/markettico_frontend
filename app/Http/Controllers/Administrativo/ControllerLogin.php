@@ -86,45 +86,48 @@ class ControllerLogin extends Controller
 
     function login(Request $request)
     {
-        
+
         if ($request->type == 1) {
             $user = UsuarioAdministrativo::where('correo_empresarial', $request->correo_empresarial)->first();
 
             $password_login = sha1($request->password);
 
-            if ($user->id_estado == 1 && $user->correo_empresarial == $request->correo_empresarial && $user->password == $password_login) {
+            if ($user->id_estado == 1) {
+                if ($user->correo_empresarial == $request->correo_empresarial && $user->password == $password_login) {
+                    $codigo = $this->getcodigoAleatorio($user);
+                    $this->controllerCorreos->email_seller($request, $codigo);
+                    return view('login.codigoVerificacion', compact('user', 'codigo'));
+                    auth::login($user);
+                    if ($user->id_rol == 1) {
+                        return redirect()->route('homeSuperadmin');
+                    } else if ($user->id_rol == 2) {
+                        return redirect()->route('homeAdministrador');
+                    } else if ($user->id_rol == 3) {
+                        return redirect()->route('homeModerador');
+                    }
+                } else {
+                    return redirect()->route('login')->with('error', 'Contraseña o usuario incorrectas');
+                }
+            }else{
+                return redirect()->route('login')->with('error', 'Usuario inactivo o bloqueado');
+            }
+        } elseif ($request->type == 2) {
+
+            $user = UsuarioAdministrativo::where('correo_empresarial', $request->correo_empresarial)->first();
+            if ($user) {
                 $codigo = $this->getcodigoAleatorio($user);
                 $this->controllerCorreos->email_seller($request, $codigo);
-                return view('login.codigoVerificacion', compact('user', 'codigo'));
-                auth::login($user);
-                if ($user->id_rol == 1) {
-                    return redirect()->route('homeSuperadmin');
-                } else if ($user->id_rol == 2) {
-                    return redirect()->route('homeAdministrador');
-                } else if ($user->id_rol == 3) {
-                    return redirect()->route('homeModerador');
-                }
+                return view('recuperarPassword.ingresarCodigo', compact('user', 'codigo'));
             } else {
-                return redirect()->route('login')->with('error', 'Contraseña o usuario incorrectas');
+                return redirect()->back()->with('error', 'Correo no registrado');
             }
-        }elseif ($request->type == 2) {
-            
-            $user = UsuarioAdministrativo::where('correo_empresarial', $request->correo_empresarial)->first();
-           if ($user) {
-            $codigo = $this->getcodigoAleatorio($user);
-            $this->controllerCorreos->email_seller($request, $codigo);
-            return view('recuperarPassword.ingresarCodigo', compact('user', 'codigo'));
-           }else{
-            return redirect()->back();
-           }
-           
         }
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login')->with('error', 'Haz cerrado sesión');;
+        return redirect()->route('login')->with('warning', 'Haz cerrado sesión');
     }
 
     public function getcodigoAleatorio($user)
@@ -160,7 +163,7 @@ class ControllerLogin extends Controller
                 $codigo->id_estado = 2; //??????
 
                 $codigo->update();
-               
+
                 auth::login($user);
 
 

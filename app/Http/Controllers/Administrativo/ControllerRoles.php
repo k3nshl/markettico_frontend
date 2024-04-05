@@ -6,10 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\HistorialGestionRoles;
 use App\Models\Rol;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Validation\ValidationException;
 
 class ControllerRoles extends Controller
 {
@@ -24,10 +22,9 @@ class ControllerRoles extends Controller
         $this->controllerHistorial = $historial;
     }
 
-    
+
     public function index()
     {
-        
     }
 
     /**
@@ -43,26 +40,27 @@ class ControllerRoles extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'nombre' => 'required||unique:roles',
-            'id_estado' => 'required',
-        ]);
-    
-        if ($validator->fails()) {
-            return redirect()->back();
+        try {
+            $request->validate([
+                'nombre' => 'required|unique:roles',
+                'id_estado' => 'required',
+            ]);
+
+            $rol = new Rol();
+            $rol->nombre = $request->nombre;
+            $rol->id_estado = $request->id_estado;
+            $rol->save();
+
+            $request->merge([
+                'id_rol' => $rol->id_rol,
+            ]);
+
+            $this->controllerHistorial->store_rol($request, 'Creacion ');
+            return redirect()->back()->with('successRoles', 'Rol creado correctamente.');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistakeRoles', $errors);
         }
-        
-        $rol = new Rol();
-        $rol->nombre= $request->nombre;
-        $rol->id_estado= $request->id_estado;
-        $rol->save();
-
-        $request->merge([
-            'id_rol' => $rol->id_rol,
-        ]);
-
-        $this->controllerHistorial->store_rol($request,'Creacion del rol ');
-        return redirect()->back();
     }
 
     /**
@@ -70,7 +68,6 @@ class ControllerRoles extends Controller
      */
     public function show(string $id)
     {
-        
     }
 
     /**
@@ -86,27 +83,27 @@ class ControllerRoles extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $validator = Validator::make($request->all(), [
-            'nombre' => 'required||unique:roles',
-            'id_estado' => 'required',
-        ]);
-    
-        if ($validator->fails()) {
-            return redirect()->back();
+        try {
+            $request->validate([
+                'nombre' => 'required|unique:roles,nombre,' . $id . ',id_rol',
+                'id_estado' => 'required',
+            ]);
+
+            $rol = Rol::find($id);
+            $rol->nombre = $request->nombre;
+            $rol->id_estado = $request->id_estado;
+            $rol->save();
+
+            $request->merge([
+                'id_rol' => $rol->id_rol,
+            ]);
+
+            $this->controllerHistorial->store_rol($request, 'Actualización');
+            return redirect()->back()->with('successRoles', 'Rol actualizado correctamente.');
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors();
+            return redirect()->back()->with('mistakeRoles', $errors);
         }
-
-        $rol = Rol::find($id);
-        $rol->nombre = $request->nombre;
-        $rol->id_estado= $request->id_estado;
-        $rol->save();
-
-        $request->merge([
-            'id_rol' => $rol->id_rol,
-        ]);
-
-        $this->controllerHistorial->store_rol($request,'Actualización del rol ');
-
-        return redirect()->back();
     }
 
     /**
@@ -123,7 +120,8 @@ class ControllerRoles extends Controller
             'id_rol' => $rol->id_rol,
             'nombre' => $rol->nombre,
         ]);
-        $this->controllerHistorial->store_rol($request,'Eliminación del rol ');
-        return redirect()->back();
+
+        $this->controllerHistorial->store_rol($request, 'Eliminación del rol ');
+        return redirect()->back()->with('successRoles', 'Rol eliminado correctamente.');
     }
 }
