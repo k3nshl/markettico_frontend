@@ -5,6 +5,7 @@
 @section('contenido')
 
 
+<h2>Prueba 1</h2>
 
     <section class="content">
         <div class="row">
